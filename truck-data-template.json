@@ -1,0 +1,62 @@
+{
+  "trucks": {
+    "light-duty": {
+      "category": "Light Duty Trucks",
+      "description": "Compact and efficient trucks for urban and light commercial applications (4.5T≤GCW≤25T)",
+      "series": {
+        "X9": {
+          "seriesName": "X9 Series", 
+          "description": "High-performance light duty trucks with advanced engineering",
+          "models": [
+            {
+              "id": "x9-tow-truck",
+              "name": "X9 Tow Truck",
+              "fileName": "X9-Tow-Truck.html",
+              "mainImage": "../assets/back2.jpeg",
+              "specifications": {
+                "gvw": "Under 25T",
+                "engine": "Turbocharged Diesel",
+                "transmission": "Manual/Automatic"
+              },
+              "features": [
+                "Advanced towing capability",
+                "Heavy-duty construction",
+                "Professional grade equipment",
+                "Reliable performance"
+              ],
+              "applications": [
+                "Vehicle recovery",
+                "Emergency towing", 
+                "Roadside assistance",
+                "Equipment transport"
+              ]
+            },
+            {
+              "id": "x9-aerial-work-platform-truck",
+              "name": "X9 Aerial Work Platform Truck", 
+              "fileName": "X9-Aerial-Work-Platform-Truck.html",
+              "mainImage": "../assets/back2.jpeg",
+              "specifications": {
+                "gvw": "Under 25T",
+                "maxHeight": "Up to 20m",
+                "engine": "Turbocharged Diesel"
+              },
+              "features": [
+                "High-reach capability",
+                "Stable platform",
+                "Safety systems",
+                "Easy operation"
+              ],
+              "applications": [
+                "Construction work",
+                "Maintenance services",
+                "Tree trimming", 
+                "Building inspection"
+              ]
+            }
+          ]
+        }
+      }
+    }
+  }
+}

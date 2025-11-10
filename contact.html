@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Equipment King</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <style>
+        .contact-hero {
+            margin-top: 80px;
+            padding: 80px 0;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .contact-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .contact-hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .contact-info {
+            background: #f8f9fa;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .contact-info:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+
+        .contact-info h2 {
+            margin-bottom: 30px;
+            color: #1e3c72;
+            font-size: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+            background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+        }
+
+        .contact-item i {
+            font-size: 1.5rem;
+            color: #2a5298;
+            margin-right: 15px;
+            width: 30px;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .contact-form:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+
+        .contact-form h2 {
+            margin-bottom: 30px;
+            color: #1e3c72;
+            font-size: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e1e5e9;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #2a5298;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(42, 82, 152, 0.3);
+        }
+
+        .map-section {
+            margin: 80px 0;
+            padding: 0 20px;
+        }
+
+        .map-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .map-container h2 {
+            margin-bottom: 30px;
+            color: #1e3c72;
+            font-size: 2.5rem;
+        }
+
+        .map-placeholder {
+            width: 100%;
+            height: 400px;
+            background: #f0f0f0;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 1.2rem;
+            border: 2px solid #e1e5e9;
+        }
+
+        @media (max-width: 768px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                padding: 40px 20px;
+            }
+
+            .contact-hero h1 {
+                font-size: 2rem;
+            }
+
+            .contact-info,
+            .contact-form {
+                padding: 30px 20px;
+            }
+        }
+        
+        /* !IMPORTANT: Sticky footer styles */
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .page-wrapper {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        main {
+            flex: 1;
+        }
+
+        footer {
+            margin-top: auto !important;
+            width: 100vw !important;
+            position: relative !important;
+            left: 50% !important;
+            right: 50% !important;
+            margin-left: -50vw !important;
+            margin-right: -50vw !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="page-wrapper">
+    <header>
+        <a>
+            <div class="logo" onclick="location.href='index.html'">
+                <img src="assets/companylogo.webp" alt="Equipment King Logo" />
+                Equipment King
+            </div>
+        </a>
+
+        <nav>
+            <a href="index.html">Home</a>
+            
+            <!-- Trucks Dropdown -->
+            <div class="trucks-dropdown">
+                <a href="trucks.html" class="trucks-btn">Trucks</a>
+                <div class="dropdown-menu">
+                    <ul>
+                        <!-- LIGHT DUTY TRUCKS -->
+                        <li>
+                            <a href="trucks.html#light-duty">LIGHT DUTY TRUCKS</a>
+                            <ul class="sub-dropdown">
+                                <li>
+                                    <a href="trucks.html#x9-series">X9 Series</a>
+                                    <ul class="truck-links">
+                                        <li><a href="trucks_html/X9-Tow-Truck.html">X9 Tow Truck</a></li>
+                                        <li><a href="trucks_html/X9-Aerial-Work-Platform-Truck.html">X9 Aerial Work Platform Truck</a></li>
+                                        <li><a href="trucks_html/X9-4X4-Dump-Truck.html">X9 4X4 Dump Truck</a></li>
+                                        <li><a href="trucks_html/X9-Dump-Truck.html">X9 Dump Truck</a></li>
+                                        <li><a href="trucks_html/X9-Van-Truck.html">X9 Van Truck</a></li>
+                                        <li><a href="trucks_html/X9-Fuel-Tanker-Truck.html">X9 Fuel Tanker Truck</a></li>
+                                        <li><a href="trucks_html/X9-Garbage-Truck.html">X9 Garbage Truck</a></li>
+                                        <li><a href="trucks_html/X9-Refrigerated-Truck.html">X9 Refrigerated Truck</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="trucks.html#e9-series">E9 Series</a>
+                                    <ul class="truck-links">
+                                        <li><a href="trucks_html/E9-Refrigerated-Truck.html">E9 Refrigerated Truck</a></li>
+                                        <li><a href="trucks_html/E9-Dump-Truck.html">E9 Dump Truck</a></li>
+                                        <li><a href="trucks_html/E9-Van-Truck.html">E9 Van Truck</a></li>
+                                        <li><a href="trucks_html/E9-Kitchen-Waste-Garbage-Truck.html">E9 Kitchen Waste Garbage Truck</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="trucks.html#x7-series">X7 Series</a>
+                                    <ul class="truck-links">
+                                        <li><a href="trucks_html/X7-Concrete-Mixer-Truck.html">X7 Concrete Mixer Truck</a></li>
+                                        <li><a href="trucks_html/X7-Flatbed-Truck.html">X7 Flatbed Truck</a></li>
+                                        <li><a href="trucks_html/X7-Sprinkler-Truck.html">X7 Sprinkler Truck</a></li>
+                                        <li><a href="trucks_html/X7-Truck-Mounted-Crane.html">X7 Truck Mounted Crane</a></li>
+                                        <li><a href="trucks_html/X7-Dump-Truck.html">X7 Dump Truck</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="trucks.html#i9-series">i9 Series (New Energy)</a>
+                                    <ul class="truck-links">
+                                        <li><a href="trucks_html/i9-New-Series.html">i9 (New Series) - Electric/Hybrid Technology</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <!-- MEDIUM DUTY TRUCKS -->
+                        <li>
+                            <a href="trucks.html#medium-duty">MEDIUM DUTY TRUCKS</a>
+                            <ul class="sub-dropdown">
+                                <li>
+                                    <a href="trucks.html#e6-series">E6 Series</a>
+                                    <ul class="truck-links">
+                                        <li><a href="trucks_html/E6-Dump-Truck.html">E6 Dump Truck</a></li>
+                                        <li><a href="trucks_html/E6-Stake-Truck.html">E6 Stake Truck</a></li>
+                                        <li><a href="trucks_html/E6-Van-Truck.html">E6 Van Truck</a></li>
+                                        <li><a href="trucks_html/E6-Refrigerated-Truck.html">E6 Refrigerated Truck</a></li>
+                                        <li><a href="trucks_html/E6-Sprinkler-Truck.html">E6 Sprinkler Truck</a></li>
+                                        <li><a href="trucks_html/E6-Truck-Mounted-Crane.html">E6 Truck Mounted Crane</a></li>
+                                        <li><a href="trucks_html/E6-Cement-Mixer-Truck.html">E6 Cement Mixer Truck</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="trucks.html#x6-series">X6 Series</a>
+                                    <ul class="truck-links">
+                                        <li><a href="trucks_html/X6-Dump-Truck.html">X6 Dump Truck</a></li>
+                                        <li><a href="trucks_html/X6-Flatbed-Truck.html">X6 Flatbed Truck</a></li>
+                                        <li><a href="trucks_html/X6-Van-Truck.html">X6 Van Truck</a></li>
+                                        <li><a href="trucks_html/X6-Truck-Mounted-Crane.html">X6 Truck Mounted Crane</a></li>
+                                        <li><a href="trucks_html/X6-Cargo-Truck.html">X6 Cargo Truck</a></li>
+                                        <li><a href="trucks_html/X6-AWD-Cargo-Truck.html">X6 AWD Cargo Truck</a></li>
+                                        <li><a href="trucks_html/X6-Dropside-Truck.html">X6 Dropside Truck</a></li>
+                                        <li><a href="trucks_html/X6-Cement-Mixer-Truck.html">X6 Cement Mixer Truck</a></li>
+                                        <li><a href="trucks_html/X6-Concrete-Mixer-Truck.html">X6 Concrete Mixer Truck</a></li>
+                                        <li><a href="trucks_html/X6-Loading-Crane-Recovery-Truck.html">X6 Loading Crane Recovery Truck</a></li>
+                                        <li><a href="trucks_html/X6-Sprinkler-Truck.html">X6 Sprinkler Truck</a></li>
+                                        <li><a href="trucks_html/X6-Dust-Suppression-Truck.html">X6 Dust Suppression Truck</a></li>
+                                        <li><a href="trucks_html/X6-Garbage-Truck.html">X6 Garbage Truck</a></li>
+                                        <li><a href="trucks_html/X6-Fuel-Tanker-Truck.html">X6 Fuel Tanker Truck</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <!-- HEAVY DUTY TRUCKS -->
+                        <li>
+                            <a href="trucks.html#heavy-duty">HEAVY DUTY TRUCKS</a>
+                            <ul class="sub-dropdown">
+                                <li>
+                                    <a href="trucks.html#z3-series">Z3 Series</a>
+                                    <ul class="truck-links">
+                                        <li><a href="trucks_html/Z3-Dump-Truck.html">Z3 Dump Truck</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="trucks.html#e1st-series">E1st Series</a>
+                                    <ul class="truck-links">
+                                        <li><a href="trucks_html/E1st-Tractor.html">E1st Tractor</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="trucks.html#e3-series">E3 Series</a>
+                                    <ul class="truck-links">
+                                        <li><a href="trucks_html/E3-Muck-Truck.html">E3 Muck Truck</a></li>
+                                        <li><a href="trucks_html/E3-Tractor-Truck.html">E3 Tractor Truck</a></li>
+                                        <li><a href="trucks_html/E3-Van-Truck.html">E3 Van Truck</a></li>
+                                        <li><a href="trucks_html/E3-Dump-Truck.html">E3 Dump Truck</a></li>
+                                        <li><a href="trucks_html/E3-Cement-Mixer-Truck.html">E3 Cement Mixer Truck</a></li>
+                                        <li><a href="trucks_html/E3-Compactor-Garbage-Truck.html">E3 Compactor Garbage Truck</a></li>
+                                        <li><a href="trucks_html/E3-Stake-Truck.html">E3 Stake Truck</a></li>
+                                        <li><a href="trucks_html/E3-Sewage-Suction-Truck.html">E3 Sewage Suction Truck</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="trucks.html#9-series">9 Series</a>
+                                    <ul class="truck-links">
+                                        <li><a href="trucks_html/9-Series-Sweeper.html">9 Series Sweeper</a></li>
+                                        <li><a href="trucks_html/9-Series-Garbage-Truck.html">9 Series Garbage Truck</a></li>
+                                        <li><a href="trucks_html/9-Series-Tow-Truck.html">9 Series Tow Truck</a></li>
+                                        <li><a href="trucks_html/9-Series-Truck-Mounted-Crane.html">9 Series Truck Mounted Crane</a></li>
+                                        <li><a href="trucks_html/9-Series-Cement-Mixer-Truck.html">9 Series Cement Mixer Truck</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="trucks.html#6-series">6 Series</a>
+                                    <ul class="truck-links">
+                                        <li><a href="trucks_html/6-Series-Sweeper.html">6 Series Sweeper</a></li>
+                                        <li><a href="trucks_html/6-Series-Garbage-Truck.html">6 Series Garbage Truck</a></li>
+                                        <li><a href="trucks_html/6-Series-Truck-Mounted-Crane.html">6 Series Truck Mounted Crane</a></li>
+                                        <li><a href="trucks_html/6-Series-Cement-Mixer-Truck.html">6 Series Cement Mixer Truck</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="trucks.html#3-series">3 Series</a>
+                                    <ul class="truck-links">
+                                        <li><a href="trucks_html/3-Series-Cement-Mixer-Truck.html">3 Series Cement Mixer Truck</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <a href="about.html">About</a>
+            <a href="application.html">Application</a>
+            
+            <button class="contact-btn" onclick="location.href='contact.html'">Contact Us</button>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="contact-hero">
+            <h1>Contact Equipment King</h1>
+            <p>Get in touch with our team of truck specialists. We're here to help you find the perfect commercial vehicle solution for your business needs.</p>
+        </section>
+
+        <!-- Contact Form and Info -->
+        <div class="contact-container">
+            <!-- Contact Information -->
+            <div class="contact-info">
+                <h2>Get in Touch</h2>
+                
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <h4>Our Location</h4>
+                        <p>123 Industrial Drive<br>Commercial District<br>Business City, BC 12345</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <div>
+                        <h4>Phone</h4>
+                        <p>+1 (555) 123-4567<br>+1 (555) 987-6543</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <h4>Email</h4>
+                        <p>sales@equipmentking.com<br>support@equipmentking.com</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <i class="fas fa-clock"></i>
+                    <div>
+                        <h4>Business Hours</h4>
+                        <p>Monday - Friday: 8:00 AM - 6:00 PM<br>Saturday: 9:00 AM - 4:00 PM<br>Sunday: Closed</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="contact-form">
+                <h2>Send Us a Message</h2>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="company">Company Name</label>
+                        <input type="text" id="company" name="company">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="interest">Area of Interest</label>
+                        <select id="interest" name="interest">
+                            <option value="">Select...</option>
+                            <option value="light-duty">Light Duty Trucks</option>
+                            <option value="medium-duty">Medium Duty Trucks</option>
+                            <option value="heavy-duty">Heavy Duty Trucks</option>
+                            <option value="special-vehicles">Special Vehicles</option>
+                            <option value="parts-service">Parts & Service</option>
+                            <option value="financing">Financing Options</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message *</label>
+                        <textarea id="message" name="message" rows="5" placeholder="Tell us about your requirements..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Map Section -->
+        <section class="map-section">
+            <div class="map-container">
+                <h2>Visit Our Showroom</h2>
+                <div class="map-placeholder">
+                    <p><i class="fas fa-map"></i> Interactive Map Coming Soon<br>123 Industrial Drive, Business City, BC 12345</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <!-- Load Font Awesome Icons -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+        <div class="footer-container">
+            <div>
+                <h4>PRODUCTS</h4>
+                <ul>
+                    <li><a href="trucks.html#ldt">Light Duty Truck (4.5T≤GCW≤25T)</a></li>
+                    <li><a href="trucks.html#mdt">Medium Duty Truck (12T≤GCW≤60T)</a></li>
+                    <li><a href="trucks.html#hdt">Heavy Duty Truck (18T≤GCW≤100T)</a></li>
+                    <li><a href="trucks.html#ldt">Off-road Truck</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4>APPLICATIONS</h4>
+                <ul>
+                    <li><a href="#">Tractor</a></li>
+                    <li><a href="#">Dump Truck</a></li>
+                    <li><a href="#">Cargo Truck</a></li>
+                    <li><a href="#special-vehicle">Special Vehicle</a></li>
+                    <li><a href="#">Off-road Truck</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4>FOLLOW US</h4>
+                <div class="social-links">
+                    <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" title="Twitter / X"><i class="fab fa-x-twitter"></i></a>
+                    <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div>© <span id="year">2025</span> Equipment King. All rights reserved.</div>
+            <div>
+                <a href="#">Privacy Policy</a> |
+                <a href="#">Terms of Use</a> |
+                <a href="#">Site Map</a>
+            </div>
+        </div>
+
+        <script>
+            // auto-update footer year
+            document.getElementById("year").textContent = new Date().getFullYear();
+        </script>
+    </footer>
+
+    <script>
+        // Trucks dropdown hover functionality
+        const trucksDropdown = document.querySelector('.trucks-dropdown');
+        if (trucksDropdown) {
+            const dropdownMenu = trucksDropdown.querySelector('.dropdown-menu');
+            let hoverTimeout;
+
+            trucksDropdown.addEventListener('mouseenter', () => {
+                clearTimeout(hoverTimeout);
+                dropdownMenu.style.display = 'block';
+            });
+
+            trucksDropdown.addEventListener('mouseleave', () => {
+                hoverTimeout = setTimeout(() => {
+                    dropdownMenu.style.display = 'none';
+                }, 300); // 300ms delay before hiding
+            });
+        }
+
+        // Contact form handling
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Simple validation
+            if (!data.name || !data.email || !data.message) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+            
+            // Simulate form submission
+            alert('Thank you for your message! We will get back to you within 24 hours.');
+            this.reset();
+        });
+    </script>
+    
+    </div> <!-- Close page-wrapper -->
+</body>
+</html>

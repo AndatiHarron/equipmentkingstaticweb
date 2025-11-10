@@ -1,0 +1,680 @@
+{
+  "trucks": {
+    "light-duty": {
+      "category": "Light Duty Trucks",
+      "description": "Compact and efficient trucks for urban and light commercial applications (4.5T≤GCW≤25T)",
+      "series": {
+        "X9": {
+          "seriesName": "X9 Series",
+          "description": "High-performance light duty trucks with advanced engineering",
+          "models": [
+            {
+              "id": "x9-tow-truck",
+              "name": "X9 Tow Truck",
+              "fileName": "X9-Tow-Truck.html",
+              "mainImage": "../assets/trucks/x9towtrucks/main.webp",
+              "gallery": [
+                "../assets/trucks/x9towtrucks/main.webp",
+                "../assets/trucks/x94x4dumptrucks/Screenshot 2025-11-04 235942.webp"
+              ],
+              "specifications": {
+                "gvw": "Under 25T",
+                "engine": "Turbocharged Diesel",
+                "transmission": "Manual/Automatic",
+                "wheelbase": "Variable",
+                "fuelCapacity": "100L"
+              },
+              "features": [
+                "Gradient >30% capability",
+                "Strong chassis for tough work",
+                "Ideal for rescue and towing",
+                "Advanced hydraulic systems"
+              ],
+              "applications": [
+                "Vehicle recovery",
+                "Emergency towing",
+                "Roadside assistance",
+                "Heavy equipment transport"
+              ]
+            },
+            {
+              "id": "x9-aerial-work-platform-truck",
+              "name": "X9 Aerial Work Platform Truck",
+              "fileName": "X9-Aerial-Work-Platform-Truck.html",
+              "mainImage": "../assets/trucks/x9aerialplatformtrucks/Screenshot 2025-11-04 230412.webp",
+              "gallery": [
+                "../assets/trucks/x9aerialplatformtrucks/Screenshot 2025-11-04 230412.webp"
+              ],
+              "specifications": {
+                "gvw": "Under 25T",
+                "maxHeight": "Up to 20m",
+                "engine": "Turbocharged Diesel",
+                "transmission": "Manual",
+                "wheelbase": "3200mm"
+              },
+              "features": [
+                "High-capacity work platform",
+                "Quick deployment system",
+                "Advanced safety features",
+                "360-degree rotation capability"
+              ],
+              "applications": [
+                "Construction work",
+                "Maintenance services",
+                "Tree trimming",
+                "Building inspection"
+              ]
+            },
+            {
+              "id": "x9-4x4-dump-truck",
+              "name": "X9 4X4 Dump Truck",
+              "fileName": "X9-4X4-Dump-Truck.html",
+              "mainImage": "../assets/back2.jpeg",
+              "gallery": [
+                "../assets/back2.jpeg"
+              ],
+              "specifications": {
+                "gvw": "Under 25T",
+                "driveType": "4X4 All-Wheel Drive",
+                "engine": "Turbocharged Diesel",
+                "transmission": "Manual/Automatic",
+                "dumpCapacity": "8-12 cubic meters"
+              },
+              "features": [
+                "All-terrain capability",
+                "Enhanced traction control",
+                "Heavy-duty dump body",
+                "Rugged construction"
+              ],
+              "applications": [
+                "Off-road construction",
+                "Mining operations",
+                "Rough terrain transport",
+                "Construction site work"
+              ]
+            },
+            {
+              "id": "x9-dump-truck",
+              "name": "X9 Dump Truck",
+              "fileName": "X9-Dump-Truck.html",
+              "mainImage": "../assets/back2.jpeg",
+              "gallery": [
+                "../assets/back2.jpeg"
+              ],
+              "specifications": {
+                "gvw": "Under 25T",
+                "dumpCapacity": "8-15 cubic meters",
+                "engine": "Turbocharged Diesel",
+                "transmission": "Manual/Automatic",
+                "wheelbase": "3200-3800mm"
+              },
+              "features": [
+                "Efficient hydraulic system",
+                "Durable dump body",
+                "Easy operation",
+                "Reliable performance"
+              ],
+              "applications": [
+                "Construction material transport",
+                "Small-scale mining",
+                "Urban construction",
+                "Material handling"
+              ]
+            },
+            {
+              "id": "x9-van-truck",
+              "name": "X9 Van Truck",
+              "fileName": "X9-Van-Truck.html",
+              "mainImage": "../assets/back2.jpeg",
+              "gallery": [
+                "../assets/back2.jpeg"
+              ],
+              "specifications": {
+                "gvw": "Under 25T",
+                "cargoVolume": "15-25 cubic meters",
+                "engine": "Turbocharged Diesel",
+                "transmission": "Manual/Automatic",
+                "loadCapacity": "3-8 tons"
+              },
+              "features": [
+                "Large cargo space",
+                "Easy loading access",
+                "Weather protection",
+                "Secure cargo compartment"
+              ],
+              "applications": [
+                "Goods transportation",
+                "Logistics delivery",
+                "Moving services",
+                "Commercial cargo"
+              ]
+            },
+            {
+              "id": "x9-fuel-tanker-truck",
+              "name": "X9 Fuel Tanker Truck",
+              "fileName": "X9-Fuel-Tanker-Truck.html",
+              "mainImage": "../assets/back2.jpeg",
+              "gallery": [
+                "../assets/back2.jpeg"
+              ],
+              "specifications": {
+                "gvw": "Under 25T",
+                "tankCapacity": "8000-15000L",
+                "engine": "Turbocharged Diesel",
+                "transmission": "Manual/Automatic",
+                "material": "Aluminum/Steel Tank"
+              },
+              "features": [
+                "Anti-static protection",
+                "Emergency shut-off valves",
+                "Leak detection system",
+                "Safety equipment included"
+              ],
+              "applications": [
+                "Fuel distribution",
+                "Gas station supply",
+                "Industrial fuel delivery",
+                "Remote area refueling"
+              ]
+            },
+            {
+              "id": "x9-garbage-truck",
+              "name": "X9 Garbage Truck",
+              "fileName": "X9-Garbage-Truck.html",
+              "mainImage": "../assets/back2.jpeg",
+              "gallery": [
+                "../assets/back2.jpeg"
+              ],
+              "specifications": {
+                "gvw": "Under 25T",
+                "loadCapacity": "8-12 cubic meters",
+                "engine": "Turbocharged Diesel",
+                "transmission": "Manual/Automatic",
+                "compressionRatio": "2.5:1"
+              },
+              "features": [
+                "Hydraulic compaction system",
+                "Easy waste loading",
+                "Efficient collection",
+                "Durable construction"
+              ],
+              "applications": [
+                "Municipal waste collection",
+                "Residential garbage pickup",
+                "Commercial waste management",
+                "Recycling collection"
+              ]
+            },
+            {
+              "id": "x9-refrigerated-truck",
+              "name": "X9 Refrigerated Truck",
+              "fileName": "X9-Refrigerated-Truck.html",
+              "mainImage": "../assets/back2.jpeg",
+              "gallery": [
+                "../assets/back2.jpeg"
+              ],
+              "specifications": {
+                "gvw": "Under 25T",
+                "cargoVolume": "15-25 cubic meters",
+                "temperatureRange": "-25°C to +15°C",
+                "engine": "Turbocharged Diesel",
+                "refrigerationUnit": "Electric/Engine Driven"
+              },
+              "features": [
+                "Precise temperature control",
+                "Insulated cargo compartment",
+                "Energy-efficient cooling",
+                "Temperature monitoring system"
+              ],
+              "applications": [
+                "Cold chain logistics",
+                "Food delivery",
+                "Pharmaceutical transport",
+                "Frozen goods distribution"
+              ]
+            }
+          ]
+        },
+        "E9": {
+          "seriesName": "E9 Series",
+          "description": "Efficient and reliable light duty trucks for commercial applications",
+          "models": [
+            {
+              "id": "e9-refrigerated-truck",
+              "name": "E9 Refrigerated Truck",
+              "fileName": "E9-Refrigerated-Truck.html",
+              "mainImage": "../assets/trucks/e9refrigeratedtrucks/Screenshot 2025-11-04 231846.webp",
+              "gallery": [
+                "../assets/trucks/e9refrigeratedtrucks/Screenshot 2025-11-04 231846.webp"
+              ],
+              "specifications": {
+                "gvw": "Under 25T",
+                "cargoVolume": "18-28 cubic meters",
+                "temperatureRange": "-20°C to +10°C",
+                "engine": "Turbocharged Diesel",
+                "refrigerationUnit": "Electric"
+              },
+              "features": [
+                "Precise temperature control",
+                "Energy-efficient operation",
+                "Easy maintenance access",
+                "Reliable cooling system"
+              ],
+              "applications": [
+                "Fresh food delivery",
+                "Cold storage transport",
+                "Medical supplies",
+                "Dairy distribution"
+              ]
+            },
+            {
+              "id": "e9-dump-truck",
+              "name": "E9 Dump Truck",
+              "fileName": "E9-Dump-Truck.html",
+              "mainImage": "../assets/back2.jpeg",
+              "gallery": [
+                "../assets/back2.jpeg"
+              ],
+              "specifications": {
+                "gvw": "Under 25T",
+                "dumpCapacity": "10-15 cubic meters",
+                "engine": "Efficient Diesel",
+                "transmission": "Manual/Automatic",
+                "wheelbase": "3200mm"
+              },
+              "features": [
+                "Reliable hydraulic system",
+                "Fuel-efficient operation",
+                "Compact design",
+                "Easy maintenance"
+              ],
+              "applications": [
+                "Urban construction",
+                "Small project transport",
+                "Material handling",
+                "Road maintenance"
+              ]
+            },
+            {
+              "id": "e9-van-truck",
+              "name": "E9 Van Truck",
+              "fileName": "E9-Van-Truck.html",
+              "mainImage": "../assets/back2.jpeg",
+              "gallery": [
+                "../assets/back2.jpeg"
+              ],
+              "specifications": {
+                "gvw": "Under 25T",
+                "cargoVolume": "18-25 cubic meters",
+                "engine": "Efficient Diesel",
+                "transmission": "Manual/Automatic",
+                "loadCapacity": "4-7 tons"
+              },
+              "features": [
+                "Spacious cargo area",
+                "Fuel-efficient engine",
+                "Easy loading design",
+                "Reliable performance"
+              ],
+              "applications": [
+                "Commercial delivery",
+                "Logistics transport",
+                "Moving services",
+                "Distribution operations"
+              ]
+            },
+            {
+              "id": "e9-kitchen-waste-garbage-truck",
+              "name": "E9 Kitchen Waste Garbage Truck",
+              "fileName": "E9-Kitchen-Waste-Garbage-Truck.html",
+              "mainImage": "../assets/back2.jpeg",
+              "gallery": [
+                "../assets/back2.jpeg"
+              ],
+              "specifications": {
+                "gvw": "Under 25T",
+                "loadCapacity": "8-12 cubic meters",
+                "engine": "Efficient Diesel",
+                "transmission": "Manual/Automatic",
+                "specialFeatures": "Sealed compartment"
+              },
+              "features": [
+                "Odor-controlled design",
+                "Easy waste loading",
+                "Hygienic collection system",
+                "Leak-proof construction"
+              ],
+              "applications": [
+                "Restaurant waste collection",
+                "Food waste management",
+                "Commercial kitchen service",
+                "Organic waste transport"
+              ]
+            }
+          ]
+        },
+        "X7": {
+          "seriesName": "X7 Series",
+          "description": "Versatile light duty trucks for diverse commercial applications",
+          "models": [
+            {
+              "id": "x7-concrete-mixer-truck",
+              "name": "X7 Concrete Mixer Truck",
+              "fileName": "X7-Concrete-Mixer-Truck.html",
+              "mainImage": "../assets/back2.jpeg",
+              "gallery": [
+                "../assets/back2.jpeg"
+              ],
+              "specifications": {
+                "gvw": "Under 25T",
+                "mixingCapacity": "6-9 cubic meters",
+                "engine": "Turbocharged Diesel",
+                "transmission": "Manual/Automatic",
+                "drumRotation": "Variable speed"
+              },
+              "features": [
+                "Efficient mixing system",
+                "Reliable drum rotation",
+                "Easy discharge control",
+                "Durable construction"
+              ],
+              "applications": [
+                "Concrete delivery",
+                "Construction projects",
+                "Infrastructure development",
+                "Building construction"
+              ]
+            },
+            {
+              "id": "x7-dump-truck",
+              "name": "X7 Dump Truck",
+              "fileName": "X7-Dump-Truck.html",
+              "mainImage": "../assets/back2.jpeg",
+              "gallery": [
+                "../assets/back2.jpeg"
+              ],
+              "specifications": {
+                "gvw": "Under 25T",
+                "dumpCapacity": "10-15 cubic meters",
+                "engine": "Turbocharged Diesel",
+                "transmission": "Manual/Automatic",
+                "wheelbase": "3500mm"
+              },
+              "features": [
+                "Heavy-duty hydraulic system",
+                "Large dump capacity",
+                "Robust construction",
+                "Efficient operation"
+              ],
+              "applications": [
+                "Construction material transport",
+                "Mining operations",
+                "Road construction",
+                "Material handling"
+              ]
+            },
+            {
+              "id": "x7-flatbed-truck",
+              "name": "X7 Flatbed Truck",
+              "fileName": "X7-Flatbed-Truck.html",
+              "mainImage": "../assets/back2.jpeg",
+              "gallery": [
+                "../assets/back2.jpeg"
+              ],
+              "specifications": {
+                "gvw": "Under 25T",
+                "bedLength": "6-8 meters",
+                "engine": "Turbocharged Diesel",
+                "transmission": "Manual/Automatic",
+                "loadCapacity": "8-12 tons"
+              },
+              "features": [
+                "Open cargo platform",
+                "Versatile loading options",
+                "Strong bed construction",
+                "Easy tie-down points"
+              ],
+              "applications": [
+                "Equipment transport",
+                "Construction machinery",
+                "Large cargo delivery",
+                "Industrial transport"
+              ]
+            },
+            {
+              "id": "x7-sprinkler-truck",
+              "name": "X7 Sprinkler Truck",
+              "fileName": "X7-Sprinkler-Truck.html",
+              "mainImage": "../assets/back2.jpeg",
+              "gallery": [
+                "../assets/back2.jpeg"
+              ],
+              "specifications": {
+                "gvw": "Under 25T",
+                "waterCapacity": "8000-12000L",
+                "engine": "Turbocharged Diesel",
+                "transmission": "Manual/Automatic",
+                "sprayWidth": "10-15 meters"
+              },
+              "features": [
+                "High-pressure water system",
+                "Adjustable spray pattern",
+                "Large water capacity",
+                "Efficient distribution"
+              ],
+              "applications": [
+                "Road cleaning",
+                "Dust suppression",
+                "Municipal maintenance",
+                "Construction site watering"
+              ]
+            },
+            {
+              "id": "x7-truck-mounted-crane",
+              "name": "X7 Truck Mounted Crane",
+              "fileName": "X7-Truck-Mounted-Crane.html",
+              "mainImage": "../assets/back2.jpeg",
+              "gallery": [
+                "../assets/back2.jpeg"
+              ],
+              "specifications": {
+                "gvw": "Under 25T",
+                "liftingCapacity": "8-12 tons",
+                "engine": "Turbocharged Diesel",
+                "transmission": "Manual/Automatic",
+                "maxReach": "15-20 meters"
+              },
+              "features": [
+                "Telescopic boom",
+                "Precise load control",
+                "Stable lifting platform",
+                "Advanced safety systems"
+              ],
+              "applications": [
+                "Construction lifting",
+                "Material handling",
+                "Equipment installation",
+                "Maintenance work"
+              ]
+            }
+          ]
+        },
+        "E3": {
+          "seriesName": "E3 Series",
+          "description": "Economical and efficient light duty trucks for basic commercial needs",
+          "models": [
+            {
+              "id": "e3-cement-mixer-truck",
+              "name": "E3 Cement Mixer Truck",
+              "fileName": "E3-Cement-Mixer-Truck.html",
+              "mainImage": "../assets/back2.jpeg",
+              "gallery": [
+                "../assets/back2.jpeg"
+              ],
+              "specifications": {
+                "gvw": "Under 25T",
+                "mixingCapacity": "3-6 cubic meters",
+                "engine": "Efficient Diesel",
+                "transmission": "Manual",
+                "fuelConsumption": "Low"
+              },
+              "features": [
+                "Compact mixing drum",
+                "Fuel-efficient operation",
+                "Easy maintenance",
+                "Cost-effective solution"
+              ],
+              "applications": [
+                "Small construction projects",
+                "Residential building",
+                "Repair work",
+                "Urban delivery"
+              ]
+            }
+          ]
+        }
+      ],
+    },
+    "medium-duty": {
+      "category": "Medium Duty Trucks",
+      "description": "Robust trucks for medium commercial and industrial applications (12T≤GCW≤60T)",
+      "series": {
+        "X6": {
+          "seriesName": "X6 Series",
+          "description": "Versatile medium duty trucks for commercial applications",
+          "models": [
+            {
+              "id": "x6-awd-cargo-truck",
+              "name": "X6 AWD Cargo Truck",
+              "fileName": "X6-AWD-Cargo-Truck.html",
+              "mainImage": "../assets/back2.jpeg",
+              "gallery": [
+                "../assets/back2.jpeg"
+              ],
+              "specifications": {
+                "gvw": "25T-40T",
+                "driveType": "All-Wheel Drive",
+                "engine": "High-power Diesel",
+                "transmission": "Manual/Automatic",
+                "cargoCapacity": "20-30 cubic meters"
+              },
+              "features": [
+                "All-terrain capability",
+                "Enhanced traction",
+                "Large cargo capacity",
+                "Rugged construction"
+              ],
+              "applications": [
+                "Off-road delivery",
+                "Construction site supply",
+                "Mining logistics",
+                "Remote area transport"
+              ]
+            }
+          ]
+        },
+        "E6": {
+          "seriesName": "E6 Series",
+          "description": "Reliable medium duty trucks for diverse commercial applications",
+          "models": [
+            {
+              "id": "e6-dump-truck",
+              "name": "E6 Dump Truck",
+              "fileName": "E6-Dump-Truck.html",
+              "mainImage": "../assets/trucks/e6dumptrucks/Screenshot 2025-11-05 011157.webp",
+              "specifications": {
+                "gvw": "25T-40T",
+                "dumpCapacity": "15-25 cubic meters",
+                "engine": "High-torque Diesel",
+                "transmission": "Manual/Automatic"
+              },
+              "features": [
+                "Large torque engine",
+                "High water tank clearance",
+                "Wheel-side reduction rear axle",
+                "Heavy-duty construction"
+              ],
+              "applications": [
+                "Large construction projects",
+                "Mining operations",
+                "Heavy material transport",
+                "Infrastructure development"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "heavy-duty": {
+      "category": "Heavy Duty Trucks",
+      "description": "Powerful trucks for heavy industrial and commercial applications (18T≤GCW≤100T)",
+      "series": {
+        "9": {
+          "seriesName": "9 Series",
+          "description": "Heavy-duty trucks for extreme industrial applications",
+          "models": [
+            {
+              "id": "9-series-cement-mixer-truck",
+              "name": "9 Series Cement Mixer Truck",
+              "fileName": "9-Series-Cement-Mixer-Truck.html",
+              "mainImage": "../assets/back2.jpeg",
+              "gallery": [
+                "../assets/back2.jpeg"
+              ],
+              "specifications": {
+                "gvw": "40T+",
+                "mixingCapacity": "12-16 cubic meters",
+                "engine": "Heavy-duty Diesel",
+                "transmission": "Manual/Automatic",
+                "drumRotation": "Hydraulic drive"
+              },
+              "features": [
+                "Large mixing capacity",
+                "Heavy-duty hydraulic system",
+                "Reinforced drum construction",
+                "Industrial-grade performance"
+              ],
+              "applications": [
+                "Large construction projects",
+                "Infrastructure development",
+                "Commercial building",
+                "Industrial concrete supply"
+              ]
+            }
+          ]
+        },
+        "Z3": {
+          "seriesName": "Z3 Series",
+          "description": "Heavy-duty trucks for extreme applications",
+          "models": [
+            {
+              "id": "z3-dump-truck",
+              "name": "Z3 Dump Truck",
+              "fileName": "Z3-Dump-Truck.html",
+              "mainImage": "../assets/trucks/Additional Trucks/Z3 Tractor Truck/Screenshot 2025-11-05 140111.webp",
+              "specifications": {
+                "gvw": "40T+",
+                "dumpCapacity": "25-40 cubic meters",
+                "engine": "Heavy-duty Diesel",
+                "transmission": "Manual/Automatic"
+              },
+              "features": [
+                "Dual warning system",
+                "Efficient power chain",
+                "Comfortable berth width 850mm",
+                "Heavy-duty construction"
+              ],
+              "applications": [
+                "Large-scale mining",
+                "Major construction projects",
+                "Heavy material transport",
+                "Industrial operations"
+              ]
+            }
+          ]
+        }
+      }
+    }
+  }
+}
+}

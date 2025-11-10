@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trucks</title>
+  <link rel="stylesheet" href="../equipmentking/css/styles.css" />
+  <!-- Inline styles added so file is standalone; your original stylesheet link is kept -->
+  <style>
+    /* ===== Popup & small helpers ===== */
+    .popup-overlay {
+      position: fixed;
+      inset: 0;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      background: rgba(0,0,0,0.6);
+      z-index: 9999;
+      padding: 20px;
+    }
+
+    .popup-box {
+      width: 100%;
+      max-width: 1100px;
+      max-height: 92vh;
+      overflow: auto;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+      padding: 18px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .popup-close {
+      position: absolute;
+      top: 12px;
+      right: 14px;
+      background: none;
+      border: none;
+      font-size: 26px;
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    .popup-top {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 16px;
+      align-items: start;
+    }
+
+    /* main image area */
+    .popup-main-image-wrap {
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      background: #fafafa;
+      min-height: 280px;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+    }
+
+    .popup-main-image {
+      max-width: 100%;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      user-select: none;
+    }
+
+    /* square zoom lens inside popup */
+    .popup-lens {
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      border: 2px solid rgba(0,0,0,0.6);
+      background-repeat: no-repeat;
+      display: none;
+      pointer-events: none;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+    }
+
+    /* thumbnails strip */
+    .popup-thumbs {
+      display:flex;
+      gap:8px;
+      padding-top:8px;
+      overflow-x:auto;
+      align-items:center;
+    }
+    .popup-thumbs img {
+      width:76px;
+      height:76px;
+      object-fit:cover;
+      border-radius:6px;
+      cursor:pointer;
+      border:2px solid transparent;
+    }
+    .popup-thumbs img.active {
+      border-color:#0077ff;
+    }
+
+    /* right column (short desc + specs) */
+    .popup-right {
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+
+    .popup-short {
+      font-size:15px;
+      line-height:1.4;
+      color:#222;
+    }
+
+    .popup-specs {
+      border-collapse:collapse;
+      width:100%;
+      font-size:14px;
+      margin-top:6px;
+    }
+    .popup-specs th, .popup-specs td {
+      padding:8px 6px;
+      border-bottom:1px solid #eee;
+      text-align:left;
+    }
+    .popup-specs th {
+      width:38%;
+      color:#444;
+      font-weight:600;
+    }
+
+    /* blur page parts while popup open */
+    body.popup-open header,
+    body.popup-open h1,
+    body.popup-open input,
+    body.popup-open .category-buttons,
+    body.popup-open section,
+    body.popup-open footer {
+      filter: blur(6px) saturate(.95);
+      transition: filter .18s;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    /* make overlay visible */
+    .popup-overlay.show {
+      display: flex;
+    }
+
+    /* responsive */
+    @media (max-width: 900px) {
+      .popup-top {
+        grid-template-columns: 1fr;
+      }
+      .popup-right {
+        order: 2;
+      }
+    }
+  </style>
+</head>
+<body>
+<header>
+   <a>
+    <div class="logo" onclick="location.href='../equipmentking/index.html'">
+      <img src="../equipmentking/assets/companylogo.jpg" alt="Equipment King Logo" />
+      Equipment King
+    </div>
+  </a>
+
+  <nav>
+    <a href="../equipmentking/index.html">Home</a>
+    <a href="../equipmentking/trucks.html">Trucks</a>
+    <a href="../equipmentking/about.html">About</a>
+    <a href="../equipmentking/application.html">Application</a>
+    
+    <button class="contact-btn" onclick="location.href='../equipmentking/contact.html'">Contact Us</button>
+    
+  </nav>
+</header>
+
+
+  <h1>Truck Categories and Models</h1>
+  <input type="text" id="searchInput" placeholder="Search trucks..." />
+
+  <div class="category-buttons">
+    <button data-category="all" class="active">All</button>
+    <button data-category="light-duty">Light Duty Trucks</button>
+    <button data-category="medium-duty">Medium Duty Trucks</button>
+    <button data-category="heavy-duty">Heavy Duty Trucks</button>
+  </div>
+
+  <!-- Light Duty Trucks -->
+  <section class="category-section" data-category="light-duty">
+  
+    <h2 class="headings">Light Duty Trucks</h2>
+    
+
+    <div class="series">
+      <div class="series-title">X9</div>
+      <div class="truck-grid">
+        <div class="truck-tile" onclick=""><div class="truck-image"><img src="../equipmentking/assets/trucks/x94x4dumptrucks/Screenshot 2025-11-04 235942.png"><div class="magnifier-lens"></div></div><div class="truck-name">X9 Tow Truck</div></div>
+        <div class="truck-tile" onclick=""><div class="truck-image"><img src="../equipmentking/assets/trucks/x9aerialplatformtrucks/Screenshot 2025-11-04 230412.png"><div class="magnifier-lens"></div></div><div class="truck-name">X9 Aerial Work Platform Truck</div></div>
+        <div class="truck-tile" onclick=""><div class="truck-image"><img src="../equipmentking/assets/trucks/x94x4dumptrucks/Screenshot 2025-11-04 235942.png"><div class="magnifier-lens"></div></div><div class="truck-name">X9 4X4 Dump Truck</div></div>
+        <div class="truck-tile" onclick=""><div class="truck-image"><img src="../equipmentking/assets/trucks/x9dumptrucks/Screenshot 2025-11-04 230617.png"><div class="magnifier-lens"></div></div><div class="truck-name">X9 Dump Truck</div></div>
+        <div class="truck-tile" onclick=""><div class="truck-image"><img src="../equipmentking/assets/trucks/x9vantrucks/Screenshot 2025-11-04 230715.png"><div class="magnifier-lens"></div></div><div class="truck-name">X9 Van Truck</div></div>
+        <div class="truck-tile" onclick=""><div class="truck-image"><img src="../equipmentking/assets/trucks/x9fueltankertrucks/Screenshot 2025-11-04 231642.png"><div class="magnifier-lens"></div></div><div class="truck-name">X9 Fuel Tanker Truck</div></div>
+        <div class="truck-tile" onclick=""><div class="truck-image"><img src="../equipmentking/assets/trucks/x9garbagetrucks/Screenshot 2025-11-04 231541.png"><div class="magnifier-lens"></div></div><div class="truck-name">X9 Garbage Truck</div></div>
+        <div class="truck-tile" onclick=""><div class="truck-image"><img src="../equipmentking/assets/trucks/x9refrigeratedtrucks/Screenshot 2025-11-04 232329.png"><div class="magnifier-lens"></div></div><div class="truck-name">X9 Refrigerated Truck</div></div>
+      </div>
+    </div>
+
+    <div class="series">
+      <div class="series-title">E9</div>
+      <div class="truck-grid">
+        <div class="truck-tile" onclick=""><div class="truck-image"><img src="../equipmentking/assets/trucks/e9refrigeratedtrucks/Screenshot 2025-11-04 231846.png"><div class="magnifier-lens"></div></div><div class="truck-name">E9 Refrigerated Truck</div></div>
+        <div class="truck-tile" onclick=""><div class="truck-image"><img src="../equipmentking/assets/trucks/e9dumptruck/Screenshot 2025-11-04 232141.png"><div class="magnifier-lens"></div></div><div class="truck-name">E9 Dump Truck</div></div>
+        <div class="truck-tile" onclick=""><div class="truck-image"><img src="../equipmentking/assets/trucks/e9vantrucks/Screenshot 2025-11-04 234940.png"><div class="magnifier-lens"></div></div><div class="truck-name">E9 Van Truck</div></div>
+        <div class="truck-tile" onclick=""><div class="truck-image"><img src="../equipmentking/assets/trucks/e9kitchenwastefoodgarbagetrucks/Screenshot 2025-11-04 234723.png"><div class="magnifier-lens"></div></div><div class="truck-name">E9 Kitchen Waste Garbage Truck</div></div>
+      </div>
+
+    <div class="series">
+      <div class="series-title">X7</div>
+      <div class="truck-grid">
+        <div class="truck-tile" onclick=""><div class="truck-image"><img src="../equipmentking/assets/trucks/x7concretemixertrucks/main.png"><div class="magnifier-lens"></div></div><div class="truck-name">X7 Concrete Mixer Truck</div></div>
+        <div class="truck-tile" onclick=""><div class="truck-image"><img src="../equipmentking/assets/trucks/x7flatbedtrucks/main.png"><div class="magnifier-lens"></div></div><div class="truck-name">X7 Flatbed Truck</div></div>
+        <div class="truck-tile" onclick=""><div class="truck-image"><img src="../equipmentking/assets/trucks/x7sprinklertrucks/main.png"><div class="magnifier-lens"></div></div><div class="truck-name">X7 Sprinkler Truck</div></div>
+        <div class="truck-tile" onclick=""><div class="truck-image"><img src="../equipmentking/assets/trucks/x7truckmountedcrane/main.png"><div class="magnifier-lens"></div></div><div class="truck-name">X7 Truck Mounted Crane</div></div>
+        <div class="truck-tile" onclick=""><div class="truck-image"><img src="../equipmentking/assets/trucks/x7dumptrucks/main.png"><div class="magnifier-lens"></div></div><div class="truck-name">X7 Dump Truck</div></div>
+        
+      </div>
+    </div>
+
+
+    <div class="series">
+      <div class="series-title">i9 (New Series)</div>
+      <div class="truck-grid">
+        <div class="truck-tile" onclick=""><div class="truck-image"><img src="../equipmentking/assets/trucks/i9/main.png"><div class="magnifier-lens"></div></div><div class="truck-name">i9 (New Series)</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Medium Duty Trucks -->
+  <section class="category-section" data-category="medium-duty">
+    <h2 class="headings">Medium Duty Trucks</h2>
+
+    <div class="series">
+      <div class="series-title">E6</div>
+      <div class="truck-grid">
+        <div class="truck-tile" onclick=""><div class="truck-image"><img src="../equipmentking/assets/trucks/e6dumptrucks/Screenshot 2025-11-05 011157.png"><div class="magnifier-lens"></div></div><div class="truck-name">E6 Dump Truck</div></div>
+        <div class="truck-tile" onclick=""><div class="truck-image"><img src="../equipmentking/assets/trucks/e6staketrucks/Screenshot 2025-11-05 011655.png"><div class="magnifier-lens"></div></div><div class="truck-name">E6 Stake Truck</div></div>
+        <div class="truck-tile" onclick=""><div class="truck-image"><img src="../equipmentking/assets/trucks/e6vantrucks/Screenshot 2025-11-05 011018.png"><div class="magnifier-lens"></div></div><div class="truck-name">E6 Van Truck</div></div>
+        <div class="truck-tile" onclick=""><div class="truck-image"><img src="../equipmentking/assets/trucks/e6refrigeratedtruck/main.png"><div class="magnifier-lens"></div></div><div class="truck-name">E6 Refrigerated Truck</div></div>
+        <div class="truck-tile" onclick=""><div class="truck-image"><img src="../equipmentking/assets/trucks/e6sprinklertrucks/main.png"><div class="magnifier-lens"></div></div><div class="truck-name">E6 Sprinkler Truck</div></div>
+        <div class="truck-tile" onclick=""><div class="truck-image"><img src="../equipmentking/assets/trucks/e6truckmountedcrane/mai.png"><div class="magnifier-lens"></div></div><div class="truck-name">E6 Truck Mounted Crane</div></div>
+        <div class="truck-tile" onclick=""><div class="truck-image"><img src="../equipmentking/assets/trucks/e6cementmixertrucks/main.png"><div class="magnifier-lens"></div></div><div class="truck-name">E6 Cement Mixer Truck</div></div>
+      </div>
+    </div>
+
+    <div class="series">
+      <div class="series-title">X6</div>
+      <div class="truck-grid">
+        <div class="truck-tile" onclick=""><div class="truck-image"><img src="../equipmentking/assets/trucks/x6dumptrucks/Screenshot 2025-11-05 001416.png"><div class="magnifier-lens"></div></div><div class="truck-name">X6 Dump Truck</div></div>
+        <div class="truck-tile" onclick=""><div class="truck-image"><img src="../equipmentking/assets/trucks/x6flatbeds/Screenshot 2025-11-05 002252.png"><div class="magnifier-lens"></div></div><div class="truck-name">X6 Flatbed Truck</div></div>
+        <div class="truck-tile" onclick=""><div class="truck-image"><img src="../equipmentking/assets/van.png"><div class="magnifier-lens"></div></div><div class="truck-name">X6 Van Truck</div></div>
+        <div class="truck-tile" onclick=""><div class="truck-image"><img src="../equipmentking/assets/trucks/x6truckmountedcranes/Screenshot 2025-11-05 000857.png"><div class="magnifier-lens"></div></div><div class="truck-name">X6 Truck Mounted Crane</div></div>
+        <div class="truck-tile" onclick=""><div class="truck-image"><img src="../equipmentking/assets/trucks/x6cargotrucks/Screenshot 2025-11-05 001000.png"><div class="magnifier-lens"></div></div><div class="truck-name">X6 Cargo Truck</div></div>
+        <div class="truck-tile" onclick=""><div class="truck-image"><img src="../equipmentking/assets/trucks/x6awdcargotrucks/Screenshot 2025-11-05 001032.png"><div class="magnifier-lens"></div></div><div class="truck-name">X6 AWD Cargo Truck</div></div>
+        <div class="truck-tile" onclick=""><div class="truck-image"><img src="../equipmentking/assets/trucks/x6dropsidetrucks/Screenshot 2025-11-05 001655.png"><div class="magnifier-lens"></div></div><div class="truck-name">X6 Dropside Truck</div></div>
+        <div class="truck-tile" onclick=""><div class="truck-image"><img src="../equipmentking/assets/trucks/x6cementmixertsucks/Screenshot 2025-11-05 001748.png"><div class="magnifier-lens"></div></div><div class="truck-name">X6 Cement Mixer Truck</div></div>
+        <div class="truck-tile" onclick=""><div class="truck-image"><img src="../equipmentking/assets/trucks/x6concretemixertrucks/Screenshot 2025-11-05 002457.png"><div class="magnifier-lens"></div></div><div class="truck-name">X6 Concrete Mixer Truck</div></div>
+        <div class="truck-tile" onclick=""><div class="truck-image"><img src="../equipmentking/assets/trucks/x6loadingcranerecoverytruck/Screenshot 2025-11-05 001917.png"><div class="magnifier-lens"></div></div><div class="truck-name">X6 Loading Crane Recovery Truck</div></div>
+        <div class="truck-tile" onclick=""><div class="truck-image"><img src="../equipmentking/assets/trucks/x6sprinklertrucks/main.png"><div class="magnifier-lens"></div></div><div class="truck-name">X6 Sprinkler Truck</div></div>
+        <div class="truck-tile" onclick=""><div class="truck-image"><img src="../equipmentking/assets/trucks/x6dustsuppressiontrucks/Screenshot 2025-11-05 002138.png"><div class="magnifier-lens"></div></div><div class="truck-name">X6 Dust Suppression Truck</div></div>
+        <div class="truck-tile" onclick=""><div class="truck-image"><img src="../equipmentking/assets/trucks/x6garbagetrucks/Screenshot 2025-11-05 002355.png"><div class="magnifier-lens"></div></div><div class="truck-name">X6 Garbage Truck</div></div>
+        <div class="truck-tile" onclick=""><div class="truck-image"><img src="../equipmentking/assets/trucks/x6fueltanker/Screenshot 2025-11-05 024749.png"><div class="magnifier-lens"></div></div><div class="truck-name">X6 Fuel Tanker Truck</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Heavy Duty Trucks -->
+  <section class="category-section" data-category="heavy-duty">
+    <h2 class="headings">Heavy Duty Trucks</h2>
+
+    <div class="series">
+      <div class="series-title">Z3</div>
+      <div class="truck-grid">
+        <div class="truck-tile" onclick=""><div class="truck-image"><img src="../equipmentking/assets/trucks/Additional Trucks/Z3 Tractor Truck/Screenshot 2025-11-05 140111.png"><div class="magnifier-lens"></div></div><div class="truck-name">Z3 Dump Truck</div></div>
+      </div>
+    </div>
+
+    <div class="series">
+      <div class="series-title">E1st</div>
+      <div class="truck-grid">
+        <div class="truck-tile" onclick=""><div class="truck-image"><img src="assets/e1st.png"><div class="magnifier-lens"></div></div><div class="truck-name">E1st Tractor</div></div>
+      </div>
+    </div>
+
+    <div class="series">
+      <div class="series-title">E3</div>
+      <div class="truck-grid">
+  <div class="truck-tile" onclick="">
+    <div class="truck-image"><img src="../equipmentking/assets/trucks/Additional Trucks/E3 Muck Truck/Screenshot 2025-11-05 134950.png"><div class="magnifier-lens"></div></div>
+    <div class="truck-name">E3 muck truck</div>
+  </div>
+  <div class="truck-tile" onclick="">
+    <div class="truck-image"><img src="../equipmentking/assets/trucks/Additional Trucks/E3 Tractor Truck/Screenshot 2025-11-05 135943.png"><div class="magnifier-lens"></div></div>
+    <div class="truck-name">E3 Tractor truck</div>
+  </div>
+  <div class="truck-tile" onclick="">
+    <div class="truck-image"><img src="../equipmentking/assets/trucks/Additional Trucks/E3 Van Truck/Screenshot 2025-11-05 135624.png"><div class="magnifier-lens"></div></div>
+    <div class="truck-name">E3 vantruck.</div>
+  </div>
+  <div class="truck-tile" onclick="">
+    <div class="truck-image"><img src="../equipmentking/assets/trucks/Additional Trucks/E3 Dump Truck/main.png"><div class="magnifier-lens"></div></div>
+    <div class="truck-name">E3 Dumptruck.</div>
+  </div>
+  <div class="truck-tile" onclick="">
+    <div class="truck-image"><img src="../equipmentking/assets/trucks/Additional Trucks/E3 cement mixer trucks/Screenshot 2025-11-05 143029.png"><div class="magnifier-lens"></div></div>
+    <div class="truck-name">E3 Cement mixertruck.</div>
+  </div>
+  <div class="truck-tile" onclick="">
+    <div class="truck-image"><img src="../equipmentking/assets/trucks/Additional Trucks/E6 compactor garbage trucks/Screenshot 2025-11-05 143235.png"><div class="magnifier-lens"></div></div>
+    <div class="truck-name">E3 compactor Garbage Track.</div>
+  </div>
+  <div class="truck-tile" onclick="">
+    <div class="truck-image"><img src="../equipmentking/assets/trucks/Additional Trucks/E3 Stake Truck/Screenshot 2025-11-05 140225.png"><div class="magnifier-lens"></div></div>
+    <div class="truck-name">E3 Stake truck.</div>
+  </div>
+  <div class="truck-tile" onclick="">
+    <div class="truck-image"><img src="../equipmentking/assets/trucks/Additional Trucks/E3 Sewage Suction Truck/Screenshot 2025-11-05 134017.png"><div class="magnifier-lens"></div></div>
+    <div class="truck-name">E3 sewage suction truck.</div>
+  </div>
+</div>
+
+    </div>
+
+    <div class="series">
+  <div class="series-title">9 Series</div>
+  <div class="truck-grid">
+    <div class="truck-tile" onclick="">
+      <div class="truck-image"><img src="../equipmentking/assets/trucks/Additional Trucks/9 Series Sweeper/Screenshot 2025-11-05 132520.png"><div class="magnifier-lens"></div></div>
+      <div class="truck-name">9 series sweeper</div>
+    </div>
+    <div class="truck-tile" onclick="">
+      <div class="truck-image"><img src="../equipmentking/assets/trucks/Additional Trucks/9Series Garbage Truck/Screenshot 2025-11-05 133259.png"><div class="magnifier-lens"></div></div>
+      <div class="truck-name">9 series Garbage Truck</div>
+    </div>
+    <div class="truck-tile" onclick="">
+      <div class="truck-image"><img src="../equipmentking/assets/trucks/Additional Trucks/9 Series Tow Truck/Screenshot 2025-11-05 133547.png"><div class="magnifier-lens"></div></div>
+      <div class="truck-name">9 series Tow Truck</div>
+    </div>
+    <div class="truck-tile" onclick="">
+      <div class="truck-image"><img src="../equipmentking/assets/trucks/Additional Trucks/6 series truck mounted crane/Screenshot 2025-11-05 133720.png"><div class="magnifier-lens"></div></div>
+      <div class="truck-name">9 series Truckmounted crane.</div>
+    </div>
+    <div class="truck-tile" onclick="">
+      <div class="truck-image"><img src="../equipmentking/assets/trucks/Additional Trucks/9 Series Cement Mixer Truck/Screenshot 2025-11-05 133830.png"><div class="magnifier-lens"></div></div>
+      <div class="truck-name">9series cement mixer truck</div>
+    </div>
+  </div>
+</div>
+
+
+    <div class="series">
+  <div class="series-title">6 Series</div>
+  <div class="truck-grid">
+    <div class="truck-tile" onclick="">
+      <div class="truck-image"><img src="../equipmentking/assets/trucks/Additional Trucks/6Series Sweeper/Screenshot 2025-11-05 132454.png"><div class="magnifier-lens"></div></div>
+      <div class="truck-name">6 series sweeper</div>
+    </div>
+    <div class="truck-tile" onclick="">
+      <div class="truck-image"><img src="../equipmentking/assets/trucks/Additional Trucks/6 Series Garbage Trucks/Screenshot 2025-11-05 133323.png"><div class="magnifier-lens"></div></div>
+      <div class="truck-name">6 Series Garbage Truck</div>
+    </div>
+    <div class="truck-tile" onclick="">
+      <div class="truck-image"><img src="../equipmentking/assets/trucks/Additional Trucks/6 series truck mounted crane/Screenshot 2025-11-05 133720.png"><div class="magnifier-lens"></div></div>
+      <div class="truck-name">6 Series truckmounted Crane</div>
+    </div>
+    <div class="truck-tile" onclick="">
+      <div class="truck-image"><img src="../equipmentking/assets/trucks/Additional Trucks/6 series cement mixer trucks/Screenshot 2025-11-05 142913.png"><div class="magnifier-lens"></div></div>
+      <div class="truck-name">6 series cement mixer truck.</div>
+    </div>
+    
+  </div>
+</div>
+
+
+    <div class="series">
+      <div class="series-title">3 Series</div>
+      <div class="truck-grid">
+        <div class="truck-tile" onclick=""><div class="truck-image"><img src="../equipmentking/assets/trucks/Additional Trucks/3 series truck mounted crane/Screenshot 2025-11-05 133743.png"><div class="magnifier-lens"></div></div><div class="truck-name">3 Series Cement Mixer Truck</div></div>
+      </div>
+    </div>
+
+  </section>
+
+  <script>
+    // Scroll reveal effect for truck tiles
+  const tiles = document.querySelectorAll('.truck-tile');
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target); // once revealed, don't re-check
+      }
+    });
+  }, { threshold: 0.15 });
+
+  tiles.forEach(tile => observer.observe(tile));
+
+    // Search and filter functionality  
+    const searchInput = document.getElementById('searchInput');
+    searchInput.addEventListener('keyup', () => {
+      const term = searchInput.value.toLowerCase();
+      document.querySelectorAll('.category-section').forEach(section => {
+        let sectionText = section.querySelector('h2').textContent.toLowerCase();
+        let anyMatch = false;
+
+        section.querySelectorAll('.truck-tile').forEach(tile => {
+          const name = tile.querySelector('.truck-name').textContent.toLowerCase();
+          const match = name.includes(term) || sectionText.includes(term);
+          tile.style.display = match ? 'block' : 'none';
+          if(match) anyMatch = true;
+        });
+
+        section.style.display = anyMatch ? 'block' : 'none';
+      });
+    });
+
+    const categoryButtons = document.querySelectorAll('.category-buttons button');
+    categoryButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        categoryButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const cat = btn.getAttribute('data-category');
+        document.querySelectorAll('.category-section').forEach(section => {
+          section.style.display = (cat === 'all' || section.getAttribute('data-category') === cat) ? 'block' : 'none';
+        });
+      });
+    });
+
+    function openPage() {
+      window.location.href = 'item_page.html';
+    }
+
+    document.querySelectorAll('.truck-image').forEach(container => {
+      const img = container.querySelector('img');
+      const lens = container.querySelector('.magnifier-lens');
+      const zoom = 2;
+      lens.style.backgroundImage = `url(${img.src})`;
+
+      container.addEventListener('mousemove', moveLens);
+      container.addEventListener('mouseenter', () => lens.style.display = 'block');
+      container.addEventListener('mouseleave', () => lens.style.display = 'none');
+
+      function moveLens(e) {
+        const rect = container.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const lensSize = lens.offsetWidth / 2;
+        let cx = x - lensSize;
+        let cy = y - lensSize;
+
+        if (cx < 0) cx = 0;
+        if (cy < 0) cy = 0;
+        if (cx > container.offsetWidth - lens.offsetWidth) cx = container.offsetWidth - lens.offsetWidth;
+        if (cy > container.offsetHeight - lens.offsetHeight) cy = container.offsetHeight - lens.offsetHeight;
+
+        lens.style.left = cx + 'px';
+        lens.style.top = cy + 'px';
+        lens.style.backgroundPosition = `-${x * zoom - lensSize}px -${y * zoom - lensSize}px`;
+        lens.style.backgroundSize = `${container.offsetWidth * zoom}px ${container.offsetHeight * zoom}px`;
+      }
+    });
+  </script>
+
+  <!-- ===== Popup HTML (added) ===== -->
+  <div class="popup-overlay" id="truckPopupOverlay" aria-hidden="true">
+    <div class="popup-box" role="dialog" aria-modal="true" aria-label="Truck details">
+      <button class="popup-close" id="popupCloseBtn" aria-label="Close popup">&times;</button>
+
+      <div class="popup-top">
+        <div>
+          <div class="popup-main-image-wrap" id="popupMainWrap">
+            <img src="" alt="truck main" id="popupMainImage" class="popup-main-image">
+            <div id="popupLens" class="popup-lens" aria-hidden="true"></div>
+          </div>
+
+          <div class="popup-thumbs" id="popupThumbs" aria-label="Thumbnails">
+  <!-- Thumbnails (replace src paths with your real folders) -->
+  <img src="../equipmentking/assets/back.jpg" alt="truck thumb 1">
+  <img src="../equipmentking/assets/back.jpg" alt="truck thumb 1">
+  <img src="../equipmentking/assets/back.jpg" alt="truck thumb 1">
+  <img src="../equipmentking/assets/back.jpg" alt="truck thumb 1">
+
+</div>
+
+        </div>
+
+        <aside class="popup-right">
+          <h2 id="popupTitle">Truck Title</h2>
+          <div class="popup-short" id="popupShort">Short description will appear here.</div>
+
+          <table class="popup-specs" id="popupSpecs" aria-label="Detailed specifications">
+            <!-- Rows will be injected -->
+          </table>
+        </aside>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+  (function () {
+    // === Popup core elements ===
+    const overlay = document.getElementById('truckPopupOverlay');
+    const popupClose = document.getElementById('popupCloseBtn');
+    const popupMainImage = document.getElementById('popupMainImage');
+    const popupTitle = document.getElementById('popupTitle');
+    const popupShort = document.getElementById('popupShort');
+    const popupSpecs = document.getElementById('popupSpecs');
+    const popupThumbs = document.getElementById('popupThumbs');
+    const popupLens = document.getElementById('popupLens');
+    const popupMainWrap = document.getElementById('popupMainWrap');
+
+    // === Build thumbnails (placeholder up to 20) ===
+    function buildThumbnails(mainSrc, name) {
+      const thumbs = [mainSrc];
+      for (let i = 1; i < 8; i++) {
+        thumbs.push(`https://via.placeholder.com/800x500?text=${encodeURIComponent(name + ' ' + (i + 1))}`);
+      }
+      return thumbs.slice(0, 20);
+    }
+
+    // === Build placeholder specs table ===
+    function buildPlaceholderSpecs(name) {
+      return {
+        "Model": name,
+        "Engine": "Placeholder engine",
+        "Horsepower": "—",
+        "Transmission": "—",
+        "Capacity": "—",
+        "Fuel Type": "—",
+        "Notes": "Replace with real specs"
+      };
+    }
+
+    // === Open popup from clicked tile ===
+    function openPopupFromTile(tile) {
+      const imgEl = tile.querySelector('img');
+      const nameEl = tile.querySelector('.truck-name');
+      const imgSrc = imgEl ? imgEl.src : 'https://via.placeholder.com/900x500?text=No+image';
+      const name = nameEl ? nameEl.textContent.trim() : 'Truck';
+
+      // Title & description
+      popupTitle.textContent = name;
+      popupShort.textContent = `Short description for ${name}. Replace with real description.`;
+
+      // Main image
+      popupMainImage.src = imgSrc;
+      popupMainImage.alt = name;
+
+      // Thumbnails
+      const thumbList = buildThumbnails(imgSrc, name);
+      popupThumbs.innerHTML = '';
+      thumbList.forEach((src, i) => {
+        const im = document.createElement('img');
+        im.src = src;
+        im.alt = `${name} ${i + 1}`;
+        if (i === 0) im.classList.add('active');
+        im.addEventListener('click', () => {
+          popupMainImage.src = src;
+          Array.from(popupThumbs.children).forEach(c => c.classList.remove('active'));
+          im.classList.add('active');
+          popupLens.style.backgroundImage = `url('${popupMainImage.src}')`;
+        });
+        popupThumbs.appendChild(im);
+      });
+
+      // Specs table
+      const specs = buildPlaceholderSpecs(name);
+      popupSpecs.innerHTML = '';
+      for (const [k, v] of Object.entries(specs)) {
+        const tr = document.createElement('tr');
+        const th = document.createElement('th');
+        const td = document.createElement('td');
+        th.textContent = k;
+        td.textContent = v;
+        tr.appendChild(th);
+        tr.appendChild(td);
+        popupSpecs.appendChild(tr);
+      }
+
+      // Show popup
+      document.body.classList.add('popup-open');
+      overlay.classList.add('show');
+      overlay.setAttribute('aria-hidden', 'false');
+
+      // Prepare zoom lens
+      popupLens.style.backgroundImage = `url('${popupMainImage.src}')`;
+      popupLens.style.display = 'none';
+      setupPopupLens();
+    }
+
+    // === Attach listeners to all truck tiles ===
+    document.querySelectorAll('.truck-tile').forEach(tile => {
+      tile.addEventListener('click', (e) => {
+        e.stopPropagation();
+        openPopupFromTile(tile);
+      });
+    });
+
+    // === Close popup ===
+    popupClose.addEventListener('click', closePopup);
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) closePopup();
+    });
+
+    function closePopup() {
+      overlay.classList.remove('show');
+      document.body.classList.remove('popup-open');
+      overlay.setAttribute('aria-hidden', 'true');
+      popupMainImage.src = '';
+      popupThumbs.innerHTML = '';
+      popupSpecs.innerHTML = '';
+    }
+
+    // === Keyboard: ESC closes popup ===
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && overlay.classList.contains('show')) {
+        closePopup();
+      }
+    });
+
+    // === Popup zoom lens logic ===
+    function setupPopupLens() {
+      const lens = popupLens;
+      const wrap = popupMainWrap;
+      const zoom = 3.2;
+
+      wrap.addEventListener('mouseenter', () => {
+        lens.style.display = 'block';
+        lens.style.backgroundSize = (wrap.offsetWidth * zoom) + 'px ' + (wrap.offsetHeight * zoom) + 'px';
+      });
+
+      wrap.addEventListener('mouseleave', () => {
+        lens.style.display = 'none';
+      });
+
+      wrap.addEventListener('mousemove', (e) => {
+        const rect = wrap.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const lensW = lens.offsetWidth;
+        const lensH = lens.offsetHeight;
+
+        // keep lens inside image
+        let left = x - lensW / 2;
+        let top = y - lensH / 2;
+        if (left < 0) left = 0;
+        if (top < 0) top = 0;
+        if (left > rect.width - lensW) left = rect.width - lensW;
+        if (top > rect.height - lensH) top = rect.height - lensH;
+
+        lens.style.left = left + 'px';
+        lens.style.top = top + 'px';
+
+        // compute zoom background
+        const bgX = -((x * zoom) - lensW / 2);
+        const bgY = -((y * zoom) - lensH / 2);
+        lens.style.backgroundPosition = `${bgX}px ${bgY}px`;
+        lens.style.backgroundSize = (rect.width * zoom) + 'px ' + (rect.height * zoom) + 'px';
+      });
+
+      popupMainImage.addEventListener('load', () => {
+        lens.style.backgroundImage = `url('${popupMainImage.src}')`;
+      });
+    }
+
+  })();
+</script>
+
+
+  <footer>
+  
+  <div class="footer-container">
+    <div>
+      <h4>PRODUCTS</h4>
+      <ul>
+        <li><a href="../equipmentking/trucks.html#light-duty-truck">Light Duty Truck (4.5T≤GCW≤25T)</a></li>
+        <li><a href="../equipmentking/trucks.html#medium-duty-truck">Medium Duty Truck (12T≤GCW≤60T)</a></li>
+        <li><a href="../equipmentking/trucks.html#heavy-duty-truck">Heavy Duty Truck (18T≤GCW≤100T)</a></li>
+        <li><a href="../equipmentking/trucks.html#off-road-truck">Off-road Truck</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h4>APPLICATIONS</h4>
+      <ul>
+        <li><a href="#">Tractor</a></li>
+        <li><a href="#">Dump Truck</a></li>
+        <li><a href="#">Cargo Truck</a></li>
+        <li><a href="#special-vehicle">Special Vehicle</a></li>
+        <li><a href="#">Off-road Truck</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h4>FOLLOW US</h4>
+      <div class="social-links">
+        <a href="#" title="Facebook">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M8.94 8.5H7v7H4V8.5H2V6h2V4.5C4 2 5.79 1 8 1h2v2.5H8.5C7.67 3.5 7 3.67 7 4.5V6h3l-.06 2.5z"/>
+          </svg>
+        </a>
+
+        <a href="#" title="X / Twitter">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334v-.425A6.683 6.683 0 0 0 16 3.542a6.657 6.657 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.084.797A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429A3.289 3.289 0 0 0 2.13 6.13 3.323 3.323 0 0 1 .64 5.578v.045A3.283 3.283 0 0 0 3.277 8.74a3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.615-.057 3.284 3.284 0 0 0 3.067 2.277A6.588 6.588 0 0 1 0 13.026a9.286 9.286 0 0 0 5.031 1.475"/>
+          </svg>
+        </a>
+
+        <a href="#" title="LinkedIn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175A1.148 1.148 0 0 1 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zM3.743 5.15a1.4 1.4 0 1 1 0-2.8 1.4 1.4 0 0 1 0 2.8zm4.851 8.244h2.4V9.359c0-.229.017-.458.084-.621.185-.457.606-.93 1.313-.93.926 0 1.295.701 1.295 1.73v3.857h2.4V9.191c0-2.293-1.223-3.357-2.853-3.357-1.312 0-1.902.726-2.229 1.237h.03V6.17h-2.4c.03.676 0 7.225 0 7.225z"/>
+          </svg>
+        </a>
+
+        <a href="#" title="Instagram">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M8 0C5.75 0 5.469.01 4.687.047 3.906.084 3.31.2 2.78.386a4.83 4.83 0 0 0-1.69 1.09A4.83 4.83 0 0 0 .386 3.165C.2 3.695.084 4.29.047 5.071.01 5.854 0 6.135 0 8s.01 2.146.047 2.928c.037.782.153 1.377.339 1.907.186.53.439.992.783 1.336.344.344.806.597 1.336.783.53.186 1.125.302 1.907.339.781.037 1.062.047 2.928.047s2.146-.01 2.928-.047c.782-.037 1.377-.153 1.907-.339a4.83 4.83 0 0 0 1.69-1.09 4.83 4.83 0 0 0 1.09-1.69c.186-.53.302-1.125.339-1.907.037-.782.047-1.062.047-2.928s-.01-2.146-.047-2.928a6.01 6.01 0 0 0-.339-1.907 4.83 4.83 0 0 0-1.09-1.69A4.83 4.83 0 0 0 13.22.386 6.01 6.01 0 0 0 11.313.047C10.531.01 10.25 0 8 0zM8 3.891A4.109 4.109 0 1 0 12.109 8 4.108 4.108 0 0 0 8 3.891zm0 6.785A2.676 2.676 0 1 1 10.676 8 2.676 2.676 0 0 1 8 10.676zm4.271-7.682a.96.96 0 1 0 .96.96.961.961 0 0 0-.96-.96z"/>
+          </svg>
+        </a>
+
+        <a href="#" title="YouTube">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M8.051 1.999h-.002C3.36 1.999 1.333 3.999 1.333 7.999v.002c0 4 2.027 6 6.716 6.002h.002c4.69 0 6.717-2 6.717-6.002v-.002c0-4-2.027-6-6.717-6zM6.666 10.8V5.2l4.667 2.8-4.667 2.8z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div>© <span id="year">2025</span> Equipment King. All rights reserved.</div>
+    <div>
+      <a href="#">Privacy Policy</a> |
+      <a href="#">Terms of Use</a> |
+      <a href="#">Site Map</a>
+    </div>
+    
+  </div>
+</footer>
+
+</body>
+</html>

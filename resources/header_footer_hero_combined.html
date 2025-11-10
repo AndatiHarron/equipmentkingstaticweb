@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About | Equipment King</title>
+<style>
+  /* ===== Global Styles ===== */
+  html, body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: #fff;
+    color: #000;
+    scroll-behavior: smooth;
+  }
+  a { text-decoration: none; color: inherit; }
+
+  /* ===== Header ===== */
+  header {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: 60px;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 100px;
+    color: #fff;
+    z-index: 1000;
+    box-shadow: 0 1px 2px rgba(255,255,255,0.05);
+  }
+  header .logo {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  header .logo img {
+    height: 32px;
+    margin-right: 10px;
+    border-radius: 6px;
+  }
+  header nav {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+  header nav a {
+    color: #fff;
+    font-size: 15px;
+    font-weight: 400;
+    position: relative;
+    transition: color 0.3s ease;
+  }
+  header nav a:hover { color: #ccc; }
+  header nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    width: 0;
+    height: 1.5px;
+    background: #fff;
+    transition: width 0.3s ease;
+  }
+  header nav a:hover::after { width: 100%; }
+
+  .contact-btn {
+    background: #fff;
+    color: #000;
+    border: none;
+    border-radius: 22px;
+    padding: 8px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .contact-btn:hover {
+    background: #000;
+    color: #fff;
+    border: 1px solid #fff;
+  }
+  @media (max-width: 900px) {
+    header { padding: 0 40px; }
+    header nav { gap: 20px; }
+    .contact-btn { padding: 6px 14px; font-size: 13px; }
+  }
+
+  /* ===== Hero Section ===== */
+  section.hero {
+    margin-top: 60px;
+    height: 90vh;
+    background: url('assets/about/bg.jpg') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    position: relative;
+  }
+  section.hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+  }
+  section.hero h1, section.hero p { position: relative; z-index: 1; }
+  section.hero h1 {
+    font-size: 64px;
+    font-weight: 700;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  section.hero p {
+    font-size: 20px;
+    margin-top: 20px;
+    max-width: 700px;
+    line-height: 1.6;
+  }
+
+  /* ===== Footer ===== */
+  footer {
+    background: #000;
+    color: #fff;
+    padding: 48px 16px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  .footer-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+  footer h4 { margin: 0 0 12px 0; font-weight: 600; font-size: 15px; }
+  footer ul { list-style: none; padding: 0; margin: 0; color: #ccc; line-height: 2; }
+  footer a { text-decoration: none; color: inherit; transition: color 0.3s ease; }
+  footer a:hover { color: #fff; }
+  .social-links { display: flex; gap: 14px; margin-top: 10px; }
+  .social-links a {
+    width: 36px; height: 36px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 50%; border: 1px solid rgba(255,255,255,0.2);
+    color: #fff; transition: all 0.3s ease;
+  }
+  .social-links a:hover { background: #fff; color: #000; }
+  .footer-bottom {
+    max-width: 1100px;
+    margin: 28px auto 0 auto;
+    padding-top: 22px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    color: #aaa;
+  }
+  .footer-bottom a:hover { color: #fff; }
+  @media (max-width: 768px) {
+    .footer-container { flex-direction: column; gap: 24px; }
+    .footer-bottom { flex-direction: column; text-align: center; gap: 8px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo" onclick="location.href='../equipmentking/index.html'">
+    <img src="../equipmentking/assets/companylogo.jpg" alt="Equipment King Logo" />
+    Equipment King
+  </div>
+  <nav>
+    <a href="../equipmentking/index.html">Home</a>
+    <a href="../equipmentking/trucks.html">Trucks</a>
+    <a href="../equipmentking/about.html">About</a>
+    <a href="../equipmentking/application.html">Application</a>
+    <a href="../equipmentking/contact.html">Contact</a>
+    <button class="contact-btn" onclick="location.href='../equipmentking/contact.html'">Contact Us</button>
+  </nav>
+</header>
+
+<section class="hero">
+  <div>
+    <h1>Driven by Innovation. Inspired by Power.</h1>
+    <p>At Equipment King Incorporated, we are redefining the future of commercial and industrial mobility through engineering excellence and a relentless pursuit of quality.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-container">
+    <div>
+      <h4>PRODUCTS</h4>
+      <ul>
+        <li><a href="../equipmentking/trucks.html#light-duty-truck">Light Duty Truck (4.5T≤GCW≤25T)</a></li>
+        <li><a href="../equipmentking/trucks.html#medium-duty-truck">Medium Duty Truck (12T≤GCW≤60T)</a></li>
+        <li><a href="../equipmentking/trucks.html#heavy-duty-truck">Heavy Duty Truck (18T≤GCW≤100T)</a></li>
+        <li><a href="../equipmentking/trucks.html#off-road-truck">Off-road Truck</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>APPLICATIONS</h4>
+      <ul>
+        <li><a href="#">Tractor</a></li>
+        <li><a href="#">Dump Truck</a></li>
+        <li><a href="#">Cargo Truck</a></li>
+        <li><a href="#special-vehicle">Special Vehicle</a></li>
+        <li><a href="#">Off-road Truck</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>FOLLOW US</h4>
+      <div class="social-links">
+        <a href="#" title="Facebook">F</a>
+        <a href="#" title="X / Twitter">X</a>
+        <a href="#" title="LinkedIn">L</a>
+        <a href="#" title="Instagram">I</a>
+        <a href="#" title="YouTube">Y</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div>© <span id="year">2025</span> Equipment King. All rights reserved.</div>
+    <div>
+      <a href="#">Privacy Policy</a> |
+      <a href="#">Terms of Use</a> |
+      <a href="#">Site Map</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>

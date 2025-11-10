@@ -1,0 +1,122 @@
+# Simple truck page generator
+
+$truckFiles = @("9-Series-Sweeper.html", "6-Series-Sweeper.html", "9-Series-Garbage-Truck.html")
+
+foreach ($file in $truckFiles) {
+    $name = $file -replace "\.html", "" -replace "-", " "
+    Write-Host "Creating: $name" -ForegroundColor Yellow
+    
+    $html = @'
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>$name - Equipment King</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <div class="truck-page-container">
+        <header class="main-header">
+            <div class="header-container">
+                <div class="logo"><h2>Equipment King</h2></div>
+                <nav class="main-nav">
+                    <div class="nav-item"><a href="../index.html">Home</a></div>
+                    <div class="nav-item"><a href="../trucks.html">Trucks</a></div>
+                    <div class="nav-item"><a href="../about.html">About</a></div>
+                    <div class="nav-item"><a href="../contact.html">Contact</a></div>
+                </nav>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <section class="truck-hero">
+                <div class="hero-container">
+                    <div class="hero-image">
+                        <div class="image-gallery">
+                            <div class="main-image-container">
+                                <img id="mainImage" src="../assets/back2.jpeg" alt="$name" class="truck-main-image">
+                            </div>
+                            <div class="gallery-thumbnails">
+                                <div class="gallery-thumbnail active" onclick="changeMainImage('../assets/back2.jpeg', 0)">
+                                    <img src="../assets/back2.jpeg" alt="$name exterior">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hero-content">
+                        <div class="breadcrumb"><span>Heavy Duty Trucks</span> | <span>Equipment King</span></div>
+                        <h1 class="truck-title">$name</h1>
+                        <div class="truck-category">Professional Grade Vehicle</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="truck-details">
+                <div class="details-container">
+                    <div class="details-grid">
+                        <div class="detail-section">
+                            <h2>Technical Specifications</h2>
+                            <div class="specs-table">
+                                <table><tbody>
+                                    <tr><td><strong>Model</strong></td><td>Professional Grade</td></tr>
+                                    <tr><td><strong>Engine</strong></td><td>Turbocharged Diesel</td></tr>
+                                    <tr><td><strong>Transmission</strong></td><td>Manual/Automatic</td></tr>
+                                    <tr><td><strong>Drive Type</strong></td><td>4x2/6x4</td></tr>
+                                </tbody></table>
+                            </div>
+                        </div>
+                        <div class="detail-section">
+                            <h2>Key Features</h2>
+                            <ul class="features-list">
+                                <li>Professional grade construction</li>
+                                <li>Reliable performance</li>
+                                <li>Advanced safety systems</li>
+                                <li>Easy maintenance</li>
+                            </ul>
+                        </div>
+                        <div class="detail-section">
+                            <h2>Applications</h2>
+                            <ul class="applications-list">
+                                <li>Commercial operations</li>
+                                <li>Industrial applications</li>
+                                <li>Municipal services</li>
+                                <li>Construction work</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="main-footer">
+            <div class="footer-container">
+                <div class="footer-content">
+                    <div class="footer-section">
+                        <h3>Equipment King</h3>
+                        <p>Your trusted partner for commercial vehicles.</p>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2024 Equipment King. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        function changeMainImage(src, index) {
+            document.getElementById('mainImage').src = src;
+            document.querySelectorAll('.gallery-thumbnail').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.gallery-thumbnail')[index].classList.add('active');
+        }
+    </script>
+</body>
+</html>
+'@
+
+    [System.IO.File]::WriteAllText("trucks_html\$file", $html, [System.Text.Encoding]::UTF8)
+    Write-Host "  Generated successfully" -ForegroundColor Green
+}
+
+Write-Host "Complete truck pages generated with image galleries!" -ForegroundColor Green

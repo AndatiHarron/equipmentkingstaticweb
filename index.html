@@ -1,0 +1,456 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../equipmentking/css/styles.css">
+<title>Equipment King</title>
+
+<style>
+  html, body {
+    margin:0;
+    padding:0;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background:#fff;
+    color:#000;
+    scroll-behavior:smooth;
+  }  
+
+ section.hero {
+  margin-top: 60px;
+  height: 90vh;
+  background: url('assets/hero_section/front1.webp') center/cover no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  transition: background-image 1s ease-in-out;
+}
+/* Slider buttons */
+.hero-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  color: #fff;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 10px 18px;
+  border-radius: 50%;
+  z-index: 10;
+  transition: background 0.3s;
+}
+</style>
+</head>
+
+<body>
+<header>
+   <a>
+    <div class="logo" onclick="location.href='../equipmentking/index.html'">
+      <img src="../equipmentking/assets/companylogo.webp" alt="Equipment King Logo" />
+      Equipment King
+    </div>
+  </a>
+
+  <nav>
+    <a href="../equipmentking/index.html">Home</a>
+    
+    <!-- Trucks Dropdown -->
+    <div class="trucks-dropdown">
+      <a href="../equipmentking/trucks.html" class="trucks-btn">Trucks</a>
+      <div class="dropdown-menu">
+        <ul>
+          <!-- LIGHT DUTY TRUCKS -->
+          <li>
+            <a href="../equipmentking/trucks.html#light-duty">LIGHT DUTY TRUCKS</a>
+            <ul class="sub-dropdown">
+              <li>
+                <a href="../equipmentking/trucks.html#x9-series">X9 Series</a>
+                <ul class="truck-links">
+                  <li><a href="../equipmentking/trucks_html/X9-Tow-Truck.html">X9 Tow Truck</a></li>
+                  <li><a href="../equipmentking/trucks_html/X9-Aerial-Work-Platform-Truck.html">X9 Aerial Work Platform Truck</a></li>
+                  <li><a href="../equipmentking/trucks_html/X9-4X4-Dump-Truck.html">X9 4X4 Dump Truck</a></li>
+                  <li><a href="../equipmentking/trucks_html/X9-Dump-Truck.html">X9 Dump Truck</a></li>
+                  <li><a href="../equipmentking/trucks_html/X9-Van-Truck.html">X9 Van Truck</a></li>
+                  <li><a href="../equipmentking/trucks_html/X9-Fuel-Tanker-Truck.html">X9 Fuel Tanker Truck</a></li>
+                  <li><a href="../equipmentking/trucks_html/X9-Garbage-Truck.html">X9 Garbage Truck</a></li>
+                  <li><a href="../equipmentking/trucks_html/X9-Refrigerated-Truck.html">X9 Refrigerated Truck</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="../equipmentking/trucks.html#e9-series">E9 Series</a>
+                <ul class="truck-links">
+                  <li><a href="../equipmentking/trucks_html/E9-Refrigerated-Truck.html">E9 Refrigerated Truck</a></li>
+                  <li><a href="../equipmentking/trucks_html/E9-Dump-Truck.html">E9 Dump Truck</a></li>
+                  <li><a href="../equipmentking/trucks_html/E9-Van-Truck.html">E9 Van Truck</a></li>
+                  <li><a href="../equipmentking/trucks_html/E9-Kitchen-Waste-Garbage-Truck.html">E9 Kitchen Waste Garbage Truck</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="../equipmentking/trucks.html#x7-series">X7 Series</a>
+                <ul class="truck-links">
+                  <li><a href="../equipmentking/trucks_html/X7-Concrete-Mixer-Truck.html">X7 Concrete Mixer Truck</a></li>
+                  <li><a href="../equipmentking/trucks_html/X7-Flatbed-Truck.html">X7 Flatbed Truck</a></li>
+                  <li><a href="../equipmentking/trucks_html/X7-Sprinkler-Truck.html">X7 Sprinkler Truck</a></li>
+                  <li><a href="../equipmentking/trucks_html/X7-Truck-Mounted-Crane.html">X7 Truck Mounted Crane</a></li>
+                  <li><a href="../equipmentking/trucks_html/X7-Dump-Truck.html">X7 Dump Truck</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="../equipmentking/trucks.html#i9-series">i9 Series (New Energy)</a>
+                <ul class="truck-links">
+                  <li><a href="../equipmentking/trucks_html/i9-New-Series.html">i9 (New Series) - Electric/Hybrid Technology</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+
+          <!-- MEDIUM DUTY TRUCKS -->
+          <li>
+            <a href="../equipmentking/trucks.html#medium-duty">MEDIUM DUTY TRUCKS</a>
+            <ul class="sub-dropdown">
+              <li>
+                <a href="../equipmentking/trucks.html#e6-series">E6 Series</a>
+                <ul class="truck-links">
+                  <li><a href="../equipmentking/trucks_html/E6-Dump-Truck.html">E6 Dump Truck</a></li>
+                  <li><a href="../equipmentking/trucks_html/E6-Stake-Truck.html">E6 Stake Truck</a></li>
+                  <li><a href="../equipmentking/trucks_html/E6-Van-Truck.html">E6 Van Truck</a></li>
+                  <li><a href="../equipmentking/trucks_html/E6-Refrigerated-Truck.html">E6 Refrigerated Truck</a></li>
+                  <li><a href="../equipmentking/trucks_html/E6-Sprinkler-Truck.html">E6 Sprinkler Truck</a></li>
+                  <li><a href="../equipmentking/trucks_html/E6-Truck-Mounted-Crane.html">E6 Truck Mounted Crane</a></li>
+                  <li><a href="../equipmentking/trucks_html/E6-Cement-Mixer-Truck.html">E6 Cement Mixer Truck</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="../equipmentking/trucks.html#x6-series">X6 Series</a>
+                <ul class="truck-links">
+                  <li><a href="../equipmentking/trucks_html/X6-Dump-Truck.html">X6 Dump Truck</a></li>
+                  <li><a href="../equipmentking/trucks_html/X6-Flatbed-Truck.html">X6 Flatbed Truck</a></li>
+                  <li><a href="../equipmentking/trucks_html/X6-Van-Truck.html">X6 Van Truck</a></li>
+                  <li><a href="../equipmentking/trucks_html/X6-Truck-Mounted-Crane.html">X6 Truck Mounted Crane</a></li>
+                  <li><a href="../equipmentking/trucks_html/X6-Cargo-Truck.html">X6 Cargo Truck</a></li>
+                  <li><a href="../equipmentking/trucks_html/X6-AWD-Cargo-Truck.html">X6 AWD Cargo Truck</a></li>
+                  <li><a href="../equipmentking/trucks_html/X6-Dropside-Truck.html">X6 Dropside Truck</a></li>
+                  <li><a href="../equipmentking/trucks_html/X6-Cement-Mixer-Truck.html">X6 Cement Mixer Truck</a></li>
+                  <li><a href="../equipmentking/trucks_html/X6-Concrete-Mixer-Truck.html">X6 Concrete Mixer Truck</a></li>
+                  <li><a href="../equipmentking/trucks_html/X6-Loading-Crane-Recovery-Truck.html">X6 Loading Crane Recovery Truck</a></li>
+                  <li><a href="../equipmentking/trucks_html/X6-Sprinkler-Truck.html">X6 Sprinkler Truck</a></li>
+                  <li><a href="../equipmentking/trucks_html/X6-Dust-Suppression-Truck.html">X6 Dust Suppression Truck</a></li>
+                  <li><a href="../equipmentking/trucks_html/X6-Garbage-Truck.html">X6 Garbage Truck</a></li>
+                  <li><a href="../equipmentking/trucks_html/X6-Fuel-Tanker-Truck.html">X6 Fuel Tanker Truck</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+
+          <!-- HEAVY DUTY TRUCKS -->
+          <li>
+            <a href="../equipmentking/trucks.html#heavy-duty">HEAVY DUTY TRUCKS</a>
+            <ul class="sub-dropdown">
+              <li>
+                <a href="../equipmentking/trucks.html#z3-series">Z3 Series</a>
+                <ul class="truck-links">
+                  <li><a href="../equipmentking/trucks_html/Z3-Dump-Truck.html">Z3 Dump Truck</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="../equipmentking/trucks.html#e1st-series">E1st Series</a>
+                <ul class="truck-links">
+                  <li><a href="../equipmentking/trucks_html/E1st-Tractor.html">E1st Tractor</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="../equipmentking/trucks.html#e3-series">E3 Series</a>
+                <ul class="truck-links">
+                  <li><a href="../equipmentking/trucks_html/E3-Muck-Truck.html">E3 Muck Truck</a></li>
+                  <li><a href="../equipmentking/trucks_html/E3-Tractor-Truck.html">E3 Tractor Truck</a></li>
+                  <li><a href="../equipmentking/trucks_html/E3-Van-Truck.html">E3 Van Truck</a></li>
+                  <li><a href="../equipmentking/trucks_html/E3-Dump-Truck.html">E3 Dump Truck</a></li>
+                  <li><a href="../equipmentking/trucks_html/E3-Cement-Mixer-Truck.html">E3 Cement Mixer Truck</a></li>
+                  <li><a href="../equipmentking/trucks_html/E3-Compactor-Garbage-Truck.html">E3 Compactor Garbage Truck</a></li>
+                  <li><a href="../equipmentking/trucks_html/E3-Stake-Truck.html">E3 Stake Truck</a></li>
+                  <li><a href="../equipmentking/trucks_html/E3-Sewage-Suction-Truck.html">E3 Sewage Suction Truck</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="../equipmentking/trucks.html#9-series">9 Series</a>
+                <ul class="truck-links">
+                  <li><a href="../equipmentking/trucks_html/9-Series-Sweeper.html">9 Series Sweeper</a></li>
+                  <li><a href="../equipmentking/trucks_html/9-Series-Garbage-Truck.html">9 Series Garbage Truck</a></li>
+                  <li><a href="../equipmentking/trucks_html/9-Series-Tow-Truck.html">9 Series Tow Truck</a></li>
+                  <li><a href="../equipmentking/trucks_html/9-Series-Truck-Mounted-Crane.html">9 Series Truck Mounted Crane</a></li>
+                  <li><a href="../equipmentking/trucks_html/9-Series-Cement-Mixer-Truck.html">9 Series Cement Mixer Truck</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="../equipmentking/trucks.html#6-series">6 Series</a>
+                <ul class="truck-links">
+                  <li><a href="../equipmentking/trucks_html/6-Series-Sweeper.html">6 Series Sweeper</a></li>
+                  <li><a href="../equipmentking/trucks_html/6-Series-Garbage-Truck.html">6 Series Garbage Truck</a></li>
+                  <li><a href="../equipmentking/trucks_html/6-Series-Truck-Mounted-Crane.html">6 Series Truck Mounted Crane</a></li>
+                  <li><a href="../equipmentking/trucks_html/6-Series-Cement-Mixer-Truck.html">6 Series Cement Mixer Truck</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="../equipmentking/trucks.html#3-series">3 Series</a>
+                <ul class="truck-links">
+                  <li><a href="../equipmentking/trucks_html/3-Series-Cement-Mixer-Truck.html">3 Series Cement Mixer Truck</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <a href="../equipmentking/about.html">About</a>
+    <a href="../equipmentking/application.html">Application</a>
+
+    <button class="contact-btn" onclick="location.href='contact.html'">Contact Us</button>
+   
+  </nav>
+</header>
+
+
+
+<section class="hero">
+  <button class="hero-btn left">&#10094;</button>
+<button class="hero-btn right">&#10095;</button>
+<div class="hero-progress" id="heroProgress"></div>
+
+  <h1>Power Meets Precision</h1>
+  <p>Experience cutting-edge engineering with Equipment King Incorporated — in partnership with SAGMOTO.</p>
+  <button onclick="window.location.href='trucks.html'">Explore Trucks</button>
+
+</section>
+
+<section class="tabs">
+  <h2>Explore Our Vehicle Categories</h2>
+  <div id="vehicleTabs">
+    <button class="tab-btn active" onmouseover="showTab('light', this)" onclick="window.location.href='trucks.html#ldt'">Light Duty Truck</button>
+    <button class="tab-btn" onmouseover="showTab('medium', this)" onclick="window.location.href='trucks.html#mdt'">Medium Duty Truck</button>
+    <button class="tab-btn" onmouseover="showTab('heavy', this)" onclick="window.location.href='trucks.html#hdt'">Heavy Duty Truck</button>
+    <button class="tab-btn" onmouseover="showTab('special', this)" onclick="window.location.href=''">Special Vehicle</button>
+    <button class="tab-btn" onmouseover="showTab('offroad', this)" onclick="window.location.href=''">Off-road Truck</button>
+    <button class="tab-btn" onmouseover="showTab('newenergy', this)" onclick="window.location.href='trucks.html#i9'">New Energy</button>
+  </div>
+  <div id="tabContent">
+    <p style="grid-column:1/-1;text-align:center;font-size:18px;color:#666;">Hover over a category to explore vehicle details.</p>
+  </div>
+</section>
+
+<section class="gallery">
+  <h2>Explore Our Latest Fleet</h2>
+  <div class="gallery-grid">
+    <div class="gallery-card"><img src="assets/tractor.webp" onclick="window.location.href='trucks.html#hdt'"><span>Tractor</span></div>
+    <div class="gallery-card"><img src="assets/dumpTruck.webp" onclick="window.location.href='trucks.html#ldt'"><span>Dump Truck</span></div>
+    <div class="gallery-card"><img src="assets/special.webp"><span>Special Vehicle</span></div>
+    <div class="gallery-card"><img src="assets/i9.webp" onclick="window.location.href='trucks.html#i9'"><span>New Energy</span></div>
+    <div class="gallery-card"><img src="assets/offroad.webp"><span onclick="window.location.href='trucks.html'">Off-Road Truck</span></div>
+    <div class="gallery-card"><img src="assets/cargo.webp" onclick="window.location.href='trucks.html#mdt'"><span>Cargo Truck</span></div>
+  </div>
+  <div style="text-align:center;margin-top:70px;">
+    <button class="primary" onclick="window.location.href='trucks.html'">Explore All Trucks</button>
+  </div>
+</section>
+
+<footer>
+  
+
+  <!-- Load Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+  <div class="footer-container">
+    <div>
+      <h4>PRODUCTS</h4>
+      <ul>
+        <li><a href="../equipmentking/trucks.html#ldt">Light Duty Truck (4.5T≤GCW≤25T)</a></li>
+        <li><a href="../equipmentking/trucks.html#mdt">Medium Duty Truck (12T≤GCW≤60T)</a></li>
+        <li><a href="../equipmentking/trucks.html#hdt">Heavy Duty Truck (18T≤GCW≤100T)</a></li>
+        <li><a href="../equipmentking/trucks.html#ldt">Off-road Truck</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h4>APPLICATIONS</h4>
+      <ul>
+        <li><a href="#">Tractor</a></li>
+        <li><a href="#">Dump Truck</a></li>
+        <li><a href="#">Cargo Truck</a></li>
+        <li><a href="#special-vehicle">Special Vehicle</a></li>
+        <li><a href="#">Off-road Truck</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h4>FOLLOW US</h4>
+      <div class="social-links">
+        <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" title="Twitter / X"><i class="fab fa-x-twitter"></i></a>
+        <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div>© <span id="year">2025</span> Equipment King. All rights reserved.</div>
+    <div>
+      <a href="#">Privacy Policy</a> |
+      <a href="#">Terms of Use</a> |
+      <a href="#">Site Map</a>
+    </div>
+  </div>
+
+  <script>
+    // auto-update footer year
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</footer>
+
+
+<script>
+  
+  const hero = document.querySelector('section.hero');
+  const progress = document.getElementById('heroProgress');
+  const leftBtn = document.querySelector('.hero-btn.left');
+  const rightBtn = document.querySelector('.hero-btn.right');
+
+  const images = [
+    'assets/hero_section/front1.webp',
+    'assets/hero_section/front2.webp',
+    'assets/hero_section/front3.webp',
+    'assets/hero_section/front4.webp',
+    'assets/hero_section/front5.webp',
+    'assets/hero_section/front6.webp'
+  ];
+
+  let current = 0;
+  let progressWidth = 0;
+  let autoSlide;
+  let progressTimer;
+
+  function showImage(index) {
+    hero.style.backgroundImage = `url('${images[index]}')`;
+  }
+
+  function startProgress() {
+    clearInterval(progressTimer);
+    progressWidth = 0;
+    progress.style.width = '0%';
+
+    progressTimer = setInterval(() => {
+      progressWidth += 1;
+      progress.style.width = progressWidth + '%';
+      if (progressWidth >= 100) {
+        nextImage();
+      }
+    }, 50); // 100 * 50ms = 5 seconds
+  }
+
+  function nextImage() {
+    current = (current + 1) % images.length;
+    showImage(current);
+    startProgress();
+  }
+
+  function prevImage() {
+    current = (current - 1 + images.length) % images.length;
+    showImage(current);
+    startProgress();
+  }
+
+  leftBtn.addEventListener('click', prevImage);
+  rightBtn.addEventListener('click', nextImage);
+
+  // Auto start
+  showImage(current);
+  startProgress();
+
+
+  // Update footer year automatically
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const tabData = {
+    light:[
+      {img:'assets/E( Van truck.webp',name:'E9 Van Truck',features:['Car-like display & modern cabin','Hydraulic power braking system','Tight turning diameter for city use']},
+      {img:'assets/E9 Dump Truck.webp',name:'E9 Dump Truck',features:['High-strength H-type steel frame','Reinforced tyres for heavy duty','Comfortable wrap-around seat']},
+      {img:'assets/X9 tow.webp',name:'X9 Tow Truck',features:['Gradient >30% capability','Strong chassis for tough work','Ideal for rescue and towing']},
+      {img:'assets/X9 4x4.webp',name:'X9 4X4',features:['Gradient >30% capability','Strong chassis for tough work','Ideal for rescue and towing']}
+    ],
+    medium:[
+      {img:'assets/dump.webp',name:'E6 Dump Truck',features:['Large torque engine','High water tank clearance','Wheel-side reduction rear axle']},
+      {img:'assets/van.webp',name:'E6 Van Truck',features:['Oil-water separator system','Air processing APU module','Light steering system']},
+      {img:'assets/drop.webp',name:'X6 Dropside Truck',features:['Oil-water separator system','Air processing APU module','Light steering system']},
+      {img:'assets/awd.webp',name:'X6 AWD Cargo Truck',features:['Oil-water separator system','Air processing APU module','Light steering system']}
+    ],
+    heavy:[
+      {img:'assets/e1st.webp',name:'E1st Tractor',features:['Cummins engine + Eaton gearbox','Intelligent comfort cab design','Premium driving experience']},
+      {img:'assets/z3t.webp',name:'Z3 Tractor Truck',features:['Dual warning system','Efficient power chain','Comfortable berth width 850mm']},
+      {img:'assets/e3t.webp',name:'E3 Van Truck',features:['Dual warning system','Efficient power chain','Comfortable berth width 850mm']},
+      {img:'assets/e3.webp',name:'E3 Tractor Truck',features:['Dual warning system','Efficient power chain','Comfortable berth width 850mm']}
+    ],
+    special:[
+      {img:'assets/special1.webp',name:'X9 Aerial work platform truck',features:['High-capacity water tank','Quick deployment ladder','Advanced safety system']},
+      {img:'assets/x9t.webp',name:'X9 Tow Truc',features:['Emergency-ready interior','Advanced life support system','Reliable mobility performance']},
+      {img:'assets/x7c.webp',name:'X7 Concrete mixer Truck',features:['Oil-water separator system','Air processing APU module','Light steering system']},
+      {img:'assets/e6t.webp',name:'E6 Truck-mounted Crane',features:['Oil-water separator system','Air processing APU module','Light steering system']}
+    ],
+    offroad:[
+      {img:'assets/9.webp',name:'9 Series',features:['Durability, high performance, and load-bearing','Multiple cabs available','Adaptable for all tankers']},
+      {img:'assets/7.webp',name:'7 Series',features:['Powerful engine & excellent maneuverability','Reinforced oil pan protection','Double-layer frame design']},
+      {img:'assets/6.webp',name:'6 Series',features:['Strong power & efficient transport','Reinforced design with iron bumper','Customized upper-body']},
+      {img:'assets/off.webp',name:'Off-road Dump Truck',features:['850mm wide chassis for stability','Specialized mining suspension','Directional exhaust design']}
+    ],
+    newenergy:[
+      {img:'assets/i9.webp',name:'i9',features:['Integrated electric drive axle','Range up to 430km, supports 120kW fast charge','Brake energy recovery system']}
+    ]
+  };
+
+  function showTab(type, btn){
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    const content=document.getElementById('tabContent');
+    content.style.opacity=0;
+    setTimeout(()=>{
+      content.innerHTML=tabData[type].map(item=>`
+        <div class='vehicle-card'>
+          <img src='${item.img}' alt='${item.name}'>
+          <div style='padding:22px 24px;text-align:left;'>
+            <h3>${item.name}</h3>
+            <ul>${item.features.map(f=>`<li>• ${f}</li>`).join('')}</ul>
+          </div>
+        </div>
+      `).join('');
+      content.style.opacity=1;
+    },300);
+  }
+
+// Trucks dropdown hover functionality
+const trucksDropdown = document.querySelector('.trucks-dropdown');
+if (trucksDropdown) {
+    const dropdownMenu = trucksDropdown.querySelector('.dropdown-menu');
+    let hoverTimeout;
+
+    trucksDropdown.addEventListener('mouseenter', () => {
+        clearTimeout(hoverTimeout);
+        dropdownMenu.style.display = 'block';
+    });
+
+    trucksDropdown.addEventListener('mouseleave', () => {
+        hoverTimeout = setTimeout(() => {
+            dropdownMenu.style.display = 'none';
+        }, 300); // 300ms delay before hiding
+    });
+}
+</script>
+
+</body>
+</html>
