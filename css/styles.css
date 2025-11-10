@@ -194,6 +194,16 @@ header nav a:hover::after { width: 100%; }
     transform: translateY(-20px) scale(0.92);
     transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     visibility: hidden;
+    /* Extended hover area with invisible padding */
+    &::before {
+        content: '';
+        position: absolute;
+        top: -15px;
+        left: -15px;
+        right: -15px;
+        bottom: -15px;
+        z-index: -1;
+    }
 }
 
 /* Show dropdown with enhanced animation */
@@ -282,6 +292,16 @@ header nav a:hover::after { width: 100%; }
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     visibility: hidden;
     z-index: 1001;
+    /* Extended invisible hover area */
+    &::before {
+        content: '';
+        position: absolute;
+        top: -10px;
+        left: -10px;
+        right: -10px;
+        bottom: -10px;
+        z-index: -1;
+    }
 }
 
 .dropdown-menu li:hover > .sub-dropdown {
