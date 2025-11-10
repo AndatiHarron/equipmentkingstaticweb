@@ -1,0 +1,53 @@
+<!-- Universal Footer Component -->
+<footer>
+  <!-- Load Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+  <div class="footer-container">
+    <div>
+      <h4>PRODUCTS</h4>
+      <ul>
+        <li><a href="{{BASE_PATH}}trucks.html#ldt">Light Duty Truck (4.5T≤GCW≤25T)</a></li>
+        <li><a href="{{BASE_PATH}}trucks.html#mdt">Medium Duty Truck (12T≤GCW≤60T)</a></li>
+        <li><a href="{{BASE_PATH}}trucks.html#hdt">Heavy Duty Truck (18T≤GCW≤100T)</a></li>
+        <li><a href="{{BASE_PATH}}trucks.html#ldt">Off-road Truck</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h4>APPLICATIONS</h4>
+      <ul>
+        <li><a href="#">Tractor</a></li>
+        <li><a href="#">Dump Truck</a></li>
+        <li><a href="#">Cargo Truck</a></li>
+        <li><a href="#special-vehicle">Special Vehicle</a></li>
+        <li><a href="#">Off-road Truck</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h4>FOLLOW US</h4>
+      <div class="social-links">
+        <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" title="Twitter / X"><i class="fab fa-x-twitter"></i></a>
+        <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div>© <span id="year">2025</span> Equipment King. All rights reserved.</div>
+    <div>
+      <a href="#">Privacy Policy</a> |
+      <a href="#">Terms of Use</a> |
+      <a href="#">Site Map</a>
+    </div>
+  </div>
+
+  <script>
+    // auto-update footer year
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</footer>
