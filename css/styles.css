@@ -1960,7 +1960,7 @@ footer a:hover {
   }
 }
 
-/* IMPORTANT: Vehicle Category Dropdown Styling with Images */
+/* IMPORTANT: Vehicle Category Dropdown with Original Styling */
 .category-dropdown {
     position: relative;
     display: inline-block;
@@ -1970,83 +1970,79 @@ footer a:hover {
     display: none;
     position: absolute;
     top: 100%;
-    left: 0;
+    left: 50%;
+    transform: translateX(-50%) translateY(-10px);
     min-width: 800px;
     max-width: 90vw;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: #fff;
     border-radius: 12px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
     z-index: 9999;
-    padding: 20px;
+    padding: 35px;
     opacity: 0;
-    transform: translateY(-10px);
     transition: all 0.3s ease;
     pointer-events: none;
+    /* ORIGINAL STYLING: Use exact grid layout from original */
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 35px;
 }
 
-/* IMPORTANT: Category dropdown hover activation with !important rules */
+/* IMPORTANT: Category dropdown hover activation */
 .category-dropdown:hover .category-dropdown-menu {
     display: grid !important;
     opacity: 1 !important;
     visibility: visible !important;
-    transform: translateY(0) !important;
+    transform: translateX(-50%) translateY(0) !important;
     pointer-events: auto !important;
     z-index: 9999 !important;
 }
 
-/* IMPORTANT: Vehicle Card Styling (Original Format) */
+/* IMPORTANT: EXACT ORIGINAL Vehicle Card Styling */
 .category-dropdown-menu .vehicle-card {
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 8px;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
     overflow: hidden;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    transform: scale(1);
     transition: all 0.3s ease;
     cursor: pointer;
-    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .category-dropdown-menu .vehicle-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-    background: rgba(255, 255, 255, 1);
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
 }
 
 .category-dropdown-menu .vehicle-card img {
     width: 100%;
-    height: 120px;
+    height: 260px;
     object-fit: cover;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .category-dropdown-menu .card-content {
-    padding: 12px 15px;
+    padding: 22px 24px;
     text-align: left;
 }
 
 .category-dropdown-menu .card-content h3 {
-    color: #2c5aa0;
-    font-size: 14px;
+    font-size: 22px;
     font-weight: 600;
-    margin: 0 0 8px 0;
-    line-height: 1.3;
+    margin: 15px 0 10px;
+    color: #1d1d1f;
 }
 
 .category-dropdown-menu .card-content ul {
     list-style: none;
     padding: 0;
     margin: 0;
-    font-size: 11px;
-    color: #666;
+    color: #555;
+    font-size: 15.5px;
+    line-height: 1.7;
 }
 
 .category-dropdown-menu .card-content li {
-    margin: 3px 0;
-    line-height: 1.4;
+    margin: 0;
 }
 
 /* IMPORTANT: Legacy category section styles (for backward compatibility) */
