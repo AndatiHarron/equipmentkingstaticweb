@@ -1959,3 +1959,98 @@ footer a:hover {
     transition: transform 0.1s ease;
   }
 }
+
+/* IMPORTANT: Vehicle Category Dropdown Styling */
+.category-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.category-dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 300px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    z-index: 9999;
+    padding: 15px;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+/* IMPORTANT: Category dropdown hover activation with !important rules */
+.category-dropdown:hover .category-dropdown-menu {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0) !important;
+    pointer-events: auto !important;
+    z-index: 9999 !important;
+}
+
+.category-section {
+    margin-bottom: 15px;
+}
+
+.category-section:last-child {
+    margin-bottom: 0;
+}
+
+.category-section h4 {
+    color: #2c5aa0;
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0 0 8px 0;
+    padding-bottom: 5px;
+    border-bottom: 1px solid rgba(44, 90, 160, 0.2);
+}
+
+.category-section a {
+    display: block;
+    color: #333;
+    text-decoration: none;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 13px;
+    transition: all 0.2s ease;
+    margin: 2px 0;
+}
+
+.category-section a:hover {
+    background: rgba(44, 90, 160, 0.1);
+    color: #2c5aa0;
+    transform: translateX(5px);
+}
+
+/* IMPORTANT: Mobile responsiveness for category dropdowns */
+@media (max-width: 768px) {
+    .category-dropdown-menu {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        min-width: 280px;
+        max-width: 90vw;
+        max-height: 80vh;
+        overflow-y: auto;
+    }
+    
+    .category-dropdown:hover .category-dropdown-menu {
+        transform: translate(-50%, -50%) !important;
+    }
+}
+
+/* IMPORTANT: Force category dropdown visibility for debugging */
+.category-dropdown-menu.force-visible {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    background-color: rgba(255, 255, 255, 0.95) !important;
+}

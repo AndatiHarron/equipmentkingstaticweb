@@ -234,12 +234,114 @@
 <section class="tabs">
   <h2>Explore Our Vehicle Categories</h2>
   <div id="vehicleTabs">
-    <button class="tab-btn active" onmouseover="showTab('light', this)" onclick="window.location.href='trucks.html#ldt'">Light Duty Truck</button>
-    <button class="tab-btn" onmouseover="showTab('medium', this)" onclick="window.location.href='trucks.html#mdt'">Medium Duty Truck</button>
-    <button class="tab-btn" onmouseover="showTab('heavy', this)" onclick="window.location.href='trucks.html#hdt'">Heavy Duty Truck</button>
-    <button class="tab-btn" onmouseover="showTab('special', this)" onclick="window.location.href=''">Special Vehicle</button>
-    <button class="tab-btn" onmouseover="showTab('offroad', this)" onclick="window.location.href=''">Off-road Truck</button>
-    <button class="tab-btn" onmouseover="showTab('newenergy', this)" onclick="window.location.href='trucks.html#i9'">New Energy</button>
+    <!-- IMPORTANT: Light Duty Truck Category with Hover Dropdown -->
+    <div class="category-dropdown">
+      <button class="tab-btn active" onmouseover="showTab('light', this)" onclick="window.location.href='trucks.html#ldt'">Light Duty Truck</button>
+      <div class="category-dropdown-menu">
+        <div class="category-section">
+          <h4>Light Duty Series</h4>
+          <a href="trucks.html#x9-dump">X9 Dump Trucks</a>
+          <a href="trucks.html#x9-van">X9 Van Trucks</a>
+          <a href="trucks.html#x9-flatbed">X9 Flatbed Trucks</a>
+          <a href="trucks.html#e9-dump">E9 Dump Trucks</a>
+          <a href="trucks.html#e9-van">E9 Van Trucks</a>
+          <a href="trucks.html#e9-stake">E9 Stake Trucks</a>
+          <a href="trucks.html#x7-dump">X7 Dump Trucks</a>
+          <a href="trucks.html#x7-flatbed">X7 Flatbed Trucks</a>
+          <a href="trucks.html#e3-dump">E3 Dump Trucks</a>
+          <a href="trucks.html#e3-van">E3 Van Trucks</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- IMPORTANT: Medium Duty Truck Category with Hover Dropdown -->
+    <div class="category-dropdown">
+      <button class="tab-btn" onmouseover="showTab('medium', this)" onclick="window.location.href='trucks.html#mdt'">Medium Duty Truck</button>
+      <div class="category-dropdown-menu">
+        <div class="category-section">
+          <h4>E6 Series (Medium Duty)</h4>
+          <a href="trucks.html#e6-dump">E6 Dump Trucks</a>
+          <a href="trucks.html#e6-van">E6 Van Trucks</a>
+          <a href="trucks.html#e6-cement">E6 Cement Mixer</a>
+          <a href="trucks.html#e6-crane">E6 Truck Mounted Crane</a>
+          <a href="trucks.html#e6-sprinkler">E6 Sprinkler Trucks</a>
+        </div>
+        <div class="category-section">
+          <h4>X6 Series (Medium Duty)</h4>
+          <a href="trucks.html#x6-dump">X6 Dump Trucks</a>
+          <a href="trucks.html#x6-van">X6 Van Trucks</a>
+          <a href="trucks.html#x6-flatbed">X6 Flatbed Trucks</a>
+          <a href="trucks.html#x6-crane">X6 Truck Mounted Cranes</a>
+          <a href="trucks.html#x6-garbage">X6 Garbage Trucks</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- IMPORTANT: Heavy Duty Truck Category with Hover Dropdown -->
+    <div class="category-dropdown">
+      <button class="tab-btn" onmouseover="showTab('heavy', this)" onclick="window.location.href='trucks.html#hdt'">Heavy Duty Truck</button>
+      <div class="category-dropdown-menu">
+        <div class="category-section">
+          <h4>Heavy Duty Series</h4>
+          <a href="trucks.html#3-series-crane">3 Series Truck Mounted Crane</a>
+          <a href="trucks.html#6-series-cement">6 Series Cement Mixer</a>
+          <a href="trucks.html#6-series-garbage">6 Series Garbage Trucks</a>
+          <a href="trucks.html#6-series-crane">6 Series Truck Mounted Crane</a>
+          <a href="trucks.html#6-series-sweeper">6 Series Sweeper</a>
+          <a href="trucks.html#9-series-aerial">9 Series Aerial Work Platform</a>
+          <a href="trucks.html#9-series-cement">9 Series Cement Mixer</a>
+          <a href="trucks.html#9-series-sweeper">9 Series Sweeper</a>
+          <a href="trucks.html#9-series-tow">9 Series Tow Truck</a>
+          <a href="trucks.html#9-series-crane">9 Series Truck Mounted Crane</a>
+          <a href="trucks.html#9-series-garbage">9 Series Garbage Truck</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- IMPORTANT: Special Vehicle Category with Hover Dropdown -->
+    <div class="category-dropdown">
+      <button class="tab-btn" onmouseover="showTab('special', this)" onclick="window.location.href=''">Special Vehicle</button>
+      <div class="category-dropdown-menu">
+        <div class="category-section">
+          <h4>Special Purpose Vehicles</h4>
+          <a href="trucks.html#aerial-platform">Aerial Work Platforms</a>
+          <a href="trucks.html#recovery-truck">Loading Crane Recovery Truck</a>
+          <a href="trucks.html#dust-suppression">Dust Suppression Trucks</a>
+          <a href="trucks.html#sewage-suction">Sewage Suction Truck</a>
+          <a href="trucks.html#fuel-tanker">Fuel Tanker Trucks</a>
+          <a href="trucks.html#refrigerated">Refrigerated Trucks</a>
+          <a href="trucks.html#muck-truck">Muck Truck</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- IMPORTANT: Off-road Truck Category with Hover Dropdown -->
+    <div class="category-dropdown">
+      <button class="tab-btn" onmouseover="showTab('offroad', this)" onclick="window.location.href=''">Off-road Truck</button>
+      <div class="category-dropdown-menu">
+        <div class="category-section">
+          <h4>Off-Road Vehicles</h4>
+          <a href="trucks.html#4x4-dump">X9 4X4 Dump Trucks</a>
+          <a href="trucks.html#awd-cargo">X6 AWD Cargo Trucks</a>
+          <a href="trucks.html#z3-tractor">Z3 Tractor Truck</a>
+          <a href="trucks.html#4x4-series">4X4 Series</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- IMPORTANT: New Energy Category with Hover Dropdown -->
+    <div class="category-dropdown">
+      <button class="tab-btn" onmouseover="showTab('newenergy', this)" onclick="window.location.href='trucks.html#i9'">New Energy</button>
+      <div class="category-dropdown-menu">
+        <div class="category-section">
+          <h4>Electric & Hybrid Vehicles</h4>
+          <a href="trucks.html#i9-electric">i9 Electric Trucks</a>
+          <a href="trucks.html#electric-delivery">Electric Delivery Trucks</a>
+          <a href="trucks.html#hybrid-trucks">Hybrid Trucks</a>
+          <a href="trucks.html#electric-garbage">Electric Garbage Trucks</a>
+        </div>
+      </div>
+    </div>
   </div>
   <div id="tabContent">
     <p style="grid-column:1/-1;text-align:center;font-size:18px;color:#666;">Hover over a category to explore vehicle details.</p>
