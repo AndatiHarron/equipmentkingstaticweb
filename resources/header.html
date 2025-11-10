@@ -194,43 +194,84 @@ document.addEventListener('click', function(e) {
     }
 });
 
-// Trucks dropdown functionality (desktop) - Let CSS handle basic hover, JS adds delays
+// ENHANCED TRUCKS DROPDOWN - IMPORTANT: Better delays and hover detection
 const trucksDropdown = document.querySelector('.trucks-dropdown');
 if (trucksDropdown) {
     const dropdownMenu = trucksDropdown.querySelector('.dropdown-menu');
-    let hoverTimeout;
+    let enterTimeout;
+    let leaveTimeout;
+    let isDropdownVisible = false;
 
-    // Only add enhanced timing on desktop (CSS hover works as base)
+    // Enhanced desktop hover functionality - IMPORTANT FOR ALL PAGES
     if (window.innerWidth >= 768) {
-        // Add longer delay before hiding to allow navigation to submenu
-        trucksDropdown.addEventListener('mouseleave', () => {
-            hoverTimeout = setTimeout(() => {
-                // Add a class to trigger enhanced hiding animation
-                dropdownMenu.classList.add('hiding');
-                setTimeout(() => {
-                    dropdownMenu.classList.remove('hiding');
-                }, 500);
-            }, 500);
-        });
-
+        
+        // Enhanced mouseenter with optimized delay
         trucksDropdown.addEventListener('mouseenter', () => {
-            clearTimeout(hoverTimeout);
-            dropdownMenu.classList.remove('hiding');
-        });
-
-        // Keep dropdown open when hovering over it
-        dropdownMenu.addEventListener('mouseenter', () => {
-            clearTimeout(hoverTimeout);
-            dropdownMenu.classList.remove('hiding');
-        });
-
-        dropdownMenu.addEventListener('mouseleave', () => {
-            hoverTimeout = setTimeout(() => {
-                dropdownMenu.classList.add('hiding');
+            clearTimeout(leaveTimeout);
+            
+            // Small delay to prevent accidental triggers
+            enterTimeout = setTimeout(() => {
+                dropdownMenu.style.display = 'block';
                 setTimeout(() => {
-                    dropdownMenu.classList.remove('hiding');
-                }, 500);
-            }, 300);
+                    dropdownMenu.classList.add('show');
+                    isDropdownVisible = true;
+                }, 20);
+            }, 100); // Reduced from 150ms for faster response
+        });
+
+        // Enhanced mouseleave with longer delay for better navigation
+        trucksDropdown.addEventListener('mouseleave', () => {
+            clearTimeout(enterTimeout);
+            
+            // Longer delay allows users to navigate to dropdown items
+            leaveTimeout = setTimeout(() => {
+                dropdownMenu.classList.remove('show');
+                isDropdownVisible = false;
+                setTimeout(() => {
+                    if (!isDropdownVisible) {
+                        dropdownMenu.style.display = 'none';
+                    }
+                }, 400);
+            }, 700); // Increased from 500ms for easier navigation
+        });
+
+        // Keep dropdown open when hovering over dropdown itself
+        dropdownMenu.addEventListener('mouseenter', () => {
+            clearTimeout(leaveTimeout);
+            isDropdownVisible = true;
+        });
+
+        // Enhanced dropdown leave detection with corner tolerance
+        dropdownMenu.addEventListener('mouseleave', (e) => {
+            // Check if mouse is moving towards corners - give extra time
+            const rect = dropdownMenu.getBoundingClientRect();
+            const mouseX = e.clientX;
+            const mouseY = e.clientY;
+            
+            // Extended delay if leaving from corners (harder to navigate back)
+            const isLeavingFromCorner = 
+                (mouseX < rect.left + 50) || (mouseX > rect.right - 50) ||
+                (mouseY < rect.top + 50) || (mouseY > rect.bottom - 50);
+                
+            const delay = isLeavingFromCorner ? 800 : 400; // Longer delay for corners
+            
+            leaveTimeout = setTimeout(() => {
+                dropdownMenu.classList.remove('show');
+                isDropdownVisible = false;
+                setTimeout(() => {
+                    if (!isDropdownVisible) {
+                        dropdownMenu.style.display = 'none';
+                    }
+                }, 400);
+            }, delay);
+        });
+
+        // Enhanced sub-dropdown hover delays
+        const subDropdowns = dropdownMenu.querySelectorAll('.sub-dropdown');
+        subDropdowns.forEach(sub => {
+            sub.addEventListener('mouseenter', () => {
+                clearTimeout(leaveTimeout);
+            });
         });
     }
 }
