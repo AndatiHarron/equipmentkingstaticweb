@@ -1960,7 +1960,7 @@ footer a:hover {
   }
 }
 
-/* IMPORTANT: Vehicle Category Dropdown Styling */
+/* IMPORTANT: Vehicle Category Dropdown Styling with Images */
 .category-dropdown {
     position: relative;
     display: inline-block;
@@ -1971,23 +1971,27 @@ footer a:hover {
     position: absolute;
     top: 100%;
     left: 0;
-    min-width: 300px;
+    min-width: 800px;
+    max-width: 90vw;
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 12px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
     z-index: 9999;
-    padding: 15px;
+    padding: 20px;
     opacity: 0;
     transform: translateY(-10px);
     transition: all 0.3s ease;
     pointer-events: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
 }
 
 /* IMPORTANT: Category dropdown hover activation with !important rules */
 .category-dropdown:hover .category-dropdown-menu {
-    display: block !important;
+    display: grid !important;
     opacity: 1 !important;
     visibility: visible !important;
     transform: translateY(0) !important;
@@ -1995,6 +1999,57 @@ footer a:hover {
     z-index: 9999 !important;
 }
 
+/* IMPORTANT: Vehicle Card Styling (Original Format) */
+.category-dropdown-menu .vehicle-card {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.category-dropdown-menu .vehicle-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    background: rgba(255, 255, 255, 1);
+}
+
+.category-dropdown-menu .vehicle-card img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.category-dropdown-menu .card-content {
+    padding: 12px 15px;
+    text-align: left;
+}
+
+.category-dropdown-menu .card-content h3 {
+    color: #2c5aa0;
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0 0 8px 0;
+    line-height: 1.3;
+}
+
+.category-dropdown-menu .card-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 11px;
+    color: #666;
+}
+
+.category-dropdown-menu .card-content li {
+    margin: 3px 0;
+    line-height: 1.4;
+}
+
+/* IMPORTANT: Legacy category section styles (for backward compatibility) */
 .category-section {
     margin-bottom: 15px;
 }
