@@ -194,23 +194,53 @@ document.addEventListener('click', function(e) {
     }
 });
 
-// Trucks dropdown functionality (desktop)
+// Trucks dropdown functionality (desktop) with proper hover delays
 const trucksDropdown = document.querySelector('.trucks-dropdown');
 if (trucksDropdown) {
     const dropdownMenu = trucksDropdown.querySelector('.dropdown-menu');
-    let hoverTimeout;
+    let enterTimeout;
+    let leaveTimeout;
 
     // Only enable hover on desktop
     if (window.innerWidth >= 768) {
         trucksDropdown.addEventListener('mouseenter', () => {
-            clearTimeout(hoverTimeout);
-            dropdownMenu.style.display = 'block';
+            clearTimeout(leaveTimeout);
+            // Add small delay before showing to prevent accidental triggers
+            enterTimeout = setTimeout(() => {
+                dropdownMenu.style.display = 'block';
+                setTimeout(() => {
+                    dropdownMenu.classList.add('show');
+                }, 10);
+            }, 150);
         });
 
         trucksDropdown.addEventListener('mouseleave', () => {
-            hoverTimeout = setTimeout(() => {
-                dropdownMenu.style.display = 'none';
-            }, 300);
+            clearTimeout(enterTimeout);
+            // Longer delay before hiding to allow navigation to submenu
+            leaveTimeout = setTimeout(() => {
+                dropdownMenu.classList.remove('show');
+                setTimeout(() => {
+                    if (!dropdownMenu.classList.contains('show')) {
+                        dropdownMenu.style.display = 'none';
+                    }
+                }, 400);
+            }, 500);
+        });
+
+        // Keep dropdown open when hovering over it
+        dropdownMenu.addEventListener('mouseenter', () => {
+            clearTimeout(leaveTimeout);
+        });
+
+        dropdownMenu.addEventListener('mouseleave', () => {
+            leaveTimeout = setTimeout(() => {
+                dropdownMenu.classList.remove('show');
+                setTimeout(() => {
+                    if (!dropdownMenu.classList.contains('show')) {
+                        dropdownMenu.style.display = 'none';
+                    }
+                }, 400);
+            }, 200);
         });
     }
 }
