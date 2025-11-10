@@ -991,29 +991,23 @@ footer a:hover {
     color:#fff;
   }
 
-  /* IMPORTANT: Vehicle Categories Tab Content */
   #tabContent {
-    max-width:100% !important;
-    margin:60px auto 0 !important;
-    display:grid !important;
-    grid-template-columns:repeat(auto-fit,minmax(300px,1fr)) !important;
-    gap:35px !important;
-    opacity:1 !important;
-    transition:opacity .5s ease !important;
-    visibility: visible !important;
-    z-index: 1 !important;
+    max-width:100%;
+    margin:60px auto 0;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:35px;
+    opacity:1;
+    transition:opacity .5s ease;
   }
 
-  /* IMPORTANT: Vehicle Card Styling */
   .vehicle-card {
-    background:#fff !important;
-    border-radius:5px !important;
-    box-shadow:0 10px 25px rgba(0,0,0,0.08) !important;
-    overflow:hidden !important;
-    transform:scale(1) !important;
-    transition:all .3s ease !important;
-    display: block !important;
-    visibility: visible !important;
+    background:#fff;
+    border-radius:5px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+    overflow:hidden;
+    transform:scale(1);
+    transition:all .3s ease;
   }
   .vehicle-card:hover {
     transform:translateY(-6px) scale(1.03);
