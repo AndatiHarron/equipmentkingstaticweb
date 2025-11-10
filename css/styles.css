@@ -214,6 +214,14 @@ header nav a:hover::after { width: 100%; }
     visibility: visible;
 }
 
+/* DEBUG: Force dropdown to always show for testing */
+.dropdown-menu {
+    display: block !important;
+    opacity: 1 !important;
+    transform: translateY(0) scale(1) !important;
+    visibility: visible !important;
+}
+
 /* Enhanced hiding animation with delay */
 .dropdown-menu.hiding {
     transition-delay: 0.5s;
