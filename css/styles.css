@@ -1972,16 +1972,11 @@ footer a:hover {
     top: 100%;
     left: 0;
     right: 0;
-    transform: translateY(-10px);
     width: 100vw;
     margin-left: calc(-50vw + 50%);
     background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
     z-index: 9999;
     padding: 35px;
-    opacity: 0;
-    transition: all 0.3s ease;
     pointer-events: none;
     /* ORIGINAL STYLING: Use exact grid layout from original */
     display: grid;
@@ -1989,30 +1984,24 @@ footer a:hover {
     gap: 35px;
 }
 
-/* IMPORTANT: Category dropdown hover activation */
+/* IMPORTANT: Category dropdown hover activation - SIMPLE */
 .category-dropdown:hover .category-dropdown-menu {
     display: grid !important;
-    opacity: 1 !important;
-    visibility: visible !important;
-    transform: translateY(0) !important;
     pointer-events: auto !important;
     z-index: 9999 !important;
 }
 
-/* IMPORTANT: EXACT ORIGINAL Vehicle Card Styling */
+/* IMPORTANT: SIMPLE Vehicle Card Styling */
 .category-dropdown-menu .vehicle-card {
     background: #fff;
+    border: 1px solid #ddd;
     border-radius: 5px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
     overflow: hidden;
-    transform: scale(1);
-    transition: all 0.3s ease;
     cursor: pointer;
 }
 
 .category-dropdown-menu .vehicle-card:hover {
-    transform: translateY(-6px) scale(1.03);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+    border-color: #999;
 }
 
 .category-dropdown-menu .vehicle-card img {
