@@ -161,7 +161,6 @@
   // Update footer year automatically
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // Vehicle Categories Tab Data (EXACT from original)
   const tabData = {
     light:[
       {img:'assets/E( Van truck.webp',name:'E9 Van Truck',features:['Car-like display & modern cabin','Hydraulic power braking system','Tight turning diameter for city use']},
@@ -198,103 +197,26 @@
     ]
   };
 
-  // IMPORTANT: Vehicle Categories Show Tab Function (EXACT from original)
-  window.showTab = function(type, btn){
-    console.log('IMPORTANT: showTab called with type:', type);
-    try {
-      // IMPORTANT: Remove active class from all buttons
-      document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
-      btn.classList.add('active');
-      
-      // IMPORTANT: Get tab content container
-      const content = document.getElementById('tabContent');
-      if (!content) {
-        console.error('IMPORTANT: tabContent element not found!');
-        return;
-      }
-      
-      // IMPORTANT: Check if tabData exists and has the requested type
-      if (!tabData || !tabData[type]) {
-        console.error('IMPORTANT: tabData not found or type not available:', type);
-        return;
-      }
-      
-      console.log('IMPORTANT: Displaying', tabData[type].length, 'vehicles for', type);
-      
-      // IMPORTANT: Fade out current content
-      content.style.opacity = 0;
-      
-      setTimeout(() => {
-        // IMPORTANT: Generate vehicle cards HTML
-        content.innerHTML = tabData[type].map(item => `
-          <div class='vehicle-card'>
-            <img src='${item.img}' alt='${item.name}' onerror="console.error('IMPORTANT: Image failed to load: ${item.img}')">
-            <div style='padding:22px 24px;text-align:left;'>
-              <h3>${item.name}</h3>
-              <ul>${item.features.map(f => `<li>• ${f}</li>`).join('')}</ul>
-            </div>
+  function showTab(type, btn){
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    const content=document.getElementById('tabContent');
+    content.style.opacity=0;
+    setTimeout(()=>{
+      content.innerHTML=tabData[type].map(item=>`
+        <div class='vehicle-card'>
+          <img src='${item.img}' alt='${item.name}'>
+          <div style='padding:22px 24px;text-align:left;'>
+            <h3>${item.name}</h3>
+            <ul>${item.features.map(f=>`<li>• ${f}</li>`).join('')}</ul>
           </div>
-        `).join('');
-        
-        // IMPORTANT: Fade in new content
-        content.style.opacity = 1;
-        console.log('IMPORTANT: Content updated successfully for', type);
-      }, 300);
-      
-    } catch (error) {
-      console.error('IMPORTANT: Error in showTab function:', error);
-    }
-  };
+        </div>
+      `).join('');
+      content.style.opacity=1;
+    },300);
+  }
 
-  // IMPORTANT: Initialize with light category on page load
-  setTimeout(() => {
-    console.log('IMPORTANT: Initializing vehicle categories...');
-    console.log('IMPORTANT: tabData available:', !!tabData);
-    console.log('IMPORTANT: tabData keys:', tabData ? Object.keys(tabData) : 'N/A');
-    
-    const lightBtn = document.querySelector('.tab-btn.active');
-    console.log('IMPORTANT: Light button found:', !!lightBtn);
-    
-    if (lightBtn && tabData && tabData.light) {
-      console.log('IMPORTANT: Calling showTab for initial load');
-      showTab('light', lightBtn);
-    } else {
-      console.error('IMPORTANT: Failed to initialize - missing lightBtn or tabData');
-    }
-  }, 500); // IMPORTANT: Increased delay to ensure DOM is ready
-
-// IMPORTANT: Enhanced hover functionality for vehicle categories
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('IMPORTANT: DOM loaded, setting up enhanced hover functionality');
-    
-    // IMPORTANT: Alternative hover detection for tab buttons
-    const tabButtons = document.querySelectorAll('.tab-btn');
-    tabButtons.forEach((btn, index) => {
-        const categories = ['light', 'medium', 'heavy', 'special', 'offroad', 'newenergy'];
-        const category = categories[index];
-        
-        if (category) {
-            console.log('IMPORTANT: Setting up enhanced hover for', category, 'button');
-            
-            // IMPORTANT: Add both mouseover and mouseenter events
-            btn.addEventListener('mouseenter', function() {
-                console.log('IMPORTANT: Enhanced mouseenter for', category);
-                if (window.showTab) {
-                    window.showTab(category, this);
-                }
-            });
-            
-            btn.addEventListener('mouseover', function() {
-                console.log('IMPORTANT: Enhanced mouseover for', category);
-                if (window.showTab) {
-                    window.showTab(category, this);
-                }
-            });
-        }
-    });
-});
-
-// IMPORTANT: Trucks dropdown hover functionality
+// Trucks dropdown hover functionality
 const trucksDropdown = document.querySelector('.trucks-dropdown');
 if (trucksDropdown) {
     const dropdownMenu = trucksDropdown.querySelector('.dropdown-menu');
