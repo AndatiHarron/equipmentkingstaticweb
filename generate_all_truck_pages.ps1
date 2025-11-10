@@ -15,18 +15,31 @@ function Generate-TruckHTML {
     
     # Determine color scheme based on series
     $colorScheme = switch ($series) {
-        "X9" { @{primary="#007bff"; secondary="#0056b3"; gradient="linear-gradient(135deg, #007bff, #0056b3)"} }
-        "E9" { @{primary="#28a745"; secondary="#20c997"; gradient="linear-gradient(135deg, #28a745, #20c997)"} }
-        "X7" { @{primary="#fd7e14"; secondary="#e63946"; gradient="linear-gradient(135deg, #fd7e14, #e63946)"} }
-        "E6" { @{primary="#6f42c1"; secondary="#e83e8c"; gradient="linear-gradient(135deg, #6f42c1, #e83e8c)"} }
-        "X6" { @{primary="#0dcaf0"; secondary="#0d6efd"; gradient="linear-gradient(135deg, #0dcaf0, #0d6efd)"} }
-        default { @{primary="#007bff"; secondary="#0056b3"; gradient="linear-gradient(135deg, #007bff, #0056b3)"} }
+        "X9" { @{primary = "#007bff"; secondary = "#0056b3"; gradient = "linear-gradient(135deg, #007bff, #0056b3)" } }
+        "E9" { @{primary = "#28a745"; secondary = "#20c997"; gradient = "linear-gradient(135deg, #28a745, #20c997)" } }
+        "X7" { @{primary = "#fd7e14"; secondary = "#e63946"; gradient = "linear-gradient(135deg, #fd7e14, #e63946)" } }
+        "E6" { @{primary = "#6f42c1"; secondary = "#e83e8c"; gradient = "linear-gradient(135deg, #6f42c1, #e83e8c)" } }
+        "X6" { @{primary = "#0dcaf0"; secondary = "#0d6efd"; gradient = "linear-gradient(135deg, #0dcaf0, #0d6efd)" } }
+        "E3" { @{primary = "#dc3545"; secondary = "#c82333"; gradient = "linear-gradient(135deg, #dc3545, #c82333)" } }
+        "E1st" { @{primary = "#6c757d"; secondary = "#5a6268"; gradient = "linear-gradient(135deg, #6c757d, #5a6268)" } }
+        "Z3" { @{primary = "#495057"; secondary = "#343a40"; gradient = "linear-gradient(135deg, #495057, #343a40)" } }
+        "i9" { @{primary = "#17a2b8"; secondary = "#138496"; gradient = "linear-gradient(135deg, #17a2b8, #138496)" } }
+        "AerialWork" { @{primary = "#ffc107"; secondary = "#e0a800"; gradient = "linear-gradient(135deg, #ffc107, #e0a800)" } }
+        "Recovery" { @{primary = "#fd7e14"; secondary = "#e63946"; gradient = "linear-gradient(135deg, #fd7e14, #e63946)" } }
+        "4x4Series" { @{primary = "#795548"; secondary = "#5d4037"; gradient = "linear-gradient(135deg, #795548, #5d4037)" } }
+        "3Series" { @{primary = "#9c27b0"; secondary = "#7b1fa2"; gradient = "linear-gradient(135deg, #9c27b0, #7b1fa2)" } }
+        "6Series" { @{primary = "#3f51b5"; secondary = "#303f9f"; gradient = "linear-gradient(135deg, #3f51b5, #303f9f)" } }
+        "9Series" { @{primary = "#ff5722"; secondary = "#d84315"; gradient = "linear-gradient(135deg, #ff5722, #d84315)" } }
+        "E3Legacy" { @{primary = "#8bc34a"; secondary = "#689f38"; gradient = "linear-gradient(135deg, #8bc34a, #689f38)" } }
+        "E6Legacy" { @{primary = "#ff9800"; secondary = "#f57c00"; gradient = "linear-gradient(135deg, #ff9800, #f57c00)" } }
+        "X6Legacy" { @{primary = "#00bcd4"; secondary = "#0097a7"; gradient = "linear-gradient(135deg, #00bcd4, #0097a7)" } }
+        default { @{primary = "#007bff"; secondary = "#0056b3"; gradient = "linear-gradient(135deg, #007bff, #0056b3)" } }
     }
     
     # Build specifications table
     $specRows = ""
     foreach ($spec in $truck.specifications.PSObject.Properties) {
-        $label = $spec.Name -replace "([A-Z])", " `$1" -replace "^(.)", {$_.Value.ToUpper()}
+        $label = $spec.Name -replace "([A-Z])", " `$1" -replace "^(.)", { $_.Value.ToUpper() }
         $specRows += "<tr><td style='padding: 8px 0; border-bottom: 1px solid #eee; font-weight: bold;'>$($label):</td><td style='padding: 8px 0; border-bottom: 1px solid #eee;'>$($spec.Value)</td></tr>`n"
     }
     
