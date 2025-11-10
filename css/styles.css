@@ -214,8 +214,16 @@ header nav a:hover::after { width: 100%; }
     visibility: visible;
 }
 
-/* DEBUG: Force dropdown to always show for testing */
-.dropdown-menu {
+/* IMPORTANT: Enhanced dropdown visibility - CRITICAL FIX */
+.trucks-dropdown .dropdown-menu {
+    display: none !important;
+    position: absolute !important;
+    z-index: 9999 !important;
+}
+
+/* IMPORTANT: Force hover to work - CRITICAL */
+.trucks-dropdown:hover .dropdown-menu,
+.trucks-dropdown .dropdown-menu.show {
     display: block !important;
     opacity: 1 !important;
     transform: translateY(0) scale(1) !important;

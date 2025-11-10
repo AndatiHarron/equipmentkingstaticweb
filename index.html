@@ -51,6 +51,171 @@
 </head>
 
 <body>
+    <!-- IMPORTANT: Backup header in case JS loader fails -->
+    <header id="backup-header" style="display: none;">
+       <div class="logo" onclick="location.href='index.html'">
+          <img src="assets/companylogo.webp" alt="Equipment King Logo" />
+          Equipment King
+        </div>
+        
+        <nav id="main-nav">
+            <a href="index.html">Home</a>
+            
+            <!-- IMPORTANT: Trucks Dropdown - CRITICAL -->
+            <div class="trucks-dropdown">
+              <a href="trucks.html" class="trucks-btn">Trucks</a>
+              <div class="dropdown-menu">
+                <ul>
+                  <!-- LIGHT DUTY TRUCKS -->
+                  <li>
+                    <a href="trucks.html#light-duty">LIGHT DUTY TRUCKS</a>
+                    <ul class="sub-dropdown">
+                      <li>
+                        <a href="trucks.html#x9-series">X9 Series</a>
+                        <ul class="truck-links">
+                          <li><a href="trucks_html/X9-4X4-Dump-Truck.html">X9 4X4 Dump Truck</a></li>
+                          <li><a href="trucks_html/X9-Dump-Truck.html">X9 Dump Truck</a></li>
+                          <li><a href="trucks_html/X9-Fuel-Tanker-Truck.html">X9 Fuel Tanker Truck</a></li>
+                          <li><a href="trucks_html/X9-Garbage-Truck.html">X9 Garbage Truck</a></li>
+                          <li><a href="trucks_html/X9-Refrigerated-Truck.html">X9 Refrigerated Truck</a></li>
+                          <li><a href="trucks_html/X9-Tow-Truck-Modern-BW.html">X9 Tow Truck Modern BW</a></li>
+                          <li><a href="trucks_html/X9-Van-Truck.html">X9 Van Truck</a></li>
+                        </ul>
+                      </li>
+                      <li>
+                        <a href="trucks.html#e9-series">E9 Series</a>
+                        <ul class="truck-links">
+                          <li><a href="trucks_html/E9-Dump-Truck.html">E9 Dump Truck</a></li>
+                          <li><a href="trucks_html/E9-Kitchen-Waste-Garbage-Truck.html">E9 Kitchen Waste Garbage Truck</a></li>
+                          <li><a href="trucks_html/E9-Van-Truck.html">E9 Van Truck</a></li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+                  
+                  <!-- MEDIUM DUTY TRUCKS -->
+                  <li>
+                    <a href="trucks.html#medium-duty">MEDIUM DUTY TRUCKS</a>
+                    <ul class="sub-dropdown">
+                      <li>
+                        <a href="trucks.html#e6-series">E6 Series</a>
+                        <ul class="truck-links">
+                          <li><a href="trucks_html/E6-Cement-Mixer-Truck.html">E6 Cement Mixer Truck</a></li>
+                          <li><a href="trucks_html/E6-Refrigerated-Truck.html">E6 Refrigerated Truck</a></li>
+                          <li><a href="trucks_html/E6-Sprinkler-Truck.html">E6 Sprinkler Truck</a></li>
+                          <li><a href="trucks_html/E6-Stake-Truck.html">E6 Stake Truck</a></li>
+                          <li><a href="trucks_html/E6-Truck-Mounted-Crane.html">E6 Truck Mounted Crane</a></li>
+                          <li><a href="trucks_html/E6-Van-Truck.html">E6 Van Truck</a></li>
+                        </ul>
+                      </li>
+                      <li>
+                        <a href="trucks.html#x6-series">X6 Series</a>
+                        <ul class="truck-links">
+                          <li><a href="trucks_html/X6-AWD-Cargo-Truck.html">X6 AWD Cargo Truck</a></li>
+                          <li><a href="trucks_html/X6-Cargo-Truck.html">X6 Cargo Truck</a></li>
+                          <li><a href="trucks_html/X6-Cement-Mixer-Truck.html">X6 Cement Mixer Truck</a></li>
+                          <li><a href="trucks_html/X6-Concrete-Mixer-Truck.html">X6 Concrete Mixer Truck</a></li>
+                          <li><a href="trucks_html/X6-Dropside-Truck.html">X6 Dropside Truck</a></li>
+                          <li><a href="trucks_html/X6-Dump-Truck.html">X6 Dump Truck</a></li>
+                          <li><a href="trucks_html/X6-Dust-Suppression-Truck.html">X6 Dust Suppression Truck</a></li>
+                          <li><a href="trucks_html/X6-Flatbed-Truck.html">X6 Flatbed Truck</a></li>
+                          <li><a href="trucks_html/X6-Fuel-Tanker-Truck.html">X6 Fuel Tanker Truck</a></li>
+                          <li><a href="trucks_html/X6-Garbage-Truck.html">X6 Garbage Truck</a></li>
+                          <li><a href="trucks_html/X6-Loading-Crane-Recovery-Truck.html">X6 Loading Crane Recovery Truck</a></li>
+                          <li><a href="trucks_html/X6-Sprinkler-Truck.html">X6 Sprinkler Truck</a></li>
+                          <li><a href="trucks_html/X6-Truck-Mounted-Crane.html">X6 Truck Mounted Crane</a></li>
+                          <li><a href="trucks_html/X6-Van-Truck.html">X6 Van Truck</a></li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+
+                  <!-- HEAVY DUTY TRUCKS -->
+                  <li>
+                    <a href="trucks.html#heavy-duty">HEAVY DUTY TRUCKS</a>
+                    <ul class="sub-dropdown">
+                      <li>
+                        <a href="trucks.html#e3-series">E3 Series</a>
+                        <ul class="truck-links">
+                          <li><a href="trucks_html/E3-Cement-Mixer-Truck.html">E3 Cement Mixer Truck</a></li>
+                          <li><a href="trucks_html/E3-Compactor-Garbage-Truck.html">E3 Compactor Garbage Truck</a></li>
+                          <li><a href="trucks_html/E3-Dump-Truck.html">E3 Dump Truck</a></li>
+                          <li><a href="trucks_html/E3-Muck-Truck.html">E3 Muck Truck</a></li>
+                          <li><a href="trucks_html/E3-Sewage-Suction-Truck.html">E3 Sewage Suction Truck</a></li>
+                          <li><a href="trucks_html/E3-Stake-Truck.html">E3 Stake Truck</a></li>
+                          <li><a href="trucks_html/E3-Tractor-Truck.html">E3 Tractor Truck</a></li>
+                          <li><a href="trucks_html/E3-Van-Truck.html">E3 Van Truck</a></li>
+                        </ul>
+                      </li>
+                      <li>
+                        <a href="trucks.html#9-series">9 Series</a>
+                        <ul class="truck-links">
+                          <li><a href="trucks_html/9-Series-Cement-Mixer-Truck.html">9 Series Cement Mixer Truck</a></li>
+                          <li><a href="trucks_html/9-Series-Garbage-Truck.html">9 Series Garbage Truck</a></li>
+                          <li><a href="trucks_html/9-Series-Sweeper.html">9 Series Sweeper</a></li>
+                          <li><a href="trucks_html/9-Series-Tow-Truck.html">9 Series Tow Truck</a></li>
+                          <li><a href="trucks_html/9-Series-Truck-Mounted-Crane.html">9 Series Truck Mounted Crane</a></li>
+                        </ul>
+                      </li>
+                      <li>
+                        <a href="trucks.html#6-series">6 Series</a>
+                        <ul class="truck-links">
+                          <li><a href="trucks_html/6-Series-Cement-Mixer-Truck.html">6 Series Cement Mixer Truck</a></li>
+                          <li><a href="trucks_html/6-Series-Garbage-Truck.html">6 Series Garbage Truck</a></li>
+                          <li><a href="trucks_html/6-Series-Sweeper.html">6 Series Sweeper</a></li>
+                          <li><a href="trucks_html/6-Series-Truck-Mounted-Crane.html">6 Series Truck Mounted Crane</a></li>
+                        </ul>
+                      </li>
+                      <li>
+                        <a href="trucks.html#other">Other Series</a>
+                        <ul class="truck-links">
+                          <li><a href="trucks_html/E1st-Tractor.html">E1st Tractor</a></li>
+                          <li><a href="trucks_html/i9-New-Series.html">i9 New Series</a></li>
+                          <li><a href="trucks_html/3-Series-Cement-Mixer-Truck.html">3 Series Cement Mixer Truck</a></li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            
+            <a href="about.html">About</a>
+            <a href="application.html">Application</a>
+            <button class="contact-btn" onclick="location.href='contact.html'">Contact Us</button>
+        </nav>
+    </header>
+
+    <!-- IMPORTANT: JavaScript to ensure header works -->
+    <script>
+    // IMPORTANT: Backup header activation - CRITICAL
+    setTimeout(function() {
+        const placeholder = document.getElementById('header-placeholder');
+        const backup = document.getElementById('backup-header');
+        
+        // If placeholder is empty after 2 seconds, show backup
+        if (placeholder && (!placeholder.innerHTML || placeholder.innerHTML.trim() === '')) {
+            console.log('IMPORTANT: Activating backup header - JS loader failed');
+            backup.style.display = 'flex';
+            backup.style.position = 'fixed';
+            backup.style.top = '0';
+            backup.style.left = '0';
+            backup.style.width = '100%';
+            backup.style.height = '60px';
+            backup.style.background = '#000';
+            backup.style.alignItems = 'center';
+            backup.style.justifyContent = 'space-between';
+            backup.style.padding = '0 100px';
+            backup.style.color = '#fff';
+            backup.style.zIndex = '1000';
+            backup.style.boxShadow = '0 1px 2px rgba(255,255,255,0.05)';
+        } else {
+            console.log('IMPORTANT: JS header loaded successfully, hiding backup');
+            backup.style.display = 'none';
+        }
+    }, 2000);
+    </script>
+
     <div id="header-placeholder"></div>
 
 
