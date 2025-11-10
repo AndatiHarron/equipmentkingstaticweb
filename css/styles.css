@@ -161,24 +161,37 @@ header nav a:hover::after { width: 100%; }
     width: 100%; 
 }
 
-/* Dropdown base */
+/* MODERN GLASSMORPHISM DROPDOWN */
 .dropdown-menu {
     position: absolute;
-    top: 100%;
-    right: 0; /* start from right edge */
-    min-width: 220px;
+    top: calc(100% + 10px);
+    right: 0;
+    min-width: 240px;
     display: none;
     z-index: 1000;
-    border-radius: 2%;
-    padding: 2px 0;
-    background: rgba(255,255,255,0.85);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    border-radius: 16px;
+    padding: 12px 0;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    box-shadow: 
+        0 24px 48px rgba(0, 0, 0, 0.15),
+        0 8px 24px rgba(0, 0, 0, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.6),
+        0 1px 3px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    opacity: 0;
+    transform: translateY(-15px) scale(0.95);
+    transition: all 0.4s cubic-bezier(0.4, 0.0, 0.2, 1);
+    visibility: hidden;
 }
 
-/* Show dropdown on hover */
+/* Show dropdown with modern animation */
 .trucks-dropdown:hover .dropdown-menu {
     display: block;
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    visibility: visible;
 }
 
 /* List items */
@@ -187,54 +200,102 @@ header nav a:hover::after { width: 100%; }
     position: relative;
 }
 
-/* Links */
+/* MODERN LINK STYLING */
 .dropdown-menu li a {
     display: block;
-    padding: 6px 12px; /* compact spacing */
-    color: #000;
+    padding: 12px 18px;
+    color: #1d1d1f;
     text-decoration: none;
-    transition: background 0.2s, color 0.2s, text-decoration 0.2s;
-    white-space: nowrap; /* prevent wrapping */
+    font-weight: 500;
+    font-size: 14px;
+    border-radius: 8px;
+    margin: 0 8px;
+    transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+    white-space: nowrap;
+    position: relative;
+    overflow: hidden;
+}
+
+.dropdown-menu li a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transition: left 0.6s;
 }
 
 .dropdown-menu li a:hover {
-    background: rgba(0,0,0,0.1);
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.05));
     color: #000;
-    text-decoration: underline;
+    transform: translateX(4px);
+    box-shadow: 
+        0 4px 12px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
-/* Sub-dropdown (series) - expand left */
+.dropdown-menu li a:hover::before {
+    left: 100%;
+}
+
+/* SUB-DROPDOWN WITH MODERN ANIMATIONS */
 .sub-dropdown {
     display: none;
     position: absolute;
-    top: 0;
-    right: 100%; /* expand to left */
-    min-width: 220px;
-    border-radius: 2%;
-    padding: 2px 0;
-    background: rgba(255,255,255,0.85);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    top: -8px;
+    right: calc(100% + 8px);
+    min-width: 240px;
+    border-radius: 12px;
+    padding: 8px 0;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 
+        0 16px 32px rgba(0, 0, 0, 0.12),
+        0 4px 16px rgba(0, 0, 0, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.3);
     list-style: none;
+    opacity: 0;
+    transform: translateX(10px) scale(0.95);
+    transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+    visibility: hidden;
+    z-index: 1001;
 }
 
 .dropdown-menu li:hover > .sub-dropdown {
     display: block;
+    opacity: 1;
+    transform: translateX(0) scale(1);
+    visibility: visible;
 }
 
-/* Truck links (sub-sub-dropdown) - expand further left */
+/* TRUCK LINKS - DEEPEST LEVEL DROPDOWN */
 .truck-links {
     display: none;
     position: absolute;
-    top: 0;
-    right: 100%; /* expand left */
-    min-width: 250px;
-    border-radius: 2%;
-    padding: 2px 0;
-    background: rgba(255,255,255,0.85);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    top: -4px;
+    right: calc(100% + 8px);
+    min-width: 280px;
+    max-width: 320px;
+    border-radius: 12px;
+    padding: 8px 0;
+    background: rgba(255, 255, 255, 0.99);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.15),
+        0 6px 20px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.4);
     list-style: none;
+    opacity: 0;
+    transform: translateX(15px) scale(0.9);
+    transition: all 0.35s cubic-bezier(0.4, 0.0, 0.2, 1);
+    visibility: hidden;
+    z-index: 1002;
 }
 
 .sub-dropdown li:hover > .truck-links {
@@ -253,21 +314,53 @@ header nav a:hover::after { width: 100%; }
     padding: 0;
 }
 
+/* MODERN CONTACT BUTTON WITH GLASSMORPHISM */
 .contact-btn {
-  background: #fff;
+  background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
   color: #000;
-  border: none;
-  border-radius: 22px;
-  padding: 8px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 24px;
+  padding: 10px 24px;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
-  transition: all .3s ease;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0.0, 0.2, 1);
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }
+
+.contact-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+  transition: left 0.6s;
+}
+
 .contact-btn:hover {
-  background: #000;
+  background: linear-gradient(135deg, #000 0%, #1a1a1a 100%);
   color: #fff;
-  border: 1px solid #fff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 
+    0 8px 24px rgba(0, 0, 0, 0.2),
+    0 4px 8px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.contact-btn:hover::before {
+  left: 100%;
+}
+
+.contact-btn:active {
+  transform: translateY(0);
+  transition: transform 0.1s;
 }
 
 
@@ -1413,12 +1506,162 @@ footer a:hover {
   transition: opacity 0.3s ease;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
+/* =============================================== */
+/* COMPREHENSIVE RESPONSIVE DESIGN SYSTEM */
+/* =============================================== */
+
+/* Base styles are mobile-first (320px+) */
+
+/* MOBILE HAMBURGER MENU (always hidden on desktop) */
+.mobile-menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 10px;
+  transition: transform 0.3s ease;
+}
+
+.mobile-menu-toggle:hover {
+  transform: scale(1.1);
+}
+
+/* MOBILE PHONES: 320px - 768px */
+@media (max-width: 767px) {
+  /* HEADER MOBILE */
+  header {
+    padding: 0 15px;
+    height: 50px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  header .logo {
+    font-size: 16px;
+  }
+  
+  header .logo img {
+    width: 25px;
+    height: 25px;
+  }
+  
+  /* NAVIGATION MOBILE */
+  nav {
+    display: none; /* Will be replaced with mobile menu */
+    position: fixed;
+    top: 50px;
+    left: 0;
+    width: 100%;
+    background: #000;
+    flex-direction: column;
+    padding: 20px;
+    z-index: 999;
+  }
+  
+  nav.mobile-open {
+    display: flex;
+  }
+  
+  nav a {
+    padding: 15px 0;
+    border-bottom: 1px solid #333;
+    text-align: left;
+  }
+  
+  /* MOBILE HAMBURGER MENU */
+  .mobile-menu-toggle {
+    display: block;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 10px;
+  }
+  
+  /* HERO SECTION MOBILE */
+  section.hero {
+    margin-top: 50px;
+    height: 70vh;
+    padding: 20px;
+  }
+  
+  section.hero h1 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+  }
+  
+  section.hero p {
+    font-size: 1rem;
+    margin-bottom: 25px;
+    padding: 0 10px;
+  }
+  
+  section.hero button {
+    padding: 12px 30px;
+    font-size: 16px;
+  }
+  
+  /* HERO CONTROLS MOBILE */
+  .hero-btn {
+    font-size: 1.5rem;
+    padding: 8px 12px;
+  }
+  
+  /* TABS SECTION MOBILE */
+  .tabs {
+    padding: 40px 15px;
+  }
+  
+  .tabs h2 {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+  }
+  
+  #vehicleTabs {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .tab-btn {
+    flex: 1 1 calc(50% - 5px);
+    min-width: 140px;
+    padding: 12px 8px;
+    font-size: 14px;
+  }
+  
+  /* GALLERY MOBILE */
+  .gallery {
+    padding: 40px 15px;
+  }
+  
+  .gallery h2 {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+  }
+  
+  .gallery-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+  }
+  
+  .gallery-card {
+    min-height: 120px;
+  }
+  
+  .gallery-card span {
+    font-size: 14px;
+    padding: 8px;
+  }
+  
+  /* TRUCK DETAILS MOBILE */
   .hero-container {
     grid-template-columns: 1fr;
-    gap: 30px;
+    gap: 20px;
     text-align: center;
+    padding: 20px 15px;
   }
   
   .breadcrumb,
@@ -1428,28 +1671,178 @@ footer a:hover {
   }
   
   .truck-title {
-    font-size: 2.2rem;
+    font-size: 1.8rem;
   }
   
   .details-grid {
     grid-template-columns: 1fr;
-    gap: 30px;
+    gap: 20px;
   }
   
   .detail-section {
-    padding: 20px;
+    padding: 15px;
   }
   
-  .detail-section h2 {
+  /* TRUCKS GRID MOBILE */
+  .trucks-container {
+    padding: 20px 15px;
+  }
+  
+  .truck-tile {
+    min-height: 200px;
+  }
+  
+  .truck-tile h3 {
+    font-size: 1rem;
+  }
+  
+  /* FOOTER MOBILE */
+  footer {
+    padding: 30px 15px;
+  }
+  
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 30px;
     text-align: center;
   }
   
-  .gallery-thumbnails {
+  .footer-bottom {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+  
+  /* CONTROLS MOBILE */
+  .controls-container {
+    flex-direction: column;
+    gap: 15px;
+    padding: 0 15px;
+  }
+  
+  .category-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
     justify-content: center;
   }
   
-  .gallery-thumbnail {
-    width: 60px;
-    height: 45px;
+  .category-buttons button {
+    flex: 1 1 calc(50% - 4px);
+    min-width: 120px;
+    padding: 10px 8px;
+    font-size: 12px;
+  }
+}
+
+/* TABLETS: 768px - 1024px */
+@media (min-width: 768px) and (max-width: 1023px) {
+  /* HEADER TABLET */
+  header {
+    padding: 0 40px;
+  }
+  
+  header .logo {
+    font-size: 17px;
+  }
+  
+  /* NAVIGATION TABLET */
+  nav a {
+    margin: 0 15px;
+    font-size: 14px;
+  }
+  
+  /* TRUCKS DROPDOWN TABLET */
+  .trucks-dropdown .dropdown-menu {
+    max-width: 90vw;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  /* HERO SECTION TABLET */
+  section.hero h1 {
+    font-size: 2.5rem;
+  }
+  
+  section.hero p {
+    font-size: 1.1rem;
+  }
+  
+  /* TABS TABLET */
+  .tab-btn {
+    padding: 14px 20px;
+    font-size: 15px;
+  }
+  
+  /* GALLERY TABLET */
+  .gallery-grid {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+  }
+  
+  /* TRUCKS GRID TABLET */
+  .trucks-container {
+    padding: 30px 40px;
+  }
+  
+  /* FOOTER TABLET */
+  .footer-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+  }
+}
+
+/* DESKTOP: 1024px+ */
+@media (min-width: 1024px) {
+  /* Hide mobile menu toggle on desktop */
+  .mobile-menu-toggle {
+    display: none;
+  }
+  
+  /* Ensure nav is always visible on desktop */
+  nav {
+    display: flex !important;
+  }
+}
+
+/* LARGE SCREENS: 1400px+ */
+@media (min-width: 1400px) {
+  header {
+    padding: 0 120px;
+  }
+  
+  .gallery,
+  .tabs,
+  .trucks-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+}
+
+/* TOUCH DEVICE OPTIMIZATIONS */
+@media (hover: none) and (pointer: coarse) {
+  /* Larger touch targets for mobile */
+  button,
+  .tab-btn,
+  .truck-tile,
+  .gallery-card {
+    min-height: 44px;
+  }
+  
+  /* Remove hover effects on touch devices */
+  .truck-tile:hover,
+  .gallery-card:hover,
+  .tab-btn:hover {
+    transform: none;
+  }
+  
+  /* Add touch feedback */
+  .truck-tile:active,
+  .gallery-card:active,
+  .tab-btn:active {
+    transform: scale(0.98);
+    transition: transform 0.1s ease;
   }
 }

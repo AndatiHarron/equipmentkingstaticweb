@@ -7,7 +7,12 @@
     </div>
   </a>
 
-  <nav>
+  <!-- Mobile Menu Toggle -->
+  <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle Menu">
+    ☰
+  </button>
+
+  <nav id="main-nav">
     <a href="{{BASE_PATH}}index.html">Home</a>
     
     <!-- Trucks Dropdown -->
@@ -167,21 +172,58 @@
 
 <!-- Header JavaScript -->
 <script>
-// Trucks dropdown hover functionality
+// Mobile Menu Toggle Function
+function toggleMobileMenu() {
+    const nav = document.getElementById('main-nav');
+    nav.classList.toggle('mobile-open');
+    
+    // Update hamburger icon
+    const toggle = document.querySelector('.mobile-menu-toggle');
+    toggle.textContent = nav.classList.contains('mobile-open') ? '✕' : '☰';
+}
+
+// Close mobile menu when clicking on a link
+document.addEventListener('click', function(e) {
+    const nav = document.getElementById('main-nav');
+    const toggle = document.querySelector('.mobile-menu-toggle');
+    
+    if (nav && nav.classList.contains('mobile-open') && 
+        !toggle.contains(e.target) && !nav.contains(e.target)) {
+        nav.classList.remove('mobile-open');
+        toggle.textContent = '☰';
+    }
+});
+
+// Trucks dropdown functionality (desktop)
 const trucksDropdown = document.querySelector('.trucks-dropdown');
 if (trucksDropdown) {
     const dropdownMenu = trucksDropdown.querySelector('.dropdown-menu');
     let hoverTimeout;
 
-    trucksDropdown.addEventListener('mouseenter', () => {
-        clearTimeout(hoverTimeout);
-        dropdownMenu.style.display = 'block';
-    });
+    // Only enable hover on desktop
+    if (window.innerWidth >= 768) {
+        trucksDropdown.addEventListener('mouseenter', () => {
+            clearTimeout(hoverTimeout);
+            dropdownMenu.style.display = 'block';
+        });
 
-    trucksDropdown.addEventListener('mouseleave', () => {
-        hoverTimeout = setTimeout(() => {
-            dropdownMenu.style.display = 'none';
-        }, 300); // 300ms delay before hiding
-    });
+        trucksDropdown.addEventListener('mouseleave', () => {
+            hoverTimeout = setTimeout(() => {
+                dropdownMenu.style.display = 'none';
+            }, 300);
+        });
+    }
 }
+
+// Handle window resize for responsive behavior
+window.addEventListener('resize', function() {
+    const nav = document.getElementById('main-nav');
+    const toggle = document.querySelector('.mobile-menu-toggle');
+    
+    if (window.innerWidth >= 768) {
+        // Desktop mode - ensure nav is visible
+        nav.classList.remove('mobile-open');
+        toggle.textContent = '☰';
+    }
+});
 </script>
