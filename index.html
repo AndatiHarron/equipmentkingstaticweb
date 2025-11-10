@@ -161,6 +161,7 @@
   // Update footer year automatically
   document.getElementById('year').textContent = new Date().getFullYear();
 
+  // Vehicle Categories Tab Data (EXACT from original)
   const tabData = {
     light:[
       {img:'assets/E( Van truck.webp',name:'E9 Van Truck',features:['Car-like display & modern cabin','Hydraulic power braking system','Tight turning diameter for city use']},
@@ -197,6 +198,7 @@
     ]
   };
 
+  // Vehicle Categories Show Tab Function (EXACT from original)
   function showTab(type, btn){
     document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
     btn.classList.add('active');
@@ -215,6 +217,14 @@
       content.style.opacity=1;
     },300);
   }
+
+  // Initialize with light category on page load
+  setTimeout(() => {
+    const lightBtn = document.querySelector('.tab-btn.active');
+    if (lightBtn && tabData.light) {
+      showTab('light', lightBtn);
+    }
+  }, 100);
 
 // Trucks dropdown hover functionality
 const trucksDropdown = document.querySelector('.trucks-dropdown');
