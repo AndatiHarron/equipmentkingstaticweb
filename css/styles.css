@@ -188,10 +188,19 @@ header nav a:hover::after { width: 100%; }
 }
 
 /* Show dropdown with enhanced animation */
-.dropdown-menu.show {
+.dropdown-menu.show,
+.trucks-dropdown:hover .dropdown-menu {
     opacity: 1;
     transform: translateY(0) scale(1);
     visibility: visible;
+}
+
+/* Enhanced hiding animation with delay */
+.dropdown-menu.hiding {
+    transition-delay: 0.5s;
+    opacity: 0;
+    transform: translateY(-15px) scale(0.95);
+    visibility: hidden;
 }
 
 /* List items */

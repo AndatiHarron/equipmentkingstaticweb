@@ -194,53 +194,43 @@ document.addEventListener('click', function(e) {
     }
 });
 
-// Trucks dropdown functionality (desktop) with proper hover delays
+// Trucks dropdown functionality (desktop) - Let CSS handle basic hover, JS adds delays
 const trucksDropdown = document.querySelector('.trucks-dropdown');
 if (trucksDropdown) {
     const dropdownMenu = trucksDropdown.querySelector('.dropdown-menu');
-    let enterTimeout;
-    let leaveTimeout;
+    let hoverTimeout;
 
-    // Only enable hover on desktop
+    // Only add enhanced timing on desktop (CSS hover works as base)
     if (window.innerWidth >= 768) {
-        trucksDropdown.addEventListener('mouseenter', () => {
-            clearTimeout(leaveTimeout);
-            // Add small delay before showing to prevent accidental triggers
-            enterTimeout = setTimeout(() => {
-                dropdownMenu.style.display = 'block';
+        // Add longer delay before hiding to allow navigation to submenu
+        trucksDropdown.addEventListener('mouseleave', () => {
+            hoverTimeout = setTimeout(() => {
+                // Add a class to trigger enhanced hiding animation
+                dropdownMenu.classList.add('hiding');
                 setTimeout(() => {
-                    dropdownMenu.classList.add('show');
-                }, 10);
-            }, 150);
+                    dropdownMenu.classList.remove('hiding');
+                }, 500);
+            }, 500);
         });
 
-        trucksDropdown.addEventListener('mouseleave', () => {
-            clearTimeout(enterTimeout);
-            // Longer delay before hiding to allow navigation to submenu
-            leaveTimeout = setTimeout(() => {
-                dropdownMenu.classList.remove('show');
-                setTimeout(() => {
-                    if (!dropdownMenu.classList.contains('show')) {
-                        dropdownMenu.style.display = 'none';
-                    }
-                }, 400);
-            }, 500);
+        trucksDropdown.addEventListener('mouseenter', () => {
+            clearTimeout(hoverTimeout);
+            dropdownMenu.classList.remove('hiding');
         });
 
         // Keep dropdown open when hovering over it
         dropdownMenu.addEventListener('mouseenter', () => {
-            clearTimeout(leaveTimeout);
+            clearTimeout(hoverTimeout);
+            dropdownMenu.classList.remove('hiding');
         });
 
         dropdownMenu.addEventListener('mouseleave', () => {
-            leaveTimeout = setTimeout(() => {
-                dropdownMenu.classList.remove('show');
+            hoverTimeout = setTimeout(() => {
+                dropdownMenu.classList.add('hiding');
                 setTimeout(() => {
-                    if (!dropdownMenu.classList.contains('show')) {
-                        dropdownMenu.style.display = 'none';
-                    }
-                }, 400);
-            }, 200);
+                    dropdownMenu.classList.remove('hiding');
+                }, 500);
+            }, 300);
         });
     }
 }
