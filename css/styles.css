@@ -214,22 +214,6 @@ header nav a:hover::after { width: 100%; }
     visibility: visible;
 }
 
-/* IMPORTANT: Enhanced dropdown visibility - CRITICAL FIX */
-.trucks-dropdown .dropdown-menu {
-    display: none !important;
-    position: absolute !important;
-    z-index: 9999 !important;
-}
-
-/* IMPORTANT: Force hover to work - CRITICAL */
-.trucks-dropdown:hover .dropdown-menu,
-.trucks-dropdown .dropdown-menu.show {
-    display: block !important;
-    opacity: 1 !important;
-    transform: translateY(0) scale(1) !important;
-    visibility: visible !important;
-}
-
 /* Enhanced hiding animation with delay */
 .dropdown-menu.hiding {
     transition-delay: 0.5s;
@@ -1007,23 +991,29 @@ footer a:hover {
     color:#fff;
   }
 
+  /* IMPORTANT: Vehicle Categories Tab Content */
   #tabContent {
-    max-width:100%;
-    margin:60px auto 0;
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-    gap:35px;
-    opacity:1;
-    transition:opacity .5s ease;
+    max-width:100% !important;
+    margin:60px auto 0 !important;
+    display:grid !important;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr)) !important;
+    gap:35px !important;
+    opacity:1 !important;
+    transition:opacity .5s ease !important;
+    visibility: visible !important;
+    z-index: 1 !important;
   }
 
+  /* IMPORTANT: Vehicle Card Styling */
   .vehicle-card {
-    background:#fff;
-    border-radius:5px;
-    box-shadow:0 10px 25px rgba(0,0,0,0.08);
-    overflow:hidden;
-    transform:scale(1);
-    transition:all .3s ease;
+    background:#fff !important;
+    border-radius:5px !important;
+    box-shadow:0 10px 25px rgba(0,0,0,0.08) !important;
+    overflow:hidden !important;
+    transform:scale(1) !important;
+    transition:all .3s ease !important;
+    display: block !important;
+    visibility: visible !important;
   }
   .vehicle-card:hover {
     transform:translateY(-6px) scale(1.03);
@@ -1958,140 +1948,4 @@ footer a:hover {
     transform: scale(0.98);
     transition: transform 0.1s ease;
   }
-}
-
-/* IMPORTANT: Vehicle Category Dropdown with Original Styling */
-.category-dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.category-dropdown-menu {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    width: 100vw;
-    margin-left: calc(-50vw + 50%);
-    background: #fff;
-    z-index: 9999;
-    padding: 35px;
-    pointer-events: none;
-    /* ORIGINAL STYLING: Use exact grid layout from original */
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 35px;
-}
-
-/* IMPORTANT: Category dropdown hover activation - SIMPLE */
-.category-dropdown:hover .category-dropdown-menu {
-    display: grid !important;
-    pointer-events: auto !important;
-    z-index: 9999 !important;
-}
-
-/* IMPORTANT: SIMPLE Vehicle Card Styling */
-.category-dropdown-menu .vehicle-card {
-    background: #fff;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    overflow: hidden;
-    cursor: pointer;
-}
-
-.category-dropdown-menu .vehicle-card:hover {
-    border-color: #999;
-}
-
-.category-dropdown-menu .vehicle-card img {
-    width: 100%;
-    height: 260px;
-    object-fit: cover;
-}
-
-.category-dropdown-menu .card-content {
-    padding: 22px 24px;
-    text-align: left;
-}
-
-.category-dropdown-menu .card-content h3 {
-    font-size: 22px;
-    font-weight: 600;
-    margin: 15px 0 10px;
-    color: #1d1d1f;
-}
-
-.category-dropdown-menu .card-content ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    color: #555;
-    font-size: 15.5px;
-    line-height: 1.7;
-}
-
-.category-dropdown-menu .card-content li {
-    margin: 0;
-}
-
-/* IMPORTANT: Legacy category section styles (for backward compatibility) */
-.category-section {
-    margin-bottom: 15px;
-}
-
-.category-section:last-child {
-    margin-bottom: 0;
-}
-
-.category-section h4 {
-    color: #2c5aa0;
-    font-size: 14px;
-    font-weight: 600;
-    margin: 0 0 8px 0;
-    padding-bottom: 5px;
-    border-bottom: 1px solid rgba(44, 90, 160, 0.2);
-}
-
-.category-section a {
-    display: block;
-    color: #333;
-    text-decoration: none;
-    padding: 4px 8px;
-    border-radius: 6px;
-    font-size: 13px;
-    transition: all 0.2s ease;
-    margin: 2px 0;
-}
-
-.category-section a:hover {
-    background: rgba(44, 90, 160, 0.1);
-    color: #2c5aa0;
-    transform: translateX(5px);
-}
-
-/* IMPORTANT: Mobile responsiveness for category dropdowns */
-@media (max-width: 768px) {
-    .category-dropdown-menu {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        min-width: 280px;
-        max-width: 90vw;
-        max-height: 80vh;
-        overflow-y: auto;
-    }
-    
-    .category-dropdown:hover .category-dropdown-menu {
-        transform: translate(-50%, -50%) !important;
-    }
-}
-
-/* IMPORTANT: Force category dropdown visibility for debugging */
-.category-dropdown-menu.force-visible {
-    display: block !important;
-    opacity: 1 !important;
-    visibility: visible !important;
-    background-color: rgba(255, 255, 255, 0.95) !important;
 }
