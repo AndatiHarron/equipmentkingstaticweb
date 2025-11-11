@@ -25,7 +25,7 @@
   height: 120px;
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 700%;
+  background-size: 250%;
   pointer-events: none;
   display: none;
   z-index: 20;
@@ -595,7 +595,7 @@
       opacity: 0;
       z-index: 1000;
       background-repeat: no-repeat;
-      background-size: 300% 300%;
+      background-size: 250% 250%;
       
       /* Visual enhancements */
       border: 3px solid rgba(73, 80, 87, 0.8);
@@ -2019,19 +2019,20 @@
       // Create a mapping from truck names to their individual HTML file names
       const truckPageMapping = {
         // E3 Series (8 trucks)
-        'E3 Cement Mixer Truck': 'trucks_html/E3-Cement-Mixer-Truck.html',
-        'E3 Compactor Garbage Truck': 'trucks_html/E3-Compactor-Garbage-Truck.html',
-        'E3 Dump Truck': 'trucks_html/E3-Dump-Truck.html',
-        'E3 Muck Truck': 'trucks_html/E3-Muck-Truck.html',
-        'E3 Sewage Suction Truck': 'trucks_html/E3-Sewage-Suction-Truck.html',
-        'E3 Stake Truck': 'trucks_html/E3-Stake-Truck.html',
-        'E3 Tractor Truck': 'trucks_html/E3-Tractor-Truck.html',
-        'E3 Van Truck': 'trucks_html/E3-Van-Truck.html',
+        'E3 muck truck': 'trucks_html/E3-Muck-Truck.html',
+        'E3 Tractor truck': 'trucks_html/E3-Tractor-Truck.html',
+        'E3 vantruck.': 'trucks_html/E3-Van-Truck.html',
+        'E3 Dumptruck.': 'trucks_html/E3-Dump-Truck.html',
+        'E3 Cement mixertruck.': 'trucks_html/E3-Cement-Mixer-Truck.html',
+        'E3 compactor Garbage Track.': 'trucks_html/E3-Compactor-Garbage-Truck.html',
+        'E3 Stake truck.': 'trucks_html/E3-Stake-Truck.html',
+        'E3 sewage suction truck.': 'trucks_html/E3-Sewage-Suction-Truck.html',
 
-        // E9 Series (3 trucks)
+        // E9 Series (4 trucks)
+        'E9 Refrigerated Truck': 'trucks_html/E9-Refrigerated-Truck.html',
         'E9 Dump Truck': 'trucks_html/E9-Dump-Truck.html',
-        'E9 Kitchen Waste Food Garbage Truck': 'trucks_html/E9-Kitchen-Waste-Garbage-Truck.html',
         'E9 Van Truck': 'trucks_html/E9-Van-Truck.html',
+        'E9 Kitchen Waste Garbage Truck': 'trucks_html/E9-Kitchen-Waste-Garbage-Truck.html',
 
         // X7 Series (5 trucks)
         'X7 Concrete Mixer Truck': 'trucks_html/X7-Concrete-Mixer-Truck.html',
@@ -2040,33 +2041,35 @@
         'X7 Sprinkler Truck': 'trucks_html/X7-Sprinkler-Truck.html',
         'X7 Truck Mounted Crane': 'trucks_html/X7-Truck-Mounted-Crane.html',
 
-        // X9 Series (7 trucks)
-        '4X4 Dump Truck': 'trucks_html/X9-4X4-Dump-Truck.html',
+        // X9 Series (8 trucks)
+        'X9 Tow Truck': 'trucks_html/X9-Tow-Truck-Modern-BW.html',
+        'X9 Aerial Work Platform Truck': 'trucks_html/X9-Aerial-Platform-Truck.html',
+        'X9 4X4 Dump Truck': 'trucks_html/X9-4X4-Dump-Truck.html',
         'X9 Dump Truck': 'trucks_html/X9-Dump-Truck.html',
+        'X9 Van Truck': 'trucks_html/X9-Van-Truck.html',
         'X9 Fuel Tanker Truck': 'trucks_html/X9-Fuel-Tanker-Truck.html',
         'X9 Garbage Truck': 'trucks_html/X9-Garbage-Truck.html',
         'X9 Refrigerated Truck': 'trucks_html/X9-Refrigerated-Truck.html',
-        'X9 Tow Truck': 'trucks_html/X9-Tow-Truck-Modern-BW.html',
-        'X9 Van Truck': 'trucks_html/X9-Van-Truck.html',
 
-        // E6 Series (6 trucks)
-        'E6 Cement Mixer Truck': 'trucks_html/E6-Cement-Mixer-Truck.html',
+        // E6 Series (7 trucks)
+        'E6 Dump Truck': 'trucks_html/E6-Dump-Truck.html',
+        'E6 Stake Truck': 'trucks_html/E6-Stake-Truck.html',
+        'E6 Van Truck': 'trucks_html/E6-Van-Truck.html',
         'E6 Refrigerated Truck': 'trucks_html/E6-Refrigerated-Truck.html',
         'E6 Sprinkler Truck': 'trucks_html/E6-Sprinkler-Truck.html',
-        'E6 Stake Truck': 'trucks_html/E6-Stake-Truck.html',
         'E6 Truck Mounted Crane': 'trucks_html/E6-Truck-Mounted-Crane.html',
-        'E6 Van Truck': 'trucks_html/E6-Van-Truck.html',
+        'E6 Cement Mixer Truck': 'trucks_html/E6-Cement-Mixer-Truck.html',
 
         // X6 Series (14 trucks)
         'X6 AWD Cargo Truck': 'trucks_html/X6-AWD-Cargo-Truck.html',
         'X6 Cargo Truck': 'trucks_html/X6-Cargo-Truck.html',
         'X6 Cement Mixer Truck': 'trucks_html/X6-Cement-Mixer-Truck.html',
         'X6 Concrete Mixer Truck': 'trucks_html/X6-Concrete-Mixer-Truck.html',
-        'X6 Drop Side Truck': 'trucks_html/X6-Dropside-Truck.html',
+        'X6 Dropside Truck': 'trucks_html/X6-Dropside-Truck.html',
         'X6 Dump Truck': 'trucks_html/X6-Dump-Truck.html',
         'X6 Dust Suppression Truck': 'trucks_html/X6-Dust-Suppression-Truck.html',
         'X6 Flatbed Truck': 'trucks_html/X6-Flatbed-Truck.html',
-        'X6 Fuel Tanker': 'trucks_html/X6-Fuel-Tanker-Truck.html',
+        'X6 Fuel Tanker Truck': 'trucks_html/X6-Fuel-Tanker-Truck.html',
         'X6 Garbage Truck': 'trucks_html/X6-Garbage-Truck.html',
         'X6 Loading Crane Recovery Truck': 'trucks_html/X6-Loading-Crane-Recovery-Truck.html',
         'X6 Sprinkler Truck': 'trucks_html/X6-Sprinkler-Truck.html',
@@ -2074,24 +2077,25 @@
         'X6 Van Truck': 'trucks_html/X6-Van-Truck.html',
 
         // 3 Series (1 truck)
-        '3 Series Truck Mounted Crane': 'trucks_html/3-Series-Cement-Mixer-Truck.html',
+        '3 Series Cement Mixer Truck': 'trucks_html/3-Series-Cement-Mixer-Truck.html',
 
         // 6 Series (4 trucks)
-        '6 Series Cement Mixer Truck': 'trucks_html/6-Series-Cement-Mixer-Truck.html',
+        '6 series sweeper': 'trucks_html/6-Series-Sweeper.html',
         '6 Series Garbage Truck': 'trucks_html/6-Series-Garbage-Truck.html',
-        '6 Series Sweeper': 'trucks_html/6-Series-Sweeper.html',
-        '6 Series Truck Mounted Crane': 'trucks_html/6-Series-Truck-Mounted-Crane.html',
+        '6 Series truckmounted Crane': 'trucks_html/6-Series-Truck-Mounted-Crane.html',
+        '6 series cement mixer truck': 'trucks_html/6-Series-Cement-Mixer-Truck.html',
 
         // 9 Series (5 trucks)
-        '9 Series Cement Mixer Truck': 'trucks_html/9-Series-Cement-Mixer-Truck.html',
-        '9 Series Garbage Truck': 'trucks_html/9-Series-Garbage-Truck.html',
-        '9 Series Sweeper': 'trucks_html/9-Series-Sweeper.html',
-        '9 Series Tow Truck': 'trucks_html/9-Series-Tow-Truck.html',
-        '9 Series Truck Mounted Crane': 'trucks_html/9-Series-Truck-Mounted-Crane.html',
+        '9 series sweeper': 'trucks_html/9-Series-Sweeper.html',
+        '9 series Garbage Truck': 'trucks_html/9-Series-Garbage-Truck.html',
+        '9 series Tow Truck': 'trucks_html/9-Series-Tow-Truck.html',
+        '9 series Truckmounted crane': 'trucks_html/9-Series-Truck-Mounted-Crane.html',
+        '9series cement mixer truck': 'trucks_html/9-Series-Cement-Mixer-Truck.html',
 
-        // Other Series (2 trucks)
-        'E1st Truck': 'trucks_html/E1st-Tractor.html',
-        'i9 Truck': 'trucks_html/i9-New-Series.html'
+        // Other Series (3 trucks)
+        'Z3 Dump Truck': 'trucks_html/Z3-Dump-Truck.html',
+        'E1st Tractor': 'trucks_html/E1st-Tractor.html',
+        'i9 (New Series)': 'trucks_html/i9-New-Series.html'
       };
 
       // Return the mapped URL or default to main trucks page
@@ -2124,14 +2128,26 @@
               <p class="desc"></p>
             </div>
             <div class="ek-info-section">
-              <h4>Specifications</h4>
+              <h4>Technical Specifications</h4>
               <div class="specs">
-                <ul class="ek-spec-list"></ul>
+                <div style="overflow-x: auto;">
+                  <table class="ek-spec-table" style="width: 100%; border-collapse: collapse; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);">
+                    <thead>
+                      <tr style="background: linear-gradient(135deg, #444, #666); color: white;">
+                        <th style="padding: 12px 16px; text-align: left; font-size: 0.95em; font-weight: 700;">Specification</th>
+                        <th style="padding: 12px 16px; text-align: left; font-size: 0.95em; font-weight: 700;">Value</th>
+                      </tr>
+                    </thead>
+                    <tbody class="ek-spec-tbody">
+                      <!-- Specifications will be inserted here -->
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
             <div class="ek-action-buttons">
               <a href="#" class="ek-btn primary" id="viewFullDetailsBtn">
-                📄 View Full Details
+                 View Full Details
               </a>
               <button class="ek-btn outline" id="popupCloseBtn">
                 ✕ Close
@@ -2152,7 +2168,7 @@
     const popupTitle = popupOverlay.querySelector('.ek-popup-title');
     const popupRole = popupOverlay.querySelector('.role');
     const popupDesc = popupOverlay.querySelector('.desc');
-    const specList = popupOverlay.querySelector('.ek-spec-list');
+    const specTbody = popupOverlay.querySelector('.ek-spec-tbody');
     const viewFullDetailsBtn = popupOverlay.querySelector('#viewFullDetailsBtn');
 
     // Magnifier functionality (mouse and touch)
@@ -2221,7 +2237,7 @@
         // Set magnifier background to show zoomed portion
         magnifier.style.backgroundImage = `url(${mainImg.src})`;
         magnifier.style.backgroundPosition = `${xPercent}% ${yPercent}%`;
-        magnifier.style.backgroundSize = `${imgRect.width * 4}px ${imgRect.height * 4}px`;
+        magnifier.style.backgroundSize = `${imgRect.width * 2.5}px ${imgRect.height * 2.5}px`;
       }
       
       // Throttled handler using requestAnimationFrame for performance
@@ -2315,12 +2331,21 @@
         popupRole.textContent = details.role;
         popupDesc.textContent = details.desc;
 
-        // build specs list
-        specList.innerHTML = '';
+        // build specs table
+        const specTbody = popupOverlay.querySelector('.ek-spec-tbody');
+        specTbody.innerHTML = '';
+        let rowIndex = 0;
         for (let key in details.specs) {
-          const li = document.createElement('li');
-          li.innerHTML = `<span class="ek-spec-key">${key}:</span> ${details.specs[key]}`;
-          specList.appendChild(li);
+          const tr = document.createElement('tr');
+          const isEven = rowIndex % 2 === 0;
+          tr.style.background = isEven ? '#f8f9fa' : 'white';
+          tr.style.borderBottom = '1px solid #dee2e6';
+          tr.innerHTML = `
+            <td style="padding: 12px 16px; font-weight: 600; color: #495057; font-size: 0.9em;">${key}</td>
+            <td style="padding: 12px 16px; color: #212529; font-size: 0.9em;">${details.specs[key]}</td>
+          `;
+          specTbody.appendChild(tr);
+          rowIndex++;
         }
 
         // create thumbnails from mapping
@@ -2367,7 +2392,7 @@
             // Wait for image to load before calculating magnifier size
             mainImg.onload = () => {
               const imgRect = mainImg.getBoundingClientRect();
-              magnifier.style.backgroundSize = `${imgRect.width * 4}px ${imgRect.height * 4}px`;
+              magnifier.style.backgroundSize = `${imgRect.width * 2.5}px ${imgRect.height * 2.5}px`;
             };
           });
           thumbStrip.appendChild(thumb);
@@ -2379,7 +2404,7 @@
         mainImg.onload = () => {
           const imgRect = mainImg.getBoundingClientRect();
           magnifier.style.backgroundImage = `url(${images[0]})`;
-          magnifier.style.backgroundSize = `${imgRect.width * 4}px ${imgRect.height * 4}px`;
+          magnifier.style.backgroundSize = `${imgRect.width * 2.5}px ${imgRect.height * 2.5}px`;
         };
 
         // Set the truck page URL for "View Full Details" button
