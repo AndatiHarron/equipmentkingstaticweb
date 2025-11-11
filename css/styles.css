@@ -1922,31 +1922,64 @@ footer a:hover {
   
   /* HERO SECTION MOBILE */
   section.hero {
-    margin-top: 50px;
+    margin-top: 60px;
     height: 70vh;
-    padding: 20px;
+    padding: 20px 60px; /* Increased horizontal padding for buttons */
+    position: relative;
+    overflow: hidden;
   }
   
+  /* HERO CONTROLS MOBILE */
+  .hero-btn {
+    font-size: 1.1rem;
+    padding: 6px 10px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.6);
+  }
+  
+  .hero-btn.left {
+    left: 10px;
+  }
+  
+  .hero-btn.right {
+    right: 10px;
+  }
+  
+  /* Ensure hero content doesn't overlap buttons - add more padding */
   section.hero h1 {
     font-size: 2rem;
     margin-bottom: 15px;
+    position: relative;
+    z-index: 2;
+    padding: 0 50px; /* Add horizontal padding to avoid buttons */
+    max-width: 100%;
+    box-sizing: border-box;
   }
   
   section.hero p {
     font-size: 1rem;
     margin-bottom: 25px;
-    padding: 0 10px;
+    padding: 0 50px; /* Increased padding to avoid buttons */
+    position: relative;
+    z-index: 2;
+    max-width: 100%;
+    box-sizing: border-box;
   }
   
-  section.hero button {
+  section.hero button:not(.hero-btn) {
     padding: 12px 30px;
     font-size: 16px;
-  }
-  
-  /* HERO CONTROLS MOBILE */
-  .hero-btn {
-    font-size: 1.5rem;
-    padding: 8px 12px;
+    position: relative;
+    z-index: 2;
+    margin: 0 auto; /* Center the button */
   }
   
   /* TABS SECTION MOBILE */
