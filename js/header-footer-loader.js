@@ -179,7 +179,6 @@ const headerTemplate = `<!-- Universal Header Component -->
     </div>
     
     <a href="{{BASE_PATH}}about.html">About</a>
-    <a href="{{BASE_PATH}}application.html">Application</a>
 
     <button class="contact-btn" onclick="location.href='{{BASE_PATH}}contact.html'">Contact Us</button>
   </nav>
@@ -458,13 +457,12 @@ const footerTemplate = `<!-- Universal Footer Component -->
     </div>
 
     <div>
-      <h4>APPLICATIONS</h4>
+      <h4>NAVIGATION</h4>
       <ul>
-        <li><a href="#">Tractor</a></li>
-        <li><a href="#">Dump Truck</a></li>
-        <li><a href="#">Cargo Truck</a></li>
-        <li><a href="#special-vehicle">Special Vehicle</a></li>
-        <li><a href="#">Off-road Truck</a></li>
+        <li><a href="{{BASE_PATH}}index.html">Home</a></li>
+        <li><a href="{{BASE_PATH}}trucks.html">Trucks</a></li>
+        <li><a href="{{BASE_PATH}}about.html">About</a></li>
+        <li><a href="{{BASE_PATH}}contact.html">Contact Us</a></li>
       </ul>
     </div>
 
