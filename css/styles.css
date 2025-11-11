@@ -2303,3 +2303,68 @@ footer a:hover {
     transition: transform 0.1s ease;
   }
 }
+
+/* ——— FLOATING CONTACT BUTTONS ——— */
+.floating-buttons {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.floating-btn {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: white;
+  font-size: 24px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  border: none;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.whatsapp-btn {
+  background: rgba(37, 211, 102, 0.9);
+  border: 1px solid rgba(255,255,255,0.3);
+}
+
+.whatsapp-btn:hover {
+  background: rgba(37, 211, 102, 1);
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+}
+
+.lyro-btn {
+  background: rgba(74, 144, 226, 0.9);
+  border: 1px solid rgba(255,255,255,0.3);
+}
+
+.lyro-btn:hover {
+  background: rgba(74, 144, 226, 1);
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(74, 144, 226, 0.4);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .floating-buttons {
+    bottom: 15px;
+    right: 15px;
+  }
+  
+  .floating-btn {
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+  }
+}
