@@ -640,11 +640,14 @@
     @media (max-width: 599px) {
       .truck-grid {
         grid-template-columns: 1fr !important;
-        gap: 12px !important;
+        gap: 8px !important;
+        margin: 0 !important;
+        padding: 0 !important;
       }
       
       .truck-tile {
         margin: 0 !important;
+        width: 100% !important;
       }
       
       .truck-image img {
@@ -652,10 +655,23 @@
       }
     }
 
-    /* Main container responsive */
+    /* Main container responsive - Full width on mobile */
     @media (max-width: 768px) {
-      .container {
-        padding: 10px !important;
+      body {
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+      
+      .container, main, .content {
+        margin: 0 !important;
+        padding: 8px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+      }
+      
+      .series {
+        margin: 0 !important;
+        padding: 8px !important;
       }
       
       .series-title {
@@ -676,14 +692,57 @@
     }
 
     @media (max-width: 480px) {
+      /* Remove all margins and use full width */
+      * {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+      }
+      
+      body, html {
+        width: 100vw !important;
+        overflow-x: hidden !important;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+      
+      .container, main, section, div {
+        max-width: 100vw !important;
+        width: 100% !important;
+        padding-left: 4px !important;
+        padding-right: 4px !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        box-sizing: border-box !important;
+      }
+      
       .series-title {
         font-size: 1.2em !important;
+        padding: 8px 0 !important;
+        margin: 8px 0 !important;
+      }
+      
+      .category-buttons {
+        margin: 8px 0 !important;
+        padding: 0 !important;
       }
       
       .category-buttons button {
         font-size: 12px;
         padding: 6px 10px;
         min-width: 100px;
+        margin: 2px !important;
+      }
+      
+      .truck-grid {
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100% !important;
+      }
+      
+      .truck-tile {
+        margin: 0 !important;
+        padding: 8px !important;
+        width: calc(100% - 16px) !important;
       }
     }
 
@@ -695,9 +754,11 @@
       font-size: 24px;
       cursor: pointer;
       color: #333;
-      padding: 8px;
+      padding: 12px;
       border-radius: 4px;
       transition: background-color 0.3s ease;
+      z-index: 1001;
+      position: relative;
     }
 
     .mobile-menu-toggle:hover {
@@ -706,20 +767,37 @@
 
     @media (max-width: 768px) {
       .mobile-menu-toggle {
-        display: block;
+        display: block !important;
+        position: fixed;
+        top: 15px;
+        right: 15px;
+        z-index: 1002;
+        background: white;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        border-radius: 8px;
+        width: 48px;
+        height: 48px;
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+      }
+
+      header {
+        position: relative;
       }
 
       #main-nav {
         display: none;
-        position: absolute;
-        top: 100%;
+        position: fixed;
+        top: 0;
         left: 0;
         right: 0;
+        bottom: 0;
         background: white;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        z-index: 1000;
-        padding: 20px;
+        z-index: 1001;
+        padding: 80px 20px 20px 20px;
         flex-direction: column;
+        overflow-y: auto;
       }
 
       #main-nav.mobile-open {
@@ -2227,15 +2305,33 @@
 
     // Mobile menu functionality
     window.toggleMobileMenu = function() {
+      console.log('Toggle mobile menu clicked'); // Debug log
       const nav = document.getElementById('main-nav');
       const toggle = document.querySelector('.mobile-menu-toggle');
       
-      if (nav) {
+      if (nav && toggle) {
         nav.classList.toggle('mobile-open');
         // Update toggle icon
-        toggle.textContent = nav.classList.contains('mobile-open') ? '✕' : '☰';
+        if (nav.classList.contains('mobile-open')) {
+          toggle.innerHTML = '✕';
+          toggle.style.background = '#dc3545';
+          toggle.style.color = 'white';
+          document.body.style.overflow = 'hidden'; // Prevent scrolling
+        } else {
+          toggle.innerHTML = '☰';
+          toggle.style.background = 'white';
+          toggle.style.color = '#333';
+          document.body.style.overflow = 'auto'; // Restore scrolling
+        }
+      } else {
+        console.log('Nav or toggle not found'); // Debug log
       }
     };
+    
+    // Ensure toggle function is available globally
+    if (typeof window !== 'undefined') {
+      window.toggleMobileMenu = window.toggleMobileMenu;
+    }
 
     // Mobile dropdown functionality
     function setupMobileDropdowns() {
@@ -2279,6 +2375,17 @@
 
     // Initialize mobile navigation after header loads
     setTimeout(setupMobileDropdowns, 1000);
+    
+    // Backup mobile menu initialization
+    document.addEventListener('DOMContentLoaded', function() {
+      setTimeout(function() {
+        const toggle = document.querySelector('.mobile-menu-toggle');
+        if (toggle && !toggle.onclick) {
+          toggle.onclick = window.toggleMobileMenu;
+          console.log('Mobile menu initialized via backup method');
+        }
+      }, 2000);
+    });
 
     // Close mobile menu when clicking outside
     document.addEventListener('click', function(e) {
@@ -2286,8 +2393,13 @@
       const toggle = document.querySelector('.mobile-menu-toggle');
       
       if (nav && toggle && !nav.contains(e.target) && !toggle.contains(e.target)) {
-        nav.classList.remove('mobile-open');
-        toggle.textContent = '☰';
+        if (nav.classList.contains('mobile-open')) {
+          nav.classList.remove('mobile-open');
+          toggle.innerHTML = '☰';
+          toggle.style.background = 'white';
+          toggle.style.color = '#333';
+          document.body.style.overflow = 'auto';
+        }
       }
     });
 
@@ -2298,7 +2410,12 @@
       
       if (window.innerWidth > 768 && nav) {
         nav.classList.remove('mobile-open');
-        if (toggle) toggle.textContent = '☰';
+        document.body.style.overflow = 'auto';
+        if (toggle) {
+          toggle.innerHTML = '☰';
+          toggle.style.background = 'white';
+          toggle.style.color = '#333';
+        }
       }
     });
 
