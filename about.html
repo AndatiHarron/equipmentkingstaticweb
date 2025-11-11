@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 <script src="js/header-footer-loader.js"></script>
 <title>About | Equipment King Incorporated</title>
 
@@ -668,7 +669,24 @@
   });
 </script>
 
+    <!-- Floating Contact Buttons -->
+    <div class="floating-buttons">
+        <a href="https://wa.me/1234567890" class="floating-btn whatsapp-btn" target="_blank" title="Chat on WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <button class="floating-btn lyro-btn" onclick="openLyroChat()" title="Chat with Lyro AI">
+            <i class="fas fa-robot"></i>
+        </button>
+    </div>
+
     <div id="footer-placeholder"></div>
 </div> <!-- Close page-wrapper -->
+
+<script>
+    function openLyroChat() {
+        // Placeholder for Lyro chat integration
+        alert('Lyro AI Chat will be integrated soon! For now, please use the contact form or WhatsApp.');
+    }
+</script>
 </body>
 </html>
