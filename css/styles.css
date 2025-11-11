@@ -221,7 +221,15 @@ header nav a:hover::after { width: 100%; }
     position: relative;
 }
 
-.dropdown-menu li a::before {
+.dropdown-menu li a:hover {
+    background: rgba(0,0,0,0.1);
+    color: #000;
+    text-decoration: underline;
+}
+
+/* Shimmer effects - only show when dropdown is visible (parent is hovered) */
+.dropdown-menu li:hover .sub-dropdown li a::before,
+.sub-dropdown li:hover .truck-links li a::before {
     content: '';
     position: absolute;
     top: 0;
@@ -231,15 +239,16 @@ header nav a:hover::after { width: 100%; }
     background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
     transition: left 0.6s ease;
     z-index: 0;
+    opacity: 0;
+    pointer-events: none;
 }
 
-.dropdown-menu li a:hover {
-    background: rgba(0,0,0,0.1);
-    color: #000;
-    text-decoration: underline;
+/* Show shimmer animation only on hover of the link itself */
+.dropdown-menu li:hover .sub-dropdown li a:hover::before,
+.sub-dropdown li:hover .truck-links li a:hover::before {
+    opacity: 1;
+    left: 100%;
 }
-
-/* Removed ::before hover effect - using simple hover from your working code */
 
 /* Sub-dropdown (series) - expand left with invisible hover bridge */
 .sub-dropdown {
@@ -254,10 +263,15 @@ header nav a:hover::after { width: 100%; }
     backdrop-filter: blur(10px);
     box-shadow: 0 8px 20px rgba(0,0,0,0.15);
     z-index: 1001; /* Ensure it's above parent dropdown */
+    visibility: hidden;
+    opacity: 0;
 }
 
+/* When sub-dropdown is visible, show it properly */
 .dropdown-menu li:hover > .sub-dropdown {
     display: block;
+    visibility: visible;
+    opacity: 1;
 }
 
 /* Truck links (sub-sub-dropdown) - expand further left with invisible hover bridge */
@@ -273,10 +287,15 @@ header nav a:hover::after { width: 100%; }
     backdrop-filter: blur(10px);
     box-shadow: 0 8px 20px rgba(0,0,0,0.15);
     z-index: 1002; /* Ensure it's above sub-dropdown */
+    visibility: hidden;
+    opacity: 0;
 }
 
+/* When truck-links is visible, show it properly */
 .sub-dropdown li:hover > .truck-links {
     display: block;
+    visibility: visible;
+    opacity: 1;
 }
 
 @keyframes dropdownSlideIn {
