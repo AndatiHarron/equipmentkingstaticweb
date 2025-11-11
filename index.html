@@ -146,6 +146,8 @@
     opacity: 1;
     transition: opacity .5s ease;
     justify-items: stretch;
+    position: relative;
+    z-index: 10;
   }
   
   /* When there's only one card, limit width but keep left-aligned */
@@ -162,6 +164,9 @@
     transform: scale(1);
     transition: all .3s ease;
     max-width: 100%;
+    position: relative;
+    z-index: 10;
+    pointer-events: auto;
   }
 
   .vehicle-card:hover {
@@ -472,18 +477,30 @@ function showTab(type, btn){
   if(btn) btn.classList.add('active'); 
   tabContent.style.opacity = 0;
   setTimeout(() => {
-    tabContent.innerHTML = tabData[type].map(item=>`
-      <div class='vehicle-card' onclick="window.location.href='${item.link}'" style='cursor:pointer;'>
+    tabContent.innerHTML = tabData[type].map((item, index)=>`
+      <a href='${item.link}' class='vehicle-card' style='cursor:pointer; text-decoration: none; color: inherit; display: block; position: relative; z-index: 1;'>
         <img src='${item.img}' alt='${item.name}'>
         <div style='padding:22px 24px;text-align:left;'>
           <h3>${item.name}</h3>
           <ul>${item.features.map(f=>`<li>• ${f}</li>`).join('')}</ul>
         </div>
-      </div>
+      </a>
     `).join('');
     
-    // Add class if there's only one card
+    // Add explicit click handlers to ensure navigation works
     const cards = tabContent.querySelectorAll('.vehicle-card');
+    cards.forEach(card => {
+      const link = card.getAttribute('href');
+      if (link) {
+        card.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          window.location.href = link;
+        });
+      }
+    });
+    
+    // Add class if there's only one card
     if (cards.length === 1) {
       tabContent.classList.add('single-card');
     } else {
