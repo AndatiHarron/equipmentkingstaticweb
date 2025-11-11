@@ -346,23 +346,54 @@ function toggleMobileMenu() {
     }
 }
 
-// Close mobile menu when clicking on a link
+// Helper function to check if an element is a dropdown toggle link
+function isDropdownToggle(element) {
+    if (!element || element.tagName !== 'A') return false;
+    
+    // Check if it's the main trucks dropdown toggle
+    if (element.parentElement && element.parentElement.classList.contains('trucks-dropdown')) {
+        return true;
+    }
+    
+    // Check if it's a category dropdown toggle (has a sub-dropdown sibling)
+    const subDropdown = element.nextElementSibling;
+    if (subDropdown && subDropdown.classList.contains('sub-dropdown')) {
+        return true;
+    }
+    
+    // Check if it's a series dropdown toggle (has a truck-links sibling)
+    const truckLinks = element.nextElementSibling;
+    if (truckLinks && truckLinks.classList.contains('truck-links')) {
+        return true;
+    }
+    
+    return false;
+}
+
+// Close mobile menu when clicking on a link (but not dropdown toggles)
 document.addEventListener('click', function(e) {
     const nav = document.getElementById('main-nav');
     const toggle = document.querySelector('.mobile-menu-toggle');
     
     if (nav && nav.classList.contains('mobile-open')) {
-        // Close menu if clicking outside nav or on a link
+        // Close menu if clicking outside nav
         if (!nav.contains(e.target) && !toggle.contains(e.target)) {
             nav.classList.remove('mobile-open');
             if (toggle) {
                 toggle.textContent = '☰';
             }
             document.body.style.overflow = '';
+            return;
         }
         
-        // Close menu when clicking on a navigation link
+        // Close menu when clicking on a navigation link (but NOT dropdown toggles)
         if (e.target.tagName === 'A' && nav.contains(e.target)) {
+            // Check if this is a dropdown toggle - if so, don't close the menu
+            if (isDropdownToggle(e.target)) {
+                return; // Let the dropdown toggle handler manage this
+            }
+            
+            // It's a regular navigation link, close the menu
             nav.classList.remove('mobile-open');
             if (toggle) {
                 toggle.textContent = '☰';
@@ -389,54 +420,62 @@ window.addEventListener('resize', function() {
     }
 });
 
-// Mobile dropdown functionality for trucks menu
+// Helper function to check if we're on mobile
+function isMobileDevice() {
+    return window.innerWidth <= 767 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}
+
+// Mobile dropdown functionality for trucks menu using event delegation
 function setupMobileDropdowns() {
-    // Main trucks dropdown toggle
-    const trucksDropdown = document.querySelector('.trucks-dropdown > a');
-    if (trucksDropdown && window.innerWidth <= 767) {
-        trucksDropdown.addEventListener('click', function(e) {
+    const nav = document.getElementById('main-nav');
+    if (!nav) return;
+    
+    // Use event delegation for better performance and dynamic content support
+    nav.addEventListener('click', function(e) {
+        // Only handle clicks on mobile devices
+        if (!isMobileDevice()) {
+            return;
+        }
+        
+        const target = e.target;
+        
+        // Check if clicked element is a link
+        if (target.tagName !== 'A') {
+            return;
+        }
+        
+        // Main trucks dropdown toggle
+        if (target.parentElement && target.parentElement.classList.contains('trucks-dropdown')) {
             e.preventDefault();
             e.stopPropagation();
-            const parent = this.parentElement;
+            const parent = target.parentElement;
             parent.classList.toggle('mobile-open');
-        });
-    }
-    
-    // Category dropdowns (Light Duty, Medium Duty, Heavy Duty)
-    document.querySelectorAll('.dropdown-menu > li > a').forEach(categoryLink => {
-        categoryLink.addEventListener('click', function(e) {
-            if (window.innerWidth <= 767) {
-                const subDropdown = this.nextElementSibling;
-                if (subDropdown && subDropdown.classList.contains('sub-dropdown')) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    subDropdown.classList.toggle('mobile-open');
-                }
-            }
-        });
-    });
-    
-    // Series dropdowns (X9 Series, E6 Series, etc.)
-    document.querySelectorAll('.sub-dropdown > li > a').forEach(seriesLink => {
-        seriesLink.addEventListener('click', function(e) {
-            if (window.innerWidth <= 767) {
-                const truckLinks = this.nextElementSibling;
-                if (truckLinks && truckLinks.classList.contains('truck-links')) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    truckLinks.classList.toggle('mobile-open');
-                }
-            }
-        });
+            return;
+        }
+        
+        // Category dropdowns (Light Duty, Medium Duty, Heavy Duty)
+        // Check if this link has a sub-dropdown sibling
+        const subDropdown = target.nextElementSibling;
+        if (subDropdown && subDropdown.classList.contains('sub-dropdown')) {
+            e.preventDefault();
+            e.stopPropagation();
+            subDropdown.classList.toggle('mobile-open');
+            return;
+        }
+        
+        // Series dropdowns (X9 Series, E6 Series, etc.)
+        // Check if this link has a truck-links sibling
+        const truckLinks = target.nextElementSibling;
+        if (truckLinks && truckLinks.classList.contains('truck-links')) {
+            e.preventDefault();
+            e.stopPropagation();
+            truckLinks.classList.toggle('mobile-open');
+            return;
+        }
     });
 }
 
-// Initialize mobile dropdowns after DOM is ready
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', setupMobileDropdowns);
-} else {
-    setupMobileDropdowns();
-}
+// setupMobileDropdowns will be called by loadHeaderFooter() after header insertion
 </script>`;
 
 // Footer template with {{BASE_PATH}} placeholder
@@ -530,6 +569,14 @@ function loadHeaderFooter() {
         script.textContent = scriptContent;
         document.head.appendChild(script);
     });
+    
+    // Initialize mobile dropdowns after header scripts are executed
+    // Use a small delay to ensure DOM is fully ready
+    setTimeout(function() {
+        if (typeof setupMobileDropdowns === 'function') {
+            setupMobileDropdowns();
+        }
+    }, 50);
     
     // Insert footer HTML
             const footerPlaceholder = document.getElementById('footer-placeholder');
