@@ -21,7 +21,7 @@
             <span style="color: #212529; font-weight: 600;">X9 Tow Truck</span>
         </nav>
 
-        <!-- Exterior Image Viewer Section -->
+        <!-- Unified Image Gallery Section -->
         <section style="max-width: 1400px; margin: 0 auto 60px auto; border: 1px solid #dee2e6; border-radius: 12px; padding: 40px;">
             <h3 style="color: #212529; font-size: 1.8em; font-weight: 700; text-align: center; margin-bottom: 30px; position: relative;">
                 <span style="background: #fff; padding: 0 20px; position: relative; z-index: 2;">Exterior</span>
@@ -166,17 +166,29 @@
         
         .thumbnail:hover {
             opacity: 0.9;
+            transform: scale(1.05);
         }
         
         .thumbnail.active {
             opacity: 1;
             border-color: #444;
+            transform: scale(1.02);
+        }
+        
+        /* Main Image Transition */
+        #mainImage {
+            transition: opacity 0.3s ease;
         }
         
         /* Responsive */
         @media (max-width: 768px) {
             main {
                 padding: 80px 10px 30px !important;
+            }
+            
+            .thumbnail {
+                width: 90px;
+                height: 65px;
             }
         }
     </style>
@@ -209,8 +221,12 @@
                 
                 // Click handler to change main image
                 thumbnail.onclick = () => {
-                    // Update main image
-                    mainImage.src = src;
+                    // Update main image with fade effect
+                    mainImage.style.opacity = '0';
+                    setTimeout(() => {
+                        mainImage.src = src;
+                        mainImage.style.opacity = '1';
+                    }, 150);
                     
                     // Update active thumbnail
                     imageStrip.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
