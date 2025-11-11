@@ -145,6 +145,13 @@
     gap: 35px;
     opacity: 1;
     transition: opacity .5s ease;
+    justify-items: stretch;
+  }
+  
+  /* When there's only one card, limit width but keep left-aligned */
+  #tabContent.single-card {
+    grid-template-columns: minmax(300px, 400px);
+    justify-content: start;
   }
 
   .vehicle-card {
@@ -154,6 +161,7 @@
     overflow: hidden;
     transform: scale(1);
     transition: all .3s ease;
+    max-width: 100%;
   }
 
   .vehicle-card:hover {
@@ -441,7 +449,6 @@ const tabData = {
     {img:'assets/e3.webp',name:'E3 Tractor Truck',features:['Dual warning system','Efficient power chain','Comfortable berth width 850mm'],link:'trucks_html/E3-Tractor-Truck.html'}
   ],
   special:[
-    {img:'assets/special1.webp',name:'X9 Aerial work platform truck',features:['High-capacity water tank','Quick deployment ladder','Advanced safety system'],link:'trucks_html/X9-Aerial-Work-Platform-Truck.html'},
     {img:'assets/x9t.webp',name:'X9 Tow Truck',features:['Emergency-ready interior','Advanced life support system','Reliable mobility performance'],link:'trucks_html/X9-Tow-Truck.html'},
     {img:'assets/x7c.webp',name:'X7 Concrete mixer Truck',features:['Oil-water separator system','Air processing APU module','Light steering system'],link:'trucks_html/X7-Concrete-Mixer-Truck.html'},
     {img:'assets/e6t.webp',name:'E6 Truck-mounted Crane',features:['Oil-water separator system','Air processing APU module','Light steering system'],link:'trucks_html/E6-Truck-Mounted-Crane.html'}
@@ -474,6 +481,15 @@ function showTab(type, btn){
         </div>
       </div>
     `).join('');
+    
+    // Add class if there's only one card
+    const cards = tabContent.querySelectorAll('.vehicle-card');
+    if (cards.length === 1) {
+      tabContent.classList.add('single-card');
+    } else {
+      tabContent.classList.remove('single-card');
+    }
+    
     tabContent.style.opacity = 1;
   }, 200);
 }
