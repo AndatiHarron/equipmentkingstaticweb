@@ -729,10 +729,102 @@
 </div> <!-- Close page-wrapper -->
 
 <script>
+    // Enhanced Lyro chat integration with multiple fallback methods
     function openLyroChat() {
-        // Placeholder for Lyro chat integration
-        alert('Lyro AI Chat will be integrated soon! For now, please use the contact form or WhatsApp.');
+        console.log('Attempting to open Lyro chat...');
+        
+        // Method 1: Official Lyro widget
+        if (window.Lyro && typeof window.Lyro.open === 'function') {
+            console.log('Opening official Lyro widget');
+            window.Lyro.open();
+            return;
+        }
+        
+        // Method 2: Alternative Lyro widget format
+        if (window.lyroWidget && typeof window.lyroWidget.open === 'function') {
+            console.log('Opening Lyro widget (alternative format)');
+            window.lyroWidget.open();
+            return;
+        }
+        
+        // Method 3: Check for Lyro iframe or container
+        const lyroContainer = document.querySelector('[data-lyro-widget]') || 
+                            document.querySelector('.lyro-widget') || 
+                            document.querySelector('#lyro-widget');
+        if (lyroContainer) {
+            console.log('Found Lyro container, attempting to show');
+            lyroContainer.style.display = 'block';
+            return;
+        }
+        
+        // Method 4: Try to trigger Lyro through events
+        if (window.Lyro) {
+            console.log('Triggering Lyro through events');
+            try {
+                window.Lyro.show();
+            } catch (e) {
+                console.log('Lyro.show() failed, trying other methods');
+            }
+            return;
+        }
+        
+        // Method 5: PostMessage to Lyro iframe
+        const lyroIframe = document.querySelector('iframe[src*="lyro"]');
+        if (lyroIframe) {
+            console.log('Sending message to Lyro iframe');
+            lyroIframe.contentWindow.postMessage({ action: 'open' }, '*');
+            return;
+        }
+        
+        console.log('No official Lyro found, redirecting to contact page');
+        // Fallback - redirect to contact page with its advanced chat
+        window.open('contact.html', '_blank');
     }
+
+    // Load official Lyro script
+    (function() {
+        // Method 1: Try Lyro AI widget integration
+        var lyroScript = document.createElement('script');
+        lyroScript.src = 'https://widget.lyro.ai/widget.js';
+        lyroScript.async = true;
+        lyroScript.onload = function() {
+            try {
+                // Initialize Lyro - you can replace with your actual widget ID when available
+                if (window.Lyro && typeof window.Lyro.init === 'function') {
+                    window.Lyro.init({
+                        // widgetId: 'your-widget-id-here', // Replace with actual widget ID
+                        position: 'bottom-right',
+                        theme: 'light',
+                        language: 'en',
+                        autoOpen: false
+                    });
+                    console.log('Lyro AI widget loaded successfully');
+                }
+            } catch (error) {
+                console.log('Lyro widget initialization failed, fallback available');
+            }
+        };
+        lyroScript.onerror = function() {
+            console.log('Lyro script failed to load, using fallback redirect');
+        };
+        document.head.appendChild(lyroScript);
+        
+        // Alternative widget initialization
+        window.lyroAsyncInit = function() {
+            if (window.Lyro) {
+                window.Lyro.init({
+                    autoOpen: false,
+                    showWhenOffline: true
+                });
+            }
+        };
+        
+        setTimeout(function() {
+            if (!window.Lyro && !window.lyroWidget) {
+                console.log('No Lyro widget detected, fallback to contact page ready');
+            }
+        }, 3000);
+    })();
 </script>
 </body>
 </html>

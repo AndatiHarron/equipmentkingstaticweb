@@ -459,17 +459,56 @@
 
     <!-- Lyro AI Chat Integration -->
     <script>
-        // Lyro chat integration
+        // Enhanced Lyro chat integration with multiple fallback methods
         function openLyroChat() {
-            // Try to open Lyro if it's loaded
+            console.log('Attempting to open Lyro chat...');
+            
+            // Method 1: Official Lyro widget
             if (window.Lyro && typeof window.Lyro.open === 'function') {
+                console.log('Opening official Lyro widget');
                 window.Lyro.open();
-            } else if (window.lyroWidget && typeof window.lyroWidget.open === 'function') {
-                window.lyroWidget.open();
-            } else {
-                // Fallback - create a simple chat interface
-                createFallbackChat();
+                return;
             }
+            
+            // Method 2: Alternative Lyro widget format
+            if (window.lyroWidget && typeof window.lyroWidget.open === 'function') {
+                console.log('Opening Lyro widget (alternative format)');
+                window.lyroWidget.open();
+                return;
+            }
+            
+            // Method 3: Check for Lyro iframe or container
+            const lyroContainer = document.querySelector('[data-lyro-widget]') || 
+                                document.querySelector('.lyro-widget') || 
+                                document.querySelector('#lyro-widget');
+            if (lyroContainer) {
+                console.log('Found Lyro container, attempting to show');
+                lyroContainer.style.display = 'block';
+                return;
+            }
+            
+            // Method 4: Try to trigger Lyro through events
+            if (window.Lyro) {
+                console.log('Triggering Lyro through events');
+                try {
+                    window.Lyro.show();
+                } catch (e) {
+                    console.log('Lyro.show() failed, trying other methods');
+                }
+                return;
+            }
+            
+            // Method 5: PostMessage to Lyro iframe
+            const lyroIframe = document.querySelector('iframe[src*="lyro"]');
+            if (lyroIframe) {
+                console.log('Sending message to Lyro iframe');
+                lyroIframe.contentWindow.postMessage({ action: 'open' }, '*');
+                return;
+            }
+            
+            console.log('No official Lyro found, using Equipment King AI fallback');
+            // Fallback - create our custom chat interface
+            createFallbackChat();
         }
 
         // Fallback chat interface if Lyro isn't loaded
@@ -635,19 +674,75 @@
             }, 1000);
         }
 
-        // Load official Lyro script (replace with your actual Lyro embed code)
-        // Uncomment and update with your Lyro configuration when ready
-        /*
+        // Load official Lyro script
         (function() {
-            var lyro = document.createElement('script');
-            lyro.src = 'https://widget.lyro.ai/widget.js'; // Replace with actual Lyro script URL
-            lyro.async = true;
-            lyro.onload = function() {
-                // Initialize Lyro with your configuration
-                // Lyro.init({ widgetId: 'YOUR_WIDGET_ID' });
+            // Method 1: Try Lyro AI widget integration
+            var lyroScript = document.createElement('script');
+            lyroScript.src = 'https://widget.lyro.ai/widget.js';
+            lyroScript.async = true;
+            lyroScript.onload = function() {
+                try {
+                    // Initialize Lyro - you can replace with your actual widget ID when available
+                    if (window.Lyro && typeof window.Lyro.init === 'function') {
+                        window.Lyro.init({
+                            // widgetId: 'your-widget-id-here', // Replace with actual widget ID
+                            position: 'bottom-right',
+                            theme: 'light',
+                            language: 'en'
+                        });
+                        console.log('Lyro AI widget loaded successfully');
+                    }
+                } catch (error) {
+                    console.log('Lyro widget initialization failed, fallback available');
+                }
             };
-            document.head.appendChild(lyro);
+            lyroScript.onerror = function() {
+                console.log('Lyro script failed to load, using fallback chat');
+            };
+            document.head.appendChild(lyroScript);
+            
+            // Method 2: Alternative Lyro integration approach
+            window.lyroAsyncInit = function() {
+                if (window.Lyro) {
+                    window.Lyro.init({
+                        // Add your Lyro configuration here
+                        autoOpen: false,
+                        showWhenOffline: true
+                    });
+                }
+            };
+            
+            // Method 3: Generic chat widget integration (Intercom/Zendesk style)
+            setTimeout(function() {
+                if (!window.Lyro && !window.lyroWidget) {
+                    // If no official widget loads, our fallback is ready
+                    console.log('Using Equipment King AI fallback chat system');
+                }
+            }, 3000);
         })();
+        
+        // Additional Lyro integration methods - uncomment and configure as needed
+        
+        // For Lyro.ai official integration (replace with your actual embed code):
+        /*
+        !function(){var t=document.createElement("script");t.type="text/javascript",t.async=!0,t.src="https://widget.lyro.ai/widget.js",t.onload=function(){Lyro.init({widgetId:"YOUR_WIDGET_ID_HERE"})};var e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(t,e)}();
+        */
+        
+        // For custom Lyro configuration:
+        /*
+        window.lyroSettings = {
+            widgetId: 'your-widget-id',
+            position: 'bottom-right',
+            theme: 'light',
+            autoOpen: false,
+            showWhenOffline: true,
+            customCSS: `
+                .lyro-widget {
+                    bottom: 100px !important;
+                    right: 20px !important;
+                }
+            `
+        };
         */
     </script>
 </body>
