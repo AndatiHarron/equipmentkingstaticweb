@@ -349,13 +349,14 @@
       .ek-magnifier {
         width: 150px;
         height: 150px;
-        border: none;
-        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+        border: 2px solid rgba(73, 80, 87, 0.8);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25), 
+                    0 0 0 1px rgba(255, 255, 255, 0.4) inset;
       }
       
       .ek-magnifier::before,
       .ek-magnifier::after {
-        background: rgba(0, 0, 0, 0.5);
+        background: rgba(73, 80, 87, 0.85);
       }
       
       .ek-magnifier::before {
@@ -595,11 +596,13 @@
       opacity: 0;
       z-index: 1000;
       background-repeat: no-repeat;
-      background-size: 250% 250%;
+      background-size: 300% 300%;
       
       /* Visual enhancements */
-      border: none;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      border: 3px solid rgba(73, 80, 87, 0.8);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 
+                  0 0 0 1px rgba(255, 255, 255, 0.5) inset,
+                  0 0 20px rgba(73, 80, 87, 0.2);
       
       /* Smooth movement transitions */
       transition: opacity 0.2s ease, 
@@ -624,8 +627,8 @@
       transform: translate(-50%, -50%);
       width: 2px;
       height: 20px;
-      background: rgba(0, 0, 0, 0.5);
-      box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+      background: rgba(73, 80, 87, 0.9);
+      box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
       z-index: 1001;
       pointer-events: none;
     }
@@ -638,8 +641,8 @@
       transform: translate(-50%, -50%);
       width: 20px;
       height: 2px;
-      background: rgba(0, 0, 0, 0.5);
-      box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+      background: rgba(73, 80, 87, 0.9);
+      box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
       z-index: 1001;
       pointer-events: none;
     }
@@ -2034,23 +2037,52 @@
       }
     }
 
+    // Normalize truck name for matching (handles case, punctuation, spacing variations)
+    function normalizeTruckName(name) {
+      if (!name) return '';
+      
+      return name
+        .trim()
+        .replace(/\.+$/, '') // Remove trailing periods
+        .replace(/\s+/g, ' ') // Normalize multiple spaces to single space
+        .replace(/truckmounted/gi, 'Truck Mounted') // Handle "Truckmounted" vs "Truck Mounted"
+        .replace(/dumptruck/gi, 'Dump Truck') // Handle "Dumptruck" vs "Dump Truck"
+        .replace(/vantruck/gi, 'Van Truck') // Handle "vantruck" vs "Van Truck"
+        .replace(/mixertruck/gi, 'Mixer Truck') // Handle "mixertruck" vs "Mixer Truck"
+        .replace(/garbagetrack/gi, 'Garbage Truck') // Handle "Garbage Track" typo
+        .replace(/drop side/gi, 'Dropside') // Handle "Drop Side" vs "Dropside"
+        .replace(/4x4/gi, '4X4') // Normalize 4x4 to 4X4
+        .replace(/\(new series\)/gi, '(New Series)') // Normalize i9 series
+        .toLowerCase();
+    }
+
     // Function to get truck page URL based on truck name
     function getTruckPageUrl(truckName) {
       // Create a mapping from truck names to their individual HTML file names
       const truckPageMapping = {
-        // E3 Series (8 trucks)
+        // E3 Series (8 trucks) - include variations
+        'E3 Cement Mixer Truck': 'trucks_html/E3-Cement-Mixer-Truck.html',
+        'E3 cement mixertruck': 'trucks_html/E3-Cement-Mixer-Truck.html',
+        'E3 Compactor Garbage Truck': 'trucks_html/E3-Compactor-Garbage-Truck.html',
+        'E3 compactor Garbage Track': 'trucks_html/E3-Compactor-Garbage-Truck.html',
+        'E3 Dump Truck': 'trucks_html/E3-Dump-Truck.html',
+        'E3 Dumptruck': 'trucks_html/E3-Dump-Truck.html',
+        'E3 Muck Truck': 'trucks_html/E3-Muck-Truck.html',
         'E3 muck truck': 'trucks_html/E3-Muck-Truck.html',
+        'E3 Sewage Suction Truck': 'trucks_html/E3-Sewage-Suction-Truck.html',
+        'E3 sewage suction truck': 'trucks_html/E3-Sewage-Suction-Truck.html',
+        'E3 Stake Truck': 'trucks_html/E3-Stake-Truck.html',
+        'E3 Stake truck': 'trucks_html/E3-Stake-Truck.html',
+        'E3 Tractor Truck': 'trucks_html/E3-Tractor-Truck.html',
         'E3 Tractor truck': 'trucks_html/E3-Tractor-Truck.html',
-        'E3 vantruck.': 'trucks_html/E3-Van-Truck.html',
-        'E3 Dumptruck.': 'trucks_html/E3-Dump-Truck.html',
-        'E3 Cement mixertruck.': 'trucks_html/E3-Cement-Mixer-Truck.html',
-        'E3 compactor Garbage Track.': 'trucks_html/E3-Compactor-Garbage-Truck.html',
-        'E3 Stake truck.': 'trucks_html/E3-Stake-Truck.html',
-        'E3 sewage suction truck.': 'trucks_html/E3-Sewage-Suction-Truck.html',
+        'E3 Van Truck': 'trucks_html/E3-Van-Truck.html',
+        'E3 vantruck': 'trucks_html/E3-Van-Truck.html',
 
-        // E9 Series (4 trucks)
-        'E9 Refrigerated Truck': 'trucks_html/E9-Refrigerated-Truck.html',
+        // E9 Series (4 trucks) - include missing E9 Refrigerated
         'E9 Dump Truck': 'trucks_html/E9-Dump-Truck.html',
+        'E9 Kitchen Waste Garbage Truck': 'trucks_html/E9-Kitchen-Waste-Garbage-Truck.html',
+        'E9 Kitchen Waste Food Garbage Truck': 'trucks_html/E9-Kitchen-Waste-Garbage-Truck.html',
+        'E9 Refrigerated Truck': 'trucks_html/E9-Refrigerated-Truck.html',
         'E9 Van Truck': 'trucks_html/E9-Van-Truck.html',
         'E9 Kitchen Waste Garbage Truck': 'trucks_html/E9-Kitchen-Waste-Garbage-Truck.html',
 
@@ -2061,65 +2093,95 @@
         'X7 Sprinkler Truck': 'trucks_html/X7-Sprinkler-Truck.html',
         'X7 Truck Mounted Crane': 'trucks_html/X7-Truck-Mounted-Crane.html',
 
-        // X9 Series (8 trucks)
-        'X9 Tow Truck': 'trucks_html/X9-Tow-Truck-Modern-BW.html',
-        'X9 Aerial Work Platform Truck': 'trucks_html/X9-Aerial-Platform-Truck.html',
-        'X9 4X4 Dump Truck': 'trucks_html/X9-4X4-Dump-Truck.html',
+        // X9 Series (8 trucks) - include missing X9 Aerial Work Platform, fix filenames
+        'X9 Aerial Work Platform Truck': 'trucks_html/X9-Aerial-Work-Platform-Truck.html',
+        'X9 4X4 Dump Truck': 'trucks_html/X9-4x4-Dump-Truck.html',
+        '4X4 Dump Truck': 'trucks_html/X9-4x4-Dump-Truck.html',
         'X9 Dump Truck': 'trucks_html/X9-Dump-Truck.html',
         'X9 Van Truck': 'trucks_html/X9-Van-Truck.html',
         'X9 Fuel Tanker Truck': 'trucks_html/X9-Fuel-Tanker-Truck.html',
         'X9 Garbage Truck': 'trucks_html/X9-Garbage-Truck.html',
         'X9 Refrigerated Truck': 'trucks_html/X9-Refrigerated-Truck.html',
+        'X9 Tow Truck': 'trucks_html/X9-Tow-Truck.html',
+        'X9 Van Truck': 'trucks_html/X9-Van-Truck.html',
 
-        // E6 Series (7 trucks)
+        // E6 Series (6 trucks)
+        'E6 Cement Mixer Truck': 'trucks_html/E6-Cement-Mixer-Truck.html',
         'E6 Dump Truck': 'trucks_html/E6-Dump-Truck.html',
-        'E6 Stake Truck': 'trucks_html/E6-Stake-Truck.html',
-        'E6 Van Truck': 'trucks_html/E6-Van-Truck.html',
         'E6 Refrigerated Truck': 'trucks_html/E6-Refrigerated-Truck.html',
         'E6 Sprinkler Truck': 'trucks_html/E6-Sprinkler-Truck.html',
         'E6 Truck Mounted Crane': 'trucks_html/E6-Truck-Mounted-Crane.html',
         'E6 Cement Mixer Truck': 'trucks_html/E6-Cement-Mixer-Truck.html',
 
-        // X6 Series (14 trucks)
+        // X6 Series (14 trucks) - fix missing "Truck" and "Dropside" variations
         'X6 AWD Cargo Truck': 'trucks_html/X6-AWD-Cargo-Truck.html',
         'X6 Cargo Truck': 'trucks_html/X6-Cargo-Truck.html',
         'X6 Cement Mixer Truck': 'trucks_html/X6-Cement-Mixer-Truck.html',
         'X6 Concrete Mixer Truck': 'trucks_html/X6-Concrete-Mixer-Truck.html',
         'X6 Dropside Truck': 'trucks_html/X6-Dropside-Truck.html',
+        'X6 Drop Side Truck': 'trucks_html/X6-Dropside-Truck.html',
         'X6 Dump Truck': 'trucks_html/X6-Dump-Truck.html',
         'X6 Dust Suppression Truck': 'trucks_html/X6-Dust-Suppression-Truck.html',
         'X6 Flatbed Truck': 'trucks_html/X6-Flatbed-Truck.html',
         'X6 Fuel Tanker Truck': 'trucks_html/X6-Fuel-Tanker-Truck.html',
+        'X6 Fuel Tanker': 'trucks_html/X6-Fuel-Tanker-Truck.html',
         'X6 Garbage Truck': 'trucks_html/X6-Garbage-Truck.html',
         'X6 Loading Crane Recovery Truck': 'trucks_html/X6-Loading-Crane-Recovery-Truck.html',
         'X6 Sprinkler Truck': 'trucks_html/X6-Sprinkler-Truck.html',
         'X6 Truck Mounted Crane': 'trucks_html/X6-Truck-Mounted-Crane.html',
         'X6 Van Truck': 'trucks_html/X6-Van-Truck.html',
 
-        // 3 Series (1 truck)
+        // 3 Series (1 truck) - fix wrong mapping
         '3 Series Cement Mixer Truck': 'trucks_html/3-Series-Cement-Mixer-Truck.html',
+        '3 Series Truck Mounted Crane': 'trucks_html/3-Series-Cement-Mixer-Truck.html',
 
-        // 6 Series (4 trucks)
-        '6 series sweeper': 'trucks_html/6-Series-Sweeper.html',
-        '6 Series Garbage Truck': 'trucks_html/6-Series-Garbage-Truck.html',
-        '6 Series truckmounted Crane': 'trucks_html/6-Series-Truck-Mounted-Crane.html',
+        // 6 Series (4 trucks) - include case variations
+        '6 Series Cement Mixer Truck': 'trucks_html/6-Series-Cement-Mixer-Truck.html',
         '6 series cement mixer truck': 'trucks_html/6-Series-Cement-Mixer-Truck.html',
+        '6 Series Garbage Truck': 'trucks_html/6-Series-Garbage-Truck.html',
+        '6 Series Sweeper': 'trucks_html/6-Series-Sweeper.html',
+        '6 series sweeper': 'trucks_html/6-Series-Sweeper.html',
+        '6 Series Truck Mounted Crane': 'trucks_html/6-Series-Truck-Mounted-Crane.html',
+        '6 Series truckmounted Crane': 'trucks_html/6-Series-Truck-Mounted-Crane.html',
 
-        // 9 Series (5 trucks)
-        '9 series sweeper': 'trucks_html/9-Series-Sweeper.html',
-        '9 series Garbage Truck': 'trucks_html/9-Series-Garbage-Truck.html',
-        '9 series Tow Truck': 'trucks_html/9-Series-Tow-Truck.html',
-        '9 series Truckmounted crane': 'trucks_html/9-Series-Truck-Mounted-Crane.html',
+        // 9 Series (5 trucks) - include case variations
+        '9 Series Cement Mixer Truck': 'trucks_html/9-Series-Cement-Mixer-Truck.html',
         '9series cement mixer truck': 'trucks_html/9-Series-Cement-Mixer-Truck.html',
+        '9 Series Garbage Truck': 'trucks_html/9-Series-Garbage-Truck.html',
+        '9 series Garbage Truck': 'trucks_html/9-Series-Garbage-Truck.html',
+        '9 Series Sweeper': 'trucks_html/9-Series-Sweeper.html',
+        '9 series sweeper': 'trucks_html/9-Series-Sweeper.html',
+        '9 Series Tow Truck': 'trucks_html/9-Series-Tow-Truck.html',
+        '9 series Tow Truck': 'trucks_html/9-Series-Tow-Truck.html',
+        '9 Series Truck Mounted Crane': 'trucks_html/9-Series-Truck-Mounted-Crane.html',
+        '9 series Truckmounted crane': 'trucks_html/9-Series-Truck-Mounted-Crane.html',
 
-        // Other Series (3 trucks)
-        'Z3 Dump Truck': 'trucks_html/Z3-Dump-Truck.html',
+        // Other Series - fix mappings
         'E1st Tractor': 'trucks_html/E1st-Tractor.html',
-        'i9 (New Series)': 'trucks_html/i9-New-Series.html'
+        'E1st Truck': 'trucks_html/E1st-Tractor.html',
+        'i9 (New Series)': 'trucks_html/i9-New-Energy-Truck.html',
+        'i9 Truck': 'trucks_html/i9-New-Energy-Truck.html',
+        'Z3 Dump Truck': 'trucks_html/Z3-Dump-Truck.html'
       };
 
-      // Return the mapped URL or default to main trucks page
-      return truckPageMapping[truckName] || 'trucks.html';
+      // Trim and normalize the input truck name
+      const trimmedName = truckName ? truckName.trim() : '';
+      const normalizedInput = normalizeTruckName(trimmedName);
+      
+      // Try exact match first (with original case)
+      if (truckPageMapping[trimmedName]) {
+        return truckPageMapping[trimmedName];
+      }
+      
+      // Try normalized match (case-insensitive, handles variations)
+      for (const [key, value] of Object.entries(truckPageMapping)) {
+        if (normalizeTruckName(key) === normalizedInput) {
+          return value;
+        }
+      }
+
+      // Return default if no match found
+      return 'trucks.html';
     }
 
     // create the popup overlay DOM structure once (reused)
@@ -2258,6 +2320,27 @@
         magnifier.style.backgroundImage = `url(${mainImg.src})`;
         magnifier.style.backgroundPosition = `${xPercent}% ${yPercent}%`;
         magnifier.style.backgroundSize = `${imgRect.width * 2.5}px ${imgRect.height * 2.5}px`;
+      }
+      
+      // Throttled handler using requestAnimationFrame for performance
+      function throttledHandleMagnifier(clientX, clientY) {
+        const now = performance.now();
+        
+        if (now - lastUpdateTime >= throttleDelay) {
+          lastUpdateTime = now;
+          handleMagnifier(clientX, clientY);
+        } else {
+          // Cancel previous animation frame if exists
+          if (rafId !== null) {
+            cancelAnimationFrame(rafId);
+          }
+          
+          // Schedule update for next frame
+          rafId = requestAnimationFrame(() => {
+            handleMagnifier(clientX, clientY);
+            lastUpdateTime = performance.now();
+          });
+        }
       }
       
       // Throttled handler using requestAnimationFrame for performance

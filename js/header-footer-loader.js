@@ -1,5 +1,6 @@
-// Universal Header and Footer Loader
-// Automatically determines the correct base path and loads header/footer
+// Universal Header and Footer Loader - Static Version
+// Works with file:// protocol - no fetch() needed
+// Templates are embedded directly in this file
 
 function getBasePath() {
     const path = window.location.pathname;
@@ -13,45 +14,537 @@ function getBasePath() {
     return '';
 }
 
-async function loadHeaderFooter() {
-    const basePath = getBasePath();
+// Header template with {{BASE_PATH}} placeholder
+const headerTemplate = `<!-- Universal Header Component -->
+<header>
+   <a>
+    <div class="logo" onclick="location.href='{{BASE_PATH}}index.html'">
+      <img src="{{BASE_PATH}}assets/companylogo.webp" alt="Equipment King Logo" />
+      Equipment King
+    </div>
+  </a>
+
+  <!-- Mobile Menu Toggle -->
+  <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle Menu">
+    ☰
+  </button>
+
+  <nav id="main-nav">
+    <a href="{{BASE_PATH}}index.html">Home</a>
     
-    try {
-        // Load header
-        const headerResponse = await fetch(basePath + 'resources/header.html');
-        if (headerResponse.ok) {
-            let headerContent = await headerResponse.text();
-            // Replace {{BASE_PATH}} placeholders with actual base path
-            headerContent = headerContent.replace(/\{\{BASE_PATH\}\}/g, basePath);
+    <!-- Trucks Dropdown - IMPORTANT: YOUR WORKING CASCADE SYSTEM -->
+    <div class="trucks-dropdown">
+      <a href="{{BASE_PATH}}trucks.html" class="trucks-btn">Trucks</a>
+      <ul class="dropdown-menu">
+          <!-- LIGHT DUTY TRUCKS -->
+          <li>
+            <a href="{{BASE_PATH}}trucks.html#light-duty">LIGHT DUTY TRUCKS</a>
+            <ul class="sub-dropdown">
+              <li>
+                <a href="{{BASE_PATH}}trucks.html#x9-series">X9 Series</a>
+                <ul class="truck-links">
+                  <li><a href="{{BASE_PATH}}trucks_html/X9-Tow-Truck.html">X9 Tow Truck</a></li>
+                  <li><a href="{{BASE_PATH}}trucks_html/X9-Aerial-Work-Platform-Truck.html">X9 Aerial Work Platform Truck</a></li>
+                  <li><a href="{{BASE_PATH}}trucks_html/X9-4X4-Dump-Truck.html">X9 4X4 Dump Truck</a></li>
+                  <li><a href="{{BASE_PATH}}trucks_html/X9-Dump-Truck.html">X9 Dump Truck</a></li>
+                  <li><a href="{{BASE_PATH}}trucks_html/X9-Van-Truck.html">X9 Van Truck</a></li>
+                  <li><a href="{{BASE_PATH}}trucks_html/X9-Fuel-Tanker-Truck.html">X9 Fuel Tanker Truck</a></li>
+                  <li><a href="{{BASE_PATH}}trucks_html/X9-Garbage-Truck.html">X9 Garbage Truck</a></li>
+                  <li><a href="{{BASE_PATH}}trucks_html/X9-Refrigerated-Truck.html">X9 Refrigerated Truck</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="{{BASE_PATH}}trucks.html#e9-series">E9 Series</a>
+                <ul class="truck-links">
+                  <li><a href="{{BASE_PATH}}trucks_html/E9-Refrigerated-Truck.html">E9 Refrigerated Truck</a></li>
+                  <li><a href="{{BASE_PATH}}trucks_html/E9-Dump-Truck.html">E9 Dump Truck</a></li>
+                  <li><a href="{{BASE_PATH}}trucks_html/E9-Van-Truck.html">E9 Van Truck</a></li>
+                  <li><a href="{{BASE_PATH}}trucks_html/E9-Kitchen-Waste-Garbage-Truck.html">E9 Kitchen Waste Garbage Truck</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="{{BASE_PATH}}trucks.html#x7-series">X7 Series</a>
+                <ul class="truck-links">
+                  <li><a href="{{BASE_PATH}}trucks_html/X7-Concrete-Mixer-Truck.html">X7 Concrete Mixer Truck</a></li>
+                  <li><a href="{{BASE_PATH}}trucks_html/X7-Flatbed-Truck.html">X7 Flatbed Truck</a></li>
+                  <li><a href="{{BASE_PATH}}trucks_html/X7-Sprinkler-Truck.html">X7 Sprinkler Truck</a></li>
+                  <li><a href="{{BASE_PATH}}trucks_html/X7-Truck-Mounted-Crane.html">X7 Truck Mounted Crane</a></li>
+                  <li><a href="{{BASE_PATH}}trucks_html/X7-Dump-Truck.html">X7 Dump Truck</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="{{BASE_PATH}}trucks.html#i9-series">i9 Series (New Energy)</a>
+                <ul class="truck-links">
+                  <li><a href="{{BASE_PATH}}trucks_html/i9-New-Energy-Truck.html">i9 (New Series) - Electric/Hybrid Technology</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+
+          <!-- MEDIUM DUTY TRUCKS -->
+          <li>
+            <a href="{{BASE_PATH}}trucks.html#medium-duty">MEDIUM DUTY TRUCKS</a>
+            <ul class="sub-dropdown">
+              <li>
+                <a href="{{BASE_PATH}}trucks.html#e6-series">E6 Series</a>
+                <ul class="truck-links">
+                  <li><a href="{{BASE_PATH}}trucks_html/E6-Dump-Truck.html">E6 Dump Truck</a></li>
+                  <li><a href="{{BASE_PATH}}trucks_html/E6-Stake-Truck.html">E6 Stake Truck</a></li>
+                  <li><a href="{{BASE_PATH}}trucks_html/E6-Van-Truck.html">E6 Van Truck</a></li>
+                  <li><a href="{{BASE_PATH}}trucks_html/E6-Refrigerated-Truck.html">E6 Refrigerated Truck</a></li>
+                  <li><a href="{{BASE_PATH}}trucks_html/E6-Sprinkler-Truck.html">E6 Sprinkler Truck</a></li>
+                  <li><a href="{{BASE_PATH}}trucks_html/E6-Truck-Mounted-Crane.html">E6 Truck Mounted Crane</a></li>
+                  <li><a href="{{BASE_PATH}}trucks_html/E6-Cement-Mixer-Truck.html">E6 Cement Mixer Truck</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="{{BASE_PATH}}trucks.html#x6-series">X6 Series</a>
+                <ul class="truck-links">
+                  <li><a href="{{BASE_PATH}}trucks_html/X6-Dump-Truck.html">X6 Dump Truck</a></li>
+                  <li><a href="{{BASE_PATH}}trucks_html/X6-Flatbed-Truck.html">X6 Flatbed Truck</a></li>
+                  <li><a href="{{BASE_PATH}}trucks_html/X6-Van-Truck.html">X6 Van Truck</a></li>
+                  <li><a href="{{BASE_PATH}}trucks_html/X6-Truck-Mounted-Crane.html">X6 Truck Mounted Crane</a></li>
+                  <li><a href="{{BASE_PATH}}trucks_html/X6-Cargo-Truck.html">X6 Cargo Truck</a></li>
+                  <li><a href="{{BASE_PATH}}trucks_html/X6-AWD-Cargo-Truck.html">X6 AWD Cargo Truck</a></li>
+                  <li><a href="{{BASE_PATH}}trucks_html/X6-Dropside-Truck.html">X6 Dropside Truck</a></li>
+                  <li><a href="{{BASE_PATH}}trucks_html/X6-Cement-Mixer-Truck.html">X6 Cement Mixer Truck</a></li>
+                  <li><a href="{{BASE_PATH}}trucks_html/X6-Concrete-Mixer-Truck.html">X6 Concrete Mixer Truck</a></li>
+                  <li><a href="{{BASE_PATH}}trucks_html/X6-Loading-Crane-Recovery-Truck.html">X6 Loading Crane Recovery Truck</a></li>
+                  <li><a href="{{BASE_PATH}}trucks_html/X6-Sprinkler-Truck.html">X6 Sprinkler Truck</a></li>
+                  <li><a href="{{BASE_PATH}}trucks_html/X6-Dust-Suppression-Truck.html">X6 Dust Suppression Truck</a></li>
+                  <li><a href="{{BASE_PATH}}trucks_html/X6-Garbage-Truck.html">X6 Garbage Truck</a></li>
+                  <li><a href="{{BASE_PATH}}trucks_html/X6-Fuel-Tanker-Truck.html">X6 Fuel Tanker Truck</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+
+          <!-- HEAVY DUTY TRUCKS -->
+          <li>
+            <a href="{{BASE_PATH}}trucks.html#heavy-duty">HEAVY DUTY TRUCKS</a>
+            <ul class="sub-dropdown">
+              <li>
+                <a href="{{BASE_PATH}}trucks.html#z3-series">Z3 Series</a>
+                <ul class="truck-links">
+                  <li><a href="{{BASE_PATH}}trucks_html/Z3-Dump-Truck.html">Z3 Dump Truck</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="{{BASE_PATH}}trucks.html#e1st-series">E1st Series</a>
+                <ul class="truck-links">
+                  <li><a href="{{BASE_PATH}}trucks_html/E1st-Tractor.html">E1st Tractor</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="{{BASE_PATH}}trucks.html#e3-series">E3 Series</a>
+                <ul class="truck-links">
+                  <li><a href="{{BASE_PATH}}trucks_html/E3-Muck-Truck.html">E3 Muck Truck</a></li>
+                  <li><a href="{{BASE_PATH}}trucks_html/E3-Tractor-Truck.html">E3 Tractor Truck</a></li>
+                  <li><a href="{{BASE_PATH}}trucks_html/E3-Van-Truck.html">E3 Van Truck</a></li>
+                  <li><a href="{{BASE_PATH}}trucks_html/E3-Dump-Truck.html">E3 Dump Truck</a></li>
+                  <li><a href="{{BASE_PATH}}trucks_html/E3-Cement-Mixer-Truck.html">E3 Cement Mixer Truck</a></li>
+                  <li><a href="{{BASE_PATH}}trucks_html/E3-Compactor-Garbage-Truck.html">E3 Compactor Garbage Truck</a></li>
+                  <li><a href="{{BASE_PATH}}trucks_html/E3-Stake-Truck.html">E3 Stake Truck</a></li>
+                  <li><a href="{{BASE_PATH}}trucks_html/E3-Sewage-Suction-Truck.html">E3 Sewage Suction Truck</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="{{BASE_PATH}}trucks.html#9-series">9 Series</a>
+                <ul class="truck-links">
+                  <li><a href="{{BASE_PATH}}trucks_html/9-Series-Sweeper.html">9 Series Sweeper</a></li>
+                  <li><a href="{{BASE_PATH}}trucks_html/9-Series-Garbage-Truck.html">9 Series Garbage Truck</a></li>
+                  <li><a href="{{BASE_PATH}}trucks_html/9-Series-Tow-Truck.html">9 Series Tow Truck</a></li>
+                  <li><a href="{{BASE_PATH}}trucks_html/9-Series-Truck-Mounted-Crane.html">9 Series Truck Mounted Crane</a></li>
+                  <li><a href="{{BASE_PATH}}trucks_html/9-Series-Cement-Mixer-Truck.html">9 Series Cement Mixer Truck</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="{{BASE_PATH}}trucks.html#6-series">6 Series</a>
+                <ul class="truck-links">
+                  <li><a href="{{BASE_PATH}}trucks_html/6-Series-Sweeper.html">6 Series Sweeper</a></li>
+                  <li><a href="{{BASE_PATH}}trucks_html/6-Series-Garbage-Truck.html">6 Series Garbage Truck</a></li>
+                  <li><a href="{{BASE_PATH}}trucks_html/6-Series-Truck-Mounted-Crane.html">6 Series Truck Mounted Crane</a></li>
+                  <li><a href="{{BASE_PATH}}trucks_html/6-Series-Cement-Mixer-Truck.html">6 Series Cement Mixer Truck</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="{{BASE_PATH}}trucks.html#3-series">3 Series</a>
+                <ul class="truck-links">
+                  <li><a href="{{BASE_PATH}}trucks_html/3-Series-Cement-Mixer-Truck.html">3 Series Cement Mixer Truck</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+      </ul>
+    </div>
+    
+    <a href="{{BASE_PATH}}about.html">About</a>
+
+    <button class="contact-btn" onclick="location.href='{{BASE_PATH}}contact.html'">Contact Us</button>
+  </nav>
+</header>
+
+<!-- Header JavaScript -->
+<script>
+// DROPDOWN SYSTEM NOW HANDLED BY PURE CSS - NO JAVASCRIPT NEEDED
+// CSS handles: :hover states for .trucks-dropdown, .sub-dropdown, .truck-links
+/* JavaScript removed - using CSS-only approach for better performance */
+if (false) { // Disabled JavaScript dropdown logic
+    const dropdownMenu = trucksDropdown.querySelector('.dropdown-menu');
+    const allDropdowns = trucksDropdown.querySelectorAll('.dropdown-menu, .sub-dropdown, .truck-links');
+    let globalTimeout;
+    
+    // Global timeout manager for smooth navigation
+    function clearGlobalTimeout() {
+        if (globalTimeout) {
+            clearTimeout(globalTimeout);
+            globalTimeout = null;
+        }
+    }
+    
+    function setGlobalTimeout(callback, delay) {
+        clearGlobalTimeout();
+        globalTimeout = setTimeout(callback, delay);
+    }
+
+    // Show glassy background overlay when any dropdown is active
+    function showGlassyBackground() {
+        document.body.style.transition = 'backdrop-filter 0.4s ease, background 0.4s ease';
+        document.body.style.backdropFilter = 'blur(2px)';
+        document.body.style.background = 'rgba(0, 0, 0, 0.02)';
+    }
+    
+    function hideGlassyBackground() {
+        document.body.style.backdropFilter = '';
+        document.body.style.background = '';
+        setTimeout(() => {
+            document.body.style.transition = '';
+        }, 400);
+    }
+
+    // Main trucks dropdown - optimized timing
+    trucksDropdown.addEventListener('mouseenter', () => {
+        clearGlobalTimeout();
+        dropdownMenu.style.display = 'block';
+        showGlassyBackground();
+    });
+    
+    trucksDropdown.addEventListener('mouseleave', () => {
+        setGlobalTimeout(() => {
+            dropdownMenu.style.display = 'none';
+            // Hide all sub-levels
+            allDropdowns.forEach(dropdown => {
+                if (dropdown !== dropdownMenu) {
+                    dropdown.style.display = 'none';
+                }
+            });
+            hideGlassyBackground();
+        }, 600); // Extended 600ms delay for comfortable movement
+    });
+
+    // Keep dropdown open when hovering over any dropdown element
+    allDropdowns.forEach(dropdown => {
+        dropdown.addEventListener('mouseenter', () => {
+            clearGlobalTimeout();
+        });
+        
+        dropdown.addEventListener('mouseleave', () => {
+            setGlobalTimeout(() => {
+                dropdownMenu.style.display = 'none';
+                allDropdowns.forEach(dd => {
+                    if (dd !== dropdownMenu) {
+                        dd.style.display = 'none';
+                    }
+                });
+                hideGlassyBackground();
+            }, 500); // 500ms delay when leaving dropdown areas
+        });
+    });
+
+    // Sub-dropdown hover management with perfect timing
+    const subDropdowns = trucksDropdown.querySelectorAll('.sub-dropdown');
+    subDropdowns.forEach(subDropdown => {
+        const parentLi = subDropdown.parentElement;
+        let subTimeout;
+        
+        parentLi.addEventListener('mouseenter', () => {
+            clearGlobalTimeout();
+            clearTimeout(subTimeout);
             
-            // Find header placeholder or insert at beginning of body
-            const headerPlaceholder = document.getElementById('header-placeholder');
-            if (headerPlaceholder) {
-                headerPlaceholder.innerHTML = headerContent;
-            } else {
-                // Insert at the beginning of body
-                document.body.insertAdjacentHTML('afterbegin', headerContent);
+            // Gentle delay for smooth cascade
+            setTimeout(() => {
+                subDropdown.style.display = 'block';
+            }, 150);
+        });
+
+        parentLi.addEventListener('mouseleave', () => {
+            subTimeout = setTimeout(() => {
+                subDropdown.style.display = 'none';
+                // Hide child truck-links
+                const childTruckLinks = subDropdown.querySelectorAll('.truck-links');
+                childTruckLinks.forEach(links => links.style.display = 'none');
+            }, 400); // 400ms delay for sub-dropdowns
+        });
+        
+        // Keep sub-dropdown open when hovering
+        subDropdown.addEventListener('mouseenter', () => {
+            clearTimeout(subTimeout);
+            clearGlobalTimeout();
+        });
+    });
+
+    // Truck-links hover management with perfect timing
+    const truckLinks = trucksDropdown.querySelectorAll('.truck-links');
+    truckLinks.forEach(truckLink => {
+        const parentLi = truckLink.parentElement;
+        let linkTimeout;
+        
+        parentLi.addEventListener('mouseenter', () => {
+            clearGlobalTimeout();
+            clearTimeout(linkTimeout);
+            
+            // Gentle delay for smooth cascade
+            setTimeout(() => {
+                truckLink.style.display = 'block';
+            }, 150);
+        });
+
+        parentLi.addEventListener('mouseleave', () => {
+            linkTimeout = setTimeout(() => {
+                truckLink.style.display = 'none';
+            }, 350); // 350ms delay for truck links
+        });
+        
+        // Keep truck-links open when hovering
+        truckLink.addEventListener('mouseenter', () => {
+            clearTimeout(linkTimeout);
+            clearGlobalTimeout();
+        });
+    });
+}
+</script>
+
+<!-- Mobile Menu JavaScript -->
+<script>
+// Mobile Menu Toggle Function
+function toggleMobileMenu() {
+    const nav = document.getElementById('main-nav');
+    const toggle = document.querySelector('.mobile-menu-toggle');
+    
+    if (nav && toggle) {
+        nav.classList.toggle('mobile-open');
+        
+        // Update hamburger icon
+        toggle.textContent = nav.classList.contains('mobile-open') ? '✕' : '☰';
+        
+        // Prevent body scroll when menu is open
+        if (nav.classList.contains('mobile-open')) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+    }
+}
+
+// Close mobile menu when clicking on a link
+document.addEventListener('click', function(e) {
+    const nav = document.getElementById('main-nav');
+    const toggle = document.querySelector('.mobile-menu-toggle');
+    
+    if (nav && nav.classList.contains('mobile-open')) {
+        // Close menu if clicking outside nav or on a link
+        if (!nav.contains(e.target) && !toggle.contains(e.target)) {
+            nav.classList.remove('mobile-open');
+            if (toggle) {
+                toggle.textContent = '☰';
             }
+            document.body.style.overflow = '';
         }
         
-        // Load footer
-        const footerResponse = await fetch(basePath + 'resources/footer.html');
-        if (footerResponse.ok) {
-            let footerContent = await footerResponse.text();
-            // Replace {{BASE_PATH}} placeholders with actual base path
-            footerContent = footerContent.replace(/\{\{BASE_PATH\}\}/g, basePath);
-            
-            // Find footer placeholder or insert at end of body
+        // Close menu when clicking on a navigation link
+        if (e.target.tagName === 'A' && nav.contains(e.target)) {
+            nav.classList.remove('mobile-open');
+            if (toggle) {
+                toggle.textContent = '☰';
+            }
+            document.body.style.overflow = '';
+        }
+    }
+});
+
+// Handle window resize for responsive behavior
+window.addEventListener('resize', function() {
+    const nav = document.getElementById('main-nav');
+    const toggle = document.querySelector('.mobile-menu-toggle');
+    
+    if (window.innerWidth >= 768) {
+        // Desktop mode - ensure nav is visible and menu is closed
+        if (nav) {
+            nav.classList.remove('mobile-open');
+        }
+        if (toggle) {
+            toggle.textContent = '☰';
+        }
+        document.body.style.overflow = '';
+    }
+});
+
+// Mobile dropdown functionality for trucks menu
+function setupMobileDropdowns() {
+    // Main trucks dropdown toggle
+    const trucksDropdown = document.querySelector('.trucks-dropdown > a');
+    if (trucksDropdown && window.innerWidth <= 767) {
+        trucksDropdown.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            const parent = this.parentElement;
+            parent.classList.toggle('mobile-open');
+        });
+    }
+    
+    // Category dropdowns (Light Duty, Medium Duty, Heavy Duty)
+    document.querySelectorAll('.dropdown-menu > li > a').forEach(categoryLink => {
+        categoryLink.addEventListener('click', function(e) {
+            if (window.innerWidth <= 767) {
+                const subDropdown = this.nextElementSibling;
+                if (subDropdown && subDropdown.classList.contains('sub-dropdown')) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    subDropdown.classList.toggle('mobile-open');
+                }
+            }
+        });
+    });
+    
+    // Series dropdowns (X9 Series, E6 Series, etc.)
+    document.querySelectorAll('.sub-dropdown > li > a').forEach(seriesLink => {
+        seriesLink.addEventListener('click', function(e) {
+            if (window.innerWidth <= 767) {
+                const truckLinks = this.nextElementSibling;
+                if (truckLinks && truckLinks.classList.contains('truck-links')) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    truckLinks.classList.toggle('mobile-open');
+                }
+            }
+        });
+    });
+}
+
+// Initialize mobile dropdowns after DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupMobileDropdowns);
+} else {
+    setupMobileDropdowns();
+}
+</script>`;
+
+// Footer template with {{BASE_PATH}} placeholder
+const footerTemplate = `<!-- Universal Footer Component -->
+<footer>
+  <!-- Load Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+  <div class="footer-container">
+    <div>
+      <h4>PRODUCTS</h4>
+      <ul>
+        <li><a href="{{BASE_PATH}}trucks.html#ldt">Light Duty Truck (4.5T≤GCW≤25T)</a></li>
+        <li><a href="{{BASE_PATH}}trucks.html#mdt">Medium Duty Truck (12T≤GCW≤60T)</a></li>
+        <li><a href="{{BASE_PATH}}trucks.html#hdt">Heavy Duty Truck (18T≤GCW≤100T)</a></li>
+        <li><a href="{{BASE_PATH}}trucks.html#ldt">Off-road Truck</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h4>NAVIGATION</h4>
+      <ul>
+        <li><a href="{{BASE_PATH}}index.html">Home</a></li>
+        <li><a href="{{BASE_PATH}}trucks.html">Trucks</a></li>
+        <li><a href="{{BASE_PATH}}about.html">About</a></li>
+        <li><a href="{{BASE_PATH}}contact.html">Contact Us</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h4>FOLLOW US</h4>
+      <div class="social-links">
+        <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" title="Twitter / X"><i class="fab fa-x-twitter"></i></a>
+        <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div>© <span id="year">2025</span> Equipment King. All rights reserved.</div>
+    <div>
+      <a href="#">Privacy Policy</a> |
+      <a href="#">Terms of Use</a> |
+      <a href="#">Site Map</a>
+    </div>
+  </div>
+
+  <script>
+    // auto-update footer year
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</footer>`;
+
+// Load header and footer
+function loadHeaderFooter() {
+    const basePath = getBasePath();
+    
+    // Replace {{BASE_PATH}} placeholders
+    let header = headerTemplate.replace(/\{\{BASE_PATH\}\}/g, basePath);
+    let footer = footerTemplate.replace(/\{\{BASE_PATH\}\}/g, basePath);
+    
+    // Extract scripts from header (handle multiple script tags)
+    let headerScripts = [];
+    const headerScriptMatches = header.matchAll(/<script>([\s\S]*?)<\/script>/g);
+    for (const match of headerScriptMatches) {
+        headerScripts.push(match[1]);
+        header = header.replace(match[0], ''); // Remove script tag from HTML
+    }
+    
+    // Extract scripts from footer
+    const footerScriptMatch = footer.match(/<script>([\s\S]*?)<\/script>/);
+    let footerScript = null;
+    if (footerScriptMatch) {
+        footer = footer.replace(/<script>[\s\S]*?<\/script>/, ''); // Remove script tag
+        footerScript = footerScriptMatch[1];
+    }
+    
+    // Insert header HTML
+            const headerPlaceholder = document.getElementById('header-placeholder');
+            if (headerPlaceholder) {
+        headerPlaceholder.outerHTML = header;
+            } else {
+        document.body.insertAdjacentHTML('afterbegin', header);
+    }
+    
+    // Execute header scripts after header is inserted
+    headerScripts.forEach(scriptContent => {
+        const script = document.createElement('script');
+        script.textContent = scriptContent;
+        document.head.appendChild(script);
+    });
+    
+    // Insert footer HTML
             const footerPlaceholder = document.getElementById('footer-placeholder');
             if (footerPlaceholder) {
-                footerPlaceholder.innerHTML = footerContent;
+        footerPlaceholder.outerHTML = footer;
             } else {
-                // Insert at the end of body
-                document.body.insertAdjacentHTML('beforeend', footerContent);
-            }
-        }
-    } catch (error) {
-        console.error('Error loading header/footer:', error);
+        document.body.insertAdjacentHTML('beforeend', footer);
+    }
+    
+    // Execute footer script after footer is inserted
+    if (footerScript) {
+        const script = document.createElement('script');
+        script.textContent = footerScript;
+        document.head.appendChild(script);
     }
 }
 

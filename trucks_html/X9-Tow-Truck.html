@@ -23,26 +23,22 @@
 
         <!-- Unified Image Gallery Section -->
         <section style="max-width: 1400px; margin: 0 auto 60px auto; border: 1px solid #dee2e6; border-radius: 12px; padding: 40px;">
-            <!-- Gallery Header -->
-            <div style="text-align: center; margin-bottom: 30px;">
-                <h3 style="color: #212529; font-size: 1.8em; font-weight: 700; margin-bottom: 20px; position: relative;">
-                    <span style="background: #fff; padding: 0 20px; position: relative; z-index: 2;">Vehicle Images</span>
-                    <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ddd, transparent); z-index: 1;"></div>
-                </h3>
-            </div>
-            
-            <!-- Main Image Display -->
+            <h3 style="color: #212529; font-size: 1.8em; font-weight: 700; text-align: center; margin-bottom: 30px; position: relative;">
+                <span style="background: #fff; padding: 0 20px; position: relative; z-index: 2;">Exterior</span>
+                <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ddd, transparent); z-index: 1;"></div>
+            </h3>
             <div style="width: 100%; height: 480px; border: 1px solid #dee2e6; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px;">
-                <img id="mainImage" src="../assets/trucks/x9towtrucks/main.webp" alt="Vehicle Image" 
-                     style="max-width: 95%; max-height: 95%; object-fit: contain; transition: opacity 0.3s ease;"
+                <img id="mainImage" src="../assets/trucks/x9towtrucks/x9towtruck.webp" alt="X9 Tow Truck" 
+                     style="max-width: 95%; max-height: 95%; object-fit: contain;"
                      onerror="this.src='../assets/back2.jpeg'">
             </div>
             
-            <!-- Thumbnail Strip -->
+            <!-- Image Strip Slider -->
             <div id="imageStrip" style="display: flex; gap: 16px; overflow-x: auto; padding: 20px 0; scroll-behavior: smooth;">
                 <!-- Thumbnails will be populated by JavaScript -->
             </div>
         </section>
+
 
         <!-- Hero Section -->
         <div style="max-width: 1400px; margin: 0 auto 60px auto; text-align: center; position: relative;">
@@ -54,7 +50,7 @@
                     <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2;">X9 Series - Light Duty Trucks</span>
                     <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ccc, transparent); z-index: 1;"></div>
                 </h2>
-                <p style="margin: 0; line-height: 1.5; color: #666; font-size: 1.1em;">Professional heavy-duty towing solution with advanced recovery capabilities</p>
+                <p style="margin: 0; line-height: 1.5; color: #666; font-size: 1.1em;">X9 Tow Truck is built for recovery and towing operations with reinforced frame and heavy-duty winch compatibility.</p>
             </div>
         </div>
 
@@ -70,7 +66,7 @@
                     <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ddd, transparent); z-index: 1;"></div>
                 </h2>
                 <p style="font-size: 1.25em; line-height: 1.7; color: #555; margin: 0; text-align: center; max-width: 800px; margin: 0 auto;">
-                    Professional heavy-duty towing solution with advanced recovery capabilities. Features powerful winch system, stabilizing outriggers, and robust chassis design for safe vehicle recovery operations.
+                    X9 Tow Truck is built for recovery and towing operations with reinforced frame and heavy-duty winch compatibility. Designed for professional towing services, vehicle recovery, and roadside assistance operations.
                 </p>
             </section>
 
@@ -81,41 +77,37 @@
                     <span style="background: #fff; padding: 0 24px; position: relative; z-index: 2;">Technical Specifications</span>
                     <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ddd, transparent); z-index: 1;"></div>
                 </h2>
-                                <!-- Responsive Table -->
-                <div style="max-width: 900px; margin: 0 auto; overflow-x: auto;">
-                    <table style="width: 100%; border-collapse: collapse; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);">
-                        <!-- Table Header -->
-                        <thead>
-                            <tr style="background: linear-gradient(135deg, #444, #666); color: white;">
-                                <th style="padding: 18px 24px; text-align: left; font-size: 1.1em; font-weight: 700;">Specification</th>
-                                <th style="padding: 18px 24px; text-align: left; font-size: 1.1em; font-weight: 700;">Value</th>
-                            </tr>
-                        </thead>
-                        
-                        <!-- Table Body -->
-                        <tbody>
-                            <tr style="background: #f8f9fa; border-bottom: 1px solid #dee2e6;">
-                                <td style="padding: 16px 24px; font-weight: 600; color: #495057;">Gross Vehicle Weight (GVW)</td>
-                                <td style="padding: 16px 24px; color: #212529;">Under 25T</td>
-                            </tr>
-                            <tr style="border-bottom: 1px solid #dee2e6;">
-                                <td style="padding: 16px 24px; font-weight: 600; color: #495057;">Engine Type</td>
-                                <td style="padding: 16px 24px; color: #212529;">Turbocharged Diesel</td>
-                            </tr>
-                            <tr style="background: #f8f9fa; border-bottom: 1px solid #dee2e6;">
-                                <td style="padding: 16px 24px; font-weight: 600; color: #495057;">Transmission</td>
-                                <td style="padding: 16px 24px; color: #212529;">Manual/Automatic</td>
-                            </tr>
-                            <tr style="border-bottom: 1px solid #dee2e6;">
-                                <td style="padding: 16px 24px; font-weight: 600; color: #495057;">Towing capacity</td>
-                                <td style="padding: 16px 24px; color: #212529;">15-20 Tons</td>
-                            </tr>
-                            <tr style="background: #f8f9fa">
-                                <td style="padding: 16px 24px; font-weight: 600; color: #495057;">Wheelbase</td>
-                                <td style="padding: 16px 24px; color: #212529;">Variable</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; max-width: 1200px; margin: 0 auto;">
+                    <div style="padding: 28px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden;">
+                        <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
+                        <div style="font-size: 13px; color: #666; font-weight: 700; text-transform: uppercase; margin-bottom: 12px; letter-spacing: 1px;">Engine</div>
+                        <div style="font-size: 20px; color: #212529; font-weight: 700;">4.2L Turbo Diesel</div>
+                    </div>
+                    <div style="padding: 28px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden;">
+                        <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
+                        <div style="font-size: 13px; color: #666; font-weight: 700; text-transform: uppercase; margin-bottom: 12px; letter-spacing: 1px;">Power</div>
+                        <div style="font-size: 20px; color: #212529; font-weight: 700;">180-260 hp</div>
+                    </div>
+                    <div style="padding: 28px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden;">
+                        <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
+                        <div style="font-size: 13px; color: #666; font-weight: 700; text-transform: uppercase; margin-bottom: 12px; letter-spacing: 1px;">Payload</div>
+                        <div style="font-size: 20px; color: #212529; font-weight: 700;">Tow-rated chassis</div>
+                    </div>
+                    <div style="padding: 28px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden;">
+                        <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
+                        <div style="font-size: 13px; color: #666; font-weight: 700; text-transform: uppercase; margin-bottom: 12px; letter-spacing: 1px;">Towing Capacity</div>
+                        <div style="font-size: 20px; color: #212529; font-weight: 700;">Up to 5 tons</div>
+                    </div>
+                    <div style="padding: 28px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden;">
+                        <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
+                        <div style="font-size: 13px; color: #666; font-weight: 700; text-transform: uppercase; margin-bottom: 12px; letter-spacing: 1px;">Transmission</div>
+                        <div style="font-size: 20px; color: #212529; font-weight: 700;">6-speed manual / 8-speed auto</div>
+                    </div>
+                    <div style="padding: 28px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden;">
+                        <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
+                        <div style="font-size: 13px; color: #666; font-weight: 700; text-transform: uppercase; margin-bottom: 12px; letter-spacing: 1px;">Features</div>
+                        <div style="font-size: 20px; color: #212529; font-weight: 700;">ABS, Air Conditioning, Durable Chassis</div>
+                    </div>
                 </div>
             </section>
         </div>
@@ -202,39 +194,25 @@
     </style>
     
     <script>
-        // Unified single collection image gallery functionality
-        const allImages = [
-            "../assets/trucks/x9towtrucks/main.webp",
-                "../assets/trucks/x9towtrucks/side.webp",
-                "../assets/trucks/x9towtrucks/detail1.webp",
-                "../assets/trucks/x9towtrucks/detail2.webp",
-                "../assets/trucks/x9towtrucks/image1.webp",
-                "../assets/trucks/x9towtrucks/image2.webp",
-                "../assets/trucks/x9towtrucks/image3.webp",
-                "../assets/trucks/x9towtrucks/interior.webp",
-                "../assets/trucks/x9towtrucks/cabin1.webp",
-                "../assets/trucks/x9towtrucks/cabin2.webp",
-                "../assets/trucks/x9towtrucks/dashboard.webp"
+        // Image gallery functionality
+        const exteriorImages = [
+            "../assets/trucks/x9towtrucks/x9towtruck.webp"
         ];
 
-        function loadImageGallery() {
+        function initImageGallery() {
             const imageStrip = document.getElementById('imageStrip');
             const mainImage = document.getElementById('mainImage');
             
             // Clear existing thumbnails
             imageStrip.innerHTML = '';
             
-            // Set first image as main image
-            if (allImages.length > 0) {
-                mainImage.src = allImages[0];
-            }
-            
             // Create thumbnails for each image
-            allImages.forEach((src, index) => {
+            exteriorImages.forEach((src, index) => {
                 const thumbnail = document.createElement('img');
                 thumbnail.src = src;
                 thumbnail.className = 'thumbnail' + (index === 0 ? ' active' : '');
-                thumbnail.alt = `Vehicle Image ${index + 1}`;
+                thumbnail.alt = `X9 Tow Truck View ${index + 1}`;
+                thumbnail.title = 'X9 Tow Truck';
                 
                 // Hide thumbnail if image fails to load
                 thumbnail.onerror = () => {
@@ -257,11 +235,6 @@
                 
                 imageStrip.appendChild(thumbnail);
             });
-        }
-
-        function initImageGallery() {
-            // Initialize gallery
-            loadImageGallery();
         }
 
         // Auto-update footer year
