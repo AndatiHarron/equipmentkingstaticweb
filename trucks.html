@@ -347,9 +347,24 @@
       }
       
       .ek-magnifier {
-        width: 300px;
-        height: 300px;
-        border: 3px solid #6c757d;
+        width: 150px;
+        height: 150px;
+        border: 2px solid rgba(73, 80, 87, 0.8);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25), 
+                    0 0 0 1px rgba(255, 255, 255, 0.4) inset;
+      }
+      
+      .ek-magnifier::before,
+      .ek-magnifier::after {
+        background: rgba(73, 80, 87, 0.85);
+      }
+      
+      .ek-magnifier::before {
+        height: 16px;
+      }
+      
+      .ek-magnifier::after {
+        width: 16px;
       }
     }
 
@@ -572,39 +587,63 @@
     /* Magnifier glass */
     .ek-magnifier {
       position: absolute;
-      width: 500px;
-      height: 500px;
-      
+      width: 200px;
+      height: 200px;
       border-radius: 16px;
       background: #fff;
-     
       pointer-events: none;
       opacity: 0;
-      transition: opacity 0.25s ease;
       z-index: 1000;
       background-repeat: no-repeat;
       background-size: 300% 300%;
+      
+      /* Visual enhancements */
+      border: 3px solid rgba(73, 80, 87, 0.8);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 
+                  0 0 0 1px rgba(255, 255, 255, 0.5) inset,
+                  0 0 20px rgba(73, 80, 87, 0.2);
+      
+      /* Smooth movement transitions */
+      transition: opacity 0.2s ease, 
+                  transform 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                  left 0.05s linear,
+                  top 0.05s linear;
+      
+      /* Prevent overflow */
+      overflow: hidden;
     }
 
     .ek-main-image:hover .ek-magnifier {
       opacity: 1;
     }
 
+    /* Crosshair indicator */
     .ek-magnifier::before {
       content: '';
       position: absolute;
-      top: -8px;
-      left: -8px;
-      right: -8px;
-      bottom: -8px;
-      border: 4px solid rgba(108, 117, 125, 0.4);
-      border-radius: 20px;
-      animation: magnifierPulse 2s ease-in-out infinite;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 2px;
+      height: 20px;
+      background: rgba(73, 80, 87, 0.9);
+      box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+      z-index: 1001;
+      pointer-events: none;
     }
 
-    @keyframes magnifierPulse {
-      0%, 100% { transform: scale(1); opacity: 0.3; }
-      50% { transform: scale(1.05); opacity: 0.6; }
+    .ek-magnifier::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 20px;
+      height: 2px;
+      background: rgba(73, 80, 87, 0.9);
+      box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+      z-index: 1001;
+      pointer-events: none;
     }
 
     /* Responsive truck grid layouts */
@@ -2305,6 +2344,9 @@
     // Magnifier functionality (mouse and touch)
     function setupMagnifier() {
       let isTouching = false;
+      let rafId = null;
+      let lastUpdateTime = 0;
+      const throttleDelay = 16; // ~60fps
       
       // Function to handle positioning for both mouse and touch
       function handleMagnifier(clientX, clientY) {
@@ -2312,41 +2354,97 @@
         
         const containerRect = mainImageContainer.getBoundingClientRect();
         const imgRect = mainImg.getBoundingClientRect();
-        const x = clientX - containerRect.left;
-        const y = clientY - containerRect.top;
         
         // Adjust magnifier size and position for mobile
         const isMobile = window.innerWidth <= 768;
-        const magnifierSize = isMobile ? 150 : 250;
+        const magnifierSize = isMobile ? 150 : 200;
+        const mobileOffset = isMobile ? 80 : 0; // Offset magnifier from touch point on mobile
         
-        // Position magnifier at cursor/touch (offset to not block view)
-        magnifier.style.left = (x - magnifierSize) + 'px';
-        magnifier.style.top = (y - magnifierSize) + 'px';
+        // Set magnifier size dynamically
+        magnifier.style.width = magnifierSize + 'px';
+        magnifier.style.height = magnifierSize + 'px';
         
-        // Calculate the position relative to the actual image
+        // Calculate position relative to container
+        const x = clientX - containerRect.left;
+        const y = clientY - containerRect.top;
+        
+        // Calculate desired position (centered on cursor/touch)
+        let desiredLeft = x - magnifierSize / 2;
+        let desiredTop = y - magnifierSize / 2;
+        
+        // Mobile: offset magnifier upward/leftward to avoid finger blocking view
+        if (isMobile) {
+          desiredLeft = x - magnifierSize / 2 - mobileOffset;
+          desiredTop = y - magnifierSize / 2 - mobileOffset;
+        }
+        
+        // Boundary constraints: keep magnifier within container bounds
+        const minLeft = 0;
+        const maxLeft = containerRect.width - magnifierSize;
+        const minTop = 0;
+        const maxTop = containerRect.height - magnifierSize;
+        
+        // Clamp position to stay within bounds
+        desiredLeft = Math.max(minLeft, Math.min(desiredLeft, maxLeft));
+        desiredTop = Math.max(minTop, Math.min(desiredTop, maxTop));
+        
+        // Apply position
+        magnifier.style.left = desiredLeft + 'px';
+        magnifier.style.top = desiredTop + 'px';
+        
+        // Calculate the position relative to the actual image for background positioning
         const imgX = clientX - imgRect.left;
         const imgY = clientY - imgRect.top;
         
+        // Edge detection: ensure we don't go outside image bounds
+        const clampedImgX = Math.max(0, Math.min(imgX, imgRect.width));
+        const clampedImgY = Math.max(0, Math.min(imgY, imgRect.height));
+        
         // Calculate background position for 4x magnification
-        const xPercent = (imgX / imgRect.width) * 100;
-        const yPercent = (imgY / imgRect.height) * 100;
+        const xPercent = (clampedImgX / imgRect.width) * 100;
+        const yPercent = (clampedImgY / imgRect.height) * 100;
         
         // Set magnifier background to show zoomed portion
         magnifier.style.backgroundImage = `url(${mainImg.src})`;
         magnifier.style.backgroundPosition = `${xPercent}% ${yPercent}%`;
         magnifier.style.backgroundSize = `${imgRect.width * 4}px ${imgRect.height * 4}px`;
       }
+      
+      // Throttled handler using requestAnimationFrame for performance
+      function throttledHandleMagnifier(clientX, clientY) {
+        const now = performance.now();
+        
+        if (now - lastUpdateTime >= throttleDelay) {
+          lastUpdateTime = now;
+          handleMagnifier(clientX, clientY);
+        } else {
+          // Cancel previous animation frame if exists
+          if (rafId !== null) {
+            cancelAnimationFrame(rafId);
+          }
+          
+          // Schedule update for next frame
+          rafId = requestAnimationFrame(() => {
+            handleMagnifier(clientX, clientY);
+            lastUpdateTime = performance.now();
+          });
+        }
+      }
 
       // Mouse events for desktop
       mainImageContainer.addEventListener('mousemove', (e) => {
         if (!isTouching) {
-          handleMagnifier(e.clientX, e.clientY);
+          throttledHandleMagnifier(e.clientX, e.clientY);
         }
       });
       
       mainImageContainer.addEventListener('mouseleave', () => {
         if (!isTouching) {
           magnifier.style.opacity = '0';
+          if (rafId !== null) {
+            cancelAnimationFrame(rafId);
+            rafId = null;
+          }
         }
       });
       
@@ -2371,7 +2469,7 @@
         e.preventDefault();
         if (isTouching && mainImg.src) {
           const touch = e.touches[0];
-          handleMagnifier(touch.clientX, touch.clientY);
+          throttledHandleMagnifier(touch.clientX, touch.clientY);
         }
       }, { passive: false });
 
@@ -2379,6 +2477,10 @@
         e.preventDefault();
         isTouching = false;
         magnifier.style.opacity = '0';
+        if (rafId !== null) {
+          cancelAnimationFrame(rafId);
+          rafId = null;
+        }
       }, { passive: false });
     }
 

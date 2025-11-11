@@ -16,9 +16,20 @@ function getBasePath() {
 async function loadHeaderFooter() {
     const basePath = getBasePath();
     
+    // Check if running on file:// protocol (development without server)
+    if (window.location.protocol === 'file:') {
+        console.error('⚠️ Header/Footer cannot load: You are opening files directly (file:// protocol).');
+        console.error('💡 Solution: Run a local server instead.');
+        console.error('   Option 1: Run "npm run dev" (requires Node.js)');
+        console.error('   Option 2: Use Python: "python -m http.server 8080"');
+        console.error('   Option 3: Use VS Code Live Server extension');
+        return;
+    }
+    
     try {
         // Load header
-        const headerResponse = await fetch(basePath + 'resources/header.html');
+        const headerUrl = basePath + 'resources/header.html';
+        const headerResponse = await fetch(headerUrl);
         if (headerResponse.ok) {
             let headerContent = await headerResponse.text();
             // Replace {{BASE_PATH}} placeholders with actual base path
@@ -32,10 +43,13 @@ async function loadHeaderFooter() {
                 // Insert at the beginning of body
                 document.body.insertAdjacentHTML('afterbegin', headerContent);
             }
+        } else {
+            console.error(`Failed to load header: ${headerResponse.status} ${headerResponse.statusText} from ${headerUrl}`);
         }
         
         // Load footer
-        const footerResponse = await fetch(basePath + 'resources/footer.html');
+        const footerUrl = basePath + 'resources/footer.html';
+        const footerResponse = await fetch(footerUrl);
         if (footerResponse.ok) {
             let footerContent = await footerResponse.text();
             // Replace {{BASE_PATH}} placeholders with actual base path
@@ -49,9 +63,14 @@ async function loadHeaderFooter() {
                 // Insert at the end of body
                 document.body.insertAdjacentHTML('beforeend', footerContent);
             }
+        } else {
+            console.error(`Failed to load footer: ${footerResponse.status} ${footerResponse.statusText} from ${footerUrl}`);
         }
     } catch (error) {
         console.error('Error loading header/footer:', error);
+        if (error.message.includes('fetch')) {
+            console.error('💡 Make sure you are running a local development server, not opening files directly.');
+        }
     }
 }
 
