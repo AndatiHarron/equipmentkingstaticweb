@@ -147,12 +147,6 @@ header nav a:hover::after { width: 100%; }
     display: block;
 }
 
-.trucks-btn:hover { 
-    color: #ffffff;
-    background: rgba(255, 255, 255, 0.08);
-    transform: translateY(-1px);
-}
-
 .trucks-btn::after {
     content: '';
     position: absolute;
@@ -163,10 +157,6 @@ header nav a:hover::after { width: 100%; }
     height: 1px;
     background: rgba(255, 255, 255, 0.9);
     transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.trucks-btn:hover::after {
-    width: calc(100% - 32px);
 }
 
 /* Dropdown base - EXACTLY FROM YOUR WORKING CODE */
@@ -184,9 +174,22 @@ header nav a:hover::after { width: 100%; }
     box-shadow: 0 8px 20px rgba(0,0,0,0.2);
 }
 
-/* Show dropdown on hover - EXACTLY FROM YOUR WORKING CODE */
-.trucks-dropdown:hover .dropdown-menu {
-    display: block;
+/* DESKTOP ONLY: Hover-based dropdown functionality */
+@media (min-width: 768px) {
+    .trucks-btn:hover { 
+        color: #ffffff;
+        background: rgba(255, 255, 255, 0.08);
+        transform: translateY(-1px);
+    }
+
+    .trucks-btn:hover::after {
+        width: calc(100% - 32px);
+    }
+
+    /* Show dropdown on hover - EXACTLY FROM YOUR WORKING CODE */
+    .trucks-dropdown:hover .dropdown-menu {
+        display: block;
+    }
 }
 
 @keyframes dropdownFadeIn {
@@ -210,7 +213,6 @@ header nav a:hover::after { width: 100%; }
 .dropdown-menu li a {
     display: block;
     padding: 6px 12px;
-    color: #000;
     text-decoration: none;
     transition: background 0.2s, color 0.2s, text-decoration 0.2s;
     white-space: nowrap;
@@ -221,62 +223,111 @@ header nav a:hover::after { width: 100%; }
     position: relative;
 }
 
-.dropdown-menu li a::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-    transition: left 0.6s ease;
-    z-index: 0;
+/* DESKTOP ONLY: Text color for dropdown links */
+@media (min-width: 768px) {
+    .dropdown-menu li a {
+        color: #000;
+    }
+    
+    .sub-dropdown li a {
+        color: #000;
+    }
+    
+    .truck-links li a {
+        color: #000;
+    }
 }
 
-.dropdown-menu li a:hover {
-    background: rgba(0,0,0,0.1);
-    color: #000;
-    text-decoration: underline;
+/* DESKTOP ONLY: Hover effects for dropdown links */
+@media (min-width: 768px) {
+    .dropdown-menu li a:hover {
+        background: rgba(0,0,0,0.1);
+        color: #000;
+        text-decoration: underline;
+    }
+
+    /* Shimmer effects - only show when dropdown is visible (parent is hovered) */
+    .dropdown-menu li:hover .sub-dropdown li a::before,
+    .sub-dropdown li:hover .truck-links li a::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+        transition: left 0.6s ease;
+        z-index: 0;
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    /* Show shimmer animation only on hover of the link itself */
+    .dropdown-menu li:hover .sub-dropdown li a:hover::before,
+    .sub-dropdown li:hover .truck-links li a:hover::before {
+        opacity: 1;
+        left: 100%;
+    }
 }
 
-/* Removed ::before hover effect - using simple hover from your working code */
-
-/* Sub-dropdown (series) - expand left with invisible hover bridge */
+/* Sub-dropdown (series) - base styles */
 .sub-dropdown {
     display: none;
-    position: absolute;
-    top: 0;
-    right: 100%; /* Positioned flush - no visual overlap */
-    min-width: 220px;
-    border-radius: 2%;
-    padding: 2px 0;
-    background: rgba(255,255,255,0.85);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-    z-index: 1001; /* Ensure it's above parent dropdown */
 }
 
-.dropdown-menu li:hover > .sub-dropdown {
-    display: block;
-}
-
-/* Truck links (sub-sub-dropdown) - expand further left with invisible hover bridge */
+/* Truck links (sub-sub-dropdown) - base styles */
 .truck-links {
     display: none;
-    position: absolute;
-    top: 0;
-    right: 100%; /* Positioned flush - no visual overlap */
-    min-width: 250px;
-    border-radius: 2%;
-    padding: 2px 0;
-    background: rgba(255,255,255,0.85);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-    z-index: 1002; /* Ensure it's above sub-dropdown */
 }
 
-.sub-dropdown li:hover > .truck-links {
-    display: block;
+/* DESKTOP ONLY: Positioning, styling, and visibility for sub-dropdowns */
+@media (min-width: 768px) {
+    .sub-dropdown {
+        position: absolute;
+        top: 0;
+        right: 100%; /* Positioned flush - no visual overlap */
+        min-width: 220px;
+        border-radius: 2%;
+        padding: 2px 0;
+        background: rgba(255,255,255,0.85);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        z-index: 1001; /* Ensure it's above parent dropdown */
+        visibility: hidden;
+        opacity: 0;
+    }
+
+    .truck-links {
+        position: absolute;
+        top: 0;
+        right: 100%; /* Positioned flush - no visual overlap */
+        min-width: 250px;
+        border-radius: 2%;
+        padding: 2px 0;
+        background: rgba(255,255,255,0.85);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        z-index: 1002; /* Ensure it's above sub-dropdown */
+        visibility: hidden;
+        opacity: 0;
+    }
+}
+
+/* DESKTOP ONLY: Show sub-dropdowns and truck-links on hover */
+@media (min-width: 768px) {
+    /* When sub-dropdown is visible, show it properly */
+    .dropdown-menu li:hover > .sub-dropdown {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+
+    /* When truck-links is visible, show it properly */
+    .sub-dropdown li:hover > .truck-links {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
 }
 
 @keyframes dropdownSlideIn {
@@ -292,69 +343,69 @@ header nav a:hover::after { width: 100%; }
 
 /* Duplicate .sub-dropdown definition removed - using consolidated version above */
 
-/* Enhanced hover area for dropdown items - IMPORTANT */
-.dropdown-menu li {
-    position: relative;
-    padding: 2px 0; /* Extra padding for easier hover detection */
-}
+/* DESKTOP ONLY: Enhanced hover area for dropdown items - IMPORTANT */
+@media (min-width: 768px) {
+    /* Enhanced hover area for dropdown items */
+    .dropdown-menu li {
+        padding: 2px 0; /* Extra padding for easier hover detection */
+    }
 
-/* Extend hover area to the left to bridge gap to sub-dropdown */
-.dropdown-menu li::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: -5px; /* Extend 5px to bridge gap to sub-dropdown */
-    width: 5px;
-    height: 100%;
-    z-index: 1000;
-    pointer-events: auto; /* Ensure this area captures hover events */
-}
+    /* Extend hover area to the left to bridge gap to sub-dropdown */
+    .dropdown-menu li::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: -5px; /* Extend 5px to bridge gap to sub-dropdown */
+        width: 5px;
+        height: 100%;
+        z-index: 1000;
+        pointer-events: auto; /* Ensure this area captures hover events */
+    }
 
-.dropdown-menu li a {
-    display: block;
-    padding: 14px 20px; /* Increased padding for wider hover area */
-    margin: 0 4px;
-    border-radius: 10px;
-}
+    .dropdown-menu li a {
+        padding: 14px 20px; /* Increased padding for wider hover area */
+        margin: 0 4px;
+        border-radius: 10px;
+    }
 
-/* Enhanced hover detection for sub-dropdown items - IMPORTANT */
-.sub-dropdown li {
-    position: relative;
-    padding: 1px 0; /* Extra space for easier navigation */
-}
+    /* Enhanced hover detection for sub-dropdown items */
+    .sub-dropdown li {
+        padding: 1px 0; /* Extra space for easier navigation */
+    }
 
-/* Extend hover area to the left to bridge gap to truck-links */
-.sub-dropdown li::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: -5px; /* Extend 5px to bridge gap to truck-links */
-    width: 5px;
-    height: 100%;
-    z-index: 1001;
-    pointer-events: auto; /* Ensure this area captures hover events */
-}
+    /* Extend hover area to the left to bridge gap to truck-links */
+    .sub-dropdown li::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: -5px; /* Extend 5px to bridge gap to truck-links */
+        width: 5px;
+        height: 100%;
+        z-index: 1001;
+        pointer-events: auto; /* Ensure this area captures hover events */
+    }
 
-.sub-dropdown li a {
-    padding: 12px 18px; /* Enhanced padding for better hover area */
-    margin: 0 4px;
-    border-radius: 8px;
-}
+    .sub-dropdown li a {
+        padding: 12px 18px; /* Enhanced padding for better hover area */
+        margin: 0 4px;
+        border-radius: 8px;
+    }
 
-/* Enhanced hover detection for truck-links - IMPORTANT */
-.truck-links li {
-    position: relative;
-}
+    /* Enhanced hover detection for truck-links */
+    .truck-links li {
+        position: relative;
+    }
 
-.truck-links li a {
-    padding: 10px 16px; /* Optimized padding for final level */
-    margin: 0 4px;
-    border-radius: 6px;
-}
+    .truck-links li a {
+        padding: 10px 16px; /* Optimized padding for final level */
+        margin: 0 4px;
+        border-radius: 6px;
+    }
 
-/* Smooth transition for all dropdowns - Consolidated */
-.dropdown-menu li a, .sub-dropdown li a, .truck-links li a {
-    transition: all 0.2s ease;
+    /* Smooth transition for all dropdowns - Consolidated */
+    .dropdown-menu li a, .sub-dropdown li a, .truck-links li a {
+        transition: all 0.2s ease;
+    }
 }
 
 /* Reset list styles for all levels */
@@ -1705,6 +1756,11 @@ footer a:hover {
   }
   
   /* Mobile dropdown menus - expandable/collapsible */
+  /* Disable hover-based dropdowns on mobile */
+  .trucks-dropdown:hover .dropdown-menu {
+    display: none;
+  }
+  
   .trucks-dropdown .dropdown-menu {
     display: none;
     position: static;
@@ -1722,9 +1778,19 @@ footer a:hover {
     display: block;
   }
   
+  /* Disable hover-based sub-dropdowns on mobile */
+  .dropdown-menu li:hover > .sub-dropdown {
+    display: none;
+  }
+  
+  /* Disable hover-based truck-links on mobile */
+  .sub-dropdown li:hover > .truck-links {
+    display: none;
+  }
+  
   .sub-dropdown {
-    display: none !important;
-    position: static !important;
+    display: none;
+    position: static;
     background: rgba(255, 255, 255, 0.04);
     margin-top: 8px;
     margin-bottom: 4px;
@@ -1735,12 +1801,12 @@ footer a:hover {
   }
   
   .sub-dropdown.mobile-open {
-    display: block !important;
+    display: block;
   }
   
   .truck-links {
-    display: none !important;
-    position: static !important;
+    display: none;
+    position: static;
     background: rgba(255, 255, 255, 0.03);
     margin-top: 6px;
     margin-bottom: 4px;
@@ -1751,7 +1817,7 @@ footer a:hover {
   }
   
   .truck-links.mobile-open {
-    display: block !important;
+    display: block;
   }
   
   /* Visual indicators for mobile dropdowns */
@@ -1903,31 +1969,64 @@ footer a:hover {
   
   /* HERO SECTION MOBILE */
   section.hero {
-    margin-top: 50px;
+    margin-top: 60px;
     height: 70vh;
-    padding: 20px;
+    padding: 20px 60px; /* Increased horizontal padding for buttons */
+    position: relative;
+    overflow: hidden;
   }
   
+  /* HERO CONTROLS MOBILE */
+  .hero-btn {
+    font-size: 1.1rem;
+    padding: 6px 10px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.6);
+  }
+  
+  .hero-btn.left {
+    left: 10px;
+  }
+  
+  .hero-btn.right {
+    right: 10px;
+  }
+  
+  /* Ensure hero content doesn't overlap buttons - add more padding */
   section.hero h1 {
     font-size: 2rem;
     margin-bottom: 15px;
+    position: relative;
+    z-index: 2;
+    padding: 0 50px; /* Add horizontal padding to avoid buttons */
+    max-width: 100%;
+    box-sizing: border-box;
   }
   
   section.hero p {
     font-size: 1rem;
     margin-bottom: 25px;
-    padding: 0 10px;
+    padding: 0 50px; /* Increased padding to avoid buttons */
+    position: relative;
+    z-index: 2;
+    max-width: 100%;
+    box-sizing: border-box;
   }
   
-  section.hero button {
+  section.hero button:not(.hero-btn) {
     padding: 12px 30px;
     font-size: 16px;
-  }
-  
-  /* HERO CONTROLS MOBILE */
-  .hero-btn {
-    font-size: 1.5rem;
-    padding: 8px 12px;
+    position: relative;
+    z-index: 2;
+    margin: 0 auto; /* Center the button */
   }
   
   /* TABS SECTION MOBILE */
