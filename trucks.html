@@ -18,14 +18,14 @@
     /* === MAGNIFYING LENS SHARED STYLE === */
 .magnifier-lens {
   position: absolute;
-  border: 2px solid rgba(255, 255, 255, 0.8);
+  border: none;
   border-radius: 50%;
   cursor: none;
   width: 120px;
   height: 120px;
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 700%;
+  background-size: 250%;
   pointer-events: none;
   display: none;
   z-index: 20;
@@ -213,10 +213,10 @@
 
     .ek-popup-nav:hover { 
       background: rgba(255,255,255,0.95);
-      border-color: #007bff;
-      color: #007bff;
+      border-color: #000000;
+      color: #000000;
       transform: translateY(-50%) scale(1.1);
-      box-shadow: 0 6px 20px rgba(0,123,255,0.15), 0 4px 10px rgba(0,0,0,0.1);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15), 0 4px 10px rgba(0,0,0,0.1);
     }
 
     .ek-popup-nav:active {
@@ -489,38 +489,39 @@
     }
 
     .ek-btn.primary {
-      background: linear-gradient(135deg, #495057, #343a40);
+      background: linear-gradient(135deg, #000000, #333333);
       color: white;
     }
 
     .ek-btn.primary:hover {
-      background: linear-gradient(135deg, #343a40, #23272b);
+      background: linear-gradient(135deg, #333333, #555555);
       transform: translateY(-3px);
-      box-shadow: 0 8px 25px rgba(73, 80, 87, 0.4);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
     }
 
     .ek-btn.secondary {
-      background: linear-gradient(135deg, #6c757d, #5a6268);
-      color: white;
+      background: linear-gradient(135deg, #ffffff, #f8f9fa);
+      color: #000000;
+      border: 2px solid #000000;
     }
 
     .ek-btn.secondary:hover {
-      background: linear-gradient(135deg, #5a6268, #495057);
+      background: linear-gradient(135deg, #f8f9fa, #e9ecef);
       transform: translateY(-3px);
-      box-shadow: 0 8px 25px rgba(108, 117, 125, 0.4);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
     }
 
     .ek-btn.outline {
       background: transparent;
-      color: #495057;
-      border: 2px solid #6c757d;
+      color: #000000;
+      border: 2px solid #000000;
     }
 
     .ek-btn.outline:hover {
-      background: #6c757d;
+      background: #000000;
       color: white;
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(108, 117, 125, 0.25);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
     }
 
     /* Gallery section */
@@ -867,7 +868,7 @@
       height: 40px;
       margin: -20px 0 0 -20px;
       border: 3px solid #f3f3f3;
-      border-top: 3px solid #007bff;
+      border-top: 3px solid #000000;
       border-radius: 50%;
       animation: imageSpinner 1s linear infinite;
       opacity: 0;
@@ -2061,6 +2062,7 @@
         'E9 Kitchen Waste Food Garbage Truck': 'trucks_html/E9-Kitchen-Waste-Garbage-Truck.html',
         'E9 Refrigerated Truck': 'trucks_html/E9-Refrigerated-Truck.html',
         'E9 Van Truck': 'trucks_html/E9-Van-Truck.html',
+        'E9 Kitchen Waste Garbage Truck': 'trucks_html/E9-Kitchen-Waste-Garbage-Truck.html',
 
         // X7 Series (5 trucks)
         'X7 Concrete Mixer Truck': 'trucks_html/X7-Concrete-Mixer-Truck.html',
@@ -2074,6 +2076,7 @@
         'X9 4X4 Dump Truck': 'trucks_html/X9-4x4-Dump-Truck.html',
         '4X4 Dump Truck': 'trucks_html/X9-4x4-Dump-Truck.html',
         'X9 Dump Truck': 'trucks_html/X9-Dump-Truck.html',
+        'X9 Van Truck': 'trucks_html/X9-Van-Truck.html',
         'X9 Fuel Tanker Truck': 'trucks_html/X9-Fuel-Tanker-Truck.html',
         'X9 Garbage Truck': 'trucks_html/X9-Garbage-Truck.html',
         'X9 Refrigerated Truck': 'trucks_html/X9-Refrigerated-Truck.html',
@@ -2085,9 +2088,8 @@
         'E6 Dump Truck': 'trucks_html/E6-Dump-Truck.html',
         'E6 Refrigerated Truck': 'trucks_html/E6-Refrigerated-Truck.html',
         'E6 Sprinkler Truck': 'trucks_html/E6-Sprinkler-Truck.html',
-        'E6 Stake Truck': 'trucks_html/E6-Stake-Truck.html',
         'E6 Truck Mounted Crane': 'trucks_html/E6-Truck-Mounted-Crane.html',
-        'E6 Van Truck': 'trucks_html/E6-Van-Truck.html',
+        'E6 Cement Mixer Truck': 'trucks_html/E6-Cement-Mixer-Truck.html',
 
         // X6 Series (14 trucks) - fix missing "Truck" and "Dropside" variations
         'X6 AWD Cargo Truck': 'trucks_html/X6-AWD-Cargo-Truck.html',
@@ -2186,14 +2188,26 @@
               <p class="desc"></p>
             </div>
             <div class="ek-info-section">
-              <h4>Specifications</h4>
+              <h4>Technical Specifications</h4>
               <div class="specs">
-                <ul class="ek-spec-list"></ul>
+                <div style="overflow-x: auto;">
+                  <table class="ek-spec-table" style="width: 100%; border-collapse: collapse; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);">
+                    <thead>
+                      <tr style="background: linear-gradient(135deg, #000000, #333333); color: white;">
+                        <th style="padding: 12px 16px; text-align: left; font-size: 0.95em; font-weight: 700;">Specification</th>
+                        <th style="padding: 12px 16px; text-align: left; font-size: 0.95em; font-weight: 700;">Value</th>
+                      </tr>
+                    </thead>
+                    <tbody class="ek-spec-tbody">
+                      <!-- Specifications will be inserted here -->
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
             <div class="ek-action-buttons">
               <a href="#" class="ek-btn primary" id="viewFullDetailsBtn">
-                📄 View Full Details
+                 View Full Details
               </a>
               <button class="ek-btn outline" id="popupCloseBtn">
                 ✕ Close
@@ -2214,7 +2228,7 @@
     const popupTitle = popupOverlay.querySelector('.ek-popup-title');
     const popupRole = popupOverlay.querySelector('.role');
     const popupDesc = popupOverlay.querySelector('.desc');
-    const specList = popupOverlay.querySelector('.ek-spec-list');
+    const specTbody = popupOverlay.querySelector('.ek-spec-tbody');
     const viewFullDetailsBtn = popupOverlay.querySelector('#viewFullDetailsBtn');
 
     // Magnifier functionality (mouse and touch)
@@ -2283,7 +2297,28 @@
         // Set magnifier background to show zoomed portion
         magnifier.style.backgroundImage = `url(${mainImg.src})`;
         magnifier.style.backgroundPosition = `${xPercent}% ${yPercent}%`;
-        magnifier.style.backgroundSize = `${imgRect.width * 4}px ${imgRect.height * 4}px`;
+        magnifier.style.backgroundSize = `${imgRect.width * 2.5}px ${imgRect.height * 2.5}px`;
+      }
+      
+      // Throttled handler using requestAnimationFrame for performance
+      function throttledHandleMagnifier(clientX, clientY) {
+        const now = performance.now();
+        
+        if (now - lastUpdateTime >= throttleDelay) {
+          lastUpdateTime = now;
+          handleMagnifier(clientX, clientY);
+        } else {
+          // Cancel previous animation frame if exists
+          if (rafId !== null) {
+            cancelAnimationFrame(rafId);
+          }
+          
+          // Schedule update for next frame
+          rafId = requestAnimationFrame(() => {
+            handleMagnifier(clientX, clientY);
+            lastUpdateTime = performance.now();
+          });
+        }
       }
       
       // Throttled handler using requestAnimationFrame for performance
@@ -2377,12 +2412,21 @@
         popupRole.textContent = details.role;
         popupDesc.textContent = details.desc;
 
-        // build specs list
-        specList.innerHTML = '';
+        // build specs table
+        const specTbody = popupOverlay.querySelector('.ek-spec-tbody');
+        specTbody.innerHTML = '';
+        let rowIndex = 0;
         for (let key in details.specs) {
-          const li = document.createElement('li');
-          li.innerHTML = `<span class="ek-spec-key">${key}:</span> ${details.specs[key]}`;
-          specList.appendChild(li);
+          const tr = document.createElement('tr');
+          const isEven = rowIndex % 2 === 0;
+          tr.style.background = isEven ? '#f8f9fa' : 'white';
+          tr.style.borderBottom = '1px solid #dee2e6';
+          tr.innerHTML = `
+            <td style="padding: 12px 16px; font-weight: 600; color: #495057; font-size: 0.9em;">${key}</td>
+            <td style="padding: 12px 16px; color: #212529; font-size: 0.9em;">${details.specs[key]}</td>
+          `;
+          specTbody.appendChild(tr);
+          rowIndex++;
         }
 
         // create thumbnails from mapping
@@ -2429,7 +2473,7 @@
             // Wait for image to load before calculating magnifier size
             mainImg.onload = () => {
               const imgRect = mainImg.getBoundingClientRect();
-              magnifier.style.backgroundSize = `${imgRect.width * 4}px ${imgRect.height * 4}px`;
+              magnifier.style.backgroundSize = `${imgRect.width * 2.5}px ${imgRect.height * 2.5}px`;
             };
           });
           thumbStrip.appendChild(thumb);
@@ -2441,7 +2485,7 @@
         mainImg.onload = () => {
           const imgRect = mainImg.getBoundingClientRect();
           magnifier.style.backgroundImage = `url(${images[0]})`;
-          magnifier.style.backgroundSize = `${imgRect.width * 4}px ${imgRect.height * 4}px`;
+          magnifier.style.backgroundSize = `${imgRect.width * 2.5}px ${imgRect.height * 2.5}px`;
         };
 
         // Set the truck page URL for "View Full Details" button
