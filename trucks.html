@@ -347,9 +347,24 @@
       }
       
       .ek-magnifier {
-        width: 300px;
-        height: 300px;
-        border: 3px solid #6c757d;
+        width: 150px;
+        height: 150px;
+        border: 2px solid rgba(73, 80, 87, 0.8);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25), 
+                    0 0 0 1px rgba(255, 255, 255, 0.4) inset;
+      }
+      
+      .ek-magnifier::before,
+      .ek-magnifier::after {
+        background: rgba(73, 80, 87, 0.85);
+      }
+      
+      .ek-magnifier::before {
+        height: 16px;
+      }
+      
+      .ek-magnifier::after {
+        width: 16px;
       }
     }
 
@@ -572,39 +587,63 @@
     /* Magnifier glass */
     .ek-magnifier {
       position: absolute;
-      width: 500px;
-      height: 500px;
-      
+      width: 200px;
+      height: 200px;
       border-radius: 16px;
       background: #fff;
-     
       pointer-events: none;
       opacity: 0;
-      transition: opacity 0.25s ease;
       z-index: 1000;
       background-repeat: no-repeat;
       background-size: 300% 300%;
+      
+      /* Visual enhancements */
+      border: 3px solid rgba(73, 80, 87, 0.8);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 
+                  0 0 0 1px rgba(255, 255, 255, 0.5) inset,
+                  0 0 20px rgba(73, 80, 87, 0.2);
+      
+      /* Smooth movement transitions */
+      transition: opacity 0.2s ease, 
+                  transform 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                  left 0.05s linear,
+                  top 0.05s linear;
+      
+      /* Prevent overflow */
+      overflow: hidden;
     }
 
     .ek-main-image:hover .ek-magnifier {
       opacity: 1;
     }
 
+    /* Crosshair indicator */
     .ek-magnifier::before {
       content: '';
       position: absolute;
-      top: -8px;
-      left: -8px;
-      right: -8px;
-      bottom: -8px;
-      border: 4px solid rgba(108, 117, 125, 0.4);
-      border-radius: 20px;
-      animation: magnifierPulse 2s ease-in-out infinite;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 2px;
+      height: 20px;
+      background: rgba(73, 80, 87, 0.9);
+      box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+      z-index: 1001;
+      pointer-events: none;
     }
 
-    @keyframes magnifierPulse {
-      0%, 100% { transform: scale(1); opacity: 0.3; }
-      50% { transform: scale(1.05); opacity: 0.6; }
+    .ek-magnifier::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 20px;
+      height: 2px;
+      background: rgba(73, 80, 87, 0.9);
+      box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+      z-index: 1001;
+      pointer-events: none;
     }
 
     /* Responsive truck grid layouts */
@@ -746,195 +785,9 @@
       }
     }
 
-    /* Mobile Navigation Styles */
-    .mobile-menu-toggle {
-      display: none;
-      background: none;
-      border: none;
-      font-size: 24px;
-      cursor: pointer;
-      color: #333;
-      padding: 12px;
-      border-radius: 4px;
-      transition: background-color 0.3s ease;
-      z-index: 1001;
-      position: relative;
-    }
-
-    .mobile-menu-toggle:hover {
-      background-color: rgba(0, 0, 0, 0.1);
-    }
-
+    /* Mobile responsive styles */
     @media (max-width: 768px) {
-      .mobile-menu-toggle {
-        display: block !important;
-        position: fixed;
-        top: 15px;
-        right: 15px;
-        z-index: 1002;
-        background: white;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-        border-radius: 8px;
-        width: 48px;
-        height: 48px;
-        display: flex !important;
-        align-items: center;
-        justify-content: center;
-      }
-
-      header {
-        position: relative;
-      }
-
-      #main-nav {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: white;
-        z-index: 1001;
-        padding: 80px 20px 20px 20px;
-        flex-direction: column;
-        overflow-y: auto;
-      }
-
-      #main-nav.mobile-open {
-        display: flex !important;
-      }
-
-      #main-nav a {
-        padding: 12px 0;
-        border-bottom: 1px solid #eee;
-        text-decoration: none;
-        color: #333;
-        font-weight: 500;
-      }
-
-      .trucks-dropdown .dropdown-menu {
-        position: static;
-        display: none;
-        box-shadow: none;
-        background: #f8f9fa;
-        margin-top: 8px;
-        padding-left: 16px;
-      }
-
-      .trucks-dropdown.mobile-open .dropdown-menu {
-        display: block;
-      }
-
-      .sub-dropdown {
-        position: static !important;
-        display: none !important;
-        background: #ffffff;
-        margin-top: 8px;
-        padding-left: 16px;
-        border-left: 3px solid #007bff;
-      }
-
-      .sub-dropdown.mobile-open {
-        display: block !important;
-      }
-
-      .truck-links {
-        position: static !important;
-        display: none !important;
-        background: #f1f3f4;
-        margin-top: 8px;
-        padding-left: 16px;
-      }
-
-      .truck-links.mobile-open {
-        display: block !important;
-      }
-
-      /* Visual indicators for mobile dropdowns */
-      .trucks-dropdown > a::after {
-        content: ' ▼';
-        font-size: 12px;
-        float: right;
-        transition: transform 0.3s ease;
-        color: #007bff;
-      }
-
-      .trucks-dropdown.mobile-open > a::after {
-        transform: rotate(180deg);
-      }
-
-      .dropdown-menu > li > a::after {
-        content: ' ▶';
-        font-size: 10px;
-        float: right;
-        transition: transform 0.3s ease;
-        color: #007bff;
-      }
-
-      .sub-dropdown > li > a::after {
-        content: ' ▶';
-        font-size: 10px;
-        float: right;
-        transition: transform 0.3s ease;
-        color: #007bff;
-      }
-
-      /* Rotate arrows when opened */
-      .dropdown-menu > li:has(.sub-dropdown.mobile-open) > a::after,
-      .sub-dropdown > li:has(.truck-links.mobile-open) > a::after {
-        transform: rotate(90deg);
-      }
-
-      /* Better touch feedback */
-      .dropdown-menu > li > a,
-      .sub-dropdown > li > a {
-        cursor: pointer;
-        user-select: none;
-        -webkit-tap-highlight-color: rgba(0, 123, 255, 0.1);
-        transition: background-color 0.2s ease;
-      }
-
-      .dropdown-menu > li > a:active,
-      .sub-dropdown > li > a:active {
-        background-color: rgba(0, 123, 255, 0.1);
-      }
-
-      /* Smooth animations */
-      .dropdown-menu,
-      .sub-dropdown,
-      .truck-links {
-        transition: all 0.3s ease;
-        overflow: hidden;
-      }
-
-      .trucks-dropdown.mobile-open .dropdown-menu {
-        animation: slideDown 0.3s ease;
-      }
-
-      .sub-dropdown.mobile-open {
-        animation: slideDown 0.3s ease;
-      }
-
-      .truck-links.mobile-open {
-        animation: slideDown 0.3s ease;
-      }
-
-      @keyframes slideDown {
-        from {
-          opacity: 0;
-          max-height: 0;
-          transform: translateY(-10px);
-        }
-        to {
-          opacity: 1;
-          max-height: 500px;
-          transform: translateY(0);
-        }
-      }
-    }
-
-    /* Touch-friendly button sizes */
-    @media (max-width: 768px) {
+      /* Touch-friendly button sizes */
       button, .btn, a {
         min-height: 44px;
         min-width: 44px;
@@ -1180,19 +1033,15 @@
   </style>
 
     <style>
-        /* Simplified truck tile styling without problematic hover effects */
+        /* Enhanced truck tile styling */
         .truck-tile {
             transform: translateY(0);
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            position: relative;
-            z-index: 1;
-            cursor: pointer;
         }
         
         .truck-tile:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+            transform: translateY(-4px) !important;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15) !important;
         }
         
         .truck-image img {
@@ -1200,52 +1049,7 @@
         }
         
         .truck-tile:hover .truck-image img {
-            transform: scale(1.02);
-        }
-
-        /* Clean grid layout */
-        .truck-grid {
-            gap: 8px;
-        }
-
-        /* Series navigation buttons */
-        .series-nav {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 16px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .series-btn {
-            padding: 8px 16px;
-            border: 2px solid #dee2e6;
-            background: transparent;
-            color: #444;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: 500;
-            font-size: 14px;
-            transition: all 0.3s ease;
-        }
-
-        .series-btn:hover {
-            background: #f8f9fa;
-            border-color: #adb5bd;
-        }
-
-        .series-btn.active {
-            background: #007bff;
-            color: white;
-            border-color: #007bff;
-        }
-
-        .series {
-            display: none;
-        }
-
-        .series.active {
-            display: block;
+            transform: scale(1.05);
         }
         
         .category-buttons button:hover:not(.active) {
@@ -1329,26 +1133,15 @@
             <div style="position: absolute; left: -1px; top: 25%; bottom: 25%; width: 2px; background: linear-gradient(180deg, transparent, #999, transparent);"></div>
             <div style="position: absolute; right: -1px; top: 30%; bottom: 30%; width: 2px; background: linear-gradient(180deg, transparent, #999, transparent);"></div>
             
-            <h2 class="headings" id="ldt" style="color: #212529; margin-bottom: 20px; font-size: 2.5em; font-weight: 700; text-align: center; position: relative;">
+            <h2 class="headings" id="ldt" style="color: #212529; margin-bottom: 10px; font-size: 2.5em; font-weight: 700; text-align: center; position: relative;">
                 <span style="background: #fff; padding: 0 24px; position: relative; z-index: 2;">Light Duty Trucks</span>
                 <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ddd, transparent); z-index: 1;"></div>
             </h2>
-
-            <!-- Series Navigation for Light Duty -->
-            <div class="series-nav" id="light-duty-nav">
-                <button class="series-btn active" data-series="x9-series">X9 Series</button>
-                <button class="series-btn" data-series="e9-series">E9 Series</button>
-                <button class="series-btn" data-series="x7-series">X7 Series</button>
-                <button class="series-btn" data-series="i9-series">i9 Series</button>
-                <div class="truck-counter" style="margin-left: auto; padding: 8px 12px; background: #f8f9fa; border-radius: 6px; font-size: 14px; color: #666;">
-                    <span id="light-duty-count">8 trucks shown</span>
-                </div>
-            </div>
     
 
-            <div id="x9-series" class="series active" data-series="x9-series" style="margin-bottom: 10px;">
+            <div id="x9-series" class="series" style="margin-bottom: 10px;">
                 <div class="series-title" style="font-size: 1.5em; font-weight: 600; color: #444; margin-bottom: 6px; text-align: center; position: relative;">
-                    <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2;">X9 Series (8 trucks)</span>
+                    <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2;">X9 Series</span>
                     <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ccc, transparent); z-index: 1;"></div>
                 </div>
                 <div class="truck-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 6px; margin-bottom: 32px;">
@@ -1419,9 +1212,9 @@
                 </div>
             </div>
 
-                <div class="series" data-series="e9-series" style="margin-bottom: 10px;">
+                <div class="series" style="margin-bottom: 10px;">
                 <div class="series-title" style="font-size: 1.5em; font-weight: 600; color: #444; margin-bottom: 6px; text-align: center; position: relative;">
-                    <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2;">E9 Series (4 trucks)</span>
+                    <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2;">E9 Series</span>
                     <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ccc, transparent); z-index: 1;"></div>
                 </div>
                 <div class="truck-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 6px; margin-bottom: 32px;">
@@ -1460,9 +1253,9 @@
       </div>
     </div>
 
-                <div class="series" data-series="x7-series" style="margin-bottom: 10px;">
+                <div class="series" style="margin-bottom: 10px;">
                 <div class="series-title" style="font-size: 1.5em; font-weight: 600; color: #444; margin-bottom: 6px; text-align: center; position: relative;">
-                    <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2;">X7 Series (5 trucks)</span>
+                    <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2;">X7 Series</span>
                     <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ccc, transparent); z-index: 1;"></div>
                 </div>
                 <div class="truck-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 6px; margin-bottom: 32px;">
@@ -1510,9 +1303,9 @@
       </div>
     </div>
 
-                <div class="series" data-series="i9-series" style="margin-bottom: 10px;">
-                <div class="series-title" id="i9" style="font-size: 1.5em; font-weight: 600; color: #444; margin-bottom: 6px; text-align: center; position: relative;">
-                    <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2;">i9 Series (1 truck)</span>
+                <div class="series" style="margin-bottom: 10px;">
+                <div class="series-title" id="i9">i9 (New Series)</div> style="font-size: 1.5em; font-weight: 600; color: #444; margin-bottom: 6px; text-align: center; position: relative;">
+                    <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2;">i9 (New Series)</span>
                     <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ccc, transparent); z-index: 1;"></div>
                 </div>
                 <div class="truck-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 6px; margin-bottom: 32px;">
@@ -1536,23 +1329,11 @@
             <div style="position: absolute; left: -1px; top: 25%; bottom: 25%; width: 2px; background: linear-gradient(180deg, transparent, #999, transparent);"></div>
             <div style="position: absolute; right: -1px; top: 30%; bottom: 30%; width: 2px; background: linear-gradient(180deg, transparent, #999, transparent);"></div>
             
-            <h2 class="headings" id="medium-duty" style="color: #212529; margin-bottom: 20px; font-size: 2.5em; font-weight: 700; text-align: center; position: relative;">
-                <span style="background: #fff; padding: 0 24px; position: relative; z-index: 2;">Medium Duty Trucks</span>
-                <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ddd, transparent); z-index: 1;"></div>
-            </h2>
+            <h2 class="headings" id="medium-duty">Medium Duty Trucks</h2>
 
-            <!-- Series Navigation for Medium Duty -->
-            <div class="series-nav" id="medium-duty-nav">
-                <button class="series-btn active" data-series="e6-series">E6 Series</button>
-                <button class="series-btn" data-series="x6-series">X6 Series</button>
-                <div class="truck-counter" style="margin-left: auto; padding: 8px 12px; background: #f8f9fa; border-radius: 6px; font-size: 14px; color: #666;">
-                    <span id="medium-duty-count">7 trucks shown</span>
-                </div>
-            </div>
-
-                <div class="series active" data-series="e6-series" style="margin-bottom: 10px;">
+                <div class="series" style="margin-bottom: 10px;">
                 <div class="series-title" style="font-size: 1.5em; font-weight: 600; color: #444; margin-bottom: 6px; text-align: center; position: relative;">
-                    <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2;">E6 Series (7 trucks)</span>
+                    <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2;">E6</span>
                     <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ccc, transparent); z-index: 1;"></div>
                 </div>
                 <div class="truck-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 6px; margin-bottom: 32px;">
@@ -1615,9 +1396,9 @@
       </div>
     </div>
 
-                <div class="series" data-series="x6-series" style="margin-bottom: 10px;">
+                <div class="series" style="margin-bottom: 10px;">
                 <div class="series-title" style="font-size: 1.5em; font-weight: 600; color: #444; margin-bottom: 6px; text-align: center; position: relative;">
-                    <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2;">X6 Series (15 trucks)</span>
+                    <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2;">X6</span>
                     <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ccc, transparent); z-index: 1;"></div>
                 </div>
                 <div class="truck-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 6px; margin-bottom: 32px;">
@@ -1744,27 +1525,14 @@
             <div style="position: absolute; left: -1px; top: 25%; bottom: 25%; width: 2px; background: linear-gradient(180deg, transparent, #999, transparent);"></div>
             <div style="position: absolute; right: -1px; top: 30%; bottom: 30%; width: 2px; background: linear-gradient(180deg, transparent, #999, transparent);"></div>
             
-            <h2 class="headings" id="heavy-duty" style="color: #212529; margin-bottom: 20px; font-size: 2.5em; font-weight: 700; text-align: center; position: relative;">
+            <h2 class="headings" id="heavy-duty" style="color: #212529; margin-bottom: 10px; font-size: 2.5em; font-weight: 700; text-align: center; position: relative;">
                 <span style="background: #fff; padding: 0 24px; position: relative; z-index: 2;">Heavy Duty Trucks</span>
                 <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ddd, transparent); z-index: 1;"></div>
             </h2>
 
-            <!-- Series Navigation for Heavy Duty -->
-            <div class="series-nav" id="heavy-duty-nav">
-                <button class="series-btn active" data-series="z3-series">Z3 Series</button>
-                <button class="series-btn" data-series="e1st-series">E1st Series</button>
-                <button class="series-btn" data-series="e3-series">E3 Series</button>
-                <button class="series-btn" data-series="9-series">9 Series</button>
-                <button class="series-btn" data-series="6-series">6 Series</button>
-                <button class="series-btn" data-series="3-series">3 Series</button>
-                <div class="truck-counter" style="margin-left: auto; padding: 8px 12px; background: #f8f9fa; border-radius: 6px; font-size: 14px; color: #666;">
-                    <span id="heavy-duty-count">1 truck shown</span>
-                </div>
-            </div>
-
-                <div class="series active" data-series="z3-series" style="margin-bottom: 16px;">
+                <div class="series" style="margin-bottom: 16px;">
                 <div class="series-title" style="font-size: 1.5em; font-weight: 600; color: #000000; margin-bottom: 12px; text-align: center; position: relative;">
-                    <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2; border: 2px solid #000000; color: #000000;">Z3 Series (1 truck)</span>
+                    <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2; border: 2px solid #000000; color: #000000;">Z3 Series</span>
                     <div style="position: absolute; top: 50%; left: 0; right: 0; height: 2px; background: #000000; z-index: 1;"></div>
                 </div>
                 <div class="truck-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 16px; align-items: start;">
@@ -1779,9 +1547,9 @@
       </div>
     </div>
 
-                <div class="series" data-series="e1st-series" style="margin-bottom: 10px;">
+                <div class="series" style="margin-bottom: 10px;">
                 <div class="series-title" style="font-size: 1.5em; font-weight: 600; color: #444; margin-bottom: 6px; text-align: center; position: relative;">
-                    <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2;">E1st Series (1 truck)</span>
+                    <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2;">E1st</span>
                     <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ccc, transparent); z-index: 1;"></div>
                 </div>
                 <div class="truck-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 6px; margin-bottom: 32px;">
@@ -1796,9 +1564,9 @@
       </div>
     </div>
 
-                <div class="series" data-series="e3-series" style="margin-bottom: 10px;">
+                <div class="series" style="margin-bottom: 10px;">
                 <div class="series-title" style="font-size: 1.5em; font-weight: 600; color: #444; margin-bottom: 6px; text-align: center; position: relative;">
-                    <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2;">E3 Series (8 trucks)</span>
+                    <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2;">E3</span>
                     <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ccc, transparent); z-index: 1;"></div>
                 </div>
                 <div class="truck-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 6px; margin-bottom: 32px;">
@@ -1870,9 +1638,9 @@
 
     </div>
 
-                <div class="series" data-series="9-series" style="margin-bottom: 10px;">
+                <div class="series" style="margin-bottom: 10px;">
                 <div class="series-title" style="font-size: 1.5em; font-weight: 600; color: #444; margin-bottom: 6px; text-align: center; position: relative;">
-                    <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2;">9 Series (5 trucks)</span>
+                    <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2;">9 Series</span>
                     <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ccc, transparent); z-index: 1;"></div>
                 </div>
                 <div class="truck-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 6px; margin-bottom: 32px;">
@@ -1939,9 +1707,9 @@
 </div>
 
 
-                <div class="series" data-series="6-series" style="margin-bottom: 10px;">
+                <div class="series" style="margin-bottom: 10px;">
                 <div class="series-title" style="font-size: 1.5em; font-weight: 600; color: #444; margin-bottom: 6px; text-align: center; position: relative;">
-                    <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2;">6 Series (4 trucks)</span>
+                    <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2;">6 Series</span>
                     <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ccc, transparent); z-index: 1;"></div>
                 </div>
                 <div class="truck-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 6px; margin-bottom: 32px;">
@@ -1997,9 +1765,9 @@
 </div>
 
 
-                <div class="series" data-series="3-series" style="margin-bottom: 10px;">
+                <div class="series" style="margin-bottom: 10px;">
                 <div class="series-title" style="font-size: 1.5em; font-weight: 600; color: #444; margin-bottom: 6px; text-align: center; position: relative;">
-                    <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2;">3 Series (1 truck)</span>
+                    <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2;">3 Series</span>
                     <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ccc, transparent); z-index: 1;"></div>
                 </div>
                 <div class="truck-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 6px; margin-bottom: 32px;">
@@ -2390,6 +2158,9 @@
     // Magnifier functionality (mouse and touch)
     function setupMagnifier() {
       let isTouching = false;
+      let rafId = null;
+      let lastUpdateTime = 0;
+      const throttleDelay = 16; // ~60fps
       
       // Function to handle positioning for both mouse and touch
       function handleMagnifier(clientX, clientY) {
@@ -2397,41 +2168,97 @@
         
         const containerRect = mainImageContainer.getBoundingClientRect();
         const imgRect = mainImg.getBoundingClientRect();
-        const x = clientX - containerRect.left;
-        const y = clientY - containerRect.top;
         
         // Adjust magnifier size and position for mobile
         const isMobile = window.innerWidth <= 768;
-        const magnifierSize = isMobile ? 150 : 250;
+        const magnifierSize = isMobile ? 150 : 200;
+        const mobileOffset = isMobile ? 80 : 0; // Offset magnifier from touch point on mobile
         
-        // Position magnifier at cursor/touch (offset to not block view)
-        magnifier.style.left = (x - magnifierSize) + 'px';
-        magnifier.style.top = (y - magnifierSize) + 'px';
+        // Set magnifier size dynamically
+        magnifier.style.width = magnifierSize + 'px';
+        magnifier.style.height = magnifierSize + 'px';
         
-        // Calculate the position relative to the actual image
+        // Calculate position relative to container
+        const x = clientX - containerRect.left;
+        const y = clientY - containerRect.top;
+        
+        // Calculate desired position (centered on cursor/touch)
+        let desiredLeft = x - magnifierSize / 2;
+        let desiredTop = y - magnifierSize / 2;
+        
+        // Mobile: offset magnifier upward/leftward to avoid finger blocking view
+        if (isMobile) {
+          desiredLeft = x - magnifierSize / 2 - mobileOffset;
+          desiredTop = y - magnifierSize / 2 - mobileOffset;
+        }
+        
+        // Boundary constraints: keep magnifier within container bounds
+        const minLeft = 0;
+        const maxLeft = containerRect.width - magnifierSize;
+        const minTop = 0;
+        const maxTop = containerRect.height - magnifierSize;
+        
+        // Clamp position to stay within bounds
+        desiredLeft = Math.max(minLeft, Math.min(desiredLeft, maxLeft));
+        desiredTop = Math.max(minTop, Math.min(desiredTop, maxTop));
+        
+        // Apply position
+        magnifier.style.left = desiredLeft + 'px';
+        magnifier.style.top = desiredTop + 'px';
+        
+        // Calculate the position relative to the actual image for background positioning
         const imgX = clientX - imgRect.left;
         const imgY = clientY - imgRect.top;
         
+        // Edge detection: ensure we don't go outside image bounds
+        const clampedImgX = Math.max(0, Math.min(imgX, imgRect.width));
+        const clampedImgY = Math.max(0, Math.min(imgY, imgRect.height));
+        
         // Calculate background position for 4x magnification
-        const xPercent = (imgX / imgRect.width) * 100;
-        const yPercent = (imgY / imgRect.height) * 100;
+        const xPercent = (clampedImgX / imgRect.width) * 100;
+        const yPercent = (clampedImgY / imgRect.height) * 100;
         
         // Set magnifier background to show zoomed portion
         magnifier.style.backgroundImage = `url(${mainImg.src})`;
         magnifier.style.backgroundPosition = `${xPercent}% ${yPercent}%`;
         magnifier.style.backgroundSize = `${imgRect.width * 4}px ${imgRect.height * 4}px`;
       }
+      
+      // Throttled handler using requestAnimationFrame for performance
+      function throttledHandleMagnifier(clientX, clientY) {
+        const now = performance.now();
+        
+        if (now - lastUpdateTime >= throttleDelay) {
+          lastUpdateTime = now;
+          handleMagnifier(clientX, clientY);
+        } else {
+          // Cancel previous animation frame if exists
+          if (rafId !== null) {
+            cancelAnimationFrame(rafId);
+          }
+          
+          // Schedule update for next frame
+          rafId = requestAnimationFrame(() => {
+            handleMagnifier(clientX, clientY);
+            lastUpdateTime = performance.now();
+          });
+        }
+      }
 
       // Mouse events for desktop
       mainImageContainer.addEventListener('mousemove', (e) => {
         if (!isTouching) {
-          handleMagnifier(e.clientX, e.clientY);
+          throttledHandleMagnifier(e.clientX, e.clientY);
         }
       });
       
       mainImageContainer.addEventListener('mouseleave', () => {
         if (!isTouching) {
           magnifier.style.opacity = '0';
+          if (rafId !== null) {
+            cancelAnimationFrame(rafId);
+            rafId = null;
+          }
         }
       });
       
@@ -2456,7 +2283,7 @@
         e.preventDefault();
         if (isTouching && mainImg.src) {
           const touch = e.touches[0];
-          handleMagnifier(touch.clientX, touch.clientY);
+          throttledHandleMagnifier(touch.clientX, touch.clientY);
         }
       }, { passive: false });
 
@@ -2464,176 +2291,15 @@
         e.preventDefault();
         isTouching = false;
         magnifier.style.opacity = '0';
+        if (rafId !== null) {
+          cancelAnimationFrame(rafId);
+          rafId = null;
+        }
       }, { passive: false });
     }
 
     // Initialize magnifier
     setupMagnifier();
-
-    // Mobile menu functionality
-    window.toggleMobileMenu = function() {
-      console.log('Toggle mobile menu clicked'); // Debug log
-      const nav = document.getElementById('main-nav');
-      const toggle = document.querySelector('.mobile-menu-toggle');
-      
-      if (nav && toggle) {
-        nav.classList.toggle('mobile-open');
-        // Update toggle icon
-        if (nav.classList.contains('mobile-open')) {
-          toggle.innerHTML = '✕';
-          toggle.style.background = '#dc3545';
-          toggle.style.color = 'white';
-          document.body.style.overflow = 'hidden'; // Prevent scrolling
-        } else {
-          toggle.innerHTML = '☰';
-          toggle.style.background = 'white';
-          toggle.style.color = '#333';
-          document.body.style.overflow = 'auto'; // Restore scrolling
-        }
-      } else {
-        console.log('Nav or toggle not found'); // Debug log
-      }
-    };
-    
-    // Ensure toggle function is available globally
-    if (typeof window !== 'undefined') {
-      window.toggleMobileMenu = window.toggleMobileMenu;
-    }
-
-    // Mobile dropdown functionality
-    function setupMobileDropdowns() {
-      console.log('Setting up mobile dropdowns'); // Debug log
-      
-      // Main trucks dropdown
-      const trucksDropdown = document.querySelector('.trucks-dropdown > a');
-      if (trucksDropdown) {
-        console.log('Found trucks dropdown'); // Debug log
-        trucksDropdown.addEventListener('click', function(e) {
-          if (window.innerWidth <= 768) {
-            e.preventDefault();
-            e.stopPropagation();
-            const parent = this.parentElement;
-            parent.classList.toggle('mobile-open');
-            console.log('Trucks dropdown toggled:', parent.classList.contains('mobile-open'));
-          }
-        });
-        
-        // Also add touch events for mobile
-        trucksDropdown.addEventListener('touchstart', function(e) {
-          if (window.innerWidth <= 768) {
-            e.preventDefault();
-            e.stopPropagation();
-            const parent = this.parentElement;
-            parent.classList.toggle('mobile-open');
-          }
-        }, { passive: false });
-      }
-
-      // Handle category dropdowns (Light Duty, Medium Duty, Heavy Duty)
-      document.querySelectorAll('.dropdown-menu > li > a').forEach(categoryLink => {
-        categoryLink.addEventListener('click', function(e) {
-          if (window.innerWidth <= 768) {
-            const subDropdown = this.nextElementSibling;
-            if (subDropdown && subDropdown.classList.contains('sub-dropdown')) {
-              e.preventDefault();
-              e.stopPropagation();
-              subDropdown.classList.toggle('mobile-open');
-              console.log('Category dropdown toggled');
-            }
-          }
-        });
-        
-        categoryLink.addEventListener('touchstart', function(e) {
-          if (window.innerWidth <= 768) {
-            const subDropdown = this.nextElementSibling;
-            if (subDropdown && subDropdown.classList.contains('sub-dropdown')) {
-              e.preventDefault();
-              e.stopPropagation();
-              subDropdown.classList.toggle('mobile-open');
-            }
-          }
-        }, { passive: false });
-      });
-
-      // Handle series dropdowns (X9 Series, E6 Series, etc.)
-      document.querySelectorAll('.sub-dropdown > li > a').forEach(seriesLink => {
-        seriesLink.addEventListener('click', function(e) {
-          if (window.innerWidth <= 768) {
-            const truckLinks = this.nextElementSibling;
-            if (truckLinks && truckLinks.classList.contains('truck-links')) {
-              e.preventDefault();
-              e.stopPropagation();
-              truckLinks.classList.toggle('mobile-open');
-              console.log('Series dropdown toggled');
-            }
-          }
-        });
-        
-        seriesLink.addEventListener('touchstart', function(e) {
-          if (window.innerWidth <= 768) {
-            const truckLinks = this.nextElementSibling;
-            if (truckLinks && truckLinks.classList.contains('truck-links')) {
-              e.preventDefault();
-              e.stopPropagation();
-              truckLinks.classList.toggle('mobile-open');
-            }
-          }
-        }, { passive: false });
-      });
-    }
-
-    // Initialize mobile navigation after header loads
-    setTimeout(setupMobileDropdowns, 1000);
-    
-    // Backup mobile menu initialization
-    document.addEventListener('DOMContentLoaded', function() {
-      setTimeout(function() {
-        const toggle = document.querySelector('.mobile-menu-toggle');
-        if (toggle && !toggle.onclick) {
-          toggle.onclick = window.toggleMobileMenu;
-          console.log('Mobile menu initialized via backup method');
-        }
-      }, 2000);
-    });
-
-    // Close mobile menu when clicking outside
-    document.addEventListener('click', function(e) {
-      const nav = document.getElementById('main-nav');
-      const toggle = document.querySelector('.mobile-menu-toggle');
-      
-      if (nav && toggle && !nav.contains(e.target) && !toggle.contains(e.target)) {
-        if (nav.classList.contains('mobile-open')) {
-          nav.classList.remove('mobile-open');
-          toggle.innerHTML = '☰';
-          toggle.style.background = 'white';
-          toggle.style.color = '#333';
-          document.body.style.overflow = 'auto';
-        }
-      }
-
-      // Also close dropdown menus when clicking outside
-      if (window.innerWidth <= 768 && !e.target.closest('.trucks-dropdown') && !e.target.closest('.hamburger')) {
-        document.querySelectorAll('.mobile-open').forEach(el => {
-          el.classList.remove('mobile-open');
-        });
-      }
-    });
-
-    // Handle window resize
-    window.addEventListener('resize', function() {
-      const nav = document.getElementById('main-nav');
-      const toggle = document.querySelector('.mobile-menu-toggle');
-      
-      if (window.innerWidth > 768 && nav) {
-        nav.classList.remove('mobile-open');
-        document.body.style.overflow = 'auto';
-        if (toggle) {
-          toggle.innerHTML = '☰';
-          toggle.style.background = 'white';
-          toggle.style.color = '#333';
-        }
-      }
-    });
 
     // open popup for each tile
     document.querySelectorAll('.truck-tile').forEach(tile => {
@@ -2792,125 +2458,6 @@ if (trucksDropdown) {
         }, 300); // 300ms delay before hiding
     });
 }
-
-// Series navigation system - allows easy access to all truck series
-function initializeSeriesNavigation() {
-    // Count trucks in each series and update counters
-    function updateTruckCounts() {
-        // Light Duty counts
-        const lightDutySeries = document.querySelectorAll('#light-duty .series');
-        lightDutySeries.forEach(series => {
-            const trucks = series.querySelectorAll('.truck-tile');
-            const seriesName = series.dataset.series;
-            const title = series.querySelector('.series-title span');
-            if (title) {
-                const baseName = title.textContent.replace(/\(\d+\s+trucks?\)/, '').trim();
-                title.textContent = `${baseName} (${trucks.length} trucks)`;
-            }
-        });
-
-        // Medium Duty counts
-        const mediumDutySeries = document.querySelectorAll('[data-category="medium-duty"] .series');
-        mediumDutySeries.forEach(series => {
-            const trucks = series.querySelectorAll('.truck-tile');
-            const title = series.querySelector('.series-title span');
-            if (title) {
-                const baseName = title.textContent.replace(/\(\d+\s+trucks?\)/, '').trim();
-                title.textContent = `${baseName} (${trucks.length} trucks)`;
-            }
-        });
-
-        // Heavy Duty counts
-        const heavyDutySeries = document.querySelectorAll('[data-category="heavy-duty"] .series');
-        heavyDutySeries.forEach(series => {
-            const trucks = series.querySelectorAll('.truck-tile');
-            const title = series.querySelector('.series-title span');
-            if (title) {
-                const baseName = title.textContent.replace(/\(\d+\s+trucks?\)/, '').trim();
-                title.textContent = `${baseName} (${trucks.length} trucks)`;
-            }
-        });
-    }
-
-    // Set up series navigation for each category
-    function setupCategoryNavigation(categoryId, navId) {
-        const nav = document.getElementById(navId);
-        const category = document.getElementById(categoryId);
-        
-        if (!nav || !category) return;
-
-        const buttons = nav.querySelectorAll('.series-btn');
-        const counter = nav.querySelector('[id$="-count"]');
-        const series = category.querySelectorAll('.series[data-series]');
-
-        buttons.forEach(button => {
-            button.addEventListener('click', () => {
-                // Remove active from all buttons in this nav
-                buttons.forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
-
-                const targetSeries = button.dataset.series;
-
-                // Hide all series in this category
-                series.forEach(s => s.classList.remove('active'));
-
-                // Show target series
-                const targetElement = category.querySelector(`[data-series="${targetSeries}"]`);
-                if (targetElement) {
-                    targetElement.classList.add('active');
-                    
-                    // Update counter
-                    if (counter) {
-                        const truckCount = targetElement.querySelectorAll('.truck-tile').length;
-                        counter.textContent = `${truckCount} truck${truckCount !== 1 ? 's' : ''} shown`;
-                    }
-                }
-            });
-        });
-
-        // Initialize with first series active
-        if (buttons.length > 0 && counter) {
-            const firstButton = buttons[0];
-            const firstSeries = firstButton.dataset.series;
-            const firstElement = category.querySelector(`[data-series="${firstSeries}"]`);
-            if (firstElement) {
-                const truckCount = firstElement.querySelectorAll('.truck-tile').length;
-                counter.textContent = `${truckCount} truck${truckCount !== 1 ? 's' : ''} shown`;
-            }
-        }
-    }
-
-    // Initialize all category navigations
-    setupCategoryNavigation('light-duty', 'light-duty-nav');
-    setupCategoryNavigation('medium-duty', 'medium-duty-nav'); 
-    setupCategoryNavigation('heavy-duty', 'heavy-duty-nav');
-    
-    // Update truck counts
-    updateTruckCounts();
-
-    console.log('Series navigation initialized');
-}
-
-// Initialize series navigation after DOM is ready
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initializeSeriesNavigation);
-} else {
-    initializeSeriesNavigation();
-}
-
-// Clean up inline hover handlers that interfere with navigation
-function cleanupInlineHoverHandlers() {
-    const truckTiles = document.querySelectorAll('.truck-tile');
-    truckTiles.forEach(tile => {
-        // Remove problematic inline hover handlers
-        tile.removeAttribute('onmouseover');
-        tile.removeAttribute('onmouseout');
-    });
-    console.log('Cleaned up inline hover handlers');
-}
-
-// Initialize cleanup after everything loads
-setTimeout(cleanupInlineHoverHandlers, 100);
   </script>
     <div id="footer-placeholder"></div>
 </body>
