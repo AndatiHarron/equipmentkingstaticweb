@@ -170,28 +170,6 @@
 
 <!-- Header JavaScript -->
 <script>
-// Mobile Menu Toggle Function
-function toggleMobileMenu() {
-    const nav = document.getElementById('main-nav');
-    nav.classList.toggle('mobile-open');
-    
-    // Update hamburger icon
-    const toggle = document.querySelector('.mobile-menu-toggle');
-    toggle.textContent = nav.classList.contains('mobile-open') ? '✕' : '☰';
-}
-
-// Close mobile menu when clicking on a link
-document.addEventListener('click', function(e) {
-    const nav = document.getElementById('main-nav');
-    const toggle = document.querySelector('.mobile-menu-toggle');
-    
-    if (nav && nav.classList.contains('mobile-open') && 
-        !toggle.contains(e.target) && !nav.contains(e.target)) {
-        nav.classList.remove('mobile-open');
-        toggle.textContent = '☰';
-    }
-});
-
 // DROPDOWN SYSTEM NOW HANDLED BY PURE CSS - NO JAVASCRIPT NEEDED
 // CSS handles: :hover states for .trucks-dropdown, .sub-dropdown, .truck-links
 /* JavaScript removed - using CSS-only approach for better performance */
@@ -328,6 +306,55 @@ if (false) { // Disabled JavaScript dropdown logic
         });
     });
 }
+</script>
+
+<!-- Mobile Menu JavaScript -->
+<script>
+// Mobile Menu Toggle Function
+function toggleMobileMenu() {
+    const nav = document.getElementById('main-nav');
+    const toggle = document.querySelector('.mobile-menu-toggle');
+    
+    if (nav && toggle) {
+        nav.classList.toggle('mobile-open');
+        
+        // Update hamburger icon
+        toggle.textContent = nav.classList.contains('mobile-open') ? '✕' : '☰';
+        
+        // Prevent body scroll when menu is open
+        if (nav.classList.contains('mobile-open')) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+    }
+}
+
+// Close mobile menu when clicking on a link
+document.addEventListener('click', function(e) {
+    const nav = document.getElementById('main-nav');
+    const toggle = document.querySelector('.mobile-menu-toggle');
+    
+    if (nav && nav.classList.contains('mobile-open')) {
+        // Close menu if clicking outside nav or on a link
+        if (!nav.contains(e.target) && !toggle.contains(e.target)) {
+            nav.classList.remove('mobile-open');
+            if (toggle) {
+                toggle.textContent = '☰';
+            }
+            document.body.style.overflow = '';
+        }
+        
+        // Close menu when clicking on a navigation link
+        if (e.target.tagName === 'A' && nav.contains(e.target)) {
+            nav.classList.remove('mobile-open');
+            if (toggle) {
+                toggle.textContent = '☰';
+            }
+            document.body.style.overflow = '';
+        }
+    }
+});
 
 // Handle window resize for responsive behavior
 window.addEventListener('resize', function() {
@@ -335,9 +362,63 @@ window.addEventListener('resize', function() {
     const toggle = document.querySelector('.mobile-menu-toggle');
     
     if (window.innerWidth >= 768) {
-        // Desktop mode - ensure nav is visible
-        nav.classList.remove('mobile-open');
-        toggle.textContent = '☰';
+        // Desktop mode - ensure nav is visible and menu is closed
+        if (nav) {
+            nav.classList.remove('mobile-open');
+        }
+        if (toggle) {
+            toggle.textContent = '☰';
+        }
+        document.body.style.overflow = '';
     }
 });
+
+// Mobile dropdown functionality for trucks menu
+function setupMobileDropdowns() {
+    // Main trucks dropdown toggle
+    const trucksDropdown = document.querySelector('.trucks-dropdown > a');
+    if (trucksDropdown && window.innerWidth <= 767) {
+        trucksDropdown.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            const parent = this.parentElement;
+            parent.classList.toggle('mobile-open');
+        });
+    }
+    
+    // Category dropdowns (Light Duty, Medium Duty, Heavy Duty)
+    document.querySelectorAll('.dropdown-menu > li > a').forEach(categoryLink => {
+        categoryLink.addEventListener('click', function(e) {
+            if (window.innerWidth <= 767) {
+                const subDropdown = this.nextElementSibling;
+                if (subDropdown && subDropdown.classList.contains('sub-dropdown')) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    subDropdown.classList.toggle('mobile-open');
+                }
+            }
+        });
+    });
+    
+    // Series dropdowns (X9 Series, E6 Series, etc.)
+    document.querySelectorAll('.sub-dropdown > li > a').forEach(seriesLink => {
+        seriesLink.addEventListener('click', function(e) {
+            if (window.innerWidth <= 767) {
+                const truckLinks = this.nextElementSibling;
+                if (truckLinks && truckLinks.classList.contains('truck-links')) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    truckLinks.classList.toggle('mobile-open');
+                }
+            }
+        });
+    });
+}
+
+// Initialize mobile dropdowns after DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupMobileDropdowns);
+} else {
+    setupMobileDropdowns();
+}
 </script>

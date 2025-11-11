@@ -1,41 +1,52 @@
 # Equipment King Static Website
 
-## Development Setup
+## How Header and Footer Work
 
-### Why the header doesn't show in development
+The header and footer are loaded using a **pure client-side JavaScript solution** that works without any build step or server. The templates are embedded directly in `js/header-footer-loader.js`, so:
 
-The header.html file is loaded using JavaScript's `fetch()` API, which **doesn't work** when you open HTML files directly using the `file://` protocol (double-clicking HTML files). This is a browser security restriction.
+✅ **Works with `file://` protocol** - You can open HTML files directly  
+✅ **No build step required** - Just open the files in your browser  
+✅ **No server needed** - Works completely offline  
+✅ **Fully static** - No framework dependencies  
 
-**Solution: Use a local development server**
+### How It Works
 
-### Quick Start
+1. The header and footer HTML templates are embedded as strings in `js/header-footer-loader.js`
+2. When a page loads, the script:
+   - Determines the correct base path (empty for root, `../` for subdirectories)
+   - Replaces `{{BASE_PATH}}` placeholders with the correct path
+   - Injects the header and footer into the page
 
-1. **Option 1: Using npm (Recommended)**
-   ```bash
-   npm install
-   npm run dev
-   ```
-   This will start a server at `http://localhost:8080` and open it in your browser.
+### File Structure
 
-2. **Option 2: Using Python (if you have Python installed)**
-   ```bash
-   python -m http.server 8080
-   ```
-   Then open `http://localhost:8080` in your browser.
+- `resources/header.html` - Source template (for reference/editing)
+- `resources/footer.html` - Source template (for reference/editing)
+- `js/header-footer-loader.js` - **Active loader** with embedded templates
+- All HTML files include: `<script src="js/header-footer-loader.js"></script>` or `<script src="../js/header-footer-loader.js"></script>`
 
-3. **Option 3: Using VS Code Live Server Extension**
-   - Install the "Live Server" extension in VS Code
-   - Right-click on `index.html` and select "Open with Live Server"
+### Updating Header/Footer
 
-### Why it works in production
+If you need to update the header or footer:
 
-In production (Vercel), files are served over HTTP/HTTPS, so `fetch()` works perfectly. The browser's security restrictions only apply to the `file://` protocol.
+1. Edit `resources/header.html` or `resources/footer.html`
+2. Copy the updated HTML into the corresponding template string in `js/header-footer-loader.js`
+3. Make sure to escape any backticks or template literals if needed
+
+### Development
+
+You can open any HTML file directly in your browser - no server needed! However, if you want to use a local server for testing:
+
+```bash
+npm run dev
+```
+
+This starts a server at `http://localhost:8080` (optional, not required).
 
 ## Project Structure
 
-- `resources/header.html` - Header component (loaded dynamically)
-- `resources/footer.html` - Footer component (loaded dynamically)
-- `js/header-footer-loader.js` - Script that loads header/footer
+- `resources/header.html` - Header template source
+- `resources/footer.html` - Footer template source
+- `js/header-footer-loader.js` - Active loader with embedded templates
 - `index.html` - Home page
 - `trucks.html` - Trucks listing page
 - `trucks_html/` - Individual truck detail pages
