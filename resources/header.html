@@ -15,11 +15,10 @@
   <nav id="main-nav">
     <a href="{{BASE_PATH}}index.html">Home</a>
     
-    <!-- Trucks Dropdown -->
+    <!-- Trucks Dropdown - IMPORTANT: YOUR WORKING CASCADE SYSTEM -->
     <div class="trucks-dropdown">
       <a href="{{BASE_PATH}}trucks.html" class="trucks-btn">Trucks</a>
-      <div class="dropdown-menu">
-        <ul>
+      <ul class="dropdown-menu">
           <!-- LIGHT DUTY TRUCKS -->
           <li>
             <a href="{{BASE_PATH}}trucks.html#light-duty">LIGHT DUTY TRUCKS</a>
@@ -59,7 +58,7 @@
               <li>
                 <a href="{{BASE_PATH}}trucks.html#i9-series">i9 Series (New Energy)</a>
                 <ul class="truck-links">
-                  <li><a href="{{BASE_PATH}}trucks_html/i9-New-Series.html">i9 (New Series) - Electric/Hybrid Technology</a></li>
+                  <li><a href="{{BASE_PATH}}trucks_html/i9-New-Energy-Truck.html">i9 (New Series) - Electric/Hybrid Technology</a></li>
                 </ul>
               </li>
             </ul>
@@ -159,8 +158,7 @@
               </li>
             </ul>
           </li>
-        </ul>
-      </div>
+      </ul>
     </div>
     
     <a href="{{BASE_PATH}}about.html">About</a>
@@ -194,86 +192,141 @@ document.addEventListener('click', function(e) {
     }
 });
 
-// ENHANCED TRUCKS DROPDOWN - IMPORTANT: Better delays and hover detection
-const trucksDropdown = document.querySelector('.trucks-dropdown');
-if (trucksDropdown) {
+// DROPDOWN SYSTEM NOW HANDLED BY PURE CSS - NO JAVASCRIPT NEEDED
+// CSS handles: :hover states for .trucks-dropdown, .sub-dropdown, .truck-links
+/* JavaScript removed - using CSS-only approach for better performance */
+if (false) { // Disabled JavaScript dropdown logic
     const dropdownMenu = trucksDropdown.querySelector('.dropdown-menu');
-    let enterTimeout;
-    let leaveTimeout;
-    let isDropdownVisible = false;
-
-    // Enhanced desktop hover functionality - IMPORTANT FOR ALL PAGES
-    if (window.innerWidth >= 768) {
-        
-        // Enhanced mouseenter with optimized delay
-        trucksDropdown.addEventListener('mouseenter', () => {
-            clearTimeout(leaveTimeout);
-            
-            // Small delay to prevent accidental triggers
-            enterTimeout = setTimeout(() => {
-                dropdownMenu.style.display = 'block';
-                setTimeout(() => {
-                    dropdownMenu.classList.add('show');
-                    isDropdownVisible = true;
-                }, 20);
-            }, 100); // Reduced from 150ms for faster response
-        });
-
-        // Enhanced mouseleave with longer delay for better navigation
-        trucksDropdown.addEventListener('mouseleave', () => {
-            clearTimeout(enterTimeout);
-            
-            // Longer delay allows users to navigate to dropdown items
-            leaveTimeout = setTimeout(() => {
-                dropdownMenu.classList.remove('show');
-                isDropdownVisible = false;
-                setTimeout(() => {
-                    if (!isDropdownVisible) {
-                        dropdownMenu.style.display = 'none';
-                    }
-                }, 400);
-            }, 700); // Increased from 500ms for easier navigation
-        });
-
-        // Keep dropdown open when hovering over dropdown itself
-        dropdownMenu.addEventListener('mouseenter', () => {
-            clearTimeout(leaveTimeout);
-            isDropdownVisible = true;
-        });
-
-        // Enhanced dropdown leave detection with corner tolerance
-        dropdownMenu.addEventListener('mouseleave', (e) => {
-            // Check if mouse is moving towards corners - give extra time
-            const rect = dropdownMenu.getBoundingClientRect();
-            const mouseX = e.clientX;
-            const mouseY = e.clientY;
-            
-            // Extended delay if leaving from corners (harder to navigate back)
-            const isLeavingFromCorner = 
-                (mouseX < rect.left + 50) || (mouseX > rect.right - 50) ||
-                (mouseY < rect.top + 50) || (mouseY > rect.bottom - 50);
-                
-            const delay = isLeavingFromCorner ? 800 : 400; // Longer delay for corners
-            
-            leaveTimeout = setTimeout(() => {
-                dropdownMenu.classList.remove('show');
-                isDropdownVisible = false;
-                setTimeout(() => {
-                    if (!isDropdownVisible) {
-                        dropdownMenu.style.display = 'none';
-                    }
-                }, 400);
-            }, delay);
-        });
-
-        // Enhanced sub-dropdown hover delays
-        const subDropdowns = dropdownMenu.querySelectorAll('.sub-dropdown');
-        subDropdowns.forEach(sub => {
-            sub.addEventListener('mouseenter', () => {
-                clearTimeout(leaveTimeout);
-            });
-        });
+    const allDropdowns = trucksDropdown.querySelectorAll('.dropdown-menu, .sub-dropdown, .truck-links');
+    let globalTimeout;
+    
+    // Global timeout manager for smooth navigation
+    function clearGlobalTimeout() {
+        if (globalTimeout) {
+            clearTimeout(globalTimeout);
+            globalTimeout = null;
+        }
     }
+    
+    function setGlobalTimeout(callback, delay) {
+        clearGlobalTimeout();
+        globalTimeout = setTimeout(callback, delay);
+    }
+
+    // Show glassy background overlay when any dropdown is active
+    function showGlassyBackground() {
+        document.body.style.transition = 'backdrop-filter 0.4s ease, background 0.4s ease';
+        document.body.style.backdropFilter = 'blur(2px)';
+        document.body.style.background = 'rgba(0, 0, 0, 0.02)';
+    }
+    
+    function hideGlassyBackground() {
+        document.body.style.backdropFilter = '';
+        document.body.style.background = '';
+        setTimeout(() => {
+            document.body.style.transition = '';
+        }, 400);
+    }
+
+    // Main trucks dropdown - optimized timing
+    trucksDropdown.addEventListener('mouseenter', () => {
+        clearGlobalTimeout();
+        dropdownMenu.style.display = 'block';
+        showGlassyBackground();
+    });
+    
+    trucksDropdown.addEventListener('mouseleave', () => {
+        setGlobalTimeout(() => {
+            dropdownMenu.style.display = 'none';
+            // Hide all sub-levels
+            allDropdowns.forEach(dropdown => {
+                if (dropdown !== dropdownMenu) {
+                    dropdown.style.display = 'none';
+                }
+            });
+            hideGlassyBackground();
+        }, 600); // Extended 600ms delay for comfortable movement
+    });
+
+    // Keep dropdown open when hovering over any dropdown element
+    allDropdowns.forEach(dropdown => {
+        dropdown.addEventListener('mouseenter', () => {
+            clearGlobalTimeout();
+        });
+        
+        dropdown.addEventListener('mouseleave', () => {
+            setGlobalTimeout(() => {
+                dropdownMenu.style.display = 'none';
+                allDropdowns.forEach(dd => {
+                    if (dd !== dropdownMenu) {
+                        dd.style.display = 'none';
+                    }
+                });
+                hideGlassyBackground();
+            }, 500); // 500ms delay when leaving dropdown areas
+        });
+    });
+
+    // Sub-dropdown hover management with perfect timing
+    const subDropdowns = trucksDropdown.querySelectorAll('.sub-dropdown');
+    subDropdowns.forEach(subDropdown => {
+        const parentLi = subDropdown.parentElement;
+        let subTimeout;
+        
+        parentLi.addEventListener('mouseenter', () => {
+            clearGlobalTimeout();
+            clearTimeout(subTimeout);
+            
+            // Gentle delay for smooth cascade
+            setTimeout(() => {
+                subDropdown.style.display = 'block';
+            }, 150);
+        });
+
+        parentLi.addEventListener('mouseleave', () => {
+            subTimeout = setTimeout(() => {
+                subDropdown.style.display = 'none';
+                // Hide child truck-links
+                const childTruckLinks = subDropdown.querySelectorAll('.truck-links');
+                childTruckLinks.forEach(links => links.style.display = 'none');
+            }, 400); // 400ms delay for sub-dropdowns
+        });
+        
+        // Keep sub-dropdown open when hovering
+        subDropdown.addEventListener('mouseenter', () => {
+            clearTimeout(subTimeout);
+            clearGlobalTimeout();
+        });
+    });
+
+    // Truck-links hover management with perfect timing
+    const truckLinks = trucksDropdown.querySelectorAll('.truck-links');
+    truckLinks.forEach(truckLink => {
+        const parentLi = truckLink.parentElement;
+        let linkTimeout;
+        
+        parentLi.addEventListener('mouseenter', () => {
+            clearGlobalTimeout();
+            clearTimeout(linkTimeout);
+            
+            // Gentle delay for smooth cascade
+            setTimeout(() => {
+                truckLink.style.display = 'block';
+            }, 150);
+        });
+
+        parentLi.addEventListener('mouseleave', () => {
+            linkTimeout = setTimeout(() => {
+                truckLink.style.display = 'none';
+            }, 350); // 350ms delay for truck links
+        });
+        
+        // Keep truck-links open when hovering
+        truckLink.addEventListener('mouseenter', () => {
+            clearTimeout(linkTimeout);
+            clearGlobalTimeout();
+        });
+    });
 }
 
 // Handle window resize for responsive behavior

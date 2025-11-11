@@ -2,103 +2,12 @@
   "trucks": {
     "light-duty": {
       "category": "Light Duty Trucks",
-      "description": "Compact and efficient trucks for urban and light commercial applications (4.5T≤GCW≤25T)",
+      "description": "Compact and efficient trucks for urban and light commercial applications",
       "series": {
-        "X9": {
+        "x9": {
           "seriesName": "X9 Series",
-          "description": "High-performance light duty trucks with advanced engineering",
+          "description": "X9 Series trucks for various commercial applications",
           "models": [
-            {
-              "id": "x9-3300wb-fuel-tanker-truck",
-              "name": "X9-3300WB-4×2 Fuel Tanker Truck",
-              "fileName": "X9-Fuel-Tanker-Truck.html",
-              "mainImage": "../assets/trucks/x9-fuel-1.jpg",
-              "description": "Designed for safe and efficient fuel transport in urban and regional routes. Features a 3,000–6,000L durable fuel tank, 4.1L turbo diesel engine (120–160 hp) for reliable performance, and a compact 4×2 chassis that ensures easy maneuvering. Equipped with reinforced safety valves and optimized weight distribution for smooth handling under full load. Ideal for fuel delivery to stations, industrial plants, and construction sites.",
-              "specifications": {
-                "engine": "4.1L Turbo Diesel",
-                "power": "120–160 hp",
-                "torque": "430–480 Nm",
-                "transmission": "5/6 Speed Manual",
-                "gvw": "5–8 Tons",
-                "payload": "3–5 Tons",
-                "wheelbase": "3300 mm",
-                "tankCapacity": "3,000–6,000 L",
-                "drive": "4×2"
-              }
-            },
-            {
-              "id": "x9-3500wb-garbage-truck",
-              "name": "X9-3500WB-4×2 Garbage Truck",
-              "fileName": "X9-Garbage-Truck.html",
-              "mainImage": "../assets/trucks/x9-garbage-1.jpg",
-              "description": "Ideal for municipal solid waste collection, featuring a 6–8 m³ compaction body, reliable 4×2 drive, and 4.0L diesel engine (140 hp). Efficient, low-maintenance, and maneuverable for city streets and urban waste routes.",
-              "specifications": {
-                "engine": "4.0L Diesel",
-                "power": "140 hp",
-                "torque": "420 Nm",
-                "transmission": "5/6 Speed Manual",
-                "gvw": "6–8 Tons",
-                "payload": "3–4.5 Tons",
-                "wheelbase": "3500 mm",
-                "bodyVolume": "6–8 m³",
-                "drive": "4×2"
-              }
-            },
-            {
-              "id": "x9-3800wb-refrigerated-truck",
-              "name": "X9-3800WB-4×2 Refrigerated Truck",
-              "fileName": "X9-Refrigerated-Truck.html",
-              "mainImage": "../assets/trucks/x9-refrigerated-1.jpg",
-              "description": "Engineered for transporting perishable goods safely, with -5°C to -18°C temperature control and insulated 10–18 m³ box. Powered by 4.2L diesel engine (150–170 hp) with reliable 4×2 drive, ensuring timely delivery with low energy consumption.",
-              "specifications": {
-                "engine": "4.2L Diesel",
-                "power": "150–170 hp",
-                "torque": "460–500 Nm",
-                "transmission": "6-Speed Manual",
-                "gvw": "6–7.5 Tons",
-                "payload": "2.5–4 Tons",
-                "wheelbase": "3800 mm",
-                "cooling": "-5°C to -18°C",
-                "boxVolume": "10–18 m³",
-                "drive": "4×2"
-              }
-            },
-            {
-              "id": "x9-3800wb-dump-truck",
-              "name": "X9-3800WB-4×2 Dump Truck",
-              "fileName": "X9-Dump-Truck.html",
-              "mainImage": "../assets/trucks/x9-dump-1.jpg",
-              "description": "Designed for construction material transport with 3–4.5 tons payload. Features 4.1L diesel engine (156 hp), hydraulic tipping system, and durable steel box. Compact 4×2 chassis allows easy maneuvering at construction sites and urban areas.",
-              "specifications": {
-                "engine": "4.1L Diesel",
-                "power": "156 hp",
-                "torque": "440 Nm",
-                "transmission": "5/6 Speed Manual",
-                "gvw": "6–8 Tons",
-                "payload": "3–4.5 Tons",
-                "wheelbase": "3800 mm",
-                "bodySize": "3.0 × 1.9 × 0.6 m",
-                "drive": "4×2"
-              }
-            },
-            {
-              "id": "x9-3800wb-van-truck",
-              "name": "X9-3800WB-4×2 Van Truck",
-              "fileName": "X9-Van-Truck.html",
-              "mainImage": "../assets/trucks/x9-van-1.jpg",
-              "description": "Ideal for transporting goods and packages with cargo volume 12–20 m³. 3.8L diesel engine (130–150 hp) ensures efficient performance, while the 4×2 chassis provides urban delivery flexibility and low operating costs.",
-              "specifications": {
-                "engine": "3.8L Diesel",
-                "power": "130–150 hp",
-                "torque": "400–430 Nm",
-                "transmission": "5-Speed Manual",
-                "gvw": "6–7 Tons",
-                "payload": "3–5 Tons",
-                "wheelbase": "3800 mm",
-                "cargoVolume": "12–20 m³",
-                "drive": "4×2"
-              }
-            },
             {
               "id": "x9-tow-truck",
               "name": "X9 Tow Truck",
@@ -126,16 +35,122 @@
                 "transmission": "Manual",
                 "wheelbase": "3200mm"
               }
+            },
+            {
+              "id": "x9-4x4-dump-truck",
+              "name": "X9 4X4 Dump Truck",
+              "fileName": "X9-4X4-Dump-Truck.html",
+              "mainImage": "../assets/trucks/x9_4x4_dump_truck_1.jpg",
+              "description": "Professional 4x4 dump truck from the X9 series. Designed for reliability, efficiency, and superior performance in demanding commercial applications. Features advanced engineering and robust construction for long-lasting service.",
+              "specifications": {
+                "engine": "Advanced Diesel Engine",
+                "power": "Commercial Grade",
+                "transmission": "Manual/Automatic",
+                "drive": "Optimized Configuration",
+                "gvw": "Commercial Rating",
+                "payload": "Maximum Capacity"
+              }
+            },
+            {
+              "id": "x9-3800wb-dump-truck",
+              "name": "X9 Dump Truck",
+              "fileName": "X9-Dump-Truck.html",
+              "mainImage": "../assets/trucks/x9-dump-1.jpg",
+              "description": "Designed for construction material transport with 3–4.5 tons payload. Features 4.1L diesel engine (156 hp), hydraulic tipping system, and durable steel box. Compact 4×2 chassis allows easy maneuvering at construction sites and urban areas.",
+              "specifications": {
+                "engine": "4.1L Diesel",
+                "power": "156 hp",
+                "torque": "440 Nm",
+                "transmission": "5/6 Speed Manual",
+                "gvw": "6–8 Tons",
+                "payload": "3–4.5 Tons",
+                "wheelbase": "3800 mm",
+                "bodySize": "3.0 × 1.9 × 0.6 m",
+                "drive": "4×2"
+              }
+            },
+            {
+              "id": "x9-3800wb-van-truck",
+              "name": "X9 Van Truck",
+              "fileName": "X9-Van-Truck.html",
+              "mainImage": "../assets/trucks/x9-van-1.jpg",
+              "description": "Ideal for transporting goods and packages with cargo volume 12–20 m³. 3.8L diesel engine (130–150 hp) ensures efficient performance, while the 4×2 chassis provides urban delivery flexibility and low operating costs.",
+              "specifications": {
+                "engine": "3.8L Diesel",
+                "power": "130–150 hp",
+                "torque": "400–430 Nm",
+                "transmission": "5-Speed Manual",
+                "gvw": "6–7 Tons",
+                "payload": "3–5 Tons",
+                "wheelbase": "3800 mm",
+                "cargoVolume": "12–20 m³",
+                "drive": "4×2"
+              }
+            },
+            {
+              "id": "x9-3300wb-fuel-tanker-truck",
+              "name": "X9 Fuel Tanker Truck",
+              "fileName": "X9-Fuel-Tanker-Truck.html",
+              "mainImage": "../assets/trucks/x9-fuel-1.jpg",
+              "description": "Designed for safe and efficient fuel transport in urban and regional routes. Features a 3,000–6,000L durable fuel tank, 4.1L turbo diesel engine (120–160 hp) for reliable performance, and a compact 4×2 chassis that ensures easy maneuvering. Equipped with reinforced safety valves and optimized weight distribution for smooth handling under full load. Ideal for fuel delivery to stations, industrial plants, and construction sites.",
+              "specifications": {
+                "engine": "4.1L Turbo Diesel",
+                "power": "120–160 hp",
+                "torque": "430–480 Nm",
+                "transmission": "5/6 Speed Manual",
+                "gvw": "5–8 Tons",
+                "payload": "3–5 Tons",
+                "wheelbase": "3300 mm",
+                "tankCapacity": "3,000–6,000 L",
+                "drive": "4×2"
+              }
+            },
+            {
+              "id": "x9-3500wb-garbage-truck",
+              "name": "X9 Garbage Truck",
+              "fileName": "X9-Garbage-Truck.html",
+              "mainImage": "../assets/trucks/x9-garbage-1.jpg",
+              "description": "Ideal for municipal solid waste collection, featuring a 6–8 m³ compaction body, reliable 4×2 drive, and 4.0L diesel engine (140 hp). Efficient, low-maintenance, and maneuverable for city streets and urban waste routes.",
+              "specifications": {
+                "engine": "4.0L Diesel",
+                "power": "140 hp",
+                "torque": "420 Nm",
+                "transmission": "5/6 Speed Manual",
+                "gvw": "6–8 Tons",
+                "payload": "3–4.5 Tons",
+                "wheelbase": "3500 mm",
+                "bodyVolume": "6–8 m³",
+                "drive": "4×2"
+              }
+            },
+            {
+              "id": "x9-3800wb-refrigerated-truck",
+              "name": "X9 Refrigerated Truck",
+              "fileName": "X9-Refrigerated-Truck.html",
+              "mainImage": "../assets/trucks/x9-refrigerated-1.jpg",
+              "description": "Engineered for transporting perishable goods safely, with -5°C to -18°C temperature control and insulated 10–18 m³ box. Powered by 4.2L diesel engine (150–170 hp) with reliable 4×2 drive, ensuring timely delivery with low energy consumption.",
+              "specifications": {
+                "engine": "4.2L Diesel",
+                "power": "150–170 hp",
+                "torque": "460–500 Nm",
+                "transmission": "6-Speed Manual",
+                "gvw": "6–7.5 Tons",
+                "payload": "2.5–4 Tons",
+                "wheelbase": "3800 mm",
+                "cooling": "-5°C to -18°C",
+                "boxVolume": "10–18 m³",
+                "drive": "4×2"
+              }
             }
           ]
         },
-        "E9": {
+        "e9": {
           "seriesName": "E9 Series",
-          "description": "Efficient, reliable light-duty models for modern logistics and urban operations.",
+          "description": "E9 Series trucks for various commercial applications",
           "models": [
             {
               "id": "e9-3800wb-refrigerated-truck",
-              "name": "E9-3800WB-4×2 Refrigerated Truck",
+              "name": "E9 Refrigerated Truck",
               "fileName": "E9-Refrigerated-Truck.html",
               "mainImage": "../assets/trucks/e9-refrigerated-1.jpg",
               "description": "Maintains perishable goods at -5°C to -20°C with insulated 10–18 m³ box. Powered by 4.0–4.5L diesel engine (150–170 hp) for reliability. Ideal for food and pharmaceutical distribution with low energy consumption and high durability.",
@@ -149,24 +164,6 @@
                 "wheelbase": "3800 mm",
                 "cooling": "-5°C to -20°C",
                 "boxVolume": "10–18 m³",
-                "drive": "4×2"
-              }
-            },
-            {
-              "id": "e9-3800wb-kitchen-waste-garbage-truck",
-              "name": "E9-3800WB-4×2 Kitchen Waste Garbage Truck",
-              "fileName": "E9-Kitchen-Waste-Garbage-Truck.html",
-              "mainImage": "../assets/trucks/e9-kitchen-garbage-1.jpg",
-              "description": "Specialized for kitchen and wet waste collection. Features 5–8 m³ sealed tank, 4.2L diesel engine (140–165 hp), 4×2 drive for urban routes. Provides hygienic, efficient, and reliable waste transport for municipal services.",
-              "specifications": {
-                "engine": "4.2L Diesel",
-                "power": "140–165 hp",
-                "torque": "450–480 Nm",
-                "transmission": "6-Speed Manual",
-                "gvw": "6–8 Tons",
-                "payload": "3–4.5 Tons",
-                "wheelbase": "3800 mm",
-                "tankVolume": "5–8 m³",
                 "drive": "4×2"
               }
             },
@@ -197,16 +194,48 @@
                 "transmission": "Manual/Automatic",
                 "loadCapacity": "4-7 tons"
               }
+            },
+            {
+              "id": "e9-3800wb-kitchen-waste-garbage-truck",
+              "name": "E9 Kitchen Waste Garbage Truck",
+              "fileName": "E9-Kitchen-Waste-Garbage-Truck.html",
+              "mainImage": "../assets/trucks/e9-kitchen-garbage-1.jpg",
+              "description": "Specialized for kitchen and wet waste collection. Features 5–8 m³ sealed tank, 4.2L diesel engine (140–165 hp), 4×2 drive for urban routes. Provides hygienic, efficient, and reliable waste transport for municipal services.",
+              "specifications": {
+                "engine": "4.2L Diesel",
+                "power": "140–165 hp",
+                "torque": "450–480 Nm",
+                "transmission": "6-Speed Manual",
+                "gvw": "6–8 Tons",
+                "payload": "3–4.5 Tons",
+                "wheelbase": "3800 mm",
+                "tankVolume": "5–8 m³",
+                "drive": "4×2"
+              }
             }
           ]
         },
-        "X7": {
+        "x7": {
           "seriesName": "X7 Series",
-          "description": "Versatile and efficient trucks for logistics, construction, and municipal operations.",
+          "description": "X7 Series trucks for various commercial applications",
           "models": [
             {
+              "id": "x7-concrete-mixer-truck",
+              "name": "X7 Concrete Mixer Truck",
+              "fileName": "X7-Concrete-Mixer-Truck.html",
+              "mainImage": "../assets/back2.jpeg",
+              "description": "Efficient concrete mixing and delivery truck for construction projects. Features reliable mixing drum and hydraulic system for consistent concrete quality.",
+              "specifications": {
+                "gvw": "Under 25T",
+                "mixingCapacity": "6-9 cubic meters",
+                "engine": "Turbocharged Diesel",
+                "transmission": "Manual/Automatic",
+                "drumRotation": "Variable speed"
+              }
+            },
+            {
               "id": "x7-2800wb-flatbed-truck",
-              "name": "X7-2800WB-4×2 Flatbed Truck",
+              "name": "X7 Flatbed Truck",
               "fileName": "X7-Flatbed-Truck.html",
               "mainImage": "../assets/trucks/x7-flatbed-1.jpg",
               "description": "Flexible cargo transport solution for urban deliveries, offering 3–5 ton payload on a compact flatbed. Powered by 3.8L diesel engine (120–140 hp), it provides excellent maneuverability, low maintenance, and versatile applications in logistics and delivery services.",
@@ -221,7 +250,7 @@
             },
             {
               "id": "x7-3300wb-sprinkler-truck",
-              "name": "X7-3300WB-4×2 Sprinkler Truck",
+              "name": "X7 Sprinkler Truck",
               "fileName": "X7-Sprinkler-Truck.html",
               "mainImage": "../assets/trucks/x7-sprinkler-1.jpg",
               "description": "Used for street cleaning and dust suppression, fitted with 3,000–6,000L water tank and spray system. Equipped with 4.0L diesel engine (140 hp), the truck ensures effective municipal water spraying with easy operation and maintenance.",
@@ -237,7 +266,7 @@
             },
             {
               "id": "x7-3500wb-truck-mounted-crane",
-              "name": "X7-3500WB-4×2 Truck Mounted Crane",
+              "name": "X7 Truck Mounted Crane",
               "fileName": "X7-Truck-Mounted-Crane.html",
               "mainImage": "../assets/trucks/x7-crane-1.jpg",
               "description": "Light-duty lifting solution with 2–4 ton crane capacity, ideal for small construction or loading tasks. Powered by 4.2L diesel engine (150 hp) with 4×2 drive, offering precise, safe, and efficient lifting.",
@@ -252,7 +281,7 @@
             },
             {
               "id": "x7-3800wb-dump-truck",
-              "name": "X7-3800WB-4×2 Dump Truck",
+              "name": "X7 Dump Truck",
               "fileName": "X7-Dump-Truck.html",
               "mainImage": "../assets/trucks/x7-dump-1.jpg",
               "description": "Efficient for construction material transport, carrying 3–5 tons of sand, gravel, or aggregates. Equipped with 4.1L diesel engine (156 hp), hydraulic tipping system, and durable steel body. Suitable for urban and semi-urban construction projects with excellent maneuverability and durability.",
@@ -265,454 +294,17 @@
                 "bodySize": "3.0 × 1.9 × 0.6 m",
                 "drive": "4×2"
               }
-            },
-            {
-              "id": "x7-concrete-mixer-truck",
-              "name": "X7 Concrete Mixer Truck",
-              "fileName": "X7-Concrete-Mixer-Truck.html",
-              "mainImage": "../assets/back2.jpeg",
-              "description": "Efficient concrete mixing and delivery truck for construction projects. Features reliable mixing drum and hydraulic system for consistent concrete quality.",
-              "specifications": {
-                "gvw": "Under 25T",
-                "mixingCapacity": "6-9 cubic meters",
-                "engine": "Turbocharged Diesel",
-                "transmission": "Manual/Automatic",
-                "drumRotation": "Variable speed"
-              }
-            }
-          ]
-        }
-      }
-    },
-    "medium-duty": {
-      "category": "Medium Duty Trucks",
-      "description": "Durable and powerful trucks for medium-scale logistics, construction, and municipal operations (12T≤GCW≤25T)",
-      "series": {
-        "E6": {
-          "seriesName": "E6 Series",
-          "description": "Versatile and efficient medium-duty trucks for transport, construction, and municipal operations.",
-          "models": [
-            {
-              "id": "e6-4200wb-stake-truck",
-              "name": "E6-4200WB-4×2 Stake Truck",
-              "fileName": "E6-4200WB-Stake-Truck.html",
-              "mainImage": "../assets/trucks/e6-stake-1.jpg",
-              "description": "Designed for agricultural and logistics applications, providing 6–10 ton payload with flexible stake body. Powered by 6.0L diesel engine (180–220 hp), with 4×2/6×2 drive options, offering durability, versatility, and ease of loading/unloading.",
-              "specifications": {
-                "engine": "6.0L Diesel",
-                "power": "180–220 hp",
-                "gvw": "12–16 Tons",
-                "payload": "6–10 Tons",
-                "wheelbase": "4200 mm",
-                "bodyType": "Stake",
-                "drive": "4×2"
-              }
-            },
-            {
-              "id": "e6-4500wb-refrigerated-truck",
-              "name": "E6-4500WB-4×2 Refrigerated Truck",
-              "fileName": "E6-4500WB-Refrigerated-Truck.html",
-              "mainImage": "../assets/trucks/e6-refrigerated-1.jpg",
-              "description": "Maintains goods at -5°C to -18°C in 10–24 m³ cargo volume. 6.2L diesel engine (190–230 hp) ensures reliable distribution for medium-distance logistics, food transport, and pharmaceutical delivery.",
-              "specifications": {
-                "engine": "6.2L Diesel",
-                "power": "190–230 hp",
-                "gvw": "12–16 Tons",
-                "payload": "6–10 Tons",
-                "boxVolume": "10–24 m³",
-                "cooling": "-5°C to -18°C",
-                "drive": "4×2"
-              }
-            },
-            {
-              "id": "e6-4500wb-sprinkler-truck",
-              "name": "E6-4500WB-4×2 Sprinkler Truck",
-              "fileName": "E6-4500WB-Sprinkler-Truck.html",
-              "mainImage": "../assets/trucks/e6-sprinkler-1.jpg",
-              "description": "Equipped with 6,000–12,000L water tank and spray system for urban road cleaning. Engineered for medium-duty municipal applications with robust 4×2 drive and easy maintenance.",
-              "specifications": {
-                "engine": "6.2L Diesel",
-                "power": "190–230 hp",
-                "tankCapacity": "6,000–12,000L",
-                "gvw": "12–16 Tons",
-                "drive": "4×2"
-              }
-            },
-            {
-              "id": "e6-4500wb-cement-mixer-truck",
-              "name": "E6-4500WB-4×2 Cement Mixer Truck",
-              "fileName": "E6-4500WB-Cement-Mixer-Truck.html",
-              "mainImage": "../assets/trucks/e6-mixer-1.jpg",
-              "description": "Ideal for medium-scale construction projects, carrying 4–6 m³ concrete. 6.0L diesel engine (200 hp), 6×2 drive, durable mixing drum with high efficiency, and easy control.",
-              "specifications": {
-                "engine": "6.0L Diesel",
-                "power": "200 hp",
-                "mixerCapacity": "4–6 m³",
-                "gvw": "14–18 Tons",
-                "drive": "6×2"
-              }
             }
           ]
         },
-        "X6": {
-          "seriesName": "X6 Series",
-          "description": "Reliable medium-duty truck platform for logistics, construction, and municipal service fleets.",
-          "models": [
-            {
-              "id": "x6-5200wb-dump-truck",
-              "name": "X6-5200WB-6×4 Dump Truck",
-              "fileName": "X6-5200WB-Dump-Truck.html",
-              "mainImage": "../assets/trucks/x6-dump-1.jpg",
-              "description": "Heavy-duty medium truck for construction, capable of transporting 8–12 tons of material. Equipped with 6.5L diesel engine (260 hp), robust 6×4 chassis, hydraulic tipper, and durable steel box.",
-              "specifications": {
-                "engine": "6.5L Diesel",
-                "power": "260 hp",
-                "payload": "8–12 Tons",
-                "wheelbase": "5200 mm",
-                "bodySize": "4×2.1×0.8 m",
-                "drive": "6×4"
-              }
-            },
-            {
-              "id": "x6-5200wb-flatbed-truck",
-              "name": "X6-5200WB-6×4 Flatbed Truck",
-              "fileName": "X6-5200WB-Flatbed-Truck.html",
-              "mainImage": "../assets/trucks/x6-flatbed-1.jpg",
-              "description": "Medium-duty cargo transport truck, carrying 4–7 tons. 6.2L diesel engine (220–260 hp), 6×4 drive, flatbed allows flexible loading/unloading.",
-              "specifications": {
-                "engine": "6.2L Diesel",
-                "power": "220–260 hp",
-                "payload": "4–7 Tons",
-                "wheelbase": "5200 mm",
-                "drive": "6×4"
-              }
-            },
-            {
-              "id": "x6-5200wb-van-truck",
-              "name": "X6-5200WB-6×4 Van Truck",
-              "fileName": "X6-5200WB-Van-Truck.html",
-              "mainImage": "../assets/trucks/x6-van-1.jpg",
-              "description": "18–28 m³ cargo body, medium-duty logistics transport. Engineered with 6.2L diesel engine (230 hp) for reliability and fuel efficiency.",
-              "specifications": {
-                "engine": "6.2L Diesel",
-                "power": "230 hp",
-                "payload": "8–12 Tons",
-                "cargoVolume": "18–28 m³",
-                "drive": "6×4"
-              }
-            },
-            {
-              "id": "x6-5200wb-truck-mounted-crane",
-              "name": "X6-5200WB-6×4 Truck Mounted Crane",
-              "fileName": "X6-5200WB-Truck-Mounted-Crane.html",
-              "mainImage": "../assets/trucks/x6-crane-1.jpg",
-              "description": "Lifting capacity 4–8 Tons for construction and loading tasks. 6.5L diesel engine (260 hp), 6×4 drive, precise crane operation, and heavy-duty chassis.",
-              "specifications": {
-                "engine": "6.5L Diesel",
-                "power": "260 hp",
-                "craneCapacity": "4–8 Tons",
-                "drive": "6×4"
-              }
-            },
-            {
-              "id": "x6-5200wb-cargo-truck",
-              "name": "X6-5200WB-6×4 Cargo Truck",
-              "fileName": "X6-5200WB-Cargo-Truck.html",
-              "mainImage": "../assets/trucks/x6-cargo-1.jpg",
-              "description": "General transport truck with side drop gates for logistics and medium freight. 6.2L diesel engine (230 hp), 6×4 drive, robust and versatile.",
-              "specifications": {
-                "engine": "6.2L Diesel",
-                "power": "230 hp",
-                "payload": "8–12 Tons",
-                "drive": "6×4"
-              }
-            },
-            {
-              "id": "x6-5200wb-fuel-tanker-truck",
-              "name": "X6-5200WB-6×4 Fuel Tanker Truck",
-              "fileName": "X6-5200WB-Fuel-Tanker-Truck.html",
-              "mainImage": "../assets/trucks/x6-fuel-1.jpg",
-              "description": "8,000–14,000L fuel transport capacity for medium routes. Equipped with 6.5L diesel engine (260 hp), reinforced tank, and 6×4 drive.",
-              "specifications": {
-                "engine": "6.5L Diesel",
-                "power": "260 hp",
-                "tankCapacity": "8,000–14,000 L",
-                "drive": "6×4"
-              }
-            },
-            {
-              "id": "x6-5200wb-cement-mixer-truck",
-              "name": "X6-5200WB-6×4 Cement Mixer Truck",
-              "fileName": "X6-5200WB-Cement-Mixer-Truck.html",
-              "mainImage": "../assets/trucks/x6-mixer-1.jpg",
-              "description": "4–6 m³ mixer capacity for medium construction applications. 6.5L diesel engine (260 hp), 6×4 drive, high-efficiency rotating drum.",
-              "specifications": {
-                "engine": "6.5L Diesel",
-                "power": "260 hp",
-                "mixerCapacity": "4–6 m³",
-                "drive": "6×4"
-              }
-            },
-            {
-              "id": "x6-5200wb-garbage-truck",
-              "name": "X6-5200WB-6×4 Garbage Truck",
-              "fileName": "X6-5200WB-Garbage-Truck.html",
-              "mainImage": "../assets/trucks/x6-garbage-1.jpg",
-              "description": "8–12 m³ compression bin for municipal waste. 6.5L diesel engine (260 hp), 6×4 drive, efficient compaction system.",
-              "specifications": {
-                "engine": "6.5L Diesel",
-                "power": "260 hp",
-                "binVolume": "8–12 m³",
-                "drive": "6×4"
-              }
-            },
-            {
-              "id": "x6-5200wb-sprinkler-truck",
-              "name": "X6-5200WB-6×4 Sprinkler Truck",
-              "fileName": "X6-5200WB-Sprinkler-Truck.html",
-              "mainImage": "../assets/trucks/x6-sprinkler-1.jpg",
-              "description": "6,000–12,000L water tank for street cleaning, 6×4 drive, 6.5L diesel engine (260 hp), reliable municipal service.",
-              "specifications": {
-                "engine": "6.5L Diesel",
-                "power": "260 hp",
-                "tankCapacity": "6,000–12,000L",
-                "drive": "6×4"
-              }
-            },
-            {
-              "id": "x6-5200wb-dust-suppression-truck",
-              "name": "X6-5200WB-6×4 Dust Suppression Truck",
-              "fileName": "X6-5200WB-Dust-Suppression-Truck.html",
-              "mainImage": "../assets/trucks/x6-dust-1.jpg",
-              "description": "Equipped with water cannon and fog system reaching 30–60 m. 6.5L diesel engine (260 hp), 6×4 drive, designed for urban and highway dust control.",
-              "specifications": {
-                "engine": "6.5L Diesel",
-                "power": "260 hp",
-                "dustSuppressionReach": "30–60 m",
-                "drive": "6×4"
-              }
-            }
-          ]
-        }
-      }
-    },
-    "heavy-duty": {
-      "category": "Heavy Duty Trucks",
-      "description": "Powerful and robust trucks built for demanding construction, mining, and long-haul operations (25T≤GCW≤60T)",
-      "series": {
-        "E3": {
-          "seriesName": "E3 Series",
-          "description": "Heavy-duty multipurpose trucks for construction, logistics, and municipal services.",
-          "models": [
-            {
-              "id": "e3-6000wb-muck-truck",
-              "name": "E3-6000WB-6×4 Muck Truck",
-              "fileName": "E3-6000WB-Muck-Truck.html",
-              "mainImage": "../assets/trucks/e3-muck-1.jpg",
-              "description": "Designed for large-scale mining, construction, and earthmoving operations. Carries 12–30 m³ of muck with reinforced steel body. 8.0L diesel engine (320–360 hp) provides high torque for off-road and heavy-load performance. Heavy-duty 6×4 chassis ensures stability and reliability in tough terrains.",
-              "specifications": {
-                "engine": "8.0L Diesel",
-                "power": "320–360 hp",
-                "payload": "12–30 m³",
-                "gvw": "20–30 Tons",
-                "wheelbase": "6000 mm",
-                "drive": "6×4"
-              }
-            },
-            {
-              "id": "e3-6000wb-dump-truck",
-              "name": "E3-6000WB-6×4 Dump Truck",
-              "fileName": "E3-6000WB-Dump-Truck.html",
-              "mainImage": "../assets/trucks/e3-dump-1.jpg",
-              "description": "Heavy-duty dump truck for large construction projects, carrying 10–20 tons of aggregates. Equipped with 8.0L diesel engine (320–360 hp) and hydraulic tipping system. Robust 6×4 chassis ensures stability and reliability under heavy loads.",
-              "specifications": {
-                "engine": "8.0L Diesel",
-                "power": "320–360 hp",
-                "payload": "10–20 Tons",
-                "gvw": "20–30 Tons",
-                "wheelbase": "6000 mm",
-                "drive": "6×4"
-              }
-            },
-            {
-              "id": "e3-6000wb-cement-mixer-truck",
-              "name": "E3-6000WB-6×4 Cement Mixer Truck",
-              "fileName": "E3-6000WB-Cement-Mixer-Truck.html",
-              "mainImage": "../assets/trucks/e3-mixer-1.jpg",
-              "description": "Heavy-duty mixer carrying 6–10 m³ concrete for large construction sites. 8.0L diesel engine (330 hp), durable 6×4 chassis, high-efficiency drum rotation ensures smooth and consistent mixing.",
-              "specifications": {
-                "engine": "8.0L Diesel",
-                "power": "330 hp",
-                "mixerCapacity": "6–10 m³",
-                "gvw": "22–28 Tons",
-                "wheelbase": "6000 mm",
-                "drive": "6×4"
-              }
-            },
-            {
-              "id": "e3-6000wb-compactor-garbage-truck",
-              "name": "E3-6000WB-6×4 Compactor Garbage Truck",
-              "fileName": "E3-6000WB-Compactor-Garbage-Truck.html",
-              "mainImage": "../assets/trucks/e3-garbage-1.jpg",
-              "description": "Designed for large municipal waste collection. 12–20 m³ compression body efficiently compacts waste, 8.0L diesel engine (320–360 hp), 6×4 drive ensures reliable operation in urban and industrial environments.",
-              "specifications": {
-                "engine": "8.0L Diesel",
-                "power": "320–360 hp",
-                "binVolume": "12–20 m³",
-                "gvw": "22–28 Tons",
-                "drive": "6×4"
-              }
-            },
-            {
-              "id": "e3-6000wb-stake-truck",
-              "name": "E3-6000WB-6×4 Stake Truck",
-              "fileName": "E3-6000WB-Stake-Truck.html",
-              "mainImage": "../assets/trucks/e3-stake-1.jpg",
-              "description": "Heavy-duty cargo transport truck with 12–18 ton payload. 8.0L diesel engine (330 hp), durable 6×4 chassis, ideal for construction materials, agricultural products, and industrial freight. Features robust stake body design for flexible loading configurations and enhanced cargo security.",
-              "specifications": {
-                "engine": "8.0L Diesel",
-                "power": "330 hp",
-                "payload": "12–18 Tons",
-                "gvw": "25–30 Tons",
-                "wheelbase": "6000 mm",
-                "bodyType": "Stake",
-                "drive": "6×4"
-              }
-            }
-          ]
-        }
-      }
-    },
-    "ultra-heavy-duty": {
-      "category": "Ultra Heavy Duty Trucks",
-      "description": "Maximum power trucks for long-haul transportation and extreme heavy-duty operations (≥60T)",
-      "series": {
-        "E1st": {
-          "seriesName": "E1st Series",
-          "description": "Next-generation ultra-heavy-duty tractors with advanced powertrains and intelligent systems",
-          "models": [
-            {
-              "id": "e1st-tractor",
-              "name": "E1st Tractor",
-              "fileName": "E1st-Tractor.html",
-              "mainImage": "../assets/trucks/e1st-tractor-1.jpg",
-              "description": "Next-generation heavy-duty commercial vehicle from SAGMOTO, engineered for maximum power, efficiency, and driver comfort. Powered by Cummins 560 HP engine with Eaton AMT gearbox and Hande maintenance-free axle. Features aerodynamically optimized cab with CFD airflow technology achieving 0.45 drag coefficient and fuel consumption as low as 26.97L per 100 km.",
-              "specifications": {
-                "engine": "Cummins 560 HP",
-                "power": "560 PS",
-                "transmission": "Eaton 16-speed AMT",
-                "gvw": "42-48 Tons",
-                "wheelbase": "3800 / 3450+1350 mm",
-                "emissions": "Euro V",
-                "maxSpeed": "120 km/h",
-                "fuelConsumption": "26.97L/100km",
-                "drive": "6×4"
-              }
-            }
-          ]
-        },
-        "Z3": {
-          "seriesName": "Z3 Series", 
-          "description": "High-performance tractors with intelligent systems and European safety standards",
-          "models": [
-            {
-              "id": "z3-tractor-truck",
-              "name": "Z3 Tractor Truck",
-              "fileName": "Z3-Tractor-Truck.html",
-              "mainImage": "../assets/trucks/z3-tractor-1.jpg",
-              "description": "Delivers efficient, fast, and clean logistics experience with new powertrain and intelligent electronic systems. High-strength cab meets latest European safety standards with flat-floor design and spacious interior for enhanced driver comfort during long hauls.",
-              "specifications": {
-                "engine": "M13E5 560",
-                "power": "2600 HP",
-                "torque": "560 N·m",
-                "displacement": "12.5 L",
-                "gvw": "≤49T",
-                "wheelbase": "4450+1350 mm",
-                "emissions": "Euro V",
-                "drive": "6×4"
-              }
-            },
-            {
-              "id": "z3-dump-truck", 
-              "name": "Z3 Dump Truck",
-              "fileName": "Z3-Dump-Truck.html",
-              "mainImage": "../assets/trucks/z3-dump-1.jpg",
-              "description": "Heavy-duty dump truck with reinforced chassis and high-capacity hydraulic system. Built for demanding construction and mining operations with superior durability and performance.",
-              "specifications": {
-                "engine": "High-Performance Diesel",
-                "power": "300-400 HP",
-                "gvw": "25-35 Tons",
-                "payload": "15-20 Tons",
-                "wheelbase": "4500+1350 mm",
-                "drive": "6×4"
-              }
-            }
-          ]
-        }
-      }
-    },
-    "specialized": {
-      "category": "Specialized Vehicles",
-      "description": "Purpose-built trucks for specific applications including aerial work, towing, and concrete operations",
-      "series": {
-        "AerialWork": {
-          "seriesName": "Aerial Work Series",
-          "description": "Specialized platforms for elevated construction and maintenance tasks",
-          "models": [
-            {
-              "id": "x9-aerial-platform-detailed",
-              "name": "X9 Aerial Work Platform Truck",
-              "fileName": "X9-Aerial-Platform-Detailed.html",
-              "mainImage": "../assets/trucks/x9aerialplatformtrucks/Screenshot 2025-11-04 230412.webp",
-              "description": "Strong stability, flexible mobility, and convenient operation for diverse work surfaces. Features multi-level telescopic arms with large operating range and fast lifting speed. High-strength cab with advanced precision technology and multiple safety protection systems.",
-              "specifications": {
-                "engine": "140 HP Diesel",
-                "power": "140 HP",
-                "gvw": "≤18T",
-                "wheelbase": "3300 mm",
-                "workingHeight": "Up to 20m",
-                "maxLoad": "Variable",
-                "drive": "4×2"
-              }
-            }
-          ]
-        },
-        "Recovery": {
-          "seriesName": "Recovery & Towing Series",
-          "description": "Professional towing and recovery vehicles for emergency and commercial use",
-          "models": [
-            {
-              "id": "x9-tow-detailed",
-              "name": "X9 Tow Truck Professional",
-              "fileName": "X9-Tow-Detailed.html", 
-              "mainImage": "../assets/trucks/x9towtrucks/main.webp",
-              "description": "Designed for tough working conditions with maximum gradient capability over 30%. Robust configuration ensures reliable towing and operational efficiency in challenging terrains with advanced recovery systems.",
-              "specifications": {
-                "engine": "YC4D120-33",
-                "power": "120 HP",
-                "gvw": "≤12T",
-                "wheelbase": "3300 mm",
-                "towingCapacity": "2500 kg",
-                "maxGradient": "30%",
-                "drive": "4×2"
-              }
-            }
-          ]
-        }
-      }
-    },
-    "newEnergy": {
-      "category": "New Energy Vehicles",
-      "description": "Electric and hybrid trucks for sustainable urban logistics and zero-emission transport",
-      "series": {
         "i9": {
-          "seriesName": "i9 New Energy Series",
-          "description": "Advanced electric vehicles with integrated drive systems and fast charging technology",
+          "seriesName": "i9 Series",
+          "description": "i9 Series trucks for various commercial applications",
           "models": [
             {
               "id": "i9-electric-truck",
               "name": "i9 New Energy Truck",
-              "fileName": "i9-New-Series.html",
+              "fileName": "i9-New-Energy-Truck.html",
               "mainImage": "../assets/trucks/i9-electric-1.jpg",
               "description": "Features integrated electric drive axle with highly integrated structure for higher efficiency and extended range. Offers 430 km working range with 120 kW fast charging technology, achieving full charge in 65 minutes. Brake energy recovery reduces consumption by 15%.",
               "specifications": {
@@ -730,92 +322,317 @@
         }
       }
     },
-    "offRoad": {
-      "category": "Off-Road Vehicles", 
-      "description": "Rugged 4×4 trucks designed for extreme terrain and heavy-duty off-road operations",
+    "medium-duty": {
+      "category": "Medium Duty Trucks",
+      "description": "Versatile trucks for commercial and industrial applications",
       "series": {
-        "4x4Series": {
-          "seriesName": "4×4 Off-Road Series",
-          "description": "Versatile all-terrain vehicles with enhanced traction and durability",
+        "e6": {
+          "seriesName": "E6 Series",
+          "description": "E6 Series trucks for various commercial applications",
           "models": [
             {
-              "id": "x9-4x4-dump",
-              "name": "X9 4×4 Dump Truck", 
-              "fileName": "X9-4x4-Dump-Truck.html",
-              "mainImage": "../assets/trucks/x9-4x4-dump-1.jpg",
-              "description": "Powerful all-wheel-drive vehicle with 4×4 system and leaf-spring suspension using main and sub-spring structures. Precisely matched front and rear suspensions with dampers ensure stability, comfort, and superior loading performance.",
+              "id": "e6-dump-truck",
+              "name": "E6 Dump Truck",
+              "fileName": "E6-Dump-Truck.html",
+              "mainImage": "../assets/trucks/e6_dump_truck_1.jpg",
+              "description": "Professional dump truck from the E6 series. Designed for reliability, efficiency, and superior performance in demanding commercial applications. Features advanced engineering and robust construction for long-lasting service.",
               "specifications": {
-                "engine": "YC4D130-33",
-                "power": "130 HP", 
-                "gvw": "≤16T",
-                "wheelbase": "3600 mm",
-                "payload": "8-12 Tons",
-                "bodySize": "3700-4000×2300×800 mm",
-                "drive": "4×4"
+                "engine": "Advanced Diesel Engine",
+                "power": "Commercial Grade",
+                "transmission": "Manual/Automatic",
+                "drive": "Optimized Configuration",
+                "gvw": "Commercial Rating",
+                "payload": "Maximum Capacity"
               }
             },
             {
-              "id": "6-series-4x4",
-              "name": "6 Series 4×4 Truck",
-              "fileName": "6-Series-4x4-Truck.html",
-              "mainImage": "../assets/trucks/6-series-4x4-1.jpg", 
-              "description": "Strong power and efficient transportation with reinforced design, iron bumper and customizable upper-body. Ideal for heavy-duty operations in challenging environments.",
+              "id": "e6-4200wb-stake-truck",
+              "name": "E6 Stake Truck",
+              "fileName": "E6-Stake-Truck.html",
+              "mainImage": "../assets/trucks/e6-stake-1.jpg",
+              "description": "Designed for agricultural and logistics applications, providing 6–10 ton payload with flexible stake body. Powered by 6.0L diesel engine (180–220 hp), with 4×2/6×2 drive options, offering durability, versatility, and ease of loading/unloading.",
               "specifications": {
-                "engine": "YC6J210-33",
-                "power": "210 HP",
-                "gvw": "25 Tons",
-                "wheelbase": "5000 mm", 
-                "displacement": "6.49L",
-                "torque": "710 Nm",
-                "drive": "4×4"
+                "engine": "6.0L Diesel",
+                "power": "180–220 hp",
+                "gvw": "12–16 Tons",
+                "payload": "6–10 Tons",
+                "wheelbase": "4200 mm",
+                "bodyType": "Stake",
+                "drive": "4×2"
               }
             },
             {
-              "id": "7-series-4x4", 
-              "name": "7 Series 4×4 Truck",
-              "fileName": "7-Series-4x4-Truck.html",
-              "mainImage": "../assets/trucks/7-series-4x4-1.jpg",
-              "description": "Powerful engine with excellent maneuverability. Reinforced oil pan protection grill and double-layer frame design ensure durability and reliability for demanding operations.",
+              "id": "e6-van-truck",
+              "name": "E6 Van Truck",
+              "fileName": "E6-Van-Truck.html",
+              "mainImage": "../assets/trucks/e6_van_truck_1.jpg",
+              "description": "Professional van truck from the E6 series. Designed for reliability, efficiency, and superior performance in demanding commercial applications. Features advanced engineering and robust construction for long-lasting service.",
               "specifications": {
-                "engine": "Turbocharged Diesel",
-                "power": "125-220 HP",
-                "gvw": "18 Tons",
-                "wheelbase": "3800 mm",
-                "displacement": "4.26L", 
-                "torque": "410-850 Nm",
-                "drive": "4×4"
+                "engine": "Advanced Diesel Engine",
+                "power": "Commercial Grade",
+                "transmission": "Manual/Automatic",
+                "drive": "Optimized Configuration",
+                "gvw": "Commercial Rating",
+                "payload": "Maximum Capacity"
               }
             },
             {
-              "id": "9-series-4x4",
-              "name": "9 Series 4×4 Truck",
-              "fileName": "9-Series-4x4-Truck.html", 
-              "mainImage": "../assets/trucks/9-series-4x4-1.jpg",
-              "description": "Offers durability, high performance, and high load-bearing capacity. Multiple cab options available for various applications including fuel tankers, sprinklers, and dump trucks.",
+              "id": "e6-4500wb-refrigerated-truck",
+              "name": "E6 Refrigerated Truck",
+              "fileName": "E6-Refrigerated-Truck.html",
+              "mainImage": "../assets/trucks/e6-refrigerated-1.jpg",
+              "description": "Maintains goods at -5°C to -18°C in 10–24 m³ cargo volume. 6.2L diesel engine (190–230 hp) ensures reliable distribution for medium-distance logistics, food transport, and pharmaceutical delivery.",
               "specifications": {
-                "engine": "Efficient Diesel",
-                "power": "130-200 HP",
-                "gvw": "12-14 Tons",
-                "wheelbase": "3360-3600 mm",
-                "displacement": "3.0-4.21L",
-                "torque": "380-620 Nm", 
-                "drive": "4×4"
+                "engine": "6.2L Diesel",
+                "power": "190–230 hp",
+                "gvw": "12–16 Tons",
+                "payload": "6–10 Tons",
+                "boxVolume": "10–24 m³",
+                "cooling": "-5°C to -18°C",
+                "drive": "4×2"
               }
             },
             {
-              "id": "offroad-dump-truck",
-              "name": "Off-road Dump Truck",
-              "fileName": "Off-road-Dump-Truck.html",
-              "mainImage": "../assets/trucks/offroad-dump-1.jpg",
-              "description": "850mm wide-chassis structure with stable performance and adaptability to poor road conditions. Specialized rear suspension for mining increases flattening load from 25.3T to 30.5T. Directionally adjustable exhaust prevents dust stirring.",
+              "id": "e6-4500wb-sprinkler-truck",
+              "name": "E6 Sprinkler Truck",
+              "fileName": "E6-Sprinkler-Truck.html",
+              "mainImage": "../assets/trucks/e6-sprinkler-1.jpg",
+              "description": "Equipped with 6,000–12,000L water tank and spray system for urban road cleaning. Engineered for medium-duty municipal applications with robust 4×2 drive and easy maintenance.",
               "specifications": {
-                "engine": "YUCHAI Heavy Duty",
-                "power": "Variable",
-                "gvw": "70 Tons", 
-                "kerb": "17 Tons",
-                "payload": "50 Tons",
-                "wheelbase": "3975+1400 mm",
-                "bodySize": "5800×2300×1600 mm",
+                "engine": "6.2L Diesel",
+                "power": "190–230 hp",
+                "tankCapacity": "6,000–12,000L",
+                "gvw": "12–16 Tons",
+                "drive": "4×2"
+              }
+            },
+            {
+              "id": "e6-truck-mounted-crane",
+              "name": "E6 Truck Mounted Crane",
+              "fileName": "E6-Truck-Mounted-Crane.html",
+              "mainImage": "../assets/trucks/e6_truck_mounted_crane_1.jpg",
+              "description": "Professional truck mounted crane from the E6 series. Designed for reliability, efficiency, and superior performance in demanding commercial applications. Features advanced engineering and robust construction for long-lasting service.",
+              "specifications": {
+                "engine": "Advanced Diesel Engine",
+                "power": "Commercial Grade",
+                "transmission": "Manual/Automatic",
+                "drive": "Optimized Configuration",
+                "gvw": "Commercial Rating",
+                "payload": "Maximum Capacity"
+              }
+            },
+            {
+              "id": "e6-4500wb-cement-mixer-truck",
+              "name": "E6 Cement Mixer Truck",
+              "fileName": "E6-Cement-Mixer-Truck.html",
+              "mainImage": "../assets/trucks/e6-mixer-1.jpg",
+              "description": "Ideal for medium-scale construction projects, carrying 4–6 m³ concrete. 6.0L diesel engine (200 hp), 6×2 drive, durable mixing drum with high efficiency, and easy control.",
+              "specifications": {
+                "engine": "6.0L Diesel",
+                "power": "200 hp",
+                "mixerCapacity": "4–6 m³",
+                "gvw": "14–18 Tons",
+                "drive": "6×2"
+              }
+            }
+          ]
+        },
+        "x6": {
+          "seriesName": "X6 Series",
+          "description": "X6 Series trucks for various commercial applications",
+          "models": [
+            {
+              "id": "x6-5200wb-dump-truck",
+              "name": "X6 Dump Truck",
+              "fileName": "X6-Dump-Truck.html",
+              "mainImage": "../assets/trucks/x6-dump-1.jpg",
+              "description": "Heavy-duty medium truck for construction, capable of transporting 8–12 tons of material. Equipped with 6.5L diesel engine (260 hp), robust 6×4 chassis, hydraulic tipper, and durable steel box.",
+              "specifications": {
+                "engine": "6.5L Diesel",
+                "power": "260 hp",
+                "payload": "8–12 Tons",
+                "wheelbase": "5200 mm",
+                "bodySize": "4×2.1×0.8 m",
+                "drive": "6×4"
+              }
+            },
+            {
+              "id": "x6-5200wb-flatbed-truck",
+              "name": "X6 Flatbed Truck",
+              "fileName": "X6-Flatbed-Truck.html",
+              "mainImage": "../assets/trucks/x6-flatbed-1.jpg",
+              "description": "Medium-duty cargo transport truck, carrying 4–7 tons. 6.2L diesel engine (220–260 hp), 6×4 drive, flatbed allows flexible loading/unloading.",
+              "specifications": {
+                "engine": "6.2L Diesel",
+                "power": "220–260 hp",
+                "payload": "4–7 Tons",
+                "wheelbase": "5200 mm",
+                "drive": "6×4"
+              }
+            },
+            {
+              "id": "x6-5200wb-van-truck",
+              "name": "X6 Van Truck",
+              "fileName": "X6-Van-Truck.html",
+              "mainImage": "../assets/trucks/x6-van-1.jpg",
+              "description": "18–28 m³ cargo body, medium-duty logistics transport. Engineered with 6.2L diesel engine (230 hp) for reliability and fuel efficiency.",
+              "specifications": {
+                "engine": "6.2L Diesel",
+                "power": "230 hp",
+                "payload": "8–12 Tons",
+                "cargoVolume": "18–28 m³",
+                "drive": "6×4"
+              }
+            },
+            {
+              "id": "x6-5200wb-truck-mounted-crane",
+              "name": "X6 Truck Mounted Crane",
+              "fileName": "X6-Truck-Mounted-Crane.html",
+              "mainImage": "../assets/trucks/x6-crane-1.jpg",
+              "description": "Lifting capacity 4–8 Tons for construction and loading tasks. 6.5L diesel engine (260 hp), 6×4 drive, precise crane operation, and heavy-duty chassis.",
+              "specifications": {
+                "engine": "6.5L Diesel",
+                "power": "260 hp",
+                "craneCapacity": "4–8 Tons",
+                "drive": "6×4"
+              }
+            },
+            {
+              "id": "x6-5200wb-cargo-truck",
+              "name": "X6 Cargo Truck",
+              "fileName": "X6-Cargo-Truck.html",
+              "mainImage": "../assets/trucks/x6-cargo-1.jpg",
+              "description": "General transport truck with side drop gates for logistics and medium freight. 6.2L diesel engine (230 hp), 6×4 drive, robust and versatile.",
+              "specifications": {
+                "engine": "6.2L Diesel",
+                "power": "230 hp",
+                "payload": "8–12 Tons",
+                "drive": "6×4"
+              }
+            },
+            {
+              "id": "x6-awd-cargo-truck",
+              "name": "X6 AWD Cargo Truck",
+              "fileName": "X6-AWD-Cargo-Truck.html",
+              "mainImage": "../assets/trucks/x6_awd_cargo_truck_1.jpg",
+              "description": "Professional awd cargo truck from the X6 series. Designed for reliability, efficiency, and superior performance in demanding commercial applications. Features advanced engineering and robust construction for long-lasting service.",
+              "specifications": {
+                "engine": "Advanced Diesel Engine",
+                "power": "Commercial Grade",
+                "transmission": "Manual/Automatic",
+                "drive": "Optimized Configuration",
+                "gvw": "Commercial Rating",
+                "payload": "Maximum Capacity"
+              }
+            },
+            {
+              "id": "x6-dropside-truck",
+              "name": "X6 Dropside Truck",
+              "fileName": "X6-Dropside-Truck.html",
+              "mainImage": "../assets/trucks/x6_dropside_truck_1.jpg",
+              "description": "Professional dropside truck from the X6 series. Designed for reliability, efficiency, and superior performance in demanding commercial applications. Features advanced engineering and robust construction for long-lasting service.",
+              "specifications": {
+                "engine": "Advanced Diesel Engine",
+                "power": "Commercial Grade",
+                "transmission": "Manual/Automatic",
+                "drive": "Optimized Configuration",
+                "gvw": "Commercial Rating",
+                "payload": "Maximum Capacity"
+              }
+            },
+            {
+              "id": "x6-5200wb-cement-mixer-truck",
+              "name": "X6 Cement Mixer Truck",
+              "fileName": "X6-Cement-Mixer-Truck.html",
+              "mainImage": "../assets/trucks/x6-mixer-1.jpg",
+              "description": "4–6 m³ mixer capacity for medium construction applications. 6.5L diesel engine (260 hp), 6×4 drive, high-efficiency rotating drum.",
+              "specifications": {
+                "engine": "6.5L Diesel",
+                "power": "260 hp",
+                "mixerCapacity": "4–6 m³",
+                "drive": "6×4"
+              }
+            },
+            {
+              "id": "x6-concrete-mixer-truck",
+              "name": "X6 Concrete Mixer Truck",
+              "fileName": "X6-Concrete-Mixer-Truck.html",
+              "mainImage": "../assets/trucks/x6_concrete_mixer_truck_1.jpg",
+              "description": "Professional concrete mixer truck from the X6 series. Designed for reliability, efficiency, and superior performance in demanding commercial applications. Features advanced engineering and robust construction for long-lasting service.",
+              "specifications": {
+                "engine": "Advanced Diesel Engine",
+                "power": "Commercial Grade",
+                "transmission": "Manual/Automatic",
+                "drive": "Optimized Configuration",
+                "gvw": "Commercial Rating",
+                "payload": "Maximum Capacity"
+              }
+            },
+            {
+              "id": "x6-loading-crane-recovery",
+              "name": "X6 Loading Crane Recovery Truck",
+              "fileName": "X6-Loading-Crane-Recovery-Truck.html",
+              "mainImage": "../assets/trucks/x6loadingcranerecoverytruck/main.webp",
+              "description": "Multi-purpose recovery vehicle with integrated loading crane. Combines towing capability with lifting function for versatile recovery and transport operations.",
+              "specifications": {
+                "engine": "Recovery Diesel",
+                "power": "220-280 HP",
+                "craneCapacity": "5-8 Tons",
+                "towingCapacity": "10-15 Tons",
+                "gvw": "16-22 Tons",
+                "wheelbase": "4800-5500 mm",
+                "drive": "4×2/6×2"
+              }
+            },
+            {
+              "id": "x6-5200wb-sprinkler-truck",
+              "name": "X6 Sprinkler Truck",
+              "fileName": "X6-Sprinkler-Truck.html",
+              "mainImage": "../assets/trucks/x6-sprinkler-1.jpg",
+              "description": "6,000–12,000L water tank for street cleaning, 6×4 drive, 6.5L diesel engine (260 hp), reliable municipal service.",
+              "specifications": {
+                "engine": "6.5L Diesel",
+                "power": "260 hp",
+                "tankCapacity": "6,000–12,000L",
+                "drive": "6×4"
+              }
+            },
+            {
+              "id": "x6-5200wb-dust-suppression-truck",
+              "name": "X6 Dust Suppression Truck",
+              "fileName": "X6-Dust-Suppression-Truck.html",
+              "mainImage": "../assets/trucks/x6-dust-1.jpg",
+              "description": "Equipped with water cannon and fog system reaching 30–60 m. 6.5L diesel engine (260 hp), 6×4 drive, designed for urban and highway dust control.",
+              "specifications": {
+                "engine": "6.5L Diesel",
+                "power": "260 hp",
+                "dustSuppressionReach": "30–60 m",
+                "drive": "6×4"
+              }
+            },
+            {
+              "id": "x6-5200wb-garbage-truck",
+              "name": "X6 Garbage Truck",
+              "fileName": "X6-Garbage-Truck.html",
+              "mainImage": "../assets/trucks/x6-garbage-1.jpg",
+              "description": "8–12 m³ compression bin for municipal waste. 6.5L diesel engine (260 hp), 6×4 drive, efficient compaction system.",
+              "specifications": {
+                "engine": "6.5L Diesel",
+                "power": "260 hp",
+                "binVolume": "8–12 m³",
+                "drive": "6×4"
+              }
+            },
+            {
+              "id": "x6-5200wb-fuel-tanker-truck",
+              "name": "X6 Fuel Tanker Truck",
+              "fileName": "X6-Fuel-Tanker-Truck.html",
+              "mainImage": "../assets/trucks/x6-fuel-1.jpg",
+              "description": "8,000–14,000L fuel transport capacity for medium routes. Equipped with 6.5L diesel engine (260 hp), reinforced tank, and 6×4 drive.",
+              "specifications": {
+                "engine": "6.5L Diesel",
+                "power": "260 hp",
+                "tankCapacity": "8,000–14,000 L",
                 "drive": "6×4"
               }
             }
@@ -823,114 +640,197 @@
         }
       }
     },
-    "legacy": {
-      "category": "Legacy Series",
-      "description": "Established truck models with proven reliability and versatile configurations",
+    "heavy-duty": {
+      "category": "Heavy Duty Trucks",
+      "description": "Robust trucks for demanding construction and industrial tasks",
       "series": {
-        "3Series": {
-          "seriesName": "3 Series",
-          "description": "Compact commercial vehicles for urban applications",
+        "z3": {
+          "seriesName": "Z3 Series",
+          "description": "Z3 Series trucks for various commercial applications",
           "models": [
             {
-              "id": "3-series-cement-mixer",
-              "name": "3 Series Cement Mixer Truck", 
-              "fileName": "3-Series-Cement-Mixer-Truck.html",
-              "mainImage": "../assets/trucks/3-series-mixer-1.jpg",
-              "description": "Compact cement mixer for small to medium construction projects. Efficient mixing system with reliable hydraulic operation for consistent concrete quality in urban construction environments.",
+              "id": "z3-dump-truck",
+              "name": "Z3 Dump Truck",
+              "fileName": "Z3-Dump-Truck.html",
+              "mainImage": "../assets/trucks/z3-dump-1.jpg",
+              "description": "Heavy-duty dump truck with reinforced chassis and high-capacity hydraulic system. Built for demanding construction and mining operations with superior durability and performance.",
               "specifications": {
-                "engine": "Compact Diesel",
-                "power": "120-150 HP",
-                "mixerCapacity": "3-4 m³",
-                "gvw": "8-12 Tons",
-                "wheelbase": "3200-3500 mm",
-                "drive": "4×2"
+                "engine": "High-Performance Diesel",
+                "power": "300-400 HP",
+                "gvw": "25-35 Tons",
+                "payload": "15-20 Tons",
+                "wheelbase": "4500+1350 mm",
+                "drive": "6×4"
               }
             }
           ]
         },
-        "6Series": {
-          "seriesName": "6 Series", 
-          "description": "Medium-duty trucks with versatile configurations for municipal and commercial use",
+        "e1st": {
+          "seriesName": "E1st Series",
+          "description": "E1st Series trucks for various commercial applications",
           "models": [
             {
-              "id": "6-series-cement-mixer",
-              "name": "6 Series Cement Mixer Truck",
-              "fileName": "6-Series-Cement-Mixer-Truck.html", 
-              "mainImage": "../assets/trucks/6-series-mixer-1.jpg",
-              "description": "Medium-capacity cement mixer with robust chassis and efficient mixing drum. Designed for consistent concrete delivery in medium-scale construction projects.",
+              "id": "e1st-tractor",
+              "name": "E1st Tractor",
+              "fileName": "E1st-Tractor.html",
+              "mainImage": "../assets/trucks/e1st_tractor_1.jpg",
+              "description": "Professional tractor from the E1st series. Designed for reliability, efficiency, and superior performance in demanding commercial applications. Features advanced engineering and robust construction for long-lasting service.",
               "specifications": {
-                "engine": "Medium Duty Diesel",
-                "power": "180-220 HP",
-                "mixerCapacity": "4-6 m³", 
-                "gvw": "14-18 Tons",
-                "wheelbase": "3800-4200 mm",
-                "drive": "4×2/6×2"
+                "engine": "Advanced Diesel Engine",
+                "power": "Commercial Grade",
+                "transmission": "Manual/Automatic",
+                "drive": "Optimized Configuration",
+                "gvw": "Commercial Rating",
+                "payload": "Maximum Capacity"
+              }
+            }
+          ]
+        },
+        "e3": {
+          "seriesName": "E3 Series",
+          "description": "E3 Series trucks for various commercial applications",
+          "models": [
+            {
+              "id": "e3-6000wb-muck-truck",
+              "name": "E3 Muck Truck",
+              "fileName": "E3-Muck-Truck.html",
+              "mainImage": "../assets/trucks/e3-muck-1.jpg",
+              "description": "Designed for large-scale mining, construction, and earthmoving operations. Carries 12–30 m³ of muck with reinforced steel body. 8.0L diesel engine (320–360 hp) provides high torque for off-road and heavy-load performance. Heavy-duty 6×4 chassis ensures stability and reliability in tough terrains.",
+              "specifications": {
+                "engine": "8.0L Diesel",
+                "power": "320–360 hp",
+                "payload": "12–30 m³",
+                "gvw": "20–30 Tons",
+                "wheelbase": "6000 mm",
+                "drive": "6×4"
               }
             },
             {
-              "id": "6-series-garbage-truck",
-              "name": "6 Series Garbage Truck",
-              "fileName": "6-Series-Garbage-Truck.html",
-              "mainImage": "../assets/trucks/6-series-garbage-1.jpg",
-              "description": "Municipal waste collection vehicle with efficient compaction system. Designed for urban waste management with reliable hydraulic operation and easy maintenance.",
+              "id": "e3-tractor-truck",
+              "name": "E3 Tractor Truck",
+              "fileName": "E3-Tractor-Truck.html",
+              "mainImage": "../assets/trucks/e3-tractor-1.jpg",
+              "description": "Ensures driving safety with dual warning system. Features efficient power chain and excellent chassis configuration. Comfortable berth design with 850mm width and 800mm spacing between berths.",
+              "specifications": {
+                "engine": "Long-haul Diesel",
+                "power": "440-470 HP",
+                "gvw": "≤49T",
+                "wheelbase": "3175+1350 mm",
+                "transmission": "10 Forward + 2 Reverse",
+                "fuelTank": "600-800L",
+                "drive": "6×4"
+              }
+            },
+            {
+              "id": "e3-van-truck",
+              "name": "E3 Van Truck",
+              "fileName": "E3-Van-Truck.html",
+              "mainImage": "../assets/trucks/e3-van-1.jpg",
+              "description": "Features maintenance-free high-efficiency drive axle and low rolling resistance tires for reduced fuel consumption. High-strength lightweight suspension and cab width of 2240mm provide spacious comfort.",
+              "specifications": {
+                "engine": "Efficient Diesel",
+                "power": "290 HP",
+                "gvw": "≤18T",
+                "wheelbase": "6975 mm",
+                "cargoVolume": "9500-9750 × 2450 × 2630 mm",
+                "fuelTank": "400L",
+                "drive": "4×2"
+              }
+            },
+            {
+              "id": "e3-6000wb-dump-truck",
+              "name": "E3 Dump Truck",
+              "fileName": "E3-Dump-Truck.html",
+              "mainImage": "../assets/trucks/e3-dump-1.jpg",
+              "description": "Heavy-duty dump truck for large construction projects, carrying 10–20 tons of aggregates. Equipped with 8.0L diesel engine (320–360 hp) and hydraulic tipping system. Robust 6×4 chassis ensures stability and reliability under heavy loads.",
+              "specifications": {
+                "engine": "8.0L Diesel",
+                "power": "320–360 hp",
+                "payload": "10–20 Tons",
+                "gvw": "20–30 Tons",
+                "wheelbase": "6000 mm",
+                "drive": "6×4"
+              }
+            },
+            {
+              "id": "e3-6000wb-cement-mixer-truck",
+              "name": "E3 Cement Mixer Truck",
+              "fileName": "E3-Cement-Mixer-Truck.html",
+              "mainImage": "../assets/trucks/e3-mixer-1.jpg",
+              "description": "Heavy-duty mixer carrying 6–10 m³ concrete for large construction sites. 8.0L diesel engine (330 hp), durable 6×4 chassis, high-efficiency drum rotation ensures smooth and consistent mixing.",
+              "specifications": {
+                "engine": "8.0L Diesel",
+                "power": "330 hp",
+                "mixerCapacity": "6–10 m³",
+                "gvw": "22–28 Tons",
+                "wheelbase": "6000 mm",
+                "drive": "6×4"
+              }
+            },
+            {
+              "id": "e3-6000wb-compactor-garbage-truck",
+              "name": "E3 Compactor Garbage Truck",
+              "fileName": "E3-Compactor-Garbage-Truck.html",
+              "mainImage": "../assets/trucks/e3-garbage-1.jpg",
+              "description": "Designed for large municipal waste collection. 12–20 m³ compression body efficiently compacts waste, 8.0L diesel engine (320–360 hp), 6×4 drive ensures reliable operation in urban and industrial environments.",
+              "specifications": {
+                "engine": "8.0L Diesel",
+                "power": "320–360 hp",
+                "binVolume": "12–20 m³",
+                "gvw": "22–28 Tons",
+                "drive": "6×4"
+              }
+            },
+            {
+              "id": "e3-6000wb-stake-truck",
+              "name": "E3 Stake Truck",
+              "fileName": "E3-Stake-Truck.html",
+              "mainImage": "../assets/trucks/e3-stake-1.jpg",
+              "description": "Heavy-duty cargo transport truck with 12–18 ton payload. 8.0L diesel engine (330 hp), durable 6×4 chassis, ideal for construction materials, agricultural products, and industrial freight. Features robust stake body design for flexible loading configurations and enhanced cargo security.",
+              "specifications": {
+                "engine": "8.0L Diesel",
+                "power": "330 hp",
+                "payload": "12–18 Tons",
+                "gvw": "25–30 Tons",
+                "wheelbase": "6000 mm",
+                "bodyType": "Stake",
+                "drive": "6×4"
+              }
+            },
+            {
+              "id": "e3-sewage-suction",
+              "name": "E3 Sewage Suction Truck",
+              "fileName": "E3-Sewage-Suction-Truck.html",
+              "mainImage": "../assets/trucks/e3-sewage-1.jpg",
+              "description": "Municipal sewage and waste water management vehicle. Powerful vacuum system with sealed tank for hygienic waste water collection and transport.",
               "specifications": {
                 "engine": "Municipal Diesel",
-                "power": "160-200 HP", 
-                "binVolume": "8-12 m³",
-                "gvw": "12-16 Tons",
-                "wheelbase": "3600-4000 mm",
-                "drive": "4×2"
-              }
-            },
-            {
-              "id": "6-series-sweeper",
-              "name": "6 Series Sweeper",
-              "fileName": "6-Series-Sweeper.html",
-              "mainImage": "../assets/trucks/6-series-sweeper-1.jpg", 
-              "description": "Street cleaning vehicle with advanced sweeping system and dust suppression. Efficient for municipal road maintenance with environmental-friendly operation.",
-              "specifications": {
-                "engine": "Clean Operation Diesel",
-                "power": "150-180 HP",
-                "sweepingWidth": "2.5-3.2 m",
-                "dustbin": "4-6 m³",
-                "waterTank": "1000-2000 L",
-                "drive": "4×2"
-              }
-            },
-            {
-              "id": "6-series-truck-mounted-crane", 
-              "name": "6 Series Truck Mounted Crane",
-              "fileName": "6-Series-Truck-Mounted-Crane.html",
-              "mainImage": "../assets/trucks/6-series-crane-1.jpg",
-              "description": "Mobile crane solution for medium lifting operations. Combines transportation and lifting capabilities with precise hydraulic control and stable operation.",
-              "specifications": {
-                "engine": "Heavy Duty Diesel",
                 "power": "200-250 HP",
-                "craneCapacity": "6-10 Tons", 
-                "gvw": "16-20 Tons",
+                "tankCapacity": "8000-15000 L",
+                "gvw": "16-22 Tons",
                 "wheelbase": "4200-4800 mm",
-                "drive": "4×2/6×2"
+                "drive": "4×2/6×4"
               }
             }
           ]
         },
-        "9Series": {
+        "9series": {
           "seriesName": "9 Series",
-          "description": "Heavy-duty trucks for demanding commercial and industrial applications", 
+          "description": "9 Series trucks for various commercial applications",
           "models": [
             {
-              "id": "9-series-cement-mixer",
-              "name": "9 Series Cement Mixer Truck",
-              "fileName": "9-Series-Cement-Mixer-Truck.html",
-              "mainImage": "../assets/trucks/9-series-mixer-1.jpg",
-              "description": "Heavy-duty cement mixer for large construction projects. High-capacity mixing drum with powerful hydraulic system ensures consistent concrete quality for major construction sites.",
+              "id": "9-series-sweeper",
+              "name": "9 Series Sweeper",
+              "fileName": "9-Series-Sweeper.html",
+              "mainImage": "../assets/trucks/9-series-sweeper-1.jpg",
+              "description": "Heavy-duty street sweeper for highway and industrial cleaning. Advanced sweeping technology with large capacity bins for extensive cleaning operations.",
               "specifications": {
-                "engine": "Heavy Duty Diesel",
-                "power": "280-350 HP",
-                "mixerCapacity": "8-12 m³",
-                "gvw": "25-35 Tons", 
-                "wheelbase": "4500-5500 mm",
-                "drive": "6×4"
+                "engine": "Highway Diesel",
+                "power": "220-280 HP",
+                "sweepingWidth": "3.5-4.2 m",
+                "dustbin": "8-12 m³",
+                "waterTank": "2000-4000 L",
+                "drive": "4×2/6×4"
               }
             },
             {
@@ -942,31 +842,16 @@
               "specifications": {
                 "engine": "Industrial Diesel",
                 "power": "250-320 HP",
-                "binVolume": "15-22 m³", 
+                "binVolume": "15-22 m³",
                 "gvw": "20-28 Tons",
-                "wheelbase": "4200-5000 mm", 
+                "wheelbase": "4200-5000 mm",
                 "drive": "6×4"
-              }
-            },
-            {
-              "id": "9-series-sweeper",
-              "name": "9 Series Sweeper", 
-              "fileName": "9-Series-Sweeper.html",
-              "mainImage": "../assets/trucks/9-series-sweeper-1.jpg",
-              "description": "Heavy-duty street sweeper for highway and industrial cleaning. Advanced sweeping technology with large capacity bins for extensive cleaning operations.",
-              "specifications": {
-                "engine": "Highway Diesel",
-                "power": "220-280 HP",
-                "sweepingWidth": "3.5-4.2 m",
-                "dustbin": "8-12 m³",
-                "waterTank": "2000-4000 L", 
-                "drive": "4×2/6×4"
               }
             },
             {
               "id": "9-series-tow-truck",
               "name": "9 Series Tow Truck",
-              "fileName": "9-Series-Tow-Truck.html", 
+              "fileName": "9-Series-Tow-Truck.html",
               "mainImage": "../assets/trucks/9-series-tow-1.jpg",
               "description": "Heavy-duty recovery vehicle for commercial and industrial towing. High-capacity winch system with advanced recovery equipment for heavy vehicle recovery operations.",
               "specifications": {
@@ -980,7 +865,7 @@
             },
             {
               "id": "9-series-truck-mounted-crane",
-              "name": "9 Series Truck Mounted Crane", 
+              "name": "9 Series Truck Mounted Crane",
               "fileName": "9-Series-Truck-Mounted-Crane.html",
               "mainImage": "../assets/trucks/9-series-crane-1.jpg",
               "description": "Heavy-duty mobile crane for major lifting operations. High-capacity crane with extended reach and precise control for construction and industrial applications.",
@@ -988,472 +873,111 @@
                 "engine": "Crane Diesel",
                 "power": "320-400 HP",
                 "craneCapacity": "12-20 Tons",
-                "gvw": "25-35 Tons", 
+                "gvw": "25-35 Tons",
                 "wheelbase": "5000-6000 mm",
                 "drive": "6×4/8×4"
               }
+            },
+            {
+              "id": "9-series-cement-mixer",
+              "name": "9 Series Cement Mixer Truck",
+              "fileName": "9-Series-Cement-Mixer-Truck.html",
+              "mainImage": "../assets/trucks/9-series-mixer-1.jpg",
+              "description": "Heavy-duty cement mixer for large construction projects. High-capacity mixing drum with powerful hydraulic system ensures consistent concrete quality for major construction sites.",
+              "specifications": {
+                "engine": "Heavy Duty Diesel",
+                "power": "280-350 HP",
+                "mixerCapacity": "8-12 m³",
+                "gvw": "25-35 Tons",
+                "wheelbase": "4500-5500 mm",
+                "drive": "6×4"
+              }
             }
           ]
         },
-        "E3Legacy": {
-          "seriesName": "E3 Legacy Series",
-          "description": "Proven heavy-duty trucks with established reliability for various commercial applications",
+        "6series": {
+          "seriesName": "6 Series",
+          "description": "6 Series trucks for various commercial applications",
           "models": [
             {
-              "id": "e3-cement-mixer-legacy", 
-              "name": "E3 Cement Mixer Truck (Legacy)",
-              "fileName": "E3-Cement-Mixer-Truck.html",
-              "mainImage": "../assets/trucks/e3-mixer-legacy-1.jpg",
-              "description": "Established cement mixer design with proven reliability. Features robust mixing system and durable chassis for consistent performance in construction applications.",
+              "id": "6-series-sweeper",
+              "name": "6 Series Sweeper",
+              "fileName": "6-Series-Sweeper.html",
+              "mainImage": "../assets/trucks/6-series-sweeper-1.jpg",
+              "description": "Street cleaning vehicle with advanced sweeping system and dust suppression. Efficient for municipal road maintenance with environmental-friendly operation.",
               "specifications": {
-                "engine": "Reliable Diesel",
-                "power": "240-300 HP",
-                "mixerCapacity": "6-9 m³", 
-                "gvw": "18-25 Tons",
-                "wheelbase": "4200-4800 mm",
-                "drive": "6×4"
-              }
-            },
-            {
-              "id": "e3-compactor-garbage-legacy",
-              "name": "E3 Compactor Garbage Truck (Legacy)",
-              "fileName": "E3-Compactor-Garbage-Truck.html",
-              "mainImage": "../assets/trucks/e3-garbage-legacy-1.jpg", 
-              "description": "Time-tested waste collection vehicle with efficient compaction. Reliable hydraulic system and robust construction for municipal and commercial waste management.",
-              "specifications": {
-                "engine": "Municipal Diesel",
-                "power": "220-280 HP",
-                "binVolume": "12-18 m³",
-                "gvw": "18-25 Tons",
-                "wheelbase": "4500-5200 mm",
-                "drive": "6×4"
-              }
-            },
-            {
-              "id": "e3-dump-legacy",
-              "name": "E3 Dump Truck (Legacy)", 
-              "fileName": "E3-Dump-Truck.html",
-              "mainImage": "../assets/trucks/e3-dump-legacy-1.jpg",
-              "description": "Proven dump truck design for construction and mining. Reliable hydraulic tipping system with strengthened chassis for heavy-duty material transport.",
-              "specifications": {
-                "engine": "Construction Diesel",
-                "power": "260-320 HP",
-                "payload": "12-18 Tons",
-                "gvw": "20-28 Tons", 
-                "wheelbase": "4200-5000 mm",
-                "drive": "6×4"
-              }
-            },
-            {
-              "id": "e3-muck-legacy",
-              "name": "E3 Muck Truck (Legacy)",
-              "fileName": "E3-Muck-Truck.html", 
-              "mainImage": "../assets/trucks/e3-muck-legacy-1.jpg",
-              "description": "Specialized earthmoving vehicle for mining and construction. Reinforced body and chassis designed for transporting heavy materials in challenging environments.",
-              "specifications": {
-                "engine": "Mining Diesel",
-                "power": "280-350 HP",
-                "payload": "15-25 m³",
-                "gvw": "22-32 Tons",
-                "wheelbase": "4500-5500 mm", 
-                "drive": "6×4"
-              }
-            },
-            {
-              "id": "e3-sewage-suction",
-              "name": "E3 Sewage Suction Truck",
-              "fileName": "E3-Sewage-Suction-Truck.html",
-              "mainImage": "../assets/trucks/e3-sewage-1.jpg", 
-              "description": "Municipal sewage and waste water management vehicle. Powerful vacuum system with sealed tank for hygienic waste water collection and transport.",
-              "specifications": {
-                "engine": "Municipal Diesel",
-                "power": "200-250 HP",
-                "tankCapacity": "8000-15000 L",
-                "gvw": "16-22 Tons",
-                "wheelbase": "4200-4800 mm",
-                "drive": "4×2/6×4"
-              }
-            },
-            {
-              "id": "e3-stake-legacy", 
-              "name": "E3 Stake Truck (Legacy)",
-              "fileName": "E3-Stake-Truck.html",
-              "mainImage": "../assets/trucks/e3-stake-legacy-1.jpg",
-              "description": "Versatile cargo transport with flexible stake body design. Proven reliability for agricultural, construction, and general freight applications.",
-              "specifications": {
-                "engine": "Cargo Diesel",
-                "power": "220-280 HP", 
-                "payload": "10-15 Tons",
-                "gvw": "18-25 Tons",
-                "wheelbase": "4500-5500 mm",
-                "bodyType": "Stake",
-                "drive": "6×4"
-              }
-            },
-            {
-              "id": "e3-tractor-truck",
-              "name": "E3 Tractor Truck", 
-              "fileName": "E3-Tractor-Truck.html",
-              "mainImage": "../assets/trucks/e3-tractor-1.jpg",
-              "description": "Ensures driving safety with dual warning system. Features efficient power chain and excellent chassis configuration. Comfortable berth design with 850mm width and 800mm spacing between berths.",
-              "specifications": {
-                "engine": "Long-haul Diesel",
-                "power": "440-470 HP",
-                "gvw": "≤49T", 
-                "wheelbase": "3175+1350 mm",
-                "transmission": "10 Forward + 2 Reverse",
-                "fuelTank": "600-800L",
-                "drive": "6×4"
-              }
-            },
-            {
-              "id": "e3-van-truck",
-              "name": "E3 Van Truck",
-              "fileName": "E3-Van-Truck.html", 
-              "mainImage": "../assets/trucks/e3-van-1.jpg",
-              "description": "Features maintenance-free high-efficiency drive axle and low rolling resistance tires for reduced fuel consumption. High-strength lightweight suspension and cab width of 2240mm provide spacious comfort.",
-              "specifications": {
-                "engine": "Efficient Diesel",
-                "power": "290 HP",
-                "gvw": "≤18T",
-                "wheelbase": "6975 mm",
-                "cargoVolume": "9500-9750 × 2450 × 2630 mm", 
-                "fuelTank": "400L",
+                "engine": "Clean Operation Diesel",
+                "power": "150-180 HP",
+                "sweepingWidth": "2.5-3.2 m",
+                "dustbin": "4-6 m³",
+                "waterTank": "1000-2000 L",
                 "drive": "4×2"
               }
-            }
-          ]
-        },
-        "E6Legacy": {
-          "seriesName": "E6 Legacy Series",
-          "description": "Medium-duty trucks with established performance for diverse commercial applications",
-          "models": [
+            },
             {
-              "id": "e6-cement-mixer-legacy",
-              "name": "E6 Cement Mixer Truck (Legacy)", 
-              "fileName": "E6-Cement-Mixer-Truck.html",
-              "mainImage": "../assets/trucks/e6-mixer-legacy-1.jpg",
-              "description": "Medium-duty cement mixer with proven mixing technology. Reliable performance for construction projects requiring consistent concrete quality and efficient operation.",
+              "id": "6-series-garbage-truck",
+              "name": "6 Series Garbage Truck",
+              "fileName": "6-Series-Garbage-Truck.html",
+              "mainImage": "../assets/trucks/6-series-garbage-1.jpg",
+              "description": "Municipal waste collection vehicle with efficient compaction system. Designed for urban waste management with reliable hydraulic operation and easy maintenance.",
               "specifications": {
-                "engine": "Medium Diesel",
+                "engine": "Municipal Diesel",
+                "power": "160-200 HP",
+                "binVolume": "8-12 m³",
+                "gvw": "12-16 Tons",
+                "wheelbase": "3600-4000 mm",
+                "drive": "4×2"
+              }
+            },
+            {
+              "id": "6-series-truck-mounted-crane",
+              "name": "6 Series Truck Mounted Crane",
+              "fileName": "6-Series-Truck-Mounted-Crane.html",
+              "mainImage": "../assets/trucks/6-series-crane-1.jpg",
+              "description": "Mobile crane solution for medium lifting operations. Combines transportation and lifting capabilities with precise hydraulic control and stable operation.",
+              "specifications": {
+                "engine": "Heavy Duty Diesel",
+                "power": "200-250 HP",
+                "craneCapacity": "6-10 Tons",
+                "gvw": "16-20 Tons",
+                "wheelbase": "4200-4800 mm",
+                "drive": "4×2/6×2"
+              }
+            },
+            {
+              "id": "6-series-cement-mixer",
+              "name": "6 Series Cement Mixer Truck",
+              "fileName": "6-Series-Cement-Mixer-Truck.html",
+              "mainImage": "../assets/trucks/6-series-mixer-1.jpg",
+              "description": "Medium-capacity cement mixer with robust chassis and efficient mixing drum. Designed for consistent concrete delivery in medium-scale construction projects.",
+              "specifications": {
+                "engine": "Medium Duty Diesel",
                 "power": "180-220 HP",
                 "mixerCapacity": "4-6 m³",
-                "gvw": "12-16 Tons", 
+                "gvw": "14-18 Tons",
                 "wheelbase": "3800-4200 mm",
                 "drive": "4×2/6×2"
-              }
-            },
-            {
-              "id": "e6-dump-legacy",
-              "name": "E6 Dump Truck (Legacy)",
-              "fileName": "E6-Dump-Truck.html",
-              "mainImage": "../assets/trucks/e6-dump-legacy-1.jpg", 
-              "description": "Reliable medium-duty dump truck for construction material transport. Efficient hydraulic system with durable steel body for versatile loading and unloading operations.",
-              "specifications": {
-                "engine": "Construction Diesel",
-                "power": "160-200 HP",
-                "payload": "6-10 Tons",
-                "gvw": "12-16 Tons",
-                "wheelbase": "3600-4200 mm", 
-                "drive": "4×2"
-              }
-            },
-            {
-              "id": "e6-refrigerated-legacy",
-              "name": "E6 Refrigerated Truck (Legacy)",
-              "fileName": "E6-Refrigerated-Truck.html",
-              "mainImage": "../assets/trucks/e6-refrigerated-legacy-1.jpg",
-              "description": "Temperature-controlled transport for perishable goods. Reliable refrigeration system with insulated cargo area for food and pharmaceutical distribution.",
-              "specifications": {
-                "engine": "Efficient Diesel", 
-                "power": "170-210 HP",
-                "cooling": "-5°C to -18°C",
-                "boxVolume": "8-16 m³",
-                "gvw": "10-14 Tons",
-                "wheelbase": "3800-4500 mm",
-                "drive": "4×2"
-              }
-            },
-            {
-              "id": "e6-sprinkler-legacy",
-              "name": "E6 Sprinkler Truck (Legacy)",
-              "fileName": "E6-Sprinkler-Truck.html", 
-              "mainImage": "../assets/trucks/e6-sprinkler-legacy-1.jpg",
-              "description": "Municipal water spraying vehicle for street cleaning and dust suppression. Reliable spray system with efficient water distribution for urban maintenance.",
-              "specifications": {
-                "engine": "Municipal Diesel",
-                "power": "150-190 HP",
-                "tankCapacity": "4000-8000 L",
-                "gvw": "10-14 Tons", 
-                "wheelbase": "3600-4200 mm",
-                "drive": "4×2"
-              }
-            },
-            {
-              "id": "e6-stake-legacy",
-              "name": "E6 Stake Truck (Legacy)",
-              "fileName": "E6-Stake-Truck.html",
-              "mainImage": "../assets/trucks/e6-stake-legacy-1.jpg",
-              "description": "Flexible cargo transport with removable stake sides. Versatile design for agricultural products, construction materials, and general freight applications.",
-              "specifications": {
-                "engine": "Cargo Diesel", 
-                "power": "160-200 HP",
-                "payload": "5-8 Tons", 
-                "gvw": "10-14 Tons",
-                "wheelbase": "3800-4200 mm",
-                "bodyType": "Stake",
-                "drive": "4×2"
-              }
-            },
-            {
-              "id": "e6-truck-mounted-crane-legacy",
-              "name": "E6 Truck Mounted Crane (Legacy)",
-              "fileName": "E6-Truck-Mounted-Crane.html",
-              "mainImage": "../assets/trucks/e6-crane-legacy-1.jpg", 
-              "description": "Frame is 861×300 (8+6+8) three-layer straight-through beam with loading capacity, stability, and torsion resistance increased by 50%. Reliability-enhanced chassis increases loading capacity by 5T. Enlarged steering pump makes in-situ steering easier with 48° steering angle.",
-              "specifications": {
-                "engine": "Crane Diesel",
-                "power": "260-300 HP",
-                "craneCapacity": "12 T",
-                "gvw": "≤35T", 
-                "wheelbase": "5800+1300 mm",
-                "frame": "300/8+6+8/Triple",
-                "drive": "6×4"
-              }
-            },
-            {
-              "id": "e6-van-legacy",
-              "name": "E6 Van Truck (Legacy)",
-              "fileName": "E6-Van-Truck.html", 
-              "mainImage": "../assets/trucks/e6-van-legacy-1.jpg",
-              "description": "High-capacity cargo truck with exclusive patented oil-water separator. Light steering system with 6.5 N·m in-situ steering torque and maximum steering load of 5.5 tons for easy maneuverability.",
-              "specifications": {
-                "engine": "Cargo Diesel",
-                "power": "220-270 HP",
-                "gvw": "≤18T", 
-                "cargoVolume": "6750×2450×2650 mm",
-                "wheelbase": "5000-5600 mm",
-                "fuelTank": "400L",
-                "drive": "4×2"
               }
             }
           ]
         },
-        "X6Legacy": {
-          "seriesName": "X6 Legacy Series",
-          "description": "Versatile medium-duty trucks with proven performance for commercial operations",
+        "3series": {
+          "seriesName": "3 Series",
+          "description": "3 Series trucks for various commercial applications",
           "models": [
             {
-              "id": "x6-awd-cargo-legacy", 
-              "name": "X6 AWD Cargo Truck (Legacy)",
-              "fileName": "X6-AWD-Cargo-Truck.html",
-              "mainImage": "../assets/trucks/x6-awd-cargo-1.jpg",
-              "description": "Powerful 4×4 all-wheel-drive vehicle with robust drivetrain and high-strength chassis. Outstanding traction and stability on rough terrain, ideal for demanding environments requiring reliability and versatility.",
+              "id": "3-series-cement-mixer",
+              "name": "3 Series Cement Mixer Truck",
+              "fileName": "3-Series-Cement-Mixer-Truck.html",
+              "mainImage": "../assets/trucks/3-series-mixer-1.jpg",
+              "description": "Compact cement mixer for small to medium construction projects. Efficient mixing system with reliable hydraulic operation for consistent concrete quality in urban construction environments.",
               "specifications": {
-                "engine": "YC6J210-33",
-                "power": "210 HP",
-                "gvw": "≤18T", 
-                "wheelbase": "5000 mm",
-                "cargoSize": "6800×2300×2400 mm",
-                "fuelTank": "280L",
-                "drive": "4×4"
-              }
-            },
-            {
-              "id": "x6-cargo-legacy",
-              "name": "X6 Cargo Truck (Legacy)",
-              "fileName": "X6-Cargo-Truck.html",
-              "mainImage": "../assets/trucks/x6-cargo-legacy-1.jpg", 
-              "description": "General purpose cargo truck with flexible loading options. Reliable performance for medium freight applications with efficient operation and maintenance.",
-              "specifications": {
-                "engine": "Cargo Diesel",
-                "power": "200-240 HP", 
-                "payload": "6-10 Tons",
-                "gvw": "14-18 Tons",
-                "wheelbase": "4500-5200 mm",
-                "drive": "4×2/6×2"
-              }
-            },
-            {
-              "id": "x6-cement-mixer-legacy",
-              "name": "X6 Cement Mixer Truck (Legacy)",
-              "fileName": "X6-Cement-Mixer-Truck.html", 
-              "mainImage": "../assets/trucks/x6-mixer-legacy-1.jpg",
-              "description": "Medium-duty cement mixer with efficient mixing system. Reliable concrete delivery for construction projects with consistent quality and operational efficiency.",
-              "specifications": {
-                "engine": "Construction Diesel",
-                "power": "200-250 HP",
-                "mixerCapacity": "4-7 m³", 
-                "gvw": "14-20 Tons",
-                "wheelbase": "4200-4800 mm",
-                "drive": "6×2/6×4"
-              }
-            },
-            {
-              "id": "x6-concrete-mixer-legacy",
-              "name": "X6 Concrete Mixer Truck (Legacy)",
-              "fileName": "X6-Concrete-Mixer-Truck.html",
-              "mainImage": "../assets/trucks/x6-concrete-mixer-1.jpg",
-              "description": "High-capacity concrete mixer for large construction projects. Advanced mixing technology with reliable hydraulic system for consistent concrete quality.", 
-              "specifications": {
-                "engine": "Heavy Concrete Diesel",
-                "power": "220-280 HP",
-                "mixerCapacity": "6-9 m³",
-                "gvw": "16-24 Tons",
-                "wheelbase": "4500-5200 mm",
-                "drive": "6×4"
-              }
-            },
-            {
-              "id": "x6-dropside-legacy", 
-              "name": "X6 Dropside Truck (Legacy)",
-              "fileName": "X6-Dropside-Truck.html",
-              "mainImage": "../assets/trucks/x6dropside/main.webp",
-              "description": "Versatile cargo truck with minimum ground clearance of 314 mm and approach angle over 25%. Features airbag shock-absorbing main seat and optimized transmission system for higher efficiency.",
-              "specifications": {
-                "engine": "Efficient Diesel",
-                "power": "220 HP", 
-                "gvw": "≤18T",
-                "wheelbase": "5600 mm",
-                "cargoSize": "6750×2450×600 mm",
-                "fuelTank": "400L",
+                "engine": "Compact Diesel",
+                "power": "120-150 HP",
+                "mixerCapacity": "3-4 m³",
+                "gvw": "8-12 Tons",
+                "wheelbase": "3200-3500 mm",
                 "drive": "4×2"
-              }
-            },
-            {
-              "id": "x6-dump-legacy",
-              "name": "X6 Dump Truck (Legacy)",
-              "fileName": "X6-Dump-Truck.html", 
-              "mainImage": "../assets/trucks/x6-dump-legacy-1.jpg",
-              "description": "Medium-duty dump truck for construction material transport. Reliable hydraulic tipping system with durable construction for efficient loading and unloading operations.",
-              "specifications": {
-                "engine": "Construction Diesel",
-                "power": "180-230 HP",
-                "payload": "6-12 Tons", 
-                "gvw": "14-20 Tons",
-                "wheelbase": "4200-5000 mm",
-                "drive": "4×2/6×4"
-              }
-            },
-            {
-              "id": "x6-dust-suppression-legacy",
-              "name": "X6 Dust Suppression Truck (Legacy)",
-              "fileName": "X6-Dust-Suppression-Truck.html",
-              "mainImage": "../assets/trucks/x6-dust-legacy-1.jpg", 
-              "description": "Specialized dust control vehicle for construction and industrial sites. Advanced water cannon and fog system for effective dust suppression in various environments.",
-              "specifications": {
-                "engine": "Environmental Diesel",
-                "power": "180-220 HP",
-                "waterCapacity": "6000-10000 L",
-                "sprayReach": "25-50 m", 
-                "gvw": "12-18 Tons",
-                "drive": "4×2/6×2"
-              }
-            },
-            {
-              "id": "x6-flatbed-legacy",
-              "name": "X6 Flatbed Truck (Legacy)",
-              "fileName": "X6-Flatbed-Truck.html",
-              "mainImage": "../assets/trucks/x6-flatbed-legacy-1.jpg",
-              "description": "Flexible cargo platform for diverse loading requirements. Open deck design allows easy loading of various materials and equipment with crane accessibility.", 
-              "specifications": {
-                "engine": "Cargo Diesel",
-                "power": "180-230 HP",
-                "payload": "6-10 Tons",
-                "gvw": "14-18 Tons", 
-                "deckSize": "6000-7500×2400 mm",
-                "drive": "4×2/6×2"
-              }
-            },
-            {
-              "id": "x6-fuel-tanker-legacy",
-              "name": "X6 Fuel Tanker Truck (Legacy)",
-              "fileName": "X6-Fuel-Tanker-Truck.html",
-              "mainImage": "../assets/trucks/x6fueltanker/main.webp", 
-              "description": "Fuel transport vehicle with reinforced tank and safety systems. Designed for safe fuel delivery with advanced safety valves and spillage prevention systems.",
-              "specifications": {
-                "engine": "Safety Diesel",
-                "power": "200-250 HP",
-                "tankCapacity": "8000-12000 L",
-                "gvw": "16-22 Tons",
-                "wheelbase": "4500-5200 mm", 
-                "drive": "4×2/6×2"
-              }
-            },
-            {
-              "id": "x6-garbage-legacy",
-              "name": "X6 Garbage Truck (Legacy)",
-              "fileName": "X6-Garbage-Truck.html",
-              "mainImage": "../assets/trucks/x6garbagetrucks/main.webp",
-              "description": "Municipal waste collection vehicle with efficient compaction system. Reliable hydraulic operation for urban waste management with easy maintenance and operation.", 
-              "specifications": {
-                "engine": "Municipal Diesel",
-                "power": "180-220 HP",
-                "binVolume": "8-14 m³",
-                "gvw": "14-20 Tons",
-                "wheelbase": "4200-4800 mm",
-                "drive": "4×2/6×2"
-              }
-            },
-            {
-              "id": "x6-loading-crane-recovery", 
-              "name": "X6 Loading Crane Recovery Truck",
-              "fileName": "X6-Loading-Crane-Recovery-Truck.html",
-              "mainImage": "../assets/trucks/x6loadingcranerecoverytruck/main.webp",
-              "description": "Multi-purpose recovery vehicle with integrated loading crane. Combines towing capability with lifting function for versatile recovery and transport operations.",
-              "specifications": {
-                "engine": "Recovery Diesel",
-                "power": "220-280 HP", 
-                "craneCapacity": "5-8 Tons",
-                "towingCapacity": "10-15 Tons",
-                "gvw": "16-22 Tons",
-                "wheelbase": "4800-5500 mm",
-                "drive": "4×2/6×2"
-              }
-            },
-            {
-              "id": "x6-sprinkler-legacy",
-              "name": "X6 Sprinkler Truck (Legacy)", 
-              "fileName": "X6-Sprinkler-Truck.html",
-              "mainImage": "../assets/trucks/x6sprinklertrucks/main.webp",
-              "description": "Municipal water spraying vehicle for street cleaning and dust suppression. Efficient spray system with multiple nozzle configurations for various cleaning applications.",
-              "specifications": {
-                "engine": "Municipal Diesel",
-                "power": "180-220 HP",
-                "tankCapacity": "6000-10000 L", 
-                "gvw": "14-18 Tons",
-                "wheelbase": "4200-4800 mm",
-                "drive": "4×2/6×2"
-              }
-            },
-            {
-              "id": "x6-truck-mounted-crane-legacy",
-              "name": "X6 Truck Mounted Crane (Legacy)",
-              "fileName": "X6-Truck-Mounted-Crane.html",
-              "mainImage": "../assets/trucks/x6truckmountedcranes/main.webp", 
-              "description": "Mobile crane solution for medium lifting operations. Combines transportation and lifting capabilities with precise hydraulic control for construction and logistics applications.",
-              "specifications": {
-                "engine": "Crane Diesel",
-                "power": "200-260 HP",
-                "craneCapacity": "6-12 Tons",
-                "gvw": "16-24 Tons",
-                "wheelbase": "4500-5500 mm", 
-                "drive": "4×2/6×4"
-              }
-            },
-            {
-              "id": "x6-van-legacy",
-              "name": "X6 Van Truck (Legacy)",
-              "fileName": "X6-Van-Truck.html",
-              "mainImage": "../assets/trucks/x6vantrucks/main.webp",
-              "description": "Enclosed cargo transport with weather protection. Efficient for goods delivery with secure cargo area and reliable performance for commercial logistics.",
-              "specifications": {
-                "engine": "Cargo Diesel", 
-                "power": "180-230 HP",
-                "cargoVolume": "15-25 m³",
-                "gvw": "14-20 Tons",
-                "wheelbase": "4500-5500 mm",
-                "drive": "4×2/6×2"
               }
             }
           ]

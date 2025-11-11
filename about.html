@@ -37,33 +37,43 @@
     margin-right: -50vw !important;
   }
 
-  /* About page specific styles */
+  /* About page specific styles - Black & White Theme */
   .about-hero {
     margin-top: 60px;
     padding: 80px 20px;
-    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    background: #ffffff;
+    border: 2px solid #e0e0e0;
     text-align: center;
     transition: all 0.3s ease;
+    border-radius: 16px;
   }
 
   .about-hero:hover {
-    background: linear-gradient(135deg, #f0f2f5 0%, #f8f9fa 100%);
+    background: #f8f9fa;
+    border-color: #dee2e6;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
   }
 
   .about-hero h1 {
-    font-size: 3rem;
+    font-size: 3.5rem;
     font-weight: 700;
-    color: #1d1d1f;
+    color: #212529;
     margin-bottom: 20px;
     letter-spacing: -0.5px;
+    border: 2px solid #e0e0e0;
+    display: inline-block;
+    padding: 10px 20px;
+    background: #ffffff;
+    border-radius: 12px;
   }
 
   .about-hero p {
     font-size: 1.2rem;
-    color: #666;
+    color: #555;
     max-width: 800px;
     margin: 0 auto 40px;
     line-height: 1.6;
+    font-weight: 600;
   }
 
   .about-content {
@@ -73,37 +83,60 @@
   }
 
   .section-card {
-    background: #fff;
+    background: #ffffff;
     border-radius: 16px;
-    padding: 40px;
-    margin-bottom: 40px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-    border: 1px solid rgba(0,0,0,0.05);
+    padding: 48px;
+    margin-bottom: 48px;
+    border: 2px solid #e0e0e0;
     transition: all 0.3s ease;
     cursor: pointer;
+    position: relative;
+    overflow: hidden;
   }
 
   .section-card:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 12px 40px rgba(0,0,0,0.15);
-    background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
-    border-color: rgba(42, 82, 152, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    background: #ffffff;
+    border-color: #dee2e6;
   }
 
   .section-card h2 {
-    font-size: 2.2rem;
-    font-weight: 600;
-    color: #1d1d1f;
-    margin-bottom: 20px;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #212529;
+    margin-bottom: 24px;
     text-align: center;
+    position: relative;
+  }
+
+  .section-card h2 span {
+    background: #fff;
+    padding: 0 24px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .section-card h2::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #ddd, transparent);
+    z-index: 1;
   }
 
   .section-card p {
-    font-size: 1.1rem;
-    color: #666;
+    font-size: 1.25rem;
+    color: #555;
     line-height: 1.7;
     margin-bottom: 16px;
-    text-align: left;
+    text-align: center;
+    font-weight: 400;
+    max-width: 800px;
+    margin: 0 auto;
   }
 
   .two-column {
@@ -123,38 +156,77 @@
 
   .stat-card {
     text-align: center;
-    padding: 30px 20px;
-    background: #f8f9fa;
+    padding: 28px;
+    background: #ffffff;
+    border: 2px solid #e0e0e0;
     border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .stat-card::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: 25%;
+    right: 25%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #aaa, transparent);
   }
 
   .stat-number {
     font-size: 2.5rem;
     font-weight: 700;
-    color: #007aff;
+    color: #212529;
     margin-bottom: 10px;
   }
 
   .stat-label {
-    font-size: 1rem;
+    font-size: 13px;
     color: #666;
-    font-weight: 500;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
   }
 
   .highlight-section {
-    background: linear-gradient(135deg, #f0f0f0 0%, #f8f9fa 100%);
+    background: #ffffff;
+    border: 2px solid #e0e0e0;
     border-radius: 16px;
-    padding: 50px 40px;
-    margin: 40px 0;
+    padding: 48px;
+    margin: 48px 0;
     text-align: center;
     transition: all 0.3s ease;
     cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .highlight-section::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: 10%;
+    right: 10%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #999, transparent);
+  }
+
+  .highlight-section::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 15%;
+    right: 15%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #999, transparent);
   }
 
   .highlight-section:hover {
-    background: linear-gradient(135deg, #e9ecef 0%, #f0f0f0 100%);
+    background: #ffffff;
     transform: translateY(-3px);
-    box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+    border-color: #dee2e6;
   }
 
   /* !IMPORTANT: Add hover effects to all images and interactive elements */
@@ -218,26 +290,64 @@
     <h1 style="font-size: 3.5rem; font-weight: 700; margin-bottom: 20px; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">Equipment King Incorporated</h1>
     <p style="font-size: 1.4rem; margin-bottom: 40px; text-shadow: 1px 1px 2px rgba(0,0,0,0.8);">Redefining the future of commercial mobility through innovation, sustainability, and global collaboration.</p>
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 60px;">
-      <div style="background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 20px; border-radius: 10px; text-align: center;">
-        <h3 style="font-size: 2rem; margin-bottom: 10px;">50+</h3>
-        <p style="font-size: 1rem;">Vehicle Models</p>
+      <!-- Vehicle Models Counter -->
+      <div class="stat-counter" style="background: rgba(255,255,255,0.9); border: 2px solid #dee2e6; backdrop-filter: blur(10px); padding: 30px 20px; border-radius: 10px; text-align: center;">
+        <div class="circular-progress" style="position: relative; width: 120px; height: 120px; margin: 0 auto 20px;">
+          <svg style="width: 120px; height: 120px; transform: rotate(-90deg);">
+            <circle cx="60" cy="60" r="54" fill="none" stroke="#f0f0f0" stroke-width="8"/>
+            <circle id="progress-1" cx="60" cy="60" r="54" fill="none" stroke="#007bff" stroke-width="8" 
+                    stroke-dasharray="339.29" stroke-dashoffset="339.29" 
+                    style="transition: stroke-dashoffset 2s ease-in-out;"/>
+          </svg>
+          <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
+            <span id="counter-1" style="font-size: 1.8rem; font-weight: 700; color: #007bff; display: block;">0</span>
+            <span style="font-size: 0.9rem; color: #007bff;">+</span>
+          </div>
+        </div>
+        <p style="font-size: 1rem; color: #666; font-weight: 600; text-transform: uppercase; margin: 0;">Vehicle Models</p>
       </div>
-      <div style="background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 20px; border-radius: 10px; text-align: center;">
-        <h3 style="font-size: 2rem; margin-bottom: 10px;">15+</h3>
-        <p style="font-size: 1rem;">Countries Served</p>
+
+      <!-- Countries Served Counter -->
+      <div class="stat-counter" style="background: rgba(255,255,255,0.9); border: 2px solid #dee2e6; backdrop-filter: blur(10px); padding: 30px 20px; border-radius: 10px; text-align: center;">
+        <div class="circular-progress" style="position: relative; width: 120px; height: 120px; margin: 0 auto 20px;">
+          <svg style="width: 120px; height: 120px; transform: rotate(-90deg);">
+            <circle cx="60" cy="60" r="54" fill="none" stroke="#f0f0f0" stroke-width="8"/>
+            <circle id="progress-2" cx="60" cy="60" r="54" fill="none" stroke="#28a745" stroke-width="8" 
+                    stroke-dasharray="339.29" stroke-dashoffset="339.29" 
+                    style="transition: stroke-dashoffset 2s ease-in-out;"/>
+          </svg>
+          <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
+            <span id="counter-2" style="font-size: 1.8rem; font-weight: 700; color: #28a745; display: block;">0</span>
+            <span style="font-size: 0.9rem; color: #28a745;">+</span>
+          </div>
+        </div>
+        <p style="font-size: 1rem; color: #666; font-weight: 600; text-transform: uppercase; margin: 0;">Countries Served</p>
       </div>
-      <div style="background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 20px; border-radius: 10px; text-align: center;">
-        <h3 style="font-size: 2rem; margin-bottom: 10px;">5,000+</h3>
-        <p style="font-size: 1rem;">Vehicles Delivered</p>
+
+      <!-- Vehicles Delivered Counter -->
+      <div class="stat-counter" style="background: rgba(255,255,255,0.9); border: 2px solid #dee2e6; backdrop-filter: blur(10px); padding: 30px 20px; border-radius: 10px; text-align: center;">
+        <div class="circular-progress" style="position: relative; width: 120px; height: 120px; margin: 0 auto 20px;">
+          <svg style="width: 120px; height: 120px; transform: rotate(-90deg);">
+            <circle cx="60" cy="60" r="54" fill="none" stroke="#f0f0f0" stroke-width="8"/>
+            <circle id="progress-3" cx="60" cy="60" r="54" fill="none" stroke="#ffc107" stroke-width="8" 
+                    stroke-dasharray="339.29" stroke-dashoffset="339.29" 
+                    style="transition: stroke-dashoffset 2s ease-in-out;"/>
+          </svg>
+          <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
+            <span id="counter-3" style="font-size: 1.6rem; font-weight: 700; color: #ffc107; display: block;">0</span>
+            <span style="font-size: 0.9rem; color: #ffc107;">+</span>
+          </div>
+        </div>
+        <p style="font-size: 1rem; color: #666; font-weight: 600; text-transform: uppercase; margin: 0;">Vehicles Delivered</p>
       </div>
     </div>
   </div>
 </section>
 
-<section id="partnership" style="padding: 60px 20px; background: linear-gradient(135deg, #f8f9fa, #ffffff);">
+<section id="partnership" style="padding: 60px 20px; background: #ffffff; border-top: 2px solid #e0e0e0; border-bottom: 2px solid #e0e0e0;">
   <div style="max-width: 1200px; margin: 0 auto;">
-    <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 30px; color: #1d1d1f;">Our Global Partnership</h2>
-    <p style="text-align: center; font-size: 1.2rem; color: #666; margin-bottom: 50px; max-width: 800px; margin-left: auto; margin-right: auto;">In 2025, Equipment King Incorporated proudly entered a strategic partnership with SAG International, combining advanced engineering expertise with local market presence.</p>
+    <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 30px; color: #212529; font-weight: 700; text-transform: uppercase; border: 2px solid #e0e0e0; display: inline-block; padding: 15px 30px; background: #ffffff; border-radius: 12px;">Our Global Partnership</h2>
+    <p style="text-align: center; font-size: 1.2rem; color: #555; margin-bottom: 50px; max-width: 800px; margin-left: auto; margin-right: auto; font-weight: 600;">In 2025, Equipment King Incorporated proudly entered a strategic partnership with SAG International, combining advanced engineering expertise with local market presence.</p>
 
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 50px;">
       <div style="position: relative; overflow: hidden; border-radius: 15px; height: 250px;">
@@ -263,10 +373,14 @@
       </div>
     </div>
 
-    <div style="text-align: center; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
-      <h3 style="font-size: 2rem; margin-bottom: 20px; color: #1d1d1f;">Strategic Vision</h3>
-      <p style="font-size: 1.1rem; color: #666; line-height: 1.7; margin-bottom: 20px;">Together, we are shaping the future of transport with smarter, cleaner, and more efficient vehicle technologies.</p>
-      <p style="font-size: 1.1rem; color: #666; line-height: 1.7;">Equipment King Inc serves as a global distributor and technology integrator, bringing SAG's cutting-edge engineering to markets across Africa, Asia, and beyond.</p>
+    <div style="text-align: center; background: white; padding: 48px; border: 2px solid #e0e0e0; border-radius: 16px; box-shadow: 0 8px 25px rgba(0,0,0,0.1); position: relative; overflow: hidden;">
+      <div style="position: absolute; top: -1px; left: 10%; right: 10%; height: 2px; background: linear-gradient(90deg, transparent, #999, transparent);"></div>
+      <h3 style="font-size: 2.5rem; margin-bottom: 24px; color: #212529; font-weight: 700; text-align: center; position: relative;">
+        <span style="background: #fff; padding: 0 24px; position: relative; z-index: 2;">Strategic Vision</span>
+        <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ddd, transparent); z-index: 1;"></div>
+      </h3>
+      <p style="font-size: 1.25rem; color: #555; line-height: 1.7; margin-bottom: 20px; max-width: 800px; margin-left: auto; margin-right: auto;">Together, we are shaping the future of transport with smarter, cleaner, and more efficient vehicle technologies.</p>
+      <p style="font-size: 1.25rem; color: #555; line-height: 1.7; max-width: 800px; margin-left: auto; margin-right: auto;">Equipment King Inc serves as a global distributor and technology integrator, bringing SAG's cutting-edge engineering to markets across Africa, Asia, and beyond.</p>
     </div>
   </div>
 </section>
@@ -304,41 +418,47 @@
   </div>
 </section>
 
-<section id="powertrain" style="padding: 60px 20px; background: linear-gradient(45deg, #f0f0f0, #ffffff);">
+<section id="powertrain" style="padding: 60px 20px; background: #ffffff; border-top: 2px solid #e0e0e0; border-bottom: 2px solid #e0e0e0;">
   <div style="max-width: 1200px; margin: 0 auto;">
-    <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 30px; color: #1d1d1f;">Integrated Power Chain</h2>
-    <p style="text-align: center; font-size: 1.2rem; color: #666; margin-bottom: 50px; max-width: 800px; margin-left: auto; margin-right: auto;">Our advanced integrated powertrain combines the Cummins M13 engine, Eaton Cummins AMT transmission, Voith hydraulic retarder, and air suspension for unmatched performance.</p>
+    <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 30px; color: #212529; font-weight: 700; text-transform: uppercase; border: 2px solid #e0e0e0; display: inline-block; padding: 15px 30px; background: #ffffff; border-radius: 12px;">Integrated Power Chain</h2>
+    <p style="text-align: center; font-size: 1.2rem; color: #555; margin-bottom: 50px; max-width: 800px; margin-left: auto; margin-right: auto; font-weight: 600;">Our advanced integrated powertrain combines the Cummins M13 engine, Eaton Cummins AMT transmission, Voith hydraulic retarder, and air suspension for unmatched performance.</p>
 
     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 40px; align-items: center;">
       <div>
         <img src="assets/trucks/Additional Trucks/E3 Dump Truck/Screenshot 2025-11-05 135309.webp" alt="Engine Detail" style="width: 100%; height: 300px; object-fit: cover; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
       </div>
       <div>
-        <h3 style="font-size: 2rem; margin-bottom: 20px; color: #1d1d1f;">Cummins M13 Engine</h3>
-        <p style="font-size: 1.1rem; color: #666; line-height: 1.7; margin-bottom: 20px;">High-performance diesel engine with advanced emissions control technology, delivering exceptional power and fuel efficiency for demanding commercial applications.</p>
+        <h3 style="font-size: 2.5rem; margin-bottom: 24px; color: #212529; font-weight: 700; text-align: center; position: relative;">
+          <span style="background: #fff; padding: 0 24px; position: relative; z-index: 2;">Cummins M13 Engine</span>
+          <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ddd, transparent); z-index: 1;"></div>
+        </h3>
+        <p style="font-size: 1.25rem; color: #555; line-height: 1.7; margin-bottom: 20px; text-align: center;">High-performance diesel engine with advanced emissions control technology, delivering exceptional power and fuel efficiency for demanding commercial applications.</p>
         <ul style="list-style: none; padding: 0;">
-          <li style="padding: 8px 0; border-bottom: 1px solid #eee;">âœ“ Advanced emissions control</li>
-          <li style="padding: 8px 0; border-bottom: 1px solid #eee;">âœ“ Superior fuel efficiency</li>
-          <li style="padding: 8px 0;">âœ“ Proven reliability</li>
+          <li style="padding: 8px 0; border-bottom: 1px solid #dee2e6; color: #555; font-weight: 600;">âœ" Advanced emissions control</li>
+          <li style="padding: 8px 0; border-bottom: 1px solid #dee2e6; color: #555; font-weight: 600;">âœ" Superior fuel efficiency</li>
+          <li style="padding: 8px 0; color: #555; font-weight: 600;">âœ" Proven reliability</li>
         </ul>
       </div>
     </div>
 
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;">
-      <div style="background: white; padding: 25px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); text-align: center;">
-        <img src="assets/trucks/Additional Trucks/E3 Dump Truck/Screenshot 2025-11-05 135325.webp" alt="Transmission" style="width: 100%; height: 180px; object-fit: cover; border-radius: 10px; margin-bottom: 15px;">
-        <h4 style="font-size: 1.3rem; margin-bottom: 10px; color: #1d1d1f;">Eaton Cummins AMT</h4>
-        <p style="font-size: 0.95rem; color: #666;">Automated manual transmission for optimal efficiency</p>
+      <div style="background: white; padding: 28px; border: 2px solid #e0e0e0; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.1); text-align: center; position: relative; overflow: hidden;">
+        <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
+        <img src="assets/trucks/Additional Trucks/E3 Dump Truck/Screenshot 2025-11-05 135325.webp" alt="Transmission" style="width: 100%; height: 180px; object-fit: cover; border: 1px solid #dee2e6; border-radius: 8px; margin-bottom: 15px;">
+        <h4 style="font-size: 20px; margin-bottom: 10px; color: #212529; font-weight: 700;">Eaton Cummins AMT</h4>
+        <p style="font-size: 13px; color: #666; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">Automated manual transmission for optimal efficiency</p>
       </div>
-      <div style="background: white; padding: 25px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); text-align: center;">
-        <img src="assets/trucks/Additional Trucks/E3 Dump Truck/Screenshot 2025-11-05 135352.webp" alt="Hydraulic System" style="width: 100%; height: 180px; object-fit: cover; border-radius: 10px; margin-bottom: 15px;">
-        <h4 style="font-size: 1.3rem; margin-bottom: 10px; color: #1d1d1f;">Voith Hydraulic Retarder</h4>
-        <p style="font-size: 0.95rem; color: #666;">Advanced braking system for enhanced safety</p>
+      <div style="background: white; padding: 28px; border: 2px solid #e0e0e0; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.1); text-align: center; position: relative; overflow: hidden;">
+        <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
+        <img src="assets/trucks/Additional Trucks/E3 Dump Truck/Screenshot 2025-11-05 135352.webp" alt="Hydraulic System" style="width: 100%; height: 180px; object-fit: cover; border: 1px solid #dee2e6; border-radius: 8px; margin-bottom: 15px;">
+        <h4 style="font-size: 20px; margin-bottom: 10px; color: #212529; font-weight: 700;">Voith Hydraulic Retarder</h4>
+        <p style="font-size: 13px; color: #666; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">Advanced braking system for enhanced safety</p>
       </div>
-      <div style="background: white; padding: 25px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); text-align: center;">
-        <img src="assets/trucks/Additional Trucks/E3 Dump Truck/Screenshot 2025-11-05 135437.webp" alt="Suspension" style="width: 100%; height: 180px; object-fit: cover; border-radius: 10px; margin-bottom: 15px;">
-        <h4 style="font-size: 1.3rem; margin-bottom: 10px; color: #1d1d1f;">Air Suspension System</h4>
-        <p style="font-size: 0.95rem; color: #666;">Superior ride comfort and load stability</p>
+      <div style="background: white; padding: 28px; border: 2px solid #e0e0e0; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.1); text-align: center; position: relative; overflow: hidden;">
+        <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
+        <img src="assets/trucks/Additional Trucks/E3 Dump Truck/Screenshot 2025-11-05 135437.webp" alt="Suspension" style="width: 100%; height: 180px; object-fit: cover; border: 1px solid #dee2e6; border-radius: 8px; margin-bottom: 15px;">
+        <h4 style="font-size: 20px; margin-bottom: 10px; color: #212529; font-weight: 700;">Air Suspension System</h4>
+        <p style="font-size: 13px; color: #666; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">Superior ride comfort and load stability</p>
       </div>
     </div>
   </div>
@@ -385,28 +505,25 @@
     <p style="text-align: center; font-size: 1.2rem; color: #666; margin-bottom: 50px; max-width: 800px; margin-left: auto; margin-right: auto;">With continuous advancements in electric mobility and smart vehicle systems, our partnership is setting new industry benchmarks.</p>
 
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 50px;">
-      <div style="position: relative; overflow: hidden; border-radius: 20px; height: 300px; cursor: pointer; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-        <img src="assets/trucks/Additional Trucks/E3 Dump Truck/Screenshot 2025-11-05 134254.webp" alt="Future Innovation 1" style="width: 100%; height: 100%; object-fit: cover;">
-        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(45deg, rgba(0,123,255,0.8), rgba(0,255,123,0.6)); opacity: 0.9;"></div>
-        <div style="position: absolute; bottom: 20px; left: 20px; right: 20px; color: white;">
-          <h3 style="font-size: 1.5rem; margin-bottom: 10px;">Electric Mobility</h3>
-          <p style="font-size: 1rem;">Next-generation electric commercial vehicles</p>
+      <div style="position: relative; overflow: hidden; border-radius: 12px; height: 300px; cursor: pointer; transition: all 0.3s ease; border: 2px solid #e0e0e0;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 25px rgba(0,0,0,0.15)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.1)'">
+        <img src="assets/trucks/Additional Trucks/E3 Dump Truck/Screenshot 2025-11-05 134254.webp" alt="Future Innovation 1" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(20%) brightness(0.85);">
+        <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(33,37,41,0.9)); padding: 25px 20px 20px;">
+          <h3 style="font-size: 1.5rem; margin-bottom: 8px; color: #ffffff; font-weight: 700;">Electric Mobility</h3>
+          <p style="font-size: 0.95rem; color: #dee2e6; margin: 0; line-height: 1.4;">Next-generation electric commercial vehicles</p>
         </div>
       </div>
-      <div style="position: relative; overflow: hidden; border-radius: 20px; height: 300px; cursor: pointer; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-        <img src="assets/trucks/Additional Trucks/E3 Dump Truck/Screenshot 2025-11-05 134432.webp" alt="Future Innovation 2" style="width: 100%; height: 100%; object-fit: cover;">
-        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(45deg, rgba(255,0,123,0.8), rgba(255,123,0,0.6)); opacity: 0.9;"></div>
-        <div style="position: absolute; bottom: 20px; left: 20px; right: 20px; color: white;">
-          <h3 style="font-size: 1.5rem; margin-bottom: 10px;">Smart Systems</h3>
-          <p style="font-size: 1rem;">AI-powered fleet management solutions</p>
+      <div style="position: relative; overflow: hidden; border-radius: 12px; height: 300px; cursor: pointer; transition: all 0.3s ease; border: 2px solid #e0e0e0;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 25px rgba(0,0,0,0.15)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.1)'">
+        <img src="assets/trucks/Additional Trucks/E3 Dump Truck/Screenshot 2025-11-05 134432.webp" alt="Future Innovation 2" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(20%) brightness(0.85);">
+        <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(33,37,41,0.9)); padding: 25px 20px 20px;">
+          <h3 style="font-size: 1.5rem; margin-bottom: 8px; color: #ffffff; font-weight: 700;">Smart Systems</h3>
+          <p style="font-size: 0.95rem; color: #dee2e6; margin: 0; line-height: 1.4;">AI-powered fleet management solutions</p>
         </div>
       </div>
-      <div style="position: relative; overflow: hidden; border-radius: 20px; height: 300px; cursor: pointer; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-        <img src="assets/trucks/Additional Trucks/E3 Dump Truck/Screenshot 2025-11-05 134605.webp" alt="Future Innovation 3" style="width: 100%; height: 100%; object-fit: cover;">
-        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(45deg, rgba(123,0,255,0.8), rgba(0,255,255,0.6)); opacity: 0.9;"></div>
-        <div style="position: absolute; bottom: 20px; left: 20px; right: 20px; color: white;">
-          <h3 style="font-size: 1.5rem; margin-bottom: 10px;">Autonomous Tech</h3>
-          <p style="font-size: 1rem;">Self-driving commercial vehicle technology</p>
+      <div style="position: relative; overflow: hidden; border-radius: 12px; height: 300px; cursor: pointer; transition: all 0.3s ease; border: 2px solid #e0e0e0;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 25px rgba(0,0,0,0.15)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.1)'">
+        <img src="assets/trucks/Additional Trucks/E3 Dump Truck/Screenshot 2025-11-05 134605.webp" alt="Future Innovation 3" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(20%) brightness(0.85);">
+        <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(33,37,41,0.9)); padding: 25px 20px 20px;">
+          <h3 style="font-size: 1.5rem; margin-bottom: 8px; color: #ffffff; font-weight: 700;">Autonomous Tech</h3>
+          <p style="font-size: 0.95rem; color: #dee2e6; margin: 0; line-height: 1.4;">Self-driving commercial vehicle technology</p>
         </div>
       </div>
     </div>
@@ -444,37 +561,37 @@
   <div style="max-width: 1200px; margin: 0 auto;">
     <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 50px;">Our Vehicle Portfolio</h2>
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
-      <div style="position: relative; overflow: hidden; border-radius: 10px; height: 200px;">
+      <div style="position: relative; overflow: hidden; border-radius: 10px; height: 200px; cursor: pointer;" onclick="window.location.href='trucks.html#heavy-duty'">
         <img src="assets/trucks/Additional Trucks/E3 Dump Truck/Screenshot 2025-11-05 134731.webp" alt="Vehicle 1" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
         <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.8)); padding: 15px; text-align: center;">
           <p style="margin: 0; font-size: 0.9rem;">Heavy Duty Series</p>
         </div>
       </div>
-      <div style="position: relative; overflow: hidden; border-radius: 10px; height: 200px;">
+      <div style="position: relative; overflow: hidden; border-radius: 10px; height: 200px; cursor: pointer;" onclick="window.location.href='trucks.html#medium-duty'">
         <img src="assets/trucks/Additional Trucks/E3 Dump Truck/Screenshot 2025-11-05 134739.webp" alt="Vehicle 2" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
         <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.8)); padding: 15px; text-align: center;">
           <p style="margin: 0; font-size: 0.9rem;">Commercial Series</p>
         </div>
       </div>
-      <div style="position: relative; overflow: hidden; border-radius: 10px; height: 200px;">
+      <div style="position: relative; overflow: hidden; border-radius: 10px; height: 200px; cursor: pointer;" onclick="window.location.href='trucks_html/X9-Aerial-Work-Platform-Truck.html'">
         <img src="assets/trucks/Additional Trucks/E3 Dump Truck/Screenshot 2025-11-05 134804.webp" alt="Vehicle 3" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
         <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.8)); padding: 15px; text-align: center;">
           <p style="margin: 0; font-size: 0.9rem;">Specialized Series</p>
         </div>
       </div>
-      <div style="position: relative; overflow: hidden; border-radius: 10px; height: 200px;">
+      <div style="position: relative; overflow: hidden; border-radius: 10px; height: 200px; cursor: pointer;" onclick="window.location.href='trucks_html/E3-Dump-Truck.html'">
         <img src="assets/trucks/Additional Trucks/E3 Dump Truck/Screenshot 2025-11-05 134812.webp" alt="Vehicle 4" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
         <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.8)); padding: 15px; text-align: center;">
           <p style="margin: 0; font-size: 0.9rem;">Industrial Series</p>
         </div>
       </div>
-      <div style="position: relative; overflow: hidden; border-radius: 10px; height: 200px;">
+      <div style="position: relative; overflow: hidden; border-radius: 10px; height: 200px; cursor: pointer;" onclick="window.location.href='trucks_html/E1st-Tractor.html'">
         <img src="assets/trucks/Additional Trucks/E3 Dump Truck/Screenshot 2025-11-05 135257.webp" alt="Vehicle 5" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
         <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.8)); padding: 15px; text-align: center;">
           <p style="margin: 0; font-size: 0.9rem;">Premium Series</p>
         </div>
       </div>
-      <div style="position: relative; overflow: hidden; border-radius: 10px; height: 200px;">
+      <div style="position: relative; overflow: hidden; border-radius: 10px; height: 200px; cursor: pointer;" onclick="window.location.href='trucks_html/i9-New-Energy-Truck.html'">
         <img src="assets/trucks/Additional Trucks/E3 Dump Truck/Screenshot 2025-11-05 135318.webp" alt="Vehicle 6" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
         <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.8)); padding: 15px; text-align: center;">
           <p style="margin: 0; font-size: 0.9rem;">Elite Series</p>
@@ -500,6 +617,58 @@
     });
   }, observerOptions);
 
+  // Animated counters with circular progress
+  function animateCounter(element, target, duration = 2000) {
+    let start = 0;
+    const increment = target / (duration / 16); // 60fps
+    
+    function updateCounter() {
+      start += increment;
+      if (start < target) {
+        element.textContent = Math.floor(start);
+        requestAnimationFrame(updateCounter);
+      } else {
+        element.textContent = target;
+      }
+    }
+    updateCounter();
+  }
+
+  function animateProgress(circleElement, percentage, duration = 2000) {
+    const circumference = 2 * Math.PI * 54; // radius = 54
+    const offset = circumference - (percentage / 100) * circumference;
+    
+    setTimeout(() => {
+      circleElement.style.strokeDashoffset = offset;
+    }, 500); // Start after a small delay
+  }
+
+  // Intersection observer for stat counters
+  const statsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const statCounter = entry.target;
+        
+        // Animate specific counters
+        if (statCounter.querySelector('#counter-1')) {
+          animateCounter(statCounter.querySelector('#counter-1'), 50);
+          animateProgress(statCounter.querySelector('#progress-1'), 85); // 85% for visual appeal
+        }
+        if (statCounter.querySelector('#counter-2')) {
+          animateCounter(statCounter.querySelector('#counter-2'), 15);
+          animateProgress(statCounter.querySelector('#progress-2'), 60); // 60% for visual appeal
+        }
+        if (statCounter.querySelector('#counter-3')) {
+          animateCounter(statCounter.querySelector('#counter-3'), 5000);
+          animateProgress(statCounter.querySelector('#progress-3'), 95); // 95% for visual appeal
+        }
+        
+        // Disconnect observer after animation
+        statsObserver.unobserve(statCounter);
+      }
+    });
+  }, { threshold: 0.5 });
+
   // Apply animation to all sections
   document.addEventListener('DOMContentLoaded', () => {
     const sections = document.querySelectorAll('section');
@@ -508,6 +677,12 @@
       section.style.transform = 'translateY(30px)';
       section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
       observer.observe(section);
+    });
+
+    // Observe stat counters
+    const statCounters = document.querySelectorAll('.stat-counter');
+    statCounters.forEach(counter => {
+      statsObserver.observe(counter);
     });
   });
 

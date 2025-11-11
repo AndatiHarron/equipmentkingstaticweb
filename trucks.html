@@ -25,14 +25,14 @@
   height: 120px;
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 200%;
+  background-size: 700%;
   pointer-events: none;
   display: none;
   z-index: 20;
 }
 
 
-    /* make sure popups sit above everything */
+    /* Enhanced popup system with advanced animations */
     .ek-popup-overlay {
       position: fixed;
       inset: 0;
@@ -43,11 +43,44 @@
       z-index: 9999;
       padding: 24px;
       box-sizing: border-box;
-      /* subtle fade */
       opacity: 0;
-      transition: opacity .22s ease;
-      -webkit-backdrop-filter: blur(6px);
-      backdrop-filter: blur(6px);
+      transition: opacity .35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      -webkit-backdrop-filter: blur(12px) saturate(1.2);
+      backdrop-filter: blur(12px) saturate(1.2);
+      animation: overlayFadeIn 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    @keyframes overlayFadeIn {
+      from {
+        opacity: 0;
+        backdrop-filter: blur(0px) saturate(1);
+      }
+      to {
+        opacity: 1;
+        backdrop-filter: blur(12px) saturate(1.2);
+      }
+    }
+
+    @keyframes popupSlideIn {
+      from { 
+        opacity: 0;
+        transform: translateY(-30px) scale(0.95);
+      }
+      to { 
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    @keyframes contentFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .ek-popup-overlay.open {
@@ -57,81 +90,785 @@
 
     .ek-popup {
       width: 100%;
-      max-width: var(--popup-max-width);
+      max-width: 1200px;
       background: #fff;
       border-radius: var(--popup-radius);
-      box-shadow: 0 18px 40px rgba(0,0,0,0.35);
+      box-shadow: 0 25px 60px rgba(0,0,0,0.4), 0 8px 20px rgba(0,0,0,0.15);
       overflow: hidden;
-      transform: translateY(6px);
-      transition: transform .18s ease;
-      max-height: calc(100vh - 80px);
+      transform: translateY(30px) scale(0.95);
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      max-height: calc(100vh - 40px);
       display: flex;
       flex-direction: column;
+      animation: popupSlideIn 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
-    .ek-popup.open { transform: translateY(0); }
+    @keyframes popupSlideIn {
+      from {
+        transform: translateY(40px) scale(0.92);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+    }
+
+    .ek-popup.open { 
+      transform: translateY(0) scale(1); 
+      opacity: 1;
+    }
 
     .ek-popup-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 12px 16px;
-      border-bottom: 1px solid #eee;
-      background: linear-gradient(180deg,#fff,#fafafa);
+      padding: 20px 30px;
+      border-bottom: 1px solid #e9ecef;
+      background: #ffffff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     }
 
     .ek-popup-title {
-      font-size: 18px;
+      font-size: 24px;
       font-weight: 700;
-      color: #111;
+      color: #333333;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .ek-popup-title::before {
+      content: '🚛';
+      font-size: 20px;
+      opacity: 0.7;
     }
 
     .ek-popup-close {
-      font-size: 22px;
+      font-size: 24px;
       line-height: 1;
-      width: 36px;
-      height: 36px;
+      width: 40px;
+      height: 40px;
       display: inline-grid;
       place-items: center;
-      border-radius: 8px;
+      border-radius: 10px;
       cursor: pointer;
       border: none;
       background: transparent;
+      color: #666;
+      transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      position: relative;
+      overflow: hidden;
     }
-    .ek-popup-close:hover { background: rgba(0,0,0,0.06); }
+
+    .ek-popup-close::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background: rgba(108, 117, 125, 0.1);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .ek-popup-close:hover { 
+      background: rgba(108, 117, 125, 0.1);
+      color: #6c757d;
+      transform: scale(1.1);
+    }
+
+    .ek-popup-close:hover::before {
+      width: 100%;
+      height: 100%;
+    }
+
+    .ek-popup-close:active {
+      transform: scale(0.95);
+    }
+
+    /* Navigation arrows */
+    .ek-popup-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: 2px solid rgba(255,255,255,0.9);
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(8px);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      color: #495057;
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1), 0 2px 6px rgba(0,0,0,0.05);
+      z-index: 1001;
+    }
+
+    .ek-popup-nav:hover { 
+      background: rgba(255,255,255,0.95);
+      border-color: #007bff;
+      color: #007bff;
+      transform: translateY(-50%) scale(1.1);
+      box-shadow: 0 6px 20px rgba(0,123,255,0.15), 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .ek-popup-nav:active {
+      transform: translateY(-50%) scale(0.95);
+    }
+
+    .ek-popup-nav.prev {
+      left: 15px;
+    }
+
+    .ek-popup-nav.next {
+      right: 15px;
+    }
 
     .ek-popup-body {
-      overflow: auto;
-      padding: 16px;
-      display: grid;
-      grid-template-columns: 1fr 360px;
-      gap: 18px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
       box-sizing: border-box;
+      max-height: 80vh;
+      background: #ffffff;
     }
 
-    /* left column: main image + thumbs */
+    /* Mobile and tablet responsive design */
+    @media (max-width: 1024px) {
+      .ek-popup {
+        max-width: 95vw;
+        margin: 10px;
+      }
+      
+      .ek-popup-body {
+        padding: 20px;
+        gap: 20px;
+        max-height: 80vh;
+      }
+      
+      .ek-main-image {
+        min-height: 300px;
+        max-height: 400px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .ek-popup {
+        max-width: 98vw;
+        margin: 5px;
+        max-height: 95vh;
+      }
+      
+      .ek-popup-body {
+        padding: 16px;
+        gap: 16px;
+        max-height: 85vh;
+      }
+      
+      .ek-popup-header {
+        padding: 16px 20px;
+      }
+      
+      .ek-popup-title {
+        font-size: 20px;
+      }
+      
+      .ek-main-image {
+        min-height: 250px;
+        max-height: 300px;
+      }
+      
+      .ek-info h3 {
+        font-size: 24px;
+      }
+      
+      .ek-info-section {
+        padding: 16px;
+        margin-bottom: 16px;
+      }
+      
+      .ek-action-buttons {
+        flex-direction: column;
+        gap: 12px;
+      }
+      
+      .ek-btn {
+        width: 100%;
+        padding: 16px 24px;
+        font-size: 16px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .ek-popup {
+        max-width: 100vw;
+        margin: 0;
+        border-radius: 0;
+        max-height: 100vh;
+      }
+      
+      .ek-popup-body {
+        padding: 12px;
+        gap: 12px;
+        max-height: 90vh;
+      }
+      
+      .ek-popup-header {
+        padding: 12px 16px;
+      }
+      
+      .ek-popup-title {
+        font-size: 18px;
+      }
+      
+      .ek-main-image {
+        min-height: 200px;
+        max-height: 250px;
+      }
+      
+      .ek-info h3 {
+        font-size: 20px;
+        margin-bottom: 16px;
+      }
+      
+      .ek-info-section {
+        padding: 12px;
+        margin-bottom: 12px;
+      }
+      
+      .ek-magnifier {
+        width: 300px;
+        height: 300px;
+        border: 3px solid #6c757d;
+      }
+    }
+
+    /* Content fade-in animations */
+    .ek-popup-body > .ek-gallery {
+      animation: contentFadeIn 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.1s both;
+    }
+
+    .ek-popup-body > .ek-info {
+      animation: contentFadeIn 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.15s both;
+    }
+
+    /* Enhanced info section styling */
+    .ek-info {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 30px;
+      border: 1px solid #e9ecef;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .ek-info h3 {
+      color: #333333;
+      font-size: 28px;
+      font-weight: 700;
+      margin: 0 0 24px 0;
+      padding-bottom: 16px;
+      border-bottom: 2px solid #6c757d;
+      position: relative;
+    }
+
+    .ek-info h3::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 60px;
+      height: 2px;
+      background: #495057;
+      border-radius: 2px;
+    }
+
+    .ek-info-section {
+      margin-bottom: 24px;
+      padding: 20px;
+      background: #f8f9fa;
+      border-radius: 8px;
+      border-left: 4px solid #6c757d;
+      transition: all 0.3s ease;
+    }
+
+    .ek-info-section:hover {
+      background: #ffffff;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      border-left-color: #495057;
+    }
+
+    .ek-info-section h4 {
+      color: #495057;
+      font-size: 16px;
+      font-weight: 600;
+      margin: 0 0 12px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .ek-info-section h4::before {
+      content: '📋';
+      font-size: 14px;
+    }
+
+    .ek-info-section p {
+      color: #6c757d;
+      line-height: 1.6;
+      margin: 0;
+      font-size: 14px;
+    }
+
+    .ek-action-buttons {
+      display: flex;
+      gap: 12px;
+      margin-top: 24px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .ek-btn {
+      padding: 14px 28px;
+      border: none;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      position: relative;
+      overflow: hidden;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-width: 160px;
+    }
+
+    .ek-btn::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: all 0.3s ease;
+    }
+
+    .ek-btn:hover::before {
+      width: 300px;
+      height: 300px;
+    }
+
+    .ek-btn.primary {
+      background: linear-gradient(135deg, #495057, #343a40);
+      color: white;
+    }
+
+    .ek-btn.primary:hover {
+      background: linear-gradient(135deg, #343a40, #23272b);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(73, 80, 87, 0.4);
+    }
+
+    .ek-btn.secondary {
+      background: linear-gradient(135deg, #6c757d, #5a6268);
+      color: white;
+    }
+
+    .ek-btn.secondary:hover {
+      background: linear-gradient(135deg, #5a6268, #495057);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(108, 117, 125, 0.4);
+    }
+
+    .ek-btn.outline {
+      background: transparent;
+      color: #495057;
+      border: 2px solid #6c757d;
+    }
+
+    .ek-btn.outline:hover {
+      background: #6c757d;
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(108, 117, 125, 0.25);
+    }
+
+    /* Gallery section */
     .ek-gallery {
       display: flex;
       flex-direction: column;
       gap: 12px;
+      width: 100%;
     }
 
     .ek-main-image {
       width: 100%;
-      background: #f5f5f5;
-      border-radius: 10px;
+      background: #f8f9fa;
+      border-radius: 12px;
       overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
-      min-height: 320px;
+      min-height: 500px;
+      max-height: 600px;
+      position: relative;
+      cursor: default;
+      border: 2px solid #e9ecef;
+      transition: all 0.3s ease;
+    }
+
+    .ek-main-image:hover {
+      border-color: #6c757d;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
     }
 
     .ek-main-image img {
       max-width: 100%;
-      max-height: 72vh;
+      max-height: 75vh;
       object-fit: contain;
       display: block;
+      transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      border-radius: 8px;
+    }
+
+    .ek-main-image:hover img {
+      transform: scale(1.02);
+    }
+
+    .ek-main-image.zoomed {
+      cursor: zoom-out;
+      overflow: auto;
+      background: rgba(0, 0, 0, 0.9);
+    }
+
+    .ek-main-image.zoomed img {
+      transform: scale(2);
+      cursor: grab;
+      max-width: none;
+      max-height: none;
+      width: auto;
+      height: auto;
+    }
+
+    .ek-main-image.zoomed img:active {
+      cursor: grabbing;
+    }
+
+    /* Magnifier glass */
+    .ek-magnifier {
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      
+      border-radius: 16px;
+      background: #fff;
+     
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+      z-index: 1000;
+      background-repeat: no-repeat;
+      background-size: 300% 300%;
+    }
+
+    .ek-main-image:hover .ek-magnifier {
+      opacity: 1;
+    }
+
+    .ek-magnifier::before {
+      content: '';
+      position: absolute;
+      top: -8px;
+      left: -8px;
+      right: -8px;
+      bottom: -8px;
+      border: 4px solid rgba(108, 117, 125, 0.4);
+      border-radius: 20px;
+      animation: magnifierPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes magnifierPulse {
+      0%, 100% { transform: scale(1); opacity: 0.3; }
+      50% { transform: scale(1.05); opacity: 0.6; }
+    }
+
+    /* Responsive truck grid layouts */
+    .truck-grid {
+      display: grid !important;
+      gap: 16px !important;
+      margin-bottom: 32px !important;
+    }
+
+    /* Desktop: 4 columns */
+    @media (min-width: 1200px) {
+      .truck-grid {
+        grid-template-columns: repeat(4, 1fr) !important;
+      }
+    }
+
+    /* Laptop: 3 columns */
+    @media (min-width: 900px) and (max-width: 1199px) {
+      .truck-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+      }
+    }
+
+    /* Tablet: 2 columns */
+    @media (min-width: 600px) and (max-width: 899px) {
+      .truck-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 12px !important;
+      }
+    }
+
+    /* Mobile: 1 column */
+    @media (max-width: 599px) {
+      .truck-grid {
+        grid-template-columns: 1fr !important;
+        gap: 12px !important;
+      }
+      
+      .truck-tile {
+        margin: 0 !important;
+      }
+      
+      .truck-image img {
+        height: 200px !important;
+      }
+    }
+
+    /* Main container responsive */
+    @media (max-width: 768px) {
+      .container {
+        padding: 10px !important;
+      }
+      
+      .series-title {
+        font-size: 1.3em !important;
+      }
+      
+      .category-buttons {
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      
+      .category-buttons button {
+        flex: 1;
+        min-width: 120px;
+        padding: 8px 12px;
+        font-size: 14px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .series-title {
+        font-size: 1.2em !important;
+      }
+      
+      .category-buttons button {
+        font-size: 12px;
+        padding: 6px 10px;
+        min-width: 100px;
+      }
+    }
+
+    /* Mobile Navigation Styles */
+    .mobile-menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: #333;
+      padding: 8px;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+    }
+
+    .mobile-menu-toggle:hover {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+
+    @media (max-width: 768px) {
+      .mobile-menu-toggle {
+        display: block;
+      }
+
+      #main-nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: white;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        z-index: 1000;
+        padding: 20px;
+        flex-direction: column;
+      }
+
+      #main-nav.mobile-open {
+        display: flex !important;
+      }
+
+      #main-nav a {
+        padding: 12px 0;
+        border-bottom: 1px solid #eee;
+        text-decoration: none;
+        color: #333;
+        font-weight: 500;
+      }
+
+      .trucks-dropdown .dropdown-menu {
+        position: static;
+        display: none;
+        box-shadow: none;
+        background: #f8f9fa;
+        margin-top: 8px;
+        padding-left: 16px;
+      }
+
+      .trucks-dropdown.mobile-open .dropdown-menu {
+        display: block;
+      }
+
+      .sub-dropdown {
+        position: static !important;
+        display: none !important;
+        background: #ffffff;
+        margin-top: 8px;
+        padding-left: 16px;
+        border-left: 3px solid #007bff;
+      }
+
+      .sub-dropdown.mobile-open {
+        display: block !important;
+      }
+
+      .truck-links {
+        position: static !important;
+        display: none !important;
+        background: #f1f3f4;
+        margin-top: 8px;
+        padding-left: 16px;
+      }
+
+      .truck-links.mobile-open {
+        display: block !important;
+      }
+    }
+
+    /* Touch-friendly button sizes */
+    @media (max-width: 768px) {
+      button, .btn, a {
+        min-height: 44px;
+        min-width: 44px;
+        padding: 12px 16px;
+      }
+
+      .truck-tile {
+        padding: 12px !important;
+        cursor: pointer;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+      }
+
+      .truck-name {
+        font-size: 18px !important;
+      }
+      
+      /* Improved touch targets */
+      .category-buttons button {
+        min-height: 48px;
+        touch-action: manipulation;
+      }
+      
+      .ek-thumb {
+        min-height: 60px;
+        min-width: 60px;
+        touch-action: manipulation;
+      }
+      
+      /* Prevent zoom on double tap */
+      * {
+        touch-action: manipulation;
+      }
+      
+      /* Better scroll behavior */
+      .ek-popup-body {
+        -webkit-overflow-scrolling: touch;
+        scroll-behavior: smooth;
+      }
+      
+      .ek-thumb-strip {
+        -webkit-overflow-scrolling: touch;
+        scroll-behavior: smooth;
+      }
+    }
+
+    /* High DPI/Retina displays */
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
+      .truck-image img {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+      }
+    }
+
+    /* Landscape orientation on mobile */
+    @media (max-width: 768px) and (orientation: landscape) {
+      .ek-popup {
+        max-height: 95vh;
+      }
+      
+      .ek-popup-body {
+        max-height: 75vh;
+      }
+      
+      .ek-main-image {
+        min-height: 200px;
+        max-height: 300px;
+      }
+    }
+
+    /* Loading spinner for images */
+    .ek-main-image::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 40px;
+      height: 40px;
+      margin: -20px 0 0 -20px;
+      border: 3px solid #f3f3f3;
+      border-top: 3px solid #007bff;
+      border-radius: 50%;
+      animation: imageSpinner 1s linear infinite;
+      opacity: 0;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .ek-main-image.loading::before {
+      opacity: 1;
+    }
+
+    @keyframes imageSpinner {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
     }
 
     .ek-thumb-strip {
@@ -139,21 +876,86 @@
       gap: var(--thumb-gap);
       align-items: center;
       overflow-x: auto;
-      padding-bottom: 6px;
+      padding: 8px 0 12px 0;
+      scrollbar-width: thin;
+      scrollbar-color: #ccc transparent;
     }
+
+    .ek-thumb-strip::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    .ek-thumb-strip::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 3px;
+    }
+
+    .ek-thumb-strip::-webkit-scrollbar-thumb {
+      background: #ccc;
+      border-radius: 3px;
+    }
+
+    .ek-thumb-strip::-webkit-scrollbar-thumb:hover {
+      background: #999;
+    }
+
     .ek-thumb {
       flex: 0 0 auto;
       width: var(--thumb-size);
       height: var(--thumb-size);
-      border-radius: 8px;
+      border-radius: 10px;
       overflow: hidden;
-      border: 2px solid transparent;
+      border: 3px solid transparent;
       cursor: pointer;
       display: inline-block;
       box-sizing: border-box;
+      transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      position: relative;
     }
-    .ek-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .ek-thumb.active { border-color: #2b6cb0; box-shadow: 0 4px 10px rgba(43,108,176,0.12); }
+
+    .ek-thumb::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0);
+      transition: background 0.25s ease;
+      z-index: 1;
+    }
+
+    .ek-thumb:hover {
+      transform: translateY(-2px) scale(1.05);
+      border-color: #6c757d;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .ek-thumb:hover::before {
+      background: rgba(108, 117, 125, 0.1);
+    }
+
+    .ek-thumb img { 
+      width: 100%; 
+      height: 100%; 
+      object-fit: cover; 
+      display: block;
+      transition: transform 0.25s ease;
+    }
+
+    .ek-thumb:hover img {
+      transform: scale(1.1);
+    }
+
+    .ek-thumb.active { 
+      border-color: #6c757d; 
+      box-shadow: 0 8px 25px rgba(108, 117, 125, 0.25);
+      transform: translateY(-3px) scale(1.08);
+    }
+
+    .ek-thumb.active::before {
+      background: rgba(0, 123, 255, 0.15);
+    }
 
     /* right column: details */
     .ek-details {
@@ -216,174 +1018,660 @@
     .ek-thumb-strip::-webkit-scrollbar { height:8px; }
     .ek-thumb-strip::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.12); border-radius:6px; }
   </style>
+
+    <style>
+        /* Enhanced truck tile styling */
+        .truck-tile {
+            transform: translateY(0);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .truck-tile:hover {
+            transform: translateY(-4px) !important;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15) !important;
+        }
+        
+        .truck-image img {
+            transition: transform 0.3s ease;
+        }
+        
+        .truck-tile:hover .truck-image img {
+            transform: scale(1.05);
+        }
+        
+        .category-buttons button:hover:not(.active) {
+            background-color: #f8f9fa !important;
+            border-color: #adb5bd !important;
+        }
+        
+        .category-buttons button.active {
+            background: #444 !important;
+            color: #ffffff !important;
+            border-color: #444 !important;
+        }
+        
+        /* Responsive improvements */
+        @media (max-width: 768px) {
+            .controls-container {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .category-buttons {
+                justify-content: center;
+                margin-bottom: 16px;
+            }
+            
+            #searchInput {
+                width: 100% !important;
+                max-width: 100% !important;
+            }
+        }
+    </style>
 </head>
 <body>
     <div id="header-placeholder"></div>
     
+    <!-- Navigation anchor points -->
+    <div id="dump-trucks" style="position: absolute; visibility: hidden;"></div>
+    <div id="cargo-trucks" style="position: absolute; visibility: hidden;"></div>
+    <div id="e6-series" style="position: absolute; visibility: hidden;"></div>
+    <div id="6-series" style="position: absolute; visibility: hidden;"></div>
+    <div id="9-series" style="position: absolute; visibility: hidden;"></div>
 
-  <h1>Truck Categories and Models</h1>
+    <main style="padding: 25px 5px 15px; width: 100%; margin: 0; background: #ffffff;">
+        <!-- Hero Section -->
+        <div style="max-width: 95%; margin: 0 auto 15px auto; text-align: center; position: relative;">
+            <div style="border: 2px solid #e0e0e0; border-radius: 16px; padding: 12px; position: relative; overflow: hidden;">
+                <div style="position: absolute; top: -1px; left: 20%; right: 20%; height: 2px; background: linear-gradient(90deg, transparent, #888, transparent);"></div>
+                <div style="position: absolute; bottom: -1px; left: 30%; right: 30%; height: 2px; background: linear-gradient(90deg, transparent, #888, transparent);"></div>
+                <h1 style="color: #212529; margin-bottom: 20px; font-size: 3.5em; line-height: 1.1; font-weight: 800; letter-spacing: -0.02em; text-shadow: 0 1px 2px rgba(0,0,0,0.1);">Truck Categories and Models</h1>
+                <h2 style="margin: 0 0 8px 0; font-size: 1.25em; font-weight: 700; color: #444; position: relative;">
+                    <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2;">Professional Commercial Vehicle Solutions</span>
+                    <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ccc, transparent); z-index: 1;"></div>
+                </h2>
+                <p style="margin: 0; line-height: 1.5; color: #666; font-size: 1.1em;">Explore our comprehensive range of light, medium, and heavy-duty trucks designed for professional operations across all industries.</p>
+            </div>
+        </div>
 
-  <div class="controls-container" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; gap: 1rem;">
-    <div class="category-buttons">
-      <button data-category="all" class="active">All</button>
-      <button data-category="light-duty" >Light Duty Trucks</button>
-      <button data-category="medium-duty">Medium Duty Trucks</button>
-      <button data-category="heavy-duty" >Heavy Duty Trucks</button>
-    </div>
+        <!-- Controls Section -->
+        <section style="max-width: 95%; margin: 0 auto 15px auto; border: 1px solid #dee2e6; border-radius: 12px; padding: 10px;">
+            <h3 style="color: #212529; font-size: 1.8em; font-weight: 700; text-align: center; margin-bottom: 30px; position: relative;">
+                <span style="background: #fff; padding: 0 20px; position: relative; z-index: 2;">Filter & Search</span>
+                <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ddd, transparent); z-index: 1;"></div>
+            </h3>
+            
+            <div class="controls-container" style="display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap;">
+                <div class="category-buttons" style="display: flex; gap: 12px; flex-wrap: wrap;">
+                    <button data-category="all" class="active" style="background: #444; color: #ffffff; padding: 12px 24px; border-radius: 8px; border: 2px solid #444; font-weight: 600; cursor: pointer; transition: all 0.3s ease;">All</button>
+                    <button data-category="light-duty" style="background: transparent; color: #444; padding: 12px 24px; border-radius: 8px; border: 2px solid #dee2e6; font-weight: 600; cursor: pointer; transition: all 0.3s ease;">Light Duty</button>
+                    <button data-category="medium-duty" style="background: transparent; color: #444; padding: 12px 24px; border-radius: 8px; border: 2px solid #dee2e6; font-weight: 600; cursor: pointer; transition: all 0.3s ease;">Medium Duty</button>
+                    <button data-category="heavy-duty" style="background: transparent; color: #444; padding: 12px 24px; border-radius: 8px; border: 2px solid #dee2e6; font-weight: 600; cursor: pointer; transition: all 0.3s ease;">Heavy Duty</button>
+                </div>
+                
+                <input type="text" id="searchInput" placeholder="Search trucks..." style="width: 300px; max-width: 300px; padding: 12px 16px; border: 2px solid #dee2e6; border-radius: 8px; font-size: 14px;" />
+            </div>
+                        </div>
+          </div>
+    </section>
+        <!-- Light Duty Trucks -->
+        <section id="light-duty" class="category-section" data-category="light-duty" style="max-width: 95%; margin: 0 auto 15px auto; border: 2px solid #e0e0e0; border-radius: 16px; padding: 12px; position: relative; overflow: hidden;">
+            <div style="position: absolute; top: -1px; left: 15%; right: 15%; height: 2px; background: linear-gradient(90deg, transparent, #999, transparent);"></div>
+            <div style="position: absolute; left: -1px; top: 25%; bottom: 25%; width: 2px; background: linear-gradient(180deg, transparent, #999, transparent);"></div>
+            <div style="position: absolute; right: -1px; top: 30%; bottom: 30%; width: 2px; background: linear-gradient(180deg, transparent, #999, transparent);"></div>
+            
+            <h2 class="headings" id="ldt" style="color: #212529; margin-bottom: 10px; font-size: 2.5em; font-weight: 700; text-align: center; position: relative;">
+                <span style="background: #fff; padding: 0 24px; position: relative; z-index: 2;">Light Duty Trucks</span>
+                <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ddd, transparent); z-index: 1;"></div>
+            </h2>
     
-    <input type="text" id="searchInput" placeholder="Search trucks..." style="width: 300px; max-width: 300px;" />
-  </div>
 
-  <!-- Light Duty Trucks -->
-  <section class="category-section" data-category="light-duty">
-  
-    <h2 class="headings" id="ldt">Light Duty Trucks</h2>
-    
+            <div id="x9-series" class="series" style="margin-bottom: 10px;">
+                <div class="series-title" style="font-size: 1.5em; font-weight: 600; color: #444; margin-bottom: 6px; text-align: center; position: relative;">
+                    <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2;">X9 Series</span>
+                    <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ccc, transparent); z-index: 1;"></div>
+                </div>
+                <div class="truck-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 6px; margin-bottom: 32px;">
+                    <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                        <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
+                        <div class="truck-image" style="margin-bottom: 16px; border-radius: 8px; overflow: hidden;">
+                            <img src="assets/trucks/x94x4dumptrucks/Screenshot 2025-11-04 235942.webp" style="width: 100%; height: 180px; object-fit: cover;">
+                            <div class="magnifier-lens"></div>
+                        </div>
+                        <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0;">X9 Tow Truck</div>
+                    </div>
+                    <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                        <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
+                        <div class="truck-image" style="margin-bottom: 16px; border-radius: 8px; overflow: hidden;">
+                            <img src="assets/trucks/x9aerialplatformtrucks/Screenshot 2025-11-04 230412.webp" style="width: 100%; height: 180px; object-fit: cover;">
+                            <div class="magnifier-lens"></div>
+                        </div>
+                        <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0;">X9 Aerial Work Platform Truck</div>
+                    </div>
+                    <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                        <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
+                        <div class="truck-image" style="margin-bottom: 16px; border-radius: 8px; overflow: hidden;">
+                            <img src="assets/trucks/x94x4dumptrucks/Screenshot 2025-11-04 235942.webp" style="width: 100%; height: 180px; object-fit: cover;">
+                            <div class="magnifier-lens"></div>
+                        </div>
+                        <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0;">X9 4X4 Dump Truck</div>
+                    </div>
+                    <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                        <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
+                        <div class="truck-image" style="margin-bottom: 16px; border-radius: 8px; overflow: hidden;">
+                            <img src="assets/trucks/x9dumptrucks/Screenshot 2025-11-04 230617.webp" style="width: 100%; height: 180px; object-fit: cover;">
+                            <div class="magnifier-lens"></div>
+                        </div>
+                        <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0;">X9 Dump Truck</div>
+                    </div>
+                    <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                        <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
+                        <div class="truck-image" style="margin-bottom: 16px; border-radius: 8px; overflow: hidden;">
+                            <img src="assets/trucks/x9vantrucks/Screenshot 2025-11-04 230715.webp" style="width: 100%; height: 180px; object-fit: cover;">
+                            <div class="magnifier-lens"></div>
+                        </div>
+                        <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0;">X9 Van Truck</div>
+                    </div>
+                    <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                        <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
+                        <div class="truck-image" style="margin-bottom: 16px; border-radius: 8px; overflow: hidden;">
+                            <img src="assets/trucks/x9fueltankertrucks/Screenshot 2025-11-04 231642.webp" style="width: 100%; height: 180px; object-fit: cover;">
+                            <div class="magnifier-lens"></div>
+                        </div>
+                        <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0;">X9 Fuel Tanker Truck</div>
+                    </div>
+                    <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                        <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
+                        <div class="truck-image" style="margin-bottom: 16px; border-radius: 8px; overflow: hidden;">
+                            <img src="assets/trucks/x9garbagetrucks/Screenshot 2025-11-04 231541.webp" style="width: 100%; height: 180px; object-fit: cover;">
+                            <div class="magnifier-lens"></div>
+                        </div>
+                        <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0;">X9 Garbage Truck</div>
+                    </div>
+                    <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                        <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
+                        <div class="truck-image" style="margin-bottom: 16px; border-radius: 8px; overflow: hidden;">
+                            <img src="assets/trucks/x9refrigeratedtrucks/Screenshot 2025-11-04 232329.webp" style="width: 100%; height: 180px; object-fit: cover;">
+                            <div class="magnifier-lens"></div>
+                        </div>
+                        <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0;">X9 Refrigerated Truck</div>
+                    </div>
+                </div>
+            </div>
 
-    <div class="series">
-      <div class="series-title">X9</div>
-      <div class="truck-grid">
-        <div class="truck-tile" onclick=""><div class="truck-image"><img src="assets/trucks/x94x4dumptrucks/Screenshot 2025-11-04 235942.webp"><div class="magnifier-lens"></div></div><div class="truck-name">X9 Tow Truck</div></div>
-        <div class="truck-tile" onclick=""><div class="truck-image"><img src="assets/trucks/x9aerialplatformtrucks/Screenshot 2025-11-04 230412.webp"><div class="magnifier-lens"></div></div><div class="truck-name">X9 Aerial Work Platform Truck</div></div>
-        <div class="truck-tile" onclick=""><div class="truck-image"><img src="assets/trucks/x94x4dumptrucks/Screenshot 2025-11-04 235942.webp"><div class="magnifier-lens"></div></div><div class="truck-name">X9 4X4 Dump Truck</div></div>
-        <div class="truck-tile" onclick=""><div class="truck-image"><img src="assets/trucks/x9dumptrucks/Screenshot 2025-11-04 230617.webp"><div class="magnifier-lens"></div></div><div class="truck-name">X9 Dump Truck</div></div>
-        <div class="truck-tile" onclick=""><div class="truck-image"><img src="assets/trucks/x9vantrucks/Screenshot 2025-11-04 230715.webp"><div class="magnifier-lens"></div></div><div class="truck-name">X9 Van Truck</div></div>
-        <div class="truck-tile" onclick=""><div class="truck-image"><img src="assets/trucks/x9fueltankertrucks/Screenshot 2025-11-04 231642.webp"><div class="magnifier-lens"></div></div><div class="truck-name">X9 Fuel Tanker Truck</div></div>
-        <div class="truck-tile" onclick=""><div class="truck-image"><img src="assets/trucks/x9garbagetrucks/Screenshot 2025-11-04 231541.webp"><div class="magnifier-lens"></div></div><div class="truck-name">X9 Garbage Truck</div></div>
-        <div class="truck-tile" onclick=""><div class="truck-image"><img src="assets/trucks/x9refrigeratedtrucks/Screenshot 2025-11-04 232329.webp"><div class="magnifier-lens"></div></div><div class="truck-name">X9 Refrigerated Truck</div></div>
+                <div class="series" style="margin-bottom: 10px;">
+                <div class="series-title" style="font-size: 1.5em; font-weight: 600; color: #444; margin-bottom: 6px; text-align: center; position: relative;">
+                    <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2;">E9 Series</span>
+                    <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ccc, transparent); z-index: 1;"></div>
+                </div>
+                <div class="truck-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 6px; margin-bottom: 32px;">
+        <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                        <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
+                        <div class="truck-image" style="margin-bottom: 16px; border-radius: 8px; overflow: hidden;">
+                            <img src="assets/trucks/e9refrigeratedtrucks/Screenshot 2025-11-04 231846.webp" style="width: 100%; height: 180px; object-fit: cover;">
+                            <div class="magnifier-lens"></div>
+                        </div>
+                        <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0;">E9 Refrigerated Truck</div>
+                    </div>
+        <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                        <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
+                        <div class="truck-image" style="margin-bottom: 16px; border-radius: 8px; overflow: hidden;">
+                            <img src="assets/trucks/e9dumptruck/Screenshot 2025-11-04 232141.webp" style="width: 100%; height: 180px; object-fit: cover;">
+                            <div class="magnifier-lens"></div>
+                        </div>
+                        <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0;">E9 Dump Truck</div>
+                    </div>
+        <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                        <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
+                        <div class="truck-image" style="margin-bottom: 16px; border-radius: 8px; overflow: hidden;">
+                            <img src="assets/trucks/e9vantrucks/Screenshot 2025-11-04 234940.webp" style="width: 100%; height: 180px; object-fit: cover;">
+                            <div class="magnifier-lens"></div>
+                        </div>
+                        <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0;">E9 Van Truck</div>
+                    </div>
+        <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                        <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
+                        <div class="truck-image" style="margin-bottom: 16px; border-radius: 8px; overflow: hidden;">
+                            <img src="assets/trucks/e9kitchenwastefoodgarbagetrucks/Screenshot 2025-11-04 234723.webp" style="width: 100%; height: 180px; object-fit: cover;">
+                            <div class="magnifier-lens"></div>
+                        </div>
+                        <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0;">E9 Kitchen Waste Garbage Truck</div>
+                    </div>
       </div>
     </div>
 
-    <div class="series">
-      <div class="series-title">E9</div>
-      <div class="truck-grid">
-        <div class="truck-tile" onclick=""><div class="truck-image"><img src="assets/trucks/e9refrigeratedtrucks/Screenshot 2025-11-04 231846.webp"><div class="magnifier-lens"></div></div><div class="truck-name">E9 Refrigerated Truck</div></div>
-        <div class="truck-tile" onclick=""><div class="truck-image"><img src="assets/trucks/e9dumptruck/Screenshot 2025-11-04 232141.webp"><div class="magnifier-lens"></div></div><div class="truck-name">E9 Dump Truck</div></div>
-        <div class="truck-tile" onclick=""><div class="truck-image"><img src="assets/trucks/e9vantrucks/Screenshot 2025-11-04 234940.webp"><div class="magnifier-lens"></div></div><div class="truck-name">E9 Van Truck</div></div>
-        <div class="truck-tile" onclick=""><div class="truck-image"><img src="assets/trucks/e9kitchenwastefoodgarbagetrucks/Screenshot 2025-11-04 234723.webp"><div class="magnifier-lens"></div></div><div class="truck-name">E9 Kitchen Waste Garbage Truck</div></div>
-      </div>
-    </div>
-
-    <div class="series">
-      <div class="series-title">X7</div>
-      <div class="truck-grid">
-        <div class="truck-tile" onclick=""><div class="truck-image"><img src="assets/trucks/x7concretemixertrucks/main.webp"><div class="magnifier-lens"></div></div><div class="truck-name">X7 Concrete Mixer Truck</div></div>
-        <div class="truck-tile" onclick=""><div class="truck-image"><img src="assets/trucks/x7flatbedtrucks/main.webp"><div class="magnifier-lens"></div></div><div class="truck-name">X7 Flatbed Truck</div></div>
-        <div class="truck-tile" onclick=""><div class="truck-image"><img src="assets/trucks/x7sprinklertrucks/main.webp"><div class="magnifier-lens"></div></div><div class="truck-name">X7 Sprinkler Truck</div></div>
-        <div class="truck-tile" onclick=""><div class="truck-image"><img src="assets/trucks/x7truckmountedcrane/main.webp"><div class="magnifier-lens"></div></div><div class="truck-name">X7 Truck Mounted Crane</div></div>
-        <div class="truck-tile" onclick=""><div class="truck-image"><img src="assets/trucks/x7dumptrucks/main.webp"><div class="magnifier-lens"></div></div><div class="truck-name">X7 Dump Truck</div></div>
+                <div class="series" style="margin-bottom: 10px;">
+                <div class="series-title" style="font-size: 1.5em; font-weight: 600; color: #444; margin-bottom: 6px; text-align: center; position: relative;">
+                    <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2;">X7 Series</span>
+                    <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ccc, transparent); z-index: 1;"></div>
+                </div>
+                <div class="truck-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 6px; margin-bottom: 32px;">
+        <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                        <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
+                        <div class="truck-image" style="margin-bottom: 16px; border-radius: 8px; overflow: hidden;">
+                            <img src="assets/trucks/x7concretemixertrucks/main.webp" style="width: 100%; height: 180px; object-fit: cover;">
+                            <div class="magnifier-lens"></div>
+                        </div>
+                        <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0;">X7 Concrete Mixer Truck</div>
+                    </div>
+        <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                        <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
+                        <div class="truck-image" style="margin-bottom: 16px; border-radius: 8px; overflow: hidden;">
+                            <img src="assets/trucks/x7flatbedtrucks/main.webp" style="width: 100%; height: 180px; object-fit: cover;">
+                            <div class="magnifier-lens"></div>
+                        </div>
+                        <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0;">X7 Flatbed Truck</div>
+                    </div>
+        <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                        <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
+                        <div class="truck-image" style="margin-bottom: 16px; border-radius: 8px; overflow: hidden;">
+                            <img src="assets/trucks/x7sprinklertrucks/main.webp" style="width: 100%; height: 180px; object-fit: cover;">
+                            <div class="magnifier-lens"></div>
+                        </div>
+                        <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0;">X7 Sprinkler Truck</div>
+                    </div>
+        <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                        <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
+                        <div class="truck-image" style="margin-bottom: 16px; border-radius: 8px; overflow: hidden;">
+                            <img src="assets/trucks/x7truckmountedcrane/main.webp" style="width: 100%; height: 180px; object-fit: cover;">
+                            <div class="magnifier-lens"></div>
+                        </div>
+                        <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0;">X7 Truck Mounted Crane</div>
+                    </div>
+        <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                        <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
+                        <div class="truck-image" style="margin-bottom: 16px; border-radius: 8px; overflow: hidden;">
+                            <img src="assets/trucks/x7dumptrucks/main.webp" style="width: 100%; height: 180px; object-fit: cover;">
+                            <div class="magnifier-lens"></div>
+                        </div>
+                        <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0;">X7 Dump Truck</div>
+                    </div>
         
       </div>
     </div>
 
-    <div class="series">
-      <div class="series-title" id="i9">i9 (New Series)</div>
-      <div class="truck-grid">
-        <div class="truck-tile" onclick=""><div class="truck-image"><img src="assets/trucks/i9/main.webp"><div class="magnifier-lens"></div></div><div class="truck-name">i9 (New Series)</div></div>
+                <div class="series" style="margin-bottom: 10px;">
+                <div class="series-title" id="i9">i9 (New Series)</div> style="font-size: 1.5em; font-weight: 600; color: #444; margin-bottom: 6px; text-align: center; position: relative;">
+                    <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2;">i9 (New Series)</span>
+                    <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ccc, transparent); z-index: 1;"></div>
+                </div>
+                <div class="truck-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 6px; margin-bottom: 32px;">
+        <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                        <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
+                        <div class="truck-image" style="margin-bottom: 16px; border-radius: 8px; overflow: hidden;">
+                            <img src="assets/trucks/i9/main.webp" style="width: 100%; height: 180px; object-fit: cover;">
+                            <div class="magnifier-lens"></div>
+                        </div>
+                        <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0;">i9 (New Series)</div>
+                    </div>
       </div>
     </div>
-  </section>
-
+          </div>
+          </div>
+    </section>
   <!-- Medium Duty Trucks -->
   <section class="category-section" data-category="medium-duty">
-    <h2 class="headings"  id="mdt">Medium Duty Trucks</h2>
+        <div style="max-width: 95%; margin: 0 auto 15px auto; border: 2px solid #e0e0e0; border-radius: 16px; padding: 12px; position: relative; overflow: hidden;">
+            <div style="position: absolute; top: -1px; left: 15%; right: 15%; height: 2px; background: linear-gradient(90deg, transparent, #999, transparent);"></div>
+            <div style="position: absolute; left: -1px; top: 25%; bottom: 25%; width: 2px; background: linear-gradient(180deg, transparent, #999, transparent);"></div>
+            <div style="position: absolute; right: -1px; top: 30%; bottom: 30%; width: 2px; background: linear-gradient(180deg, transparent, #999, transparent);"></div>
+            
+            <h2 class="headings" id="medium-duty">Medium Duty Trucks</h2>
 
-    <div class="series">
-      <div class="series-title">E6</div>
-      <div class="truck-grid">
-        <div class="truck-tile" onclick=""><div class="truck-image"><img src="assets/trucks/e6dumptrucks/Screenshot 2025-11-05 011157.webp"><div class="magnifier-lens"></div></div><div class="truck-name">E6 Dump Truck</div></div>
-        <div class="truck-tile" onclick=""><div class="truck-image"><img src="assets/trucks/e6staketrucks/Screenshot 2025-11-05 011655.webp"><div class="magnifier-lens"></div></div><div class="truck-name">E6 Stake Truck</div></div>
-        <div class="truck-tile" onclick=""><div class="truck-image"><img src="assets/trucks/e6vantrucks/Screenshot 2025-11-05 011018.webp"><div class="magnifier-lens"></div></div><div class="truck-name">E6 Van Truck</div></div>
-        <div class="truck-tile" onclick=""><div class="truck-image"><img src="assets/trucks/e6refrigeratedtruck/main.webp"><div class="magnifier-lens"></div></div><div class="truck-name">E6 Refrigerated Truck</div></div>
-        <div class="truck-tile" onclick=""><div class="truck-image"><img src="assets/trucks/e6sprinklertrucks/main.webp"><div class="magnifier-lens"></div></div><div class="truck-name">E6 Sprinkler Truck</div></div>
-        <div class="truck-tile" onclick=""><div class="truck-image"><img src="assets/trucks/e6truckmountedcrane/mai.webp"><div class="magnifier-lens"></div></div><div class="truck-name">E6 Truck Mounted Crane</div></div>
-        <div class="truck-tile" onclick=""><div class="truck-image"><img src="assets/trucks/e6cementmixertrucks/main.webp"><div class="magnifier-lens"></div></div><div class="truck-name">E6 Cement Mixer Truck</div></div>
+                <div class="series" style="margin-bottom: 10px;">
+                <div class="series-title" style="font-size: 1.5em; font-weight: 600; color: #444; margin-bottom: 6px; text-align: center; position: relative;">
+                    <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2;">E6</span>
+                    <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ccc, transparent); z-index: 1;"></div>
+                </div>
+                <div class="truck-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 6px; margin-bottom: 32px;">
+        <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                        <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
+                        <div class="truck-image" style="margin-bottom: 16px; border-radius: 8px; overflow: hidden;">
+                            <img src="assets/trucks/e6dumptrucks/Screenshot 2025-11-05 011157.webp" style="width: 100%; height: 180px; object-fit: cover;">
+                            <div class="magnifier-lens"></div>
+                        </div>
+                        <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0;">E6 Dump Truck</div>
+                    </div>
+        <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                        <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
+                        <div class="truck-image" style="margin-bottom: 16px; border-radius: 8px; overflow: hidden;">
+                            <img src="assets/trucks/e6staketrucks/Screenshot 2025-11-05 011655.webp" style="width: 100%; height: 180px; object-fit: cover;">
+                            <div class="magnifier-lens"></div>
+                        </div>
+                        <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0;">E6 Stake Truck</div>
+                    </div>
+        <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                        <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
+                        <div class="truck-image" style="margin-bottom: 16px; border-radius: 8px; overflow: hidden;">
+                            <img src="assets/trucks/e6vantrucks/Screenshot 2025-11-05 011018.webp" style="width: 100%; height: 180px; object-fit: cover;">
+                            <div class="magnifier-lens"></div>
+                        </div>
+                        <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0;">E6 Van Truck</div>
+                    </div>
+        <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                        <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
+                        <div class="truck-image" style="margin-bottom: 16px; border-radius: 8px; overflow: hidden;">
+                            <img src="assets/trucks/e6refrigeratedtruck/main.webp" style="width: 100%; height: 180px; object-fit: cover;">
+                            <div class="magnifier-lens"></div>
+                        </div>
+                        <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0;">E6 Refrigerated Truck</div>
+                    </div>
+        <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                        <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
+                        <div class="truck-image" style="margin-bottom: 16px; border-radius: 8px; overflow: hidden;">
+                            <img src="assets/trucks/e6sprinklertrucks/main.webp" style="width: 100%; height: 180px; object-fit: cover;">
+                            <div class="magnifier-lens"></div>
+                        </div>
+                        <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0;">E6 Sprinkler Truck</div>
+                    </div>
+        <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                        <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
+                        <div class="truck-image" style="margin-bottom: 16px; border-radius: 8px; overflow: hidden;">
+                            <img src="assets/trucks/e6truckmountedcrane/mai.webp" style="width: 100%; height: 180px; object-fit: cover;">
+                            <div class="magnifier-lens"></div>
+                        </div>
+                        <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0;">E6 Truck Mounted Crane</div>
+                    </div>
+        <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                        <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
+                        <div class="truck-image" style="margin-bottom: 16px; border-radius: 8px; overflow: hidden;">
+                            <img src="assets/trucks/e6cementmixertrucks/main.webp" style="width: 100%; height: 180px; object-fit: cover;">
+                            <div class="magnifier-lens"></div>
+                        </div>
+                        <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0;">E6 Cement Mixer Truck</div>
+                    </div>
       </div>
     </div>
 
-    <div class="series">
-      <div class="series-title">X6</div>
-      <div class="truck-grid">
-        <div class="truck-tile" onclick=""><div class="truck-image"><img src="assets/trucks/x6dumptrucks/Screenshot 2025-11-05 001416.webp"><div class="magnifier-lens"></div></div><div class="truck-name">X6 Dump Truck</div></div>
-        <div class="truck-tile" onclick=""><div class="truck-image"><img src="assets/trucks/x6flatbeds/Screenshot 2025-11-05 002252.webp"><div class="magnifier-lens"></div></div><div class="truck-name">X6 Flatbed Truck</div></div>
-        <div class="truck-tile" onclick=""><div class="truck-image"><img src="assets/van.webp"><div class="magnifier-lens"></div></div><div class="truck-name">X6 Van Truck</div></div>
-        <div class="truck-tile" onclick=""><div class="truck-image"><img src="assets/trucks/x6truckmountedcranes/Screenshot 2025-11-05 000857.webp"><div class="magnifier-lens"></div></div><div class="truck-name">X6 Truck Mounted Crane</div></div>
-        <div class="truck-tile" onclick=""><div class="truck-image"><img src="assets/trucks/x6cargotrucks/Screenshot 2025-11-05 001000.webp"><div class="magnifier-lens"></div></div><div class="truck-name">X6 Cargo Truck</div></div>
-        <div class="truck-tile" onclick=""><div class="truck-image"><img src="assets/trucks/x6awdcargotrucks/Screenshot 2025-11-05 001032.webp"><div class="magnifier-lens"></div></div><div class="truck-name">X6 AWD Cargo Truck</div></div>
-        <div class="truck-tile" onclick=""><div class="truck-image"><img src="assets/trucks/x6dropsidetrucks/Screenshot 2025-11-05 001655.webp"><div class="magnifier-lens"></div></div><div class="truck-name">X6 Dropside Truck</div></div>
-        <div class="truck-tile" onclick=""><div class="truck-image"><img src="assets/trucks/x6cementmixertsucks/Screenshot 2025-11-05 001748.webp"><div class="magnifier-lens"></div></div><div class="truck-name">X6 Cement Mixer Truck</div></div>
-        <div class="truck-tile" onclick=""><div class="truck-image"><img src="assets/trucks/x6concretemixertrucks/Screenshot 2025-11-05 002457.webp"><div class="magnifier-lens"></div></div><div class="truck-name">X6 Concrete Mixer Truck</div></div>
-        <div class="truck-tile" onclick=""><div class="truck-image"><img src="assets/trucks/x6loadingcranerecoverytruck/Screenshot 2025-11-05 001917.webp"><div class="magnifier-lens"></div></div><div class="truck-name">X6 Loading Crane Recovery Truck</div></div>
-        <div class="truck-tile" onclick=""><div class="truck-image"><img src="assets/trucks/x6sprinklertrucks/main.webp"><div class="magnifier-lens"></div></div><div class="truck-name">X6 Sprinkler Truck</div></div>
-        <div class="truck-tile" onclick=""><div class="truck-image"><img src="assets/trucks/x6dustsuppressiontrucks/Screenshot 2025-11-05 002138.webp"><div class="magnifier-lens"></div></div><div class="truck-name">X6 Dust Suppression Truck</div></div>
-        <div class="truck-tile" onclick=""><div class="truck-image"><img src="assets/trucks/x6garbagetrucks/Screenshot 2025-11-05 002355.webp"><div class="magnifier-lens"></div></div><div class="truck-name">X6 Garbage Truck</div></div>
-        <div class="truck-tile" onclick=""><div class="truck-image"><img src="assets/trucks/x6fueltanker/Screenshot 2025-11-05 024749.webp"><div class="magnifier-lens"></div></div><div class="truck-name">X6 Fuel Tanker Truck</div></div>
+                <div class="series" style="margin-bottom: 10px;">
+                <div class="series-title" style="font-size: 1.5em; font-weight: 600; color: #444; margin-bottom: 6px; text-align: center; position: relative;">
+                    <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2;">X6</span>
+                    <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ccc, transparent); z-index: 1;"></div>
+                </div>
+                <div class="truck-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 6px; margin-bottom: 32px;">
+        <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                        <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
+                        <div class="truck-image" style="margin-bottom: 16px; border-radius: 8px; overflow: hidden;">
+                            <img src="assets/trucks/x6dumptrucks/Screenshot 2025-11-05 001416.webp" style="width: 100%; height: 180px; object-fit: cover;">
+                            <div class="magnifier-lens"></div>
+                        </div>
+                        <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0;">X6 Dump Truck</div>
+                    </div>
+        <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                        <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
+                        <div class="truck-image" style="margin-bottom: 16px; border-radius: 8px; overflow: hidden;">
+                            <img src="assets/trucks/x6flatbeds/Screenshot 2025-11-05 002252.webp" style="width: 100%; height: 180px; object-fit: cover;">
+                            <div class="magnifier-lens"></div>
+                        </div>
+                        <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0;">X6 Flatbed Truck</div>
+                    </div>
+        <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                        <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
+                        <div class="truck-image" style="margin-bottom: 16px; border-radius: 8px; overflow: hidden;">
+                            <img src="assets/van.webp" style="width: 100%; height: 180px; object-fit: cover;">
+                            <div class="magnifier-lens"></div>
+                        </div>
+                        <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0;">X6 Van Truck</div>
+                    </div>
+        <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                        <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
+                        <div class="truck-image" style="margin-bottom: 16px; border-radius: 8px; overflow: hidden;">
+                            <img src="assets/trucks/x6truckmountedcranes/Screenshot 2025-11-05 000857.webp" style="width: 100%; height: 180px; object-fit: cover;">
+                            <div class="magnifier-lens"></div>
+                        </div>
+                        <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0;">X6 Truck Mounted Crane</div>
+                    </div>
+        <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                        <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
+                        <div class="truck-image" style="margin-bottom: 16px; border-radius: 8px; overflow: hidden;">
+                            <img src="assets/trucks/x6cargotrucks/Screenshot 2025-11-05 001000.webp" style="width: 100%; height: 180px; object-fit: cover;">
+                            <div class="magnifier-lens"></div>
+                        </div>
+                        <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0;">X6 Cargo Truck</div>
+                    </div>
+        <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                        <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
+                        <div class="truck-image" style="margin-bottom: 16px; border-radius: 8px; overflow: hidden;">
+                            <img src="assets/trucks/x6awdcargotrucks/Screenshot 2025-11-05 001032.webp" style="width: 100%; height: 180px; object-fit: cover;">
+                            <div class="magnifier-lens"></div>
+                        </div>
+                        <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0;">X6 AWD Cargo Truck</div>
+                    </div>
+        <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                        <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
+                        <div class="truck-image" style="margin-bottom: 16px; border-radius: 8px; overflow: hidden;">
+                            <img src="assets/trucks/x6dropsidetrucks/Screenshot 2025-11-05 001655.webp" style="width: 100%; height: 180px; object-fit: cover;">
+                            <div class="magnifier-lens"></div>
+                        </div>
+                        <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0;">X6 Dropside Truck</div>
+                    </div>
+        <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                        <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
+                        <div class="truck-image" style="margin-bottom: 16px; border-radius: 8px; overflow: hidden;">
+                            <img src="assets/trucks/x6cementmixertsucks/Screenshot 2025-11-05 001748.webp" style="width: 100%; height: 180px; object-fit: cover;">
+                            <div class="magnifier-lens"></div>
+                        </div>
+                        <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0;">X6 Cement Mixer Truck</div>
+                    </div>
+        <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                        <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
+                        <div class="truck-image" style="margin-bottom: 16px; border-radius: 8px; overflow: hidden;">
+                            <img src="assets/trucks/x6concretemixertrucks/Screenshot 2025-11-05 002457.webp" style="width: 100%; height: 180px; object-fit: cover;">
+                            <div class="magnifier-lens"></div>
+                        </div>
+                        <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0;">X6 Concrete Mixer Truck</div>
+                    </div>
+        <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                        <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
+                        <div class="truck-image" style="margin-bottom: 16px; border-radius: 8px; overflow: hidden;">
+                            <img src="assets/trucks/x6loadingcranerecoverytruck/Screenshot 2025-11-05 001917.webp" style="width: 100%; height: 180px; object-fit: cover;">
+                            <div class="magnifier-lens"></div>
+                        </div>
+                        <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0;">X6 Loading Crane Recovery Truck</div>
+                    </div>
+        <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                        <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
+                        <div class="truck-image" style="margin-bottom: 16px; border-radius: 8px; overflow: hidden;">
+                            <img src="assets/trucks/x6sprinklertrucks/main.webp" style="width: 100%; height: 180px; object-fit: cover;">
+                            <div class="magnifier-lens"></div>
+                        </div>
+                        <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0;">X6 Sprinkler Truck</div>
+                    </div>
+        <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                        <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
+                        <div class="truck-image" style="margin-bottom: 16px; border-radius: 8px; overflow: hidden;">
+                            <img src="assets/trucks/x6dustsuppressiontrucks/Screenshot 2025-11-05 002138.webp" style="width: 100%; height: 180px; object-fit: cover;">
+                            <div class="magnifier-lens"></div>
+                        </div>
+                        <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0;">X6 Dust Suppression Truck</div>
+                    </div>
+        <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                        <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
+                        <div class="truck-image" style="margin-bottom: 16px; border-radius: 8px; overflow: hidden;">
+                            <img src="assets/trucks/x6garbagetrucks/Screenshot 2025-11-05 002355.webp" style="width: 100%; height: 180px; object-fit: cover;">
+                            <div class="magnifier-lens"></div>
+                        </div>
+                        <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0;">X6 Garbage Truck</div>
+                    </div>
+        <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                        <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
+                        <div class="truck-image" style="margin-bottom: 16px; border-radius: 8px; overflow: hidden;">
+                            <img src="assets/trucks/x6fueltanker/Screenshot 2025-11-05 024749.webp" style="width: 100%; height: 180px; object-fit: cover;">
+                            <div class="magnifier-lens"></div>
+                        </div>
+                        <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0;">X6 Fuel Tanker Truck</div>
+                    </div>
       </div>
     </div>
-  </section>
+          </div>
+          </div>
+    </section>
+          <!-- Heavy Duty Trucks -->
+        <section class="category-section" data-category="heavy-duty" style="max-width: 95%; margin: 0 auto 15px auto; border: 2px solid #e0e0e0; border-radius: 16px; padding: 12px; position: relative; overflow: hidden;">
+            <div style="position: absolute; top: -1px; left: 15%; right: 15%; height: 2px; background: linear-gradient(90deg, transparent, #999, transparent);"></div>
+            <div style="position: absolute; left: -1px; top: 25%; bottom: 25%; width: 2px; background: linear-gradient(180deg, transparent, #999, transparent);"></div>
+            <div style="position: absolute; right: -1px; top: 30%; bottom: 30%; width: 2px; background: linear-gradient(180deg, transparent, #999, transparent);"></div>
+            
+            <h2 class="headings" id="heavy-duty" style="color: #212529; margin-bottom: 10px; font-size: 2.5em; font-weight: 700; text-align: center; position: relative;">
+                <span style="background: #fff; padding: 0 24px; position: relative; z-index: 2;">Heavy Duty Trucks</span>
+                <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ddd, transparent); z-index: 1;"></div>
+            </h2>
 
-  <!-- Heavy Duty Trucks -->
-  <section class="category-section" data-category="heavy-duty">
-    <h2 class="headings" id="hdt">Heavy Duty Trucks</h2>
-
-    <div class="series">
-      <div class="series-title">Z3</div>
-      <div class="truck-grid">
-        <div class="truck-tile" onclick=""><div class="truck-image"><img src="assets/trucks/Additional Trucks/Z3 Tractor Truck/Screenshot 2025-11-05 140111.webp"><div class="magnifier-lens"></div></div><div class="truck-name">Z3 Dump Truck</div></div>
+                <div class="series" style="margin-bottom: 16px;">
+                <div class="series-title" style="font-size: 1.5em; font-weight: 600; color: #000000; margin-bottom: 12px; text-align: center; position: relative;">
+                    <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2; border: 2px solid #000000; color: #000000;">Z3 Series</span>
+                    <div style="position: absolute; top: 50%; left: 0; right: 0; height: 2px; background: #000000; z-index: 1;"></div>
+                </div>
+                <div class="truck-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 16px; align-items: start;">
+        <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                        <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
+                        <div class="truck-image" style="margin-bottom: 16px; border-radius: 8px; overflow: hidden;">
+                            <img src="assets/trucks/Additional Trucks/Z3 Tractor Truck/Screenshot 2025-11-05 140111.webp" style="width: 100%; height: 180px; object-fit: cover;">
+                            <div class="magnifier-lens"></div>
+                        </div>
+                        <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0;">Z3 Dump Truck</div>
+                    </div>
       </div>
     </div>
 
-    <div class="series">
-      <div class="series-title">E1st</div>
-      <div class="truck-grid">
-        <div class="truck-tile" onclick=""><div class="truck-image"><img src="assets/e1st.webp"><div class="magnifier-lens"></div></div><div class="truck-name">E1st Tractor</div></div>
+                <div class="series" style="margin-bottom: 10px;">
+                <div class="series-title" style="font-size: 1.5em; font-weight: 600; color: #444; margin-bottom: 6px; text-align: center; position: relative;">
+                    <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2;">E1st</span>
+                    <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ccc, transparent); z-index: 1;"></div>
+                </div>
+                <div class="truck-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 6px; margin-bottom: 32px;">
+        <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                        <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
+                        <div class="truck-image" style="margin-bottom: 16px; border-radius: 8px; overflow: hidden;">
+                            <img src="assets/e1st.webp" style="width: 100%; height: 180px; object-fit: cover;">
+                            <div class="magnifier-lens"></div>
+                        </div>
+                        <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0;">E1st Tractor</div>
+                    </div>
       </div>
     </div>
 
-    <div class="series">
-      <div class="series-title">E3</div>
-      <div class="truck-grid">
-  <div class="truck-tile" onclick="">
-    <div class="truck-image"><img src="assets/trucks/Additional Trucks/E3 Muck Truck/Screenshot 2025-11-05 134950.webp"><div class="magnifier-lens"></div></div>
-    <div class="truck-name">E3 muck truck</div>
-  </div>
-  <div class="truck-tile" onclick="">
-    <div class="truck-image"><img src="assets/trucks/Additional Trucks/E3 Tractor Truck/Screenshot 2025-11-05 135943.webp"><div class="magnifier-lens"></div></div>
-    <div class="truck-name">E3 Tractor truck</div>
-  </div>
-  <div class="truck-tile" onclick="">
-    <div class="truck-image"><img src="assets/trucks/Additional Trucks/E3 Van Truck/Screenshot 2025-11-05 135624.webp"><div class="magnifier-lens"></div></div>
-    <div class="truck-name">E3 vantruck.</div>
-  </div>
-  <div class="truck-tile" onclick="">
-    <div class="truck-image"><img src="assets/trucks/Additional Trucks/E3 Dump Truck/main.webp"><div class="magnifier-lens"></div></div>
-    <div class="truck-name">E3 Dumptruck.</div>
-  </div>
-  <div class="truck-tile" onclick="">
-    <div class="truck-image"><img src="assets/trucks/Additional Trucks/E3 cement mixer trucks/Screenshot 2025-11-05 143029.webp"><div class="magnifier-lens"></div></div>
-    <div class="truck-name">E3 Cement mixertruck.</div>
-  </div>
-  <div class="truck-tile" onclick="">
-    <div class="truck-image"><img src="assets/trucks/Additional Trucks/E6 compactor garbage trucks/Screenshot 2025-11-05 143235.webp"><div class="magnifier-lens"></div></div>
-    <div class="truck-name">E3 compactor Garbage Track.</div>
-  </div>
-  <div class="truck-tile" onclick="">
-    <div class="truck-image"><img src="assets/trucks/Additional Trucks/E3 Stake Truck/Screenshot 2025-11-05 140225.webp"><div class="magnifier-lens"></div></div>
-    <div class="truck-name">E3 Stake truck.</div>
-  </div>
-  <div class="truck-tile" onclick="">
-    <div class="truck-image"><img src="assets/trucks/Additional Trucks/E3 Sewage Suction Truck/Screenshot 2025-11-05 134017.webp"><div class="magnifier-lens"></div></div>
-    <div class="truck-name">E3 sewage suction truck.</div>
-  </div>
-</div>
+                <div class="series" style="margin-bottom: 10px;">
+                <div class="series-title" style="font-size: 1.5em; font-weight: 600; color: #444; margin-bottom: 6px; text-align: center; position: relative;">
+                    <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2;">E3</span>
+                    <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ccc, transparent); z-index: 1;"></div>
+                </div>
+                <div class="truck-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 6px; margin-bottom: 32px;">
+                    <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                        <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
+                        <div class="truck-image" style="margin-bottom: 16px; border-radius: 8px; overflow: hidden;">
+                            <img src="assets/trucks/Additional Trucks/E3 Muck Truck/Screenshot 2025-11-05 134950.webp" style="width: 100%; height: 180px; object-fit: cover;">
+                            <div class="magnifier-lens"></div>
+                        </div>
+                        <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0;">E3 muck truck</div>
+                    </div>
+                    <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                        <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
+                        <div class="truck-image" style="margin-bottom: 16px; border-radius: 8px; overflow: hidden;">
+                            <img src="assets/trucks/Additional Trucks/E3 Tractor Truck/Screenshot 2025-11-05 135943.webp" style="width: 100%; height: 180px; object-fit: cover;">
+                            <div class="magnifier-lens"></div>
+                        </div>
+                        <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0;">E3 Tractor truck</div>
+                    </div>
+                    <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                        <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
+                        <div class="truck-image" style="margin-bottom: 16px; border-radius: 8px; overflow: hidden;">
+                            <img src="assets/trucks/Additional Trucks/E3 Van Truck/Screenshot 2025-11-05 135624.webp" style="width: 100%; height: 180px; object-fit: cover;">
+                            <div class="magnifier-lens"></div>
+                        </div>
+                        <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0;">E3 vantruck.</div>
+                    </div>
+                    <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                        <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
+                        <div class="truck-image" style="margin-bottom: 16px; border-radius: 8px; overflow: hidden;">
+                            <img src="assets/trucks/Additional Trucks/E3 Dump Truck/main.webp" style="width: 100%; height: 180px; object-fit: cover;">
+                            <div class="magnifier-lens"></div>
+                        </div>
+                        <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0;">E3 Dumptruck.</div>
+                    </div>
+                    <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                        <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
+                        <div class="truck-image" style="margin-bottom: 16px; border-radius: 8px; overflow: hidden;">
+                            <img src="assets/trucks/Additional Trucks/E3 cement mixer trucks/Screenshot 2025-11-05 143029.webp" style="width: 100%; height: 180px; object-fit: cover;">
+                            <div class="magnifier-lens"></div>
+                        </div>
+                        <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0;">E3 Cement mixertruck.</div>
+                    </div>
+                    <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                        <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
+                        <div class="truck-image" style="margin-bottom: 16px; border-radius: 8px; overflow: hidden;">
+                            <img src="assets/trucks/Additional Trucks/E6 compactor garbage trucks/Screenshot 2025-11-05 143235.webp" style="width: 100%; height: 180px; object-fit: cover;">
+                            <div class="magnifier-lens"></div>
+                        </div>
+                        <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0;">E3 compactor Garbage Track.</div>
+                    </div>
+                    <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                        <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
+                        <div class="truck-image" style="margin-bottom: 16px; border-radius: 8px; overflow: hidden;">
+                            <img src="assets/trucks/Additional Trucks/E3 Stake Truck/Screenshot 2025-11-05 140225.webp" style="width: 100%; height: 180px; object-fit: cover;">
+                            <div class="magnifier-lens"></div>
+                        </div>
+                        <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0;">E3 Stake truck.</div>
+                    </div>
+                    <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                        <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
+                        <div class="truck-image" style="margin-bottom: 16px; border-radius: 8px; overflow: hidden;">
+                            <img src="assets/trucks/Additional Trucks/E3 Sewage Suction Truck/Screenshot 2025-11-05 134017.webp" style="width: 100%; height: 180px; object-fit: cover;">
+                            <div class="magnifier-lens"></div>
+                        </div>
+                        <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0;">E3 sewage suction truck.</div>
+                    </div>
+                </div>
 
     </div>
 
-    <div class="series">
-  <div class="series-title">9 Series</div>
-  <div class="truck-grid">
-    <div class="truck-tile" onclick="">
-      <div class="truck-image"><img src="assets/trucks/Additional Trucks/9 Series Sweeper/Screenshot 2025-11-05 132520.webp"><div class="magnifier-lens"></div></div>
+                <div class="series" style="margin-bottom: 10px;">
+                <div class="series-title" style="font-size: 1.5em; font-weight: 600; color: #444; margin-bottom: 6px; text-align: center; position: relative;">
+                    <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2;">9 Series</span>
+                    <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ccc, transparent); z-index: 1;"></div>
+                </div>
+                <div class="truck-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 6px; margin-bottom: 32px;">
+                    <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                        <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
+                        <div class="truck-image" style="margin-bottom: 16px; border-radius: 8px; overflow: hidden;">
+                            <img src="assets/trucks/Additional Trucks/9 Series Sweeper/Screenshot 2025-11-05 132520.webp" style="width: 100%; height: 180px; object-fit: cover;">
+                            <div class="magnifier-lens"></div>
+                        </div>
+                        <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0;">9 series sweeper</div>
+                    </div>
+                    <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                        <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
+                        <div class="truck-image" style="margin-bottom: 16px; border-radius: 8px; overflow: hidden;">
+                            <img src="assets/trucks/Additional Trucks/9Series Garbage Truck/Screenshot 2025-11-05 133259.webp" style="width: 100%; height: 180px; object-fit: cover;">
+                            <div class="magnifier-lens"></div>
+                        </div>
+                        <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0;">9 series Garbage Truck</div>
+                    </div>
+                    <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                        <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
+                        <div class="truck-image" style="margin-bottom: 16px; border-radius: 8px; overflow: hidden;">
+                            <img src="assets/trucks/Additional Trucks/9 Series Tow Truck/Screenshot 2025-11-05 133547.webp" style="width: 100%; height: 180px; object-fit: cover;">
+                            <div class="magnifier-lens"></div>
+                        </div>
+                        <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0;">9 series Tow Truck</div>
+                    </div>
+                    <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                        <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
+                        <div class="truck-image" style="margin-bottom: 16px; border-radius: 8px; overflow: hidden;">
+                            <img src="assets/trucks/Additional Trucks/6 series truck mounted crane/Screenshot 2025-11-05 133720.webp" style="width: 100%; height: 180px; object-fit: cover;">
+                            <div class="magnifier-lens"></div>
+                        </div>
+                        <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0;">9 series Truckmounted crane</div>
+                    </div>
+                    <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                        <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
+                        <div class="truck-image" style="margin-bottom: 16px; border-radius: 8px; overflow: hidden;">
+                            <img src="assets/trucks/Additional Trucks/9 Series Cement Mixer Truck/Screenshot 2025-11-05 133830.webp" style="width: 100%; height: 180px; object-fit: cover;">
+                            <div class="magnifier-lens"></div>
+                        </div>
+                        <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0;">9series cement mixer truck</div>
+                    </div>
+                </div></div>
       <div class="truck-name">9 series sweeper</div>
     </div>
     <div class="truck-tile" onclick="">
@@ -406,11 +1694,45 @@
 </div>
 
 
-    <div class="series">
-  <div class="series-title">6 Series</div>
-  <div class="truck-grid">
-    <div class="truck-tile" onclick="">
-      <div class="truck-image"><img src="assets/trucks/Additional Trucks/6Series Sweeper/Screenshot 2025-11-05 132454.webp"><div class="magnifier-lens"></div></div>
+                <div class="series" style="margin-bottom: 10px;">
+                <div class="series-title" style="font-size: 1.5em; font-weight: 600; color: #444; margin-bottom: 6px; text-align: center; position: relative;">
+                    <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2;">6 Series</span>
+                    <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ccc, transparent); z-index: 1;"></div>
+                </div>
+                <div class="truck-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 6px; margin-bottom: 32px;">
+                    <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                        <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
+                        <div class="truck-image" style="margin-bottom: 16px; border-radius: 8px; overflow: hidden;">
+                            <img src="assets/trucks/Additional Trucks/6Series Sweeper/Screenshot 2025-11-05 132454.webp" style="width: 100%; height: 180px; object-fit: cover;">
+                            <div class="magnifier-lens"></div>
+                        </div>
+                        <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0;">6 series sweeper</div>
+                    </div>
+                    <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                        <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
+                        <div class="truck-image" style="margin-bottom: 16px; border-radius: 8px; overflow: hidden;">
+                            <img src="assets/trucks/Additional Trucks/6 Series Garbage Trucks/Screenshot 2025-11-05 133323.webp" style="width: 100%; height: 180px; object-fit: cover;">
+                            <div class="magnifier-lens"></div>
+                        </div>
+                        <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0;">6 Series Garbage Truck</div>
+                    </div>
+                    <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                        <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
+                        <div class="truck-image" style="margin-bottom: 16px; border-radius: 8px; overflow: hidden;">
+                            <img src="assets/trucks/Additional Trucks/6 series truck mounted crane/Screenshot 2025-11-05 133720.webp" style="width: 100%; height: 180px; object-fit: cover;">
+                            <div class="magnifier-lens"></div>
+                        </div>
+                        <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0;">6 Series truckmounted Crane</div>
+                    </div>
+                    <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                        <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
+                        <div class="truck-image" style="margin-bottom: 16px; border-radius: 8px; overflow: hidden;">
+                            <img src="assets/trucks/Additional Trucks/6 series cement mixer trucks/Screenshot 2025-11-05 142913.webp" style="width: 100%; height: 180px; object-fit: cover;">
+                            <div class="magnifier-lens"></div>
+                        </div>
+                        <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0;">6 series cement mixer truck</div>
+                    </div>
+                </div></div>
       <div class="truck-name">6 series sweeper</div>
     </div>
     <div class="truck-tile" onclick="">
@@ -430,15 +1752,26 @@
 </div>
 
 
-    <div class="series">
-      <div class="series-title">3 Series</div>
-      <div class="truck-grid">
-        <div class="truck-tile" onclick=""><div class="truck-image"><img src="assets/trucks/Additional Trucks/3 series truck mounted crane/Screenshot 2025-11-05 133743.webp"><div class="magnifier-lens"></div></div><div class="truck-name">3 Series Cement Mixer Truck</div></div>
+                <div class="series" style="margin-bottom: 10px;">
+                <div class="series-title" style="font-size: 1.5em; font-weight: 600; color: #444; margin-bottom: 6px; text-align: center; position: relative;">
+                    <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2;">3 Series</span>
+                    <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ccc, transparent); z-index: 1;"></div>
+                </div>
+                <div class="truck-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 6px; margin-bottom: 32px;">
+        <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                        <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
+                        <div class="truck-image" style="margin-bottom: 16px; border-radius: 8px; overflow: hidden;">
+                            <img src="assets/trucks/Additional Trucks/3 series truck mounted crane/Screenshot 2025-11-05 133743.webp" style="width: 100%; height: 180px; object-fit: cover;">
+                            <div class="magnifier-lens"></div>
+                        </div>
+                        <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0;">3 Series Cement Mixer Truck</div>
+                    </div>
       </div>
     </div>
 
-  </section>
-
+          </div>
+          </div>
+    </section>
   <script>
     // Scroll reveal effect for truck tiles (kept as-is)
     const tiles = document.querySelectorAll('.truck-tile');
@@ -668,6 +2001,90 @@
       }
     }
 
+    // Function to get truck page URL based on truck name
+    function getTruckPageUrl(truckName) {
+      // Create a mapping from truck names to their individual HTML file names
+      const truckPageMapping = {
+        // E3 Series (8 trucks)
+        'E3 Cement Mixer Truck': 'trucks_html/E3-Cement-Mixer-Truck.html',
+        'E3 Compactor Garbage Truck': 'trucks_html/E3-Compactor-Garbage-Truck.html',
+        'E3 Dump Truck': 'trucks_html/E3-Dump-Truck.html',
+        'E3 Muck Truck': 'trucks_html/E3-Muck-Truck.html',
+        'E3 Sewage Suction Truck': 'trucks_html/E3-Sewage-Suction-Truck.html',
+        'E3 Stake Truck': 'trucks_html/E3-Stake-Truck.html',
+        'E3 Tractor Truck': 'trucks_html/E3-Tractor-Truck.html',
+        'E3 Van Truck': 'trucks_html/E3-Van-Truck.html',
+
+        // E9 Series (3 trucks)
+        'E9 Dump Truck': 'trucks_html/E9-Dump-Truck.html',
+        'E9 Kitchen Waste Food Garbage Truck': 'trucks_html/E9-Kitchen-Waste-Garbage-Truck.html',
+        'E9 Van Truck': 'trucks_html/E9-Van-Truck.html',
+
+        // X7 Series (5 trucks)
+        'X7 Concrete Mixer Truck': 'trucks_html/X7-Concrete-Mixer-Truck.html',
+        'X7 Dump Truck': 'trucks_html/X7-Dump-Truck.html',
+        'X7 Flatbed Truck': 'trucks_html/X7-Flatbed-Truck.html',
+        'X7 Sprinkler Truck': 'trucks_html/X7-Sprinkler-Truck.html',
+        'X7 Truck Mounted Crane': 'trucks_html/X7-Truck-Mounted-Crane.html',
+
+        // X9 Series (7 trucks)
+        '4X4 Dump Truck': 'trucks_html/X9-4X4-Dump-Truck.html',
+        'X9 Dump Truck': 'trucks_html/X9-Dump-Truck.html',
+        'X9 Fuel Tanker Truck': 'trucks_html/X9-Fuel-Tanker-Truck.html',
+        'X9 Garbage Truck': 'trucks_html/X9-Garbage-Truck.html',
+        'X9 Refrigerated Truck': 'trucks_html/X9-Refrigerated-Truck.html',
+        'X9 Tow Truck': 'trucks_html/X9-Tow-Truck-Modern-BW.html',
+        'X9 Van Truck': 'trucks_html/X9-Van-Truck.html',
+
+        // E6 Series (6 trucks)
+        'E6 Cement Mixer Truck': 'trucks_html/E6-Cement-Mixer-Truck.html',
+        'E6 Refrigerated Truck': 'trucks_html/E6-Refrigerated-Truck.html',
+        'E6 Sprinkler Truck': 'trucks_html/E6-Sprinkler-Truck.html',
+        'E6 Stake Truck': 'trucks_html/E6-Stake-Truck.html',
+        'E6 Truck Mounted Crane': 'trucks_html/E6-Truck-Mounted-Crane.html',
+        'E6 Van Truck': 'trucks_html/E6-Van-Truck.html',
+
+        // X6 Series (14 trucks)
+        'X6 AWD Cargo Truck': 'trucks_html/X6-AWD-Cargo-Truck.html',
+        'X6 Cargo Truck': 'trucks_html/X6-Cargo-Truck.html',
+        'X6 Cement Mixer Truck': 'trucks_html/X6-Cement-Mixer-Truck.html',
+        'X6 Concrete Mixer Truck': 'trucks_html/X6-Concrete-Mixer-Truck.html',
+        'X6 Drop Side Truck': 'trucks_html/X6-Dropside-Truck.html',
+        'X6 Dump Truck': 'trucks_html/X6-Dump-Truck.html',
+        'X6 Dust Suppression Truck': 'trucks_html/X6-Dust-Suppression-Truck.html',
+        'X6 Flatbed Truck': 'trucks_html/X6-Flatbed-Truck.html',
+        'X6 Fuel Tanker': 'trucks_html/X6-Fuel-Tanker-Truck.html',
+        'X6 Garbage Truck': 'trucks_html/X6-Garbage-Truck.html',
+        'X6 Loading Crane Recovery Truck': 'trucks_html/X6-Loading-Crane-Recovery-Truck.html',
+        'X6 Sprinkler Truck': 'trucks_html/X6-Sprinkler-Truck.html',
+        'X6 Truck Mounted Crane': 'trucks_html/X6-Truck-Mounted-Crane.html',
+        'X6 Van Truck': 'trucks_html/X6-Van-Truck.html',
+
+        // 3 Series (1 truck)
+        '3 Series Truck Mounted Crane': 'trucks_html/3-Series-Cement-Mixer-Truck.html',
+
+        // 6 Series (4 trucks)
+        '6 Series Cement Mixer Truck': 'trucks_html/6-Series-Cement-Mixer-Truck.html',
+        '6 Series Garbage Truck': 'trucks_html/6-Series-Garbage-Truck.html',
+        '6 Series Sweeper': 'trucks_html/6-Series-Sweeper.html',
+        '6 Series Truck Mounted Crane': 'trucks_html/6-Series-Truck-Mounted-Crane.html',
+
+        // 9 Series (5 trucks)
+        '9 Series Cement Mixer Truck': 'trucks_html/9-Series-Cement-Mixer-Truck.html',
+        '9 Series Garbage Truck': 'trucks_html/9-Series-Garbage-Truck.html',
+        '9 Series Sweeper': 'trucks_html/9-Series-Sweeper.html',
+        '9 Series Tow Truck': 'trucks_html/9-Series-Tow-Truck.html',
+        '9 Series Truck Mounted Crane': 'trucks_html/9-Series-Truck-Mounted-Crane.html',
+
+        // Other Series (2 trucks)
+        'E1st Truck': 'trucks_html/E1st-Tractor.html',
+        'i9 Truck': 'trucks_html/i9-New-Series.html'
+      };
+
+      // Return the mapped URL or default to main trucks page
+      return truckPageMapping[truckName] || 'trucks.html';
+    }
+
     // create the popup overlay DOM structure once (reused)
     const popupOverlay = document.createElement('div');
     popupOverlay.className = 'ek-popup-overlay';
@@ -676,25 +2093,38 @@
     popupOverlay.innerHTML = `
       <div class="ek-popup" aria-modal="true">
         <div class="ek-popup-header">
-          <div class="ek-popup-title">Truck</div>
+          <div class="ek-popup-title">Truck Details</div>
           <button class="ek-popup-close" aria-label="Close popup">&times;</button>
         </div>
-                <div class="ek-popup-body">
+        <div class="ek-popup-body">
           <div class="ek-gallery">
-            <div class="ek-main-image"><img src="" alt="Truck image"></div>
+            <div class="ek-main-image">
+              <img src="" alt="Truck image">
+              <div class="ek-magnifier"></div>
+            </div>
             <div class="ek-thumb-strip"></div>
           </div>
-          <div class="ek-details">
+          <div class="ek-info">
             <h3 class="role"></h3>
-            <p class="desc"></p>
-            <div class="specs">
-              <ul class="ek-spec-list"></ul>
+            <div class="ek-info-section">
+              <h4>Description</h4>
+              <p class="desc"></p>
             </div>
-            <div class="thumbs-note">Click thumbnails to view images</div>
+            <div class="ek-info-section">
+              <h4>Specifications</h4>
+              <div class="specs">
+                <ul class="ek-spec-list"></ul>
+              </div>
+            </div>
+            <div class="ek-action-buttons">
+              <a href="#" class="ek-btn primary" id="viewFullDetailsBtn">
+                📄 View Full Details
+              </a>
+              <button class="ek-btn outline" id="popupCloseBtn">
+                ✕ Close
+              </button>
+            </div>
           </div>
-        </div>
-        <div class="ek-popup-footer">
-          <button class="ek-btn" id="popupCloseBtn">Close</button>
         </div>
       </div>
     `;
@@ -703,11 +2133,174 @@
     const popup = popupOverlay.querySelector('.ek-popup');
     const closeBtns = popupOverlay.querySelectorAll('.ek-popup-close, #popupCloseBtn');
     const mainImg = popupOverlay.querySelector('.ek-main-image img');
+    const mainImageContainer = popupOverlay.querySelector('.ek-main-image');
+    const magnifier = popupOverlay.querySelector('.ek-magnifier');
     const thumbStrip = popupOverlay.querySelector('.ek-thumb-strip');
     const popupTitle = popupOverlay.querySelector('.ek-popup-title');
     const popupRole = popupOverlay.querySelector('.role');
     const popupDesc = popupOverlay.querySelector('.desc');
     const specList = popupOverlay.querySelector('.ek-spec-list');
+    const viewFullDetailsBtn = popupOverlay.querySelector('#viewFullDetailsBtn');
+
+    // Magnifier functionality (mouse and touch)
+    function setupMagnifier() {
+      let isTouching = false;
+      
+      // Function to handle positioning for both mouse and touch
+      function handleMagnifier(clientX, clientY) {
+        if (!mainImg.src) return;
+        
+        const containerRect = mainImageContainer.getBoundingClientRect();
+        const imgRect = mainImg.getBoundingClientRect();
+        const x = clientX - containerRect.left;
+        const y = clientY - containerRect.top;
+        
+        // Adjust magnifier size and position for mobile
+        const isMobile = window.innerWidth <= 768;
+        const magnifierSize = isMobile ? 150 : 250;
+        
+        // Position magnifier at cursor/touch (offset to not block view)
+        magnifier.style.left = (x - magnifierSize) + 'px';
+        magnifier.style.top = (y - magnifierSize) + 'px';
+        
+        // Calculate the position relative to the actual image
+        const imgX = clientX - imgRect.left;
+        const imgY = clientY - imgRect.top;
+        
+        // Calculate background position for 4x magnification
+        const xPercent = (imgX / imgRect.width) * 100;
+        const yPercent = (imgY / imgRect.height) * 100;
+        
+        // Set magnifier background to show zoomed portion
+        magnifier.style.backgroundImage = `url(${mainImg.src})`;
+        magnifier.style.backgroundPosition = `${xPercent}% ${yPercent}%`;
+        magnifier.style.backgroundSize = `${imgRect.width * 4}px ${imgRect.height * 4}px`;
+      }
+
+      // Mouse events for desktop
+      mainImageContainer.addEventListener('mousemove', (e) => {
+        if (!isTouching) {
+          handleMagnifier(e.clientX, e.clientY);
+        }
+      });
+      
+      mainImageContainer.addEventListener('mouseleave', () => {
+        if (!isTouching) {
+          magnifier.style.opacity = '0';
+        }
+      });
+      
+      mainImageContainer.addEventListener('mouseenter', () => {
+        if (mainImg.src && !isTouching) {
+          magnifier.style.opacity = '1';
+        }
+      });
+
+      // Touch events for mobile devices
+      mainImageContainer.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        isTouching = true;
+        if (mainImg.src) {
+          magnifier.style.opacity = '1';
+          const touch = e.touches[0];
+          handleMagnifier(touch.clientX, touch.clientY);
+        }
+      }, { passive: false });
+
+      mainImageContainer.addEventListener('touchmove', (e) => {
+        e.preventDefault();
+        if (isTouching && mainImg.src) {
+          const touch = e.touches[0];
+          handleMagnifier(touch.clientX, touch.clientY);
+        }
+      }, { passive: false });
+
+      mainImageContainer.addEventListener('touchend', (e) => {
+        e.preventDefault();
+        isTouching = false;
+        magnifier.style.opacity = '0';
+      }, { passive: false });
+    }
+
+    // Initialize magnifier
+    setupMagnifier();
+
+    // Mobile menu functionality
+    window.toggleMobileMenu = function() {
+      const nav = document.getElementById('main-nav');
+      const toggle = document.querySelector('.mobile-menu-toggle');
+      
+      if (nav) {
+        nav.classList.toggle('mobile-open');
+        // Update toggle icon
+        toggle.textContent = nav.classList.contains('mobile-open') ? '✕' : '☰';
+      }
+    };
+
+    // Mobile dropdown functionality
+    function setupMobileDropdowns() {
+      const trucksDropdown = document.querySelector('.trucks-dropdown > a');
+      if (trucksDropdown) {
+        trucksDropdown.addEventListener('click', function(e) {
+          if (window.innerWidth <= 768) {
+            e.preventDefault();
+            const parent = this.parentElement;
+            parent.classList.toggle('mobile-open');
+          }
+        });
+      }
+
+      // Handle sub-dropdowns
+      document.querySelectorAll('.sub-dropdown').forEach(dropdown => {
+        const parentLink = dropdown.previousElementSibling;
+        if (parentLink) {
+          parentLink.addEventListener('click', function(e) {
+            if (window.innerWidth <= 768) {
+              e.preventDefault();
+              dropdown.classList.toggle('mobile-open');
+            }
+          });
+        }
+      });
+
+      // Handle truck-links
+      document.querySelectorAll('.truck-links').forEach(links => {
+        const parentLink = links.previousElementSibling;
+        if (parentLink) {
+          parentLink.addEventListener('click', function(e) {
+            if (window.innerWidth <= 768) {
+              e.preventDefault();
+              links.classList.toggle('mobile-open');
+            }
+          });
+        }
+      });
+    }
+
+    // Initialize mobile navigation after header loads
+    setTimeout(setupMobileDropdowns, 1000);
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', function(e) {
+      const nav = document.getElementById('main-nav');
+      const toggle = document.querySelector('.mobile-menu-toggle');
+      
+      if (nav && toggle && !nav.contains(e.target) && !toggle.contains(e.target)) {
+        nav.classList.remove('mobile-open');
+        toggle.textContent = '☰';
+      }
+    });
+
+    // Handle window resize
+    window.addEventListener('resize', function() {
+      const nav = document.getElementById('main-nav');
+      const toggle = document.querySelector('.mobile-menu-toggle');
+      
+      if (window.innerWidth > 768 && nav) {
+        nav.classList.remove('mobile-open');
+        if (toggle) toggle.textContent = '☰';
+      }
+    });
 
     // open popup for each tile
     document.querySelectorAll('.truck-tile').forEach(tile => {
@@ -770,11 +2363,29 @@
             thumbStrip.querySelectorAll('.ek-thumb').forEach(t => t.classList.remove('active'));
             thumb.classList.add('active');
             mainImg.src = s;
+            // Update magnifier background when image changes
+            magnifier.style.backgroundImage = `url(${s})`;
+            // Wait for image to load before calculating magnifier size
+            mainImg.onload = () => {
+              const imgRect = mainImg.getBoundingClientRect();
+              magnifier.style.backgroundSize = `${imgRect.width * 4}px ${imgRect.height * 4}px`;
+            };
           });
           thumbStrip.appendChild(thumb);
         });
 
         mainImg.src = images[0];
+
+        // Initialize magnifier for the first image
+        mainImg.onload = () => {
+          const imgRect = mainImg.getBoundingClientRect();
+          magnifier.style.backgroundImage = `url(${images[0]})`;
+          magnifier.style.backgroundSize = `${imgRect.width * 4}px ${imgRect.height * 4}px`;
+        };
+
+        // Set the truck page URL for "View Full Details" button
+        const truckPageUrl = getTruckPageUrl(name);
+        viewFullDetailsBtn.href = truckPageUrl;
 
         popupOverlay.classList.add('open');
         document.body.classList.add('ek-blur');
@@ -795,6 +2406,41 @@
       document.body.classList.remove('ek-blur');
       popupOverlay.setAttribute('aria-hidden','true');
     }
+
+
+    // Enhanced button styling
+    document.querySelectorAll('.category-buttons button').forEach(btn => {
+        btn.addEventListener('mouseenter', () => {
+            if (!btn.classList.contains('active')) {
+                btn.style.backgroundColor = '#f8f9fa';
+                btn.style.borderColor = '#adb5bd';
+            }
+        });
+        
+        btn.addEventListener('mouseleave', () => {
+            if (!btn.classList.contains('active')) {
+                btn.style.backgroundColor = 'transparent';
+                btn.style.borderColor = '#dee2e6';
+            }
+        });
+        
+        btn.addEventListener('click', () => {
+            // Remove active styling from all buttons
+            document.querySelectorAll('.category-buttons button').forEach(b => {
+                b.classList.remove('active');
+                b.style.backgroundColor = 'transparent';
+                b.style.color = '#444';
+                b.style.borderColor = '#dee2e6';
+            });
+            
+            // Add active styling to clicked button
+            btn.classList.add('active');
+            btn.style.backgroundColor = '#444';
+            btn.style.color = '#ffffff';
+            btn.style.borderColor = '#444';
+        });
+    });
+    
 
 // Trucks dropdown hover functionality
 const trucksDropdown = document.querySelector('.trucks-dropdown');

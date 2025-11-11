@@ -1,12 +1,11 @@
-﻿
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Equipment King</title>
-    <link rel="stylesheet" href="css/styles.css" />
-    <script src="js/header-footer-loader.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Equipment King</title>
+<link rel="stylesheet" href="css/styles.css" />
+<script src="js/header-footer-loader.js"></script>
 
 <style>
   html, body {
@@ -18,63 +17,321 @@
     scroll-behavior:smooth;
   }  
 
- section.hero {
-  margin-top: 60px;
-  height: 90vh;
-  background: url('assets/hero_section/front1.webp') center/cover no-repeat;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: #fff;
-  position: relative;
-  overflow: hidden;
-  transition: background-image 1s ease-in-out;
-}
-/* Slider buttons */
-.hero-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0,0,0,0.5);
-  color: #fff;
-  border: none;
-  font-size: 2rem;
-  cursor: pointer;
-  padding: 10px 18px;
-  border-radius: 50%;
-  z-index: 10;
-  transition: background 0.3s;
-}
+  section.hero {
+   
+    height: 100vh;
+    background: url('assets/hero_section/front1.webp') center/cover no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    transition: background-image 1s ease-in-out;
+  }
+
+  .hero-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.5);
+    color: #fff;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 10px 18px;
+    border-radius: 50%;
+    z-index: 10;
+    transition: background 0.3s;
+  }
+
+  .hero-btn:hover {
+    background: rgba(0,0,0,0.8);
+  }
+
+  .hero-progress {
+    position: absolute;
+    top: 80px;
+    left: 200px;
+    display: flex;
+    gap: 12px; /* Increased gap to accommodate larger dashes */
+    z-index: 15;
+  }
+
+  .progress-dash {
+    width: 58.5px; /* Increased by 30%: 45px * 1.3 = 58.5px */
+    height: 7.8px; /* Increased by 30%: 6px * 1.3 = 7.8px */
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 3.9px; /* Increased by 30%: 3px * 1.3 = 3.9px */
+    transition: all 0.4s cubic-bezier(0.4, 0.0, 0.2, 1);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 1.2px 3px; /* Added 20% padding */
+  }
+
+  .progress-dash.active {
+    background: #ffffff;
+    transform: scaleY(1.8);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+    border: 1px solid #ffffff;
+  }
+
+  .progress-dash.active::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+    animation: shimmer 2s infinite;
+  }
+
+  @keyframes shimmer {
+    0% { left: -100%; }
+    100% { left: 100%; }
+  }
+
+  * { box-sizing: border-box; }
+
+  h1, h2 { font-weight: 600; margin: 2rem 0 1rem; }
+
+  section.tabs { 
+    padding: 120px 40px; 
+    text-align: center; 
+    position: relative;
+  }
+
+  /* Extended hover area with 40px invisible padding */
+  section.tabs::before {
+    content: '';
+    position: absolute;
+    top: -40px;
+    left: -40px;
+    right: -40px;
+    bottom: -40px;
+    pointer-events: auto;
+    z-index: 1;
+  }
+
+  .tab-btn {
+    cursor: pointer;
+    font-size: 17px;
+    padding: 12px 26px;
+    border: 1px solid #ddd;
+    border-radius: 30px;
+    background: #f8f8f8;
+    transition: all .3s;
+    margin: 5px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .tab-btn:hover,
+  .tab-btn.active {
+    background: #000;
+    color: #fff;
+  }
+
+  #tabContent {
+    max-width: 100%;
+    margin: 60px auto 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 35px;
+    opacity: 1;
+    transition: opacity .5s ease;
+  }
+
+  .vehicle-card {
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    overflow: hidden;
+    transform: scale(1);
+    transition: all .3s ease;
+  }
+
+  .vehicle-card:hover {
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+  }
+
+  .vehicle-card img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+  }
+
+  .vehicle-card h3 {
+    font-size: 22px;
+    font-weight: 600;
+    margin: 15px 0 10px;
+    color: #1d1d1f;
+  }
+
+  .vehicle-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    color: #555;
+    font-size: 15.5px;
+    line-height: 1.7;
+  }
+
+  p[style*="grid-column:1/-1;text-align:center;font-size:18px;color:#666;"] {
+    grid-column: 1/-1;
+    text-align: center;
+    font-size: 18px;
+    color: #666;
+  }
+
+  /* Gallery Section - Professional Gray Theme */
+  section.gallery {
+    padding: 80px 20px;
+    background: #ffffff;
+    border-top: 2px solid #e0e0e0;
+    border-bottom: 2px solid #e0e0e0;
+    text-align: center;
+    position: relative;
+  }
+
+  /* Gallery content initial state */
+  .gallery-content {
+    opacity: 1;
+    position: relative;
+    z-index: 1;
+  }
+
+  section.gallery h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #212529;
+    text-transform: uppercase;
+    margin-bottom: 50px;
+    border: 2px solid #e0e0e0;
+    display: inline-block;
+    padding: 15px 30px;
+    background: #ffffff;
+    position: relative;
+    border-radius: 12px;
+  }
+
+  section.gallery h2::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -100px;
+    right: -100px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #ddd, transparent);
+    z-index: -1;
+  }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto 50px;
+  }
+
+  .gallery-card {
+    background: #ffffff;
+    border: 2px solid #dee2e6;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(33, 37, 41, 0.1);
+  }
+
+  .gallery-card:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 12px 30px rgba(33, 37, 41, 0.15);
+    border-color: #212529;
+  }
+
+  .gallery-card img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    border-bottom: 1px solid #dee2e6;
+    transition: all 0.3s ease;
+  }
+
+  .gallery-card:hover img {
+    transform: scale(1.05);
+  }
+
+  .gallery-card span {
+    display: block;
+    padding: 12px 16px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #212529;
+    text-transform: uppercase;
+    background: #ffffff;
+    letter-spacing: 0.3px;
+  }
+
+  .primary {
+    background: #212529;
+    color: #ffffff;
+    border: 2px solid #212529;
+    padding: 15px 40px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    letter-spacing: 0.5px;
+  }
+
+  .primary:hover {
+    background: #ffffff;
+    color: #212529;
+    border-color: #212529;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(33, 37, 41, 0.2);
+  }
 </style>
 </head>
 
 <body>
-    <div id="header-placeholder"></div>
-
-
+<div id="header-placeholder"></div>
 
 <section class="hero">
   <button class="hero-btn left">&#10094;</button>
-<button class="hero-btn right">&#10095;</button>
-<div class="hero-progress" id="heroProgress"></div>
+  <button class="hero-btn right">&#10095;</button>
+  <div class="hero-progress" id="heroProgress">
+    <div class="progress-dash active" data-index="0"></div>
+    <div class="progress-dash" data-index="1"></div>
+    <div class="progress-dash" data-index="2"></div>
+    <div class="progress-dash" data-index="3"></div>
+    <div class="progress-dash" data-index="4"></div>
+    <div class="progress-dash" data-index="5"></div>
+  </div>
 
   <h1>Power Meets Precision</h1>
-  <p>Experience cutting-edge engineering with Equipment King Incorporated â€” in partnership with SAGMOTO.</p>
+  <p>Experience cutting-edge engineering with Equipment King Incorporated in partnership with SAGMOTO.</p>
   <button onclick="window.location.href='trucks.html'">Explore Trucks</button>
-
 </section>
 
-<section class="tabs">
-  <h2>Explore Our Vehicle Categories</h2>
+<section class="tabs" style="max-width: 100%;">
+  <h1 style="padding-bottom: 30px;">Explore Our Vehicle Categories</h1>
   <div id="vehicleTabs">
-    <button class="tab-btn active" onmouseover="showTab('light', this)" onclick="window.location.href='trucks.html#ldt'">Light Duty Truck</button>
-    <button class="tab-btn" onmouseover="showTab('medium', this)" onclick="window.location.href='trucks.html#mdt'">Medium Duty Truck</button>
-    <button class="tab-btn" onmouseover="showTab('heavy', this)" onclick="window.location.href='trucks.html#hdt'">Heavy Duty Truck</button>
-    <button class="tab-btn" onmouseover="showTab('special', this)" onclick="window.location.href=''">Special Vehicle</button>
-    <button class="tab-btn" onmouseover="showTab('offroad', this)" onclick="window.location.href=''">Off-road Truck</button>
-    <button class="tab-btn" onmouseover="showTab('newenergy', this)" onclick="window.location.href='trucks.html#i9'">New Energy</button>
+    <button class="tab-btn" data-type="light">Light Duty Truck</button>
+    <button class="tab-btn active" data-type="medium">Medium Duty Truck</button>
+    <button class="tab-btn" data-type="heavy">Heavy Duty Truck</button>
+    <button class="tab-btn" data-type="special">Special Vehicle</button>
+    <button class="tab-btn" data-type="offroad">Off-road Truck</button>
+    <button class="tab-btn" data-type="newenergy">New Energy</button>
   </div>
   <div id="tabContent">
     <p style="grid-column:1/-1;text-align:center;font-size:18px;color:#666;">Hover over a category to explore vehicle details.</p>
@@ -82,159 +339,206 @@
 </section>
 
 <section class="gallery">
-  <h2>Explore Our Latest Fleet</h2>
-  <div class="gallery-grid">
-    <div class="gallery-card"><img src="assets/tractor.webp" onclick="window.location.href='trucks.html#hdt'"><span>Tractor</span></div>
-    <div class="gallery-card"><img src="assets/dumpTruck.webp" onclick="window.location.href='trucks.html#ldt'"><span>Dump Truck</span></div>
-    <div class="gallery-card"><img src="assets/special.webp"><span>Special Vehicle</span></div>
-    <div class="gallery-card"><img src="assets/i9.webp" onclick="window.location.href='trucks.html#i9'"><span>New Energy</span></div>
-    <div class="gallery-card"><img src="assets/offroad.webp"><span onclick="window.location.href='trucks.html'">Off-Road Truck</span></div>
-    <div class="gallery-card"><img src="assets/cargo.webp" onclick="window.location.href='trucks.html#mdt'"><span>Cargo Truck</span></div>
-  </div>
-  <div style="text-align:center;margin-top:70px;">
-    <button class="primary" onclick="window.location.href='trucks.html'">Explore All Trucks</button>
+  <!-- Gallery Content -->
+  <div class="gallery-content" id="galleryContent">
+    <h2>Explore Our Latest Fleet</h2>
+    <div class="gallery-grid">
+      <div class="gallery-card" onclick="window.location.href='trucks_html/E1st-Tractor.html'"><img src="assets/tractor.webp"><span>Tractor</span></div>
+      <div class="gallery-card" onclick="window.location.href='trucks.html#light-duty'"><img src="assets/dumpTruck.webp"><span>Dump Truck</span></div>
+      <div class="gallery-card" onclick="window.location.href='trucks_html/X9-Aerial-Work-Platform-Truck.html'"><img src="assets/special.webp"><span>Special Vehicle</span></div>
+      <div class="gallery-card" onclick="window.location.href='trucks_html/i9-New-Energy-Truck.html'"><img src="assets/i9.webp"><span>New Energy</span></div>
+      <div class="gallery-card" onclick="window.location.href='trucks.html#x9-series'"><img src="assets/offroad.webp"><span>Off-Road Truck</span></div>
+      <div class="gallery-card" onclick="window.location.href='trucks.html#medium-duty'"><img src="assets/cargo.webp"><span>Cargo Truck</span></div>
+    </div>
+    <div style="text-align:center;margin-top:70px;">
+      <button class="primary" onclick="window.location.href='trucks.html'">Explore All Trucks</button>
+    </div>
   </div>
 </section>
 
-
-
-
 <script>
+/* ================= HERO SLIDER WITH DASH PROGRESS ================= */
+const hero = document.querySelector('.hero');
+const progressContainer = document.getElementById('heroProgress');
+const progressDashes = document.querySelectorAll('.progress-dash');
+const leftBtn = document.querySelector('.hero-btn.left');
+const rightBtn = document.querySelector('.hero-btn.right');
+
+const heroImages = [
+  'assets/hero_section/front1.webp',
+  'assets/hero_section/front2.webp',
+  'assets/hero_section/front3.webp',
+  'assets/hero_section/front4.webp',
+  'assets/hero_section/front5.webp',
+  'assets/hero_section/front6.webp'
+];
+
+let currentIndex = 0;
+let autoSlideInterval;
+
+function showHeroImage(index){
+  hero.style.backgroundImage = `url('${heroImages[index]}')`;
+  currentIndex = index;
   
-  const hero = document.querySelector('section.hero');
-  const progress = document.getElementById('heroProgress');
-  const leftBtn = document.querySelector('.hero-btn.left');
-  const rightBtn = document.querySelector('.hero-btn.right');
-
-  const images = [
-    'assets/hero_section/front1.webp',
-    'assets/hero_section/front2.webp',
-    'assets/hero_section/front3.webp',
-    'assets/hero_section/front4.webp',
-    'assets/hero_section/front5.webp',
-    'assets/hero_section/front6.webp'
-  ];
-
-  let current = 0;
-  let progressWidth = 0;
-  let autoSlide;
-  let progressTimer;
-
-  function showImage(index) {
-    hero.style.backgroundImage = `url('${images[index]}')`;
-  }
-
-  function startProgress() {
-    clearInterval(progressTimer);
-    progressWidth = 0;
-    progress.style.width = '0%';
-
-    progressTimer = setInterval(() => {
-      progressWidth += 1;
-      progress.style.width = progressWidth + '%';
-      if (progressWidth >= 100) {
-        nextImage();
-      }
-    }, 50); // 100 * 50ms = 5 seconds
-  }
-
-  function nextImage() {
-    current = (current + 1) % images.length;
-    showImage(current);
-    startProgress();
-  }
-
-  function prevImage() {
-    current = (current - 1 + images.length) % images.length;
-    showImage(current);
-    startProgress();
-  }
-
-  leftBtn.addEventListener('click', prevImage);
-  rightBtn.addEventListener('click', nextImage);
-
-  // Auto start
-  showImage(current);
-  startProgress();
-
-
-  // Update footer year automatically
-  document.getElementById('year').textContent = new Date().getFullYear();
-
-  const tabData = {
-    light:[
-      {img:'assets/E( Van truck.webp',name:'E9 Van Truck',features:['Car-like display & modern cabin','Hydraulic power braking system','Tight turning diameter for city use']},
-      {img:'assets/E9 Dump Truck.webp',name:'E9 Dump Truck',features:['High-strength H-type steel frame','Reinforced tyres for heavy duty','Comfortable wrap-around seat']},
-      {img:'assets/X9 tow.webp',name:'X9 Tow Truck',features:['Gradient >30% capability','Strong chassis for tough work','Ideal for rescue and towing']},
-      {img:'assets/X9 4x4.webp',name:'X9 4X4',features:['Gradient >30% capability','Strong chassis for tough work','Ideal for rescue and towing']}
-    ],
-    medium:[
-      {img:'assets/dump.webp',name:'E6 Dump Truck',features:['Large torque engine','High water tank clearance','Wheel-side reduction rear axle']},
-      {img:'assets/van.webp',name:'E6 Van Truck',features:['Oil-water separator system','Air processing APU module','Light steering system']},
-      {img:'assets/drop.webp',name:'X6 Dropside Truck',features:['Oil-water separator system','Air processing APU module','Light steering system']},
-      {img:'assets/awd.webp',name:'X6 AWD Cargo Truck',features:['Oil-water separator system','Air processing APU module','Light steering system']}
-    ],
-    heavy:[
-      {img:'assets/e1st.webp',name:'E1st Tractor',features:['Cummins engine + Eaton gearbox','Intelligent comfort cab design','Premium driving experience']},
-      {img:'assets/z3t.webp',name:'Z3 Tractor Truck',features:['Dual warning system','Efficient power chain','Comfortable berth width 850mm']},
-      {img:'assets/e3t.webp',name:'E3 Van Truck',features:['Dual warning system','Efficient power chain','Comfortable berth width 850mm']},
-      {img:'assets/e3.webp',name:'E3 Tractor Truck',features:['Dual warning system','Efficient power chain','Comfortable berth width 850mm']}
-    ],
-    special:[
-      {img:'assets/special1.webp',name:'X9 Aerial work platform truck',features:['High-capacity water tank','Quick deployment ladder','Advanced safety system']},
-      {img:'assets/x9t.webp',name:'X9 Tow Truc',features:['Emergency-ready interior','Advanced life support system','Reliable mobility performance']},
-      {img:'assets/x7c.webp',name:'X7 Concrete mixer Truck',features:['Oil-water separator system','Air processing APU module','Light steering system']},
-      {img:'assets/e6t.webp',name:'E6 Truck-mounted Crane',features:['Oil-water separator system','Air processing APU module','Light steering system']}
-    ],
-    offroad:[
-      {img:'assets/9.webp',name:'9 Series',features:['Durability, high performance, and load-bearing','Multiple cabs available','Adaptable for all tankers']},
-      {img:'assets/7.webp',name:'7 Series',features:['Powerful engine & excellent maneuverability','Reinforced oil pan protection','Double-layer frame design']},
-      {img:'assets/6.webp',name:'6 Series',features:['Strong power & efficient transport','Reinforced design with iron bumper','Customized upper-body']},
-      {img:'assets/off.webp',name:'Off-road Dump Truck',features:['850mm wide chassis for stability','Specialized mining suspension','Directional exhaust design']}
-    ],
-    newenergy:[
-      {img:'assets/i9.webp',name:'i9',features:['Integrated electric drive axle','Range up to 430km, supports 120kW fast charge','Brake energy recovery system']}
-    ]
-  };
-
-  function showTab(type, btn){
-    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
-    btn.classList.add('active');
-    const content=document.getElementById('tabContent');
-    content.style.opacity=0;
-    setTimeout(()=>{
-      content.innerHTML=tabData[type].map(item=>`
-        <div class='vehicle-card'>
-          <img src='${item.img}' alt='${item.name}'>
-          <div style='padding:22px 24px;text-align:left;'>
-            <h3>${item.name}</h3>
-            <ul>${item.features.map(f=>`<li>â€¢ ${f}</li>`).join('')}</ul>
-          </div>
-        </div>
-      `).join('');
-      content.style.opacity=1;
-    },300);
-  }
-
-// Trucks dropdown hover functionality
-const trucksDropdown = document.querySelector('.trucks-dropdown');
-if (trucksDropdown) {
-    const dropdownMenu = trucksDropdown.querySelector('.dropdown-menu');
-    let hoverTimeout;
-
-    trucksDropdown.addEventListener('mouseenter', () => {
-        clearTimeout(hoverTimeout);
-        dropdownMenu.style.display = 'block';
-    });
-
-    trucksDropdown.addEventListener('mouseleave', () => {
-        hoverTimeout = setTimeout(() => {
-            dropdownMenu.style.display = 'none';
-        }, 300); // 300ms delay before hiding
-    });
+  // Update progress dashes
+  progressDashes.forEach((dash, i) => {
+    dash.classList.toggle('active', i === index);
+  });
 }
+
+function startAutoSlide(){
+  clearInterval(autoSlideInterval);
+  autoSlideInterval = setInterval(()=>{
+    nextHeroImage();
+  }, 5000); // 5 second intervals
+}
+
+function nextHeroImage(){
+  let nextIndex = (currentIndex + 1) % heroImages.length;
+  showHeroImage(nextIndex);
+}
+
+function prevHeroImage(){
+  let prevIndex = currentIndex - 1;
+  if(prevIndex < 0) prevIndex = heroImages.length - 1;
+  showHeroImage(prevIndex);
+}
+
+// Button event listeners
+leftBtn.addEventListener('click', ()=>{ prevHeroImage(); startAutoSlide(); });
+rightBtn.addEventListener('click', ()=>{ nextHeroImage(); startAutoSlide(); });
+
+// Dash click listeners for direct navigation
+progressDashes.forEach((dash, index) => {
+  dash.addEventListener('click', () => {
+    showHeroImage(index);
+    startAutoSlide();
+  });
+});
+
+// Start automatic sliding
+showHeroImage(currentIndex);
+startAutoSlide();
+
+/* ================= TAB CONTENT ================= */
+const tabData = {
+  light:[
+    {img:'assets/E( Van truck.webp',name:'E9 Van Truck',features:['Car-like display & modern cabin','Hydraulic power braking system','Tight turning diameter for city use'],link:'trucks_html/E9-Van-Truck.html'},
+    {img:'assets/E9 Dump Truck.webp',name:'E9 Dump Truck',features:['High-strength H-type steel frame','Reinforced tyres for heavy duty','Comfortable wrap-around seat'],link:'trucks_html/E9-Dump-Truck.html'},
+    {img:'assets/X9 tow.webp',name:'X9 Tow Truck',features:['Gradient >30% capability','Strong chassis for tough work','Ideal for rescue and towing'],link:'trucks_html/X9-Tow-Truck.html'},
+    {img:'assets/X9 4x4.webp',name:'X9 4X4',features:['Gradient >30% capability','Strong chassis for tough work','Ideal for rescue and towing'],link:'trucks_html/X9-4X4-Dump-Truck.html'}
+  ],
+  medium:[
+    {img:'assets/dump.webp',name:'E6 Dump Truck',features:['Large torque engine','High water tank clearance','Wheel-side reduction rear axle'],link:'trucks_html/E6-Dump-Truck.html'},
+    {img:'assets/van.webp',name:'E6 Van Truck',features:['Oil-water separator system','Air processing APU module','Light steering system'],link:'trucks_html/E6-Van-Truck.html'},
+    {img:'assets/drop.webp',name:'X6 Dropside Truck',features:['Oil-water separator system','Air processing APU module','Light steering system'],link:'trucks_html/X6-Dropside-Truck.html'},
+    {img:'assets/awd.webp',name:'X6 AWD Cargo Truck',features:['Oil-water separator system','Air processing APU module','Light steering system'],link:'trucks_html/X6-AWD-Cargo-Truck.html'}
+  ],
+  heavy:[
+    {img:'assets/e1st.webp',name:'E1st Tractor',features:['Cummins engine + Eaton gearbox','Intelligent comfort cab design','Premium driving experience'],link:'trucks_html/E1st-Tractor.html'},
+    {img:'assets/z3t.webp',name:'Z3 Tractor Truck',features:['Dual warning system','Efficient power chain','Comfortable berth width 850mm'],link:'trucks_html/Z3-Dump-Truck.html'},
+    {img:'assets/e3t.webp',name:'E3 Van Truck',features:['Dual warning system','Efficient power chain','Comfortable berth width 850mm'],link:'trucks_html/E3-Van-Truck.html'},
+    {img:'assets/e3.webp',name:'E3 Tractor Truck',features:['Dual warning system','Efficient power chain','Comfortable berth width 850mm'],link:'trucks_html/E3-Tractor-Truck.html'}
+  ],
+  special:[
+    {img:'assets/special1.webp',name:'X9 Aerial work platform truck',features:['High-capacity water tank','Quick deployment ladder','Advanced safety system'],link:'trucks_html/X9-Aerial-Work-Platform-Truck.html'},
+    {img:'assets/x9t.webp',name:'X9 Tow Truck',features:['Emergency-ready interior','Advanced life support system','Reliable mobility performance'],link:'trucks_html/X9-Tow-Truck.html'},
+    {img:'assets/x7c.webp',name:'X7 Concrete mixer Truck',features:['Oil-water separator system','Air processing APU module','Light steering system'],link:'trucks_html/X7-Concrete-Mixer-Truck.html'},
+    {img:'assets/e6t.webp',name:'E6 Truck-mounted Crane',features:['Oil-water separator system','Air processing APU module','Light steering system'],link:'trucks_html/E6-Truck-Mounted-Crane.html'}
+  ],
+  offroad:[
+    {img:'assets/9.webp',name:'9 Series',features:['Durability, high performance, and load-bearing','Multiple cabs available','Adaptable for all tankers'],link:'trucks.html#9-series'},
+    {img:'assets/7.webp',name:'7 Series',features:['Powerful engine & excellent maneuverability','Reinforced oil pan protection','Double-layer frame design'],link:'trucks.html#x7-series'},
+    {img:'assets/6.webp',name:'6 Series',features:['Strong power & efficient transport','Reinforced design with iron bumper','Customized upper-body'],link:'trucks.html#6-series'},
+    {img:'assets/off.webp',name:'Off-road Dump Truck',features:['850mm wide chassis for stability','Specialized mining suspension','Directional exhaust design'],link:'trucks_html/X9-4X4-Dump-Truck.html'}
+  ],
+  newenergy:[
+    {img:'assets/i9.webp',name:'i9',features:['Integrated electric drive axle','Range up to 430km, supports 120kW fast charge','Brake energy recovery system'],link:'trucks_html/i9-New-Energy-Truck.html'}
+  ]
+};
+
+const tabButtons = document.querySelectorAll('.tab-btn');
+const tabContent = document.getElementById('tabContent');
+
+function showTab(type, btn){
+  tabButtons.forEach(b => b.classList.remove('active'));
+  if(btn) btn.classList.add('active'); 
+  tabContent.style.opacity = 0;
+  setTimeout(() => {
+    tabContent.innerHTML = tabData[type].map(item=>`
+      <div class='vehicle-card' onclick="window.location.href='${item.link}'" style='cursor:pointer;'>
+        <img src='${item.img}' alt='${item.name}'>
+        <div style='padding:22px 24px;text-align:left;'>
+          <h3>${item.name}</h3>
+          <ul>${item.features.map(f=>`<li>• ${f}</li>`).join('')}</ul>
+        </div>
+      </div>
+    `).join('');
+    tabContent.style.opacity = 1;
+  }, 200);
+}
+
+// Medium Duty default
+window.addEventListener('DOMContentLoaded', ()=>{
+  const defaultTab = document.querySelector('.tab-btn.active');
+  showTab(defaultTab.dataset.type, defaultTab);
+});
+
+// Enhanced hover tabs with extended area
+const tabsSection = document.querySelector('section.tabs');
+let currentHoverType = null;
+let isHoveringTabs = false;
+
+// Track hovering over the entire tabs section (including 40px padding)
+tabsSection.addEventListener('mouseenter', () => {
+  isHoveringTabs = true;
+});
+
+tabsSection.addEventListener('mouseleave', () => {
+  isHoveringTabs = false;
+  // Return to active tab when leaving the extended area
+  setTimeout(() => {
+    if (!isHoveringTabs) {
+      const activeTab = document.querySelector('.tab-btn.active');
+      currentHoverType = null;
+      showTab(activeTab.dataset.type, activeTab);
+    }
+  }, 100); // Small delay to prevent flickering
+});
+
+// Individual tab hover behavior
+tabButtons.forEach(btn => {
+  btn.addEventListener('mouseenter', () => {
+    const newType = btn.dataset.type;
+    if (!btn.classList.contains('active') && currentHoverType !== newType) {
+      currentHoverType = newType;
+      showTab(newType, null);
+    }
+  });
+  
+  // Remove individual mouseleave - let the section handle it
+  btn.addEventListener('click', () => {
+    // Make clicked tab the new active tab
+    tabButtons.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentHoverType = null;
+    showTab(btn.dataset.type, btn);
+  });
+});
+
+// Keep content visible when hovering over tab content area
+tabContent.addEventListener('mouseenter', () => {
+  isHoveringTabs = true;
+});
+
+tabContent.addEventListener('mouseleave', () => {
+  // Don't immediately hide - let the section mouseleave handle it
+});
+
+/* ================= GALLERY SECTION ================= */
+// Gallery is now using simple static display without animations
 </script>
 
-    <div id="footer-placeholder"></div>
+<div id="footer-placeholder"></div>
 </body>
 </html>

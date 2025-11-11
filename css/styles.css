@@ -125,123 +125,100 @@ header nav a::after {
 }
 header nav a:hover::after { width: 100%; }
 
-/* ——— ENHANCED TRUCKS DROPDOWN NAVIGATION ——— */
-/* Container with extended hover area for better UX */
+/* ——— APPLE.COM STYLE TRUCKS DROPDOWN - ENHANCED ——— */
+/* Container with extended hover area for smooth navigation */
 .trucks-dropdown {
     position: relative;
     display: inline-block;
-    /* Extended padding for wider hover range - IMPORTANT */
-    padding: 15px 20px;
-    margin: -15px -20px;
+    padding: 12px 16px;
+    margin: -12px -16px;
 }
 
-/* Trucks button with enhanced hover detection */
+/* Apple-style Trucks button with enhanced padding */
 .trucks-btn {
-    color: #fff;
+    color: #f5f5f7;
     text-decoration: none;
     font-size: 15px;
+    font-weight: 400;
     position: relative;
-    transition: all .4s cubic-bezier(0.4, 0.0, 0.2, 1);
-    cursor: pointer;
-    padding: 8px 12px;
-    border-radius: 6px;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    padding: 10px 16px;
+    border-radius: 8px;
+    display: block;
 }
 
 .trucks-btn:hover { 
-    color: #ccc;
-    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.08);
     transform: translateY(-1px);
 }
 
 .trucks-btn::after {
     content: '';
     position: absolute;
-    bottom: -2px;
+    bottom: 2px;
     left: 50%;
     transform: translateX(-50%);
     width: 0;
-    height: 2px;
-    background: linear-gradient(90deg, #fff, #ccc);
-    transition: width .4s cubic-bezier(0.4, 0.0, 0.2, 1);
-    border-radius: 1px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.9);
+    transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-.trucks-btn:hover::after { 
-    width: 100%;
+.trucks-btn:hover::after {
+    width: calc(100% - 32px);
 }
 
-/* ENHANCED GLASSMORPHISM DROPDOWN - IMPORTANT HOVER EXPERIENCE */
+/* Dropdown base - EXACTLY FROM YOUR WORKING CODE */
 .dropdown-menu {
     position: absolute;
-    top: calc(100% - 5px); /* Reduced gap for easier navigation */
-    right: -20px; /* Extended to match container padding */
-    min-width: 320px; /* Wider for better hover area */
+    top: 100%;
+    right: 0;
+    min-width: 220px;
     display: none;
     z-index: 1000;
-    border-radius: 24px;
-    padding: 20px 8px; /* Increased padding for wider hover area */
-    background: rgba(255, 255, 255, 0.94);
-    backdrop-filter: blur(40px) saturate(200%) brightness(1.1);
-    -webkit-backdrop-filter: blur(40px) saturate(200%) brightness(1.1);
-    box-shadow: 
-        0 32px 64px rgba(0, 0, 0, 0.15),
-        0 16px 32px rgba(0, 0, 0, 0.1),
-        inset 0 2px 0 rgba(255, 255, 255, 0.9),
-        inset 0 -1px 0 rgba(255, 255, 255, 0.3),
-        0 4px 12px rgba(0, 0, 0, 0.08);
-    border: 2px solid rgba(255, 255, 255, 0.7);
-    opacity: 0;
-    transform: translateY(-20px) scale(0.92);
-    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-    visibility: hidden;
-    /* Extended hover area with invisible padding */
-    &::before {
-        content: '';
-        position: absolute;
-        top: -15px;
-        left: -15px;
-        right: -15px;
-        bottom: -15px;
-        z-index: -1;
+    border-radius: 2%;
+    padding: 2px 0;
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* Show dropdown on hover - EXACTLY FROM YOUR WORKING CODE */
+.trucks-dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+@keyframes dropdownFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-8px) scale(0.96);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
     }
 }
 
-/* Show dropdown with enhanced animation */
-.dropdown-menu.show,
-.trucks-dropdown:hover .dropdown-menu {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-    visibility: visible;
-}
-
-/* Enhanced hiding animation with delay */
-.dropdown-menu.hiding {
-    transition-delay: 0.5s;
-    opacity: 0;
-    transform: translateY(-15px) scale(0.95);
-    visibility: hidden;
-}
-
-/* List items */
+/* List items - EXACTLY FROM YOUR WORKING CODE */
 .dropdown-menu li {
     list-style: none;
     position: relative;
 }
 
-/* MODERN LINK STYLING */
+/* Links - EXACTLY FROM YOUR WORKING CODE */
 .dropdown-menu li a {
     display: block;
-    padding: 12px 18px;
-    color: #1d1d1f;
+    padding: 6px 12px;
+    color: #000;
     text-decoration: none;
-    font-weight: 500;
-    font-size: 14px;
+    transition: background 0.2s, color 0.2s, text-decoration 0.2s;
+    white-space: nowrap;
+    transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    white-space: nowrap;
     border-radius: 8px;
     margin: 0 8px;
-    transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
-    white-space: nowrap;
     position: relative;
-    overflow: hidden;
 }
 
 .dropdown-menu li a::before {
@@ -252,64 +229,82 @@ header nav a:hover::after { width: 100%; }
     width: 100%;
     height: 100%;
     background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-    transition: left 0.6s;
+    transition: left 0.6s ease;
+    z-index: 0;
 }
 
 .dropdown-menu li a:hover {
-    background: linear-gradient(135deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.05));
+    background: rgba(0,0,0,0.1);
     color: #000;
-    transform: translateX(4px);
-    box-shadow: 
-        0 4px 12px rgba(0, 0, 0, 0.1),
-        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    text-decoration: underline;
 }
 
-.dropdown-menu li a:hover::before {
-    left: 100%;
-}
+/* Removed ::before hover effect - using simple hover from your working code */
 
-/* ENHANCED SUB-DROPDOWN - IMPORTANT: Better hover area and delays */
+/* Sub-dropdown (series) - expand left - EXACTLY FROM YOUR WORKING CODE */
 .sub-dropdown {
     display: none;
     position: absolute;
-    top: -16px; /* Extended upward for easier access */
-    right: calc(100% + 8px); /* Closer gap for easier navigation */
-    min-width: 280px; /* Wider for better hover area */
-    border-radius: 18px;
-    padding: 16px 8px; /* Extended padding for wider hover area */
-    background: rgba(255, 255, 255, 0.94);
-    backdrop-filter: blur(32px) saturate(180%) brightness(1.05);
-    -webkit-backdrop-filter: blur(32px) saturate(180%) brightness(1.05);
-    box-shadow: 
-        0 24px 48px rgba(0, 0, 0, 0.15),
-        0 8px 24px rgba(0, 0, 0, 0.1),
-        inset 0 2px 0 rgba(255, 255, 255, 0.7),
-        0 2px 6px rgba(0, 0, 0, 0.06);
-    border: 1.5px solid rgba(255, 255, 255, 0.5);
-    list-style: none;
-    opacity: 0;
-    transform: translateX(12px) scale(0.94);
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    visibility: hidden;
-    z-index: 1001;
-    /* Extended invisible hover area */
-    &::before {
-        content: '';
-        position: absolute;
-        top: -10px;
-        left: -10px;
-        right: -10px;
-        bottom: -10px;
-        z-index: -1;
-    }
+    top: 0;
+    right: 100%;
+    min-width: 220px;
+    border-radius: 2%;
+    padding: 2px 0;
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
 
 .dropdown-menu li:hover > .sub-dropdown {
     display: block;
-    opacity: 1;
-    transform: translateX(0) scale(1);
-    visibility: visible;
-    transition-delay: 0.2s; /* Optimized delay for better responsiveness */
+}
+
+/* Truck links (sub-sub-dropdown) - expand further left - EXACTLY FROM YOUR WORKING CODE */
+.truck-links {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 100%;
+    min-width: 250px;
+    border-radius: 2%;
+    padding: 2px 0;
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.sub-dropdown li:hover > .truck-links {
+    display: block;
+}
+
+@keyframes dropdownSlideIn {
+    from {
+        opacity: 0;
+        transform: translateX(8px) scale(0.96);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
+}
+
+/* Smooth transition for all dropdowns - IMPORTANT */
+.dropdown-menu li a, .sub-dropdown li a, .truck-links li a {
+    transition: all 0.2s ease;
+}
+
+/* Sub-dropdown (series) - expand left - IMPORTANT: YOUR WORKING SYSTEM */
+.sub-dropdown {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 100%; /* expand to left */
+    min-width: 220px;
+    border-radius: 2%;
+    padding: 2px 0;
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
 
 /* Enhanced hover area for dropdown items - IMPORTANT */
@@ -325,40 +320,12 @@ header nav a:hover::after { width: 100%; }
     border-radius: 10px;
 }
 
-/* TRUCK LINKS - DEEPEST LEVEL DROPDOWN WITH PREMIUM GLASS EFFECT */
-.truck-links {
-    display: none;
-    position: absolute;
-    top: -8px;
-    right: calc(100% + 12px);
-    min-width: 300px;
-    max-width: 340px;
-    border-radius: 18px;
-    padding: 12px 0;
-    background: rgba(255, 255, 255, 0.92);
-    backdrop-filter: blur(36px) saturate(200%) brightness(1.08);
-    -webkit-backdrop-filter: blur(36px) saturate(200%) brightness(1.08);
-    box-shadow: 
-        0 28px 56px rgba(0, 0, 0, 0.18),
-        0 12px 28px rgba(0, 0, 0, 0.12),
-        inset 0 2px 0 rgba(255, 255, 255, 0.8),
-        inset 0 -1px 0 rgba(255, 255, 255, 0.3),
-        0 3px 8px rgba(0, 0, 0, 0.08);
-    border: 1.5px solid rgba(255, 255, 255, 0.6);
-    list-style: none;
-    opacity: 0;
-    transform: translateX(20px) scale(0.88);
-    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    visibility: hidden;
-    z-index: 1002;
-}
+/* Truck links (sub-sub-dropdown) - expand further left - IMPORTANT: YOUR WORKING SYSTEM */
+/* (Definition moved above to avoid duplication) */
 
-.sub-dropdown li:hover > .truck-links {
-    display: block;
-    opacity: 1;
-    transform: translateX(0) scale(1);
-    visibility: visible;
-    transition-delay: 0.3s; /* Optimized delay for deepest level */
+/* Smooth transition for all dropdowns - EXACTLY FROM YOUR WORKING CODE */
+.dropdown-menu li a, .sub-dropdown li a, .truck-links li a {
+    transition: all 0.2s ease;
 }
 
 /* Enhanced hover detection for sub-dropdown items - IMPORTANT */
@@ -380,7 +347,7 @@ header nav a:hover::after { width: 100%; }
     border-radius: 6px;
 }
 
-/* Smooth transition for all dropdowns */
+/* Smooth transition for all dropdowns - CSS-ONLY SYSTEM */
 .dropdown-menu li a, .sub-dropdown li a, .truck-links li a {
     transition: all 0.2s ease;
 }

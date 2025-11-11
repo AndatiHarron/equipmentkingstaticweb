@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/styles.css">
+    <script src="../js/header-footer-loader.js"></script>
+    <title>X9 Tow Truck - Equipment King</title>
+    <meta name="description" content="Professional heavy-duty towing solution with advanced recovery capabilities">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #ffffff;
+            color: #1d1d1f;
+        }
+        
+        .truck-container {
+            width: 100%;
+            max-width: 100%;
+            margin: 0;
+            padding: 100px 20px 40px;
+            background: #ffffff;
+        }
+        
+        /* Image Viewer Section */
+        .image-viewer-section {
+            background: #f5f5f7;
+            border-radius: 18px;
+            padding: 30px;
+            margin-bottom: 50px;
+            width: calc(100% - 40px);
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .main-image-container {
+            width: 100%;
+            height: 500px;
+            background: #ffffff;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        .main-image {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+        
+        /* Image Strip Slider */
+        .image-strip {
+            display: flex;
+            gap: 12px;
+            overflow-x: auto;
+            padding: 15px 0;
+            scroll-behavior: smooth;
+        }
+        
+        .image-strip::-webkit-scrollbar {
+            height: 6px;
+        }
+        
+        .image-strip::-webkit-scrollbar-track {
+            background: #e5e5e7;
+            border-radius: 3px;
+        }
+        
+        .image-strip::-webkit-scrollbar-thumb {
+            background: #1d1d1f;
+            border-radius: 3px;
+        }
+        
+        .thumbnail {
+            width: 100px;
+            height: 75px;
+            object-fit: cover;
+            border-radius: 8px;
+            cursor: pointer;
+            opacity: 0.6;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+            border: 3px solid transparent;
+        }
+        
+        .thumbnail:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+        
+        .thumbnail.active {
+            opacity: 1;
+            border-color: #1d1d1f;
+            transform: translateY(-2px);
+        }
+        
+        /* Content Layout */
+        .content-layout {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            width: calc(100% - 40px);
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .truck-title {
+            font-size: 48px;
+            font-weight: 700;
+            color: #1d1d1f;
+            margin: 0 0 20px 0;
+            line-height: 1.1;
+        }
+        
+        .series-badge {
+            background: #1d1d1f;
+            color: #ffffff;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 30px;
+            display: inline-block;
+        }
+        
+        .description {
+            font-size: 19px;
+            color: #1d1d1f;
+            line-height: 1.6;
+            margin-bottom: 40px;
+        }
+        
+        /* Specifications */
+        .specs-section {
+            background: #f5f5f7;
+            border-radius: 18px;
+            padding: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .specs-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: #1d1d1f;
+            margin: 0 0 30px 0;
+        }
+        
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .spec-item {
+            background: #ffffff;
+            padding: 24px;
+            border-radius: 12px;
+            border: 1px solid #d2d2d7;
+        }
+        
+        .spec-label {
+            font-size: 14px;
+            color: #6e6e73;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+        
+        .spec-value {
+            font-size: 19px;
+            color: #1d1d1f;
+            font-weight: 600;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            background: #1d1d1f;
+            color: #ffffff;
+            padding: 60px 40px;
+            border-radius: 18px;
+            margin-top: 60px;
+        }
+        
+        .cta-title {
+            font-size: 32px;
+            font-weight: 700;
+            margin: 0 0 20px 0;
+        }
+        
+        .cta-button {
+            background: #ffffff;
+            color: #1d1d1f;
+            padding: 16px 32px;
+            border: none;
+            border-radius: 12px;
+            font-size: 17px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .truck-container {
+                padding: 80px 10px 30px;
+            }
+            
+            .image-viewer-section,
+            .content-layout {
+                width: calc(100% - 20px);
+            }
+            
+            .truck-title {
+                font-size: 36px;
+            }
+            
+            .main-image-container {
+                height: 300px;
+            }
+            
+            .specs-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <div class="truck-container">
+        <!-- Image Viewer Section -->
+        <section class="image-viewer-section">
+            <div class="main-image-container">
+                <img id="mainImage" class="main-image" 
+                     src="../assets/trucks/x9towtrucks/main.webp" 
+                     alt="X9 Tow Truck"
+                     onerror="this.src='../assets/back2.jpeg'">
+            </div>
+            
+            <!-- Image Strip Slider -->
+            <div class="image-strip" id="imageStrip">
+                <!-- Thumbnails will be populated by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Content Layout -->
+        <div class="content-layout">
+            <div>
+                <h1 class="truck-title">X9 Tow Truck</h1>
+                
+                <div class="series-badge">
+                    X9 Series - Light Duty Trucks
+                </div>
+                
+                <p class="description">
+                    Professional heavy-duty towing solution with advanced recovery capabilities. Features powerful winch system, stabilizing outriggers, and robust chassis design for safe vehicle recovery operations.
+                </p>
+            </div>
+
+            <!-- Specifications Section -->
+            <section class="specs-section">
+                <h2 class="specs-title">Technical Specifications</h2>
+                <div class="specs-grid">
+                    <div class="spec-item">
+                        <div class="spec-label">GVW</div>
+                        <div class="spec-value">Under 25T</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Engine</div>
+                        <div class="spec-value">Turbocharged Diesel</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Transmission</div>
+                        <div class="spec-value">Manual/Automatic</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Towing Capacity</div>
+                        <div class="spec-value">15-20 Tons</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Wheelbase</div>
+                        <div class="spec-value">Variable</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA Section -->
+            <section class="cta-section">
+                <h2 class="cta-title">Interested in this truck?</h2>
+                <a href="../contact.html" class="cta-button">Contact Us Today</a>
+            </section>
+        </div>
+    </div>
+
+    <div id="footer-placeholder"></div>
+
+    <script>
+        // Image gallery functionality
+        const images = [
+            "../assets/trucks/x9towtrucks/main.webp",
+            "../assets/trucks/x9towtrucks/side.webp",
+            "../assets/trucks/x9towtrucks/interior.webp",
+            "../assets/trucks/x9towtrucks/detail1.webp",
+            "../assets/trucks/x9towtrucks/detail2.webp",
+            "../assets/trucks/x9towtrucks/image1.webp",
+            "../assets/trucks/x9towtrucks/image2.webp",
+            "../assets/trucks/x9towtrucks/image3.webp"
+        ];
+
+        function initImageGallery() {
+            const imageStrip = document.getElementById('imageStrip');
+            const mainImage = document.getElementById('mainImage');
+            
+            // Clear existing thumbnails
+            imageStrip.innerHTML = '';
+            
+            // Create thumbnails for each image
+            images.forEach((src, index) => {
+                const thumbnail = document.createElement('img');
+                thumbnail.src = src;
+                thumbnail.className = 'thumbnail' + (index === 0 ? ' active' : '');
+                thumbnail.alt = `View ${index + 1}`;
+                
+                // Hide thumbnail if image fails to load
+                thumbnail.onerror = () => {
+                    thumbnail.style.display = 'none';
+                };
+                
+                // Click handler to change main image
+                thumbnail.onclick = () => {
+                    // Update main image
+                    mainImage.src = src;
+                    
+                    // Update active thumbnail
+                    document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
+                    thumbnail.classList.add('active');
+                };
+                
+                imageStrip.appendChild(thumbnail);
+            });
+        }
+
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            initImageGallery();
+        });
+    </script>
+</body>
+</html>

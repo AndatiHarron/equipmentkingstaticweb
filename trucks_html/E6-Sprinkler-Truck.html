@@ -1,89 +1,314 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/styles.css">
     <script src="../js/header-footer-loader.js"></script>
-    <title>E6 Sprinkler Truck (Legacy) - Equipment King</title>
-    <meta name="description" content="E6 Sprinkler Truck (Legacy) - Municipal water spraying vehicle for street cleaning and dust suppression. Reliable spray system with efficient water distribution for urban maintenance.">
+    <title>E6 Sprinkler Truck - Equipment King</title>
+    <meta name="description" content="E6 Sprinkler Truck - Equipped with 6,000â€“12,000L water tank and spray system for urban road cleaning. Engineered for medium-duty municipal applications with robust 4Ã—2 drive and easy maintenance.">
 </head>
 <body>
     <div id="header-placeholder"></div>
 
-    <main style="padding: 80px 20px 40px; max-width: 1200px; margin: 0 auto; background: white;">
+    <main style="padding: 100px 20px 60px; width: 100%; margin: 0; background: #ffffff;">
         <!-- Breadcrumb Navigation -->
-        <nav style="margin-bottom: 20px; font-size: 14px; color: #666;">
-            <a href="../index.html" style="color: #007bff; text-decoration: none;">Home</a> > 
-            <a href="../trucks.html" style="color: #007bff; text-decoration: none;">Trucks</a> > 
-            <span style="color: #333;">E6 Sprinkler Truck (Legacy)</span>
+        <nav style="margin-bottom: 30px; font-size: 14px; max-width: 1400px; margin-left: auto; margin-right: auto;">
+            <a href="../index.html" style="color: #444; text-decoration: none; font-weight: 500; transition: color 0.2s;">Home</a> 
+            <span style="color: #6c757d; margin: 0 8px;">/</span>
+            <a href="../trucks.html" style="color: #444; text-decoration: none; font-weight: 500; transition: color 0.2s;">Trucks</a> 
+            <span style="color: #6c757d; margin: 0 8px;">/</span>
+            <span style="color: #212529; font-weight: 600;">E6 Sprinkler Truck</span>
         </nav>
 
-        <!-- Hero Section -->
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 40px; align-items: center;">
-            <div>
-                <h1 style="color: #333; margin-bottom: 15px; font-size: 2.5em; line-height: 1.2;">E6 Sprinkler Truck (Legacy)</h1>
-                <div style="background: linear-gradient(135deg, #ff9800, #f57c00); color: white; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
-                    <h2 style="margin: 0 0 10px 0; font-size: 1.3em;">E6Legacy Series - Legacy Series</h2>
-                    <p style="margin: 0; opacity: 0.9; line-height: 1.6;">Medium-duty trucks with established performance for diverse commercial applications</p>
-                </div>
-            </div>
-            <div style="text-align: center;">
-                <img src="../assets/trucks/e6-sprinkler-legacy-1.jpg" alt="E6 Sprinkler Truck (Legacy)" 
-                     style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);"
+        <!-- Exterior Gallery -->
+        <section style="max-width: 1400px; margin: 0 auto 60px auto; border: 1px solid #dee2e6; border-radius: 12px; padding: 40px;">
+            <h3 style="color: #212529; font-size: 1.8em; font-weight: 700; text-align: center; margin-bottom: 30px; position: relative;">
+                <span style="background: #fff; padding: 0 20px; position: relative; z-index: 2;">Exterior</span>
+                <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ddd, transparent); z-index: 1;"></div>
+            </h3>
+            <div style="width: 100%; height: 480px; border: 1px solid #dee2e6; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px;">
+                <img id="mainImage" src="../assets/trucks/e6sprinklertrucks/main.webp" alt="E6 Sprinkler Truck" 
+                     style="max-width: 95%; max-height: 95%; object-fit: contain;"
                      onerror="this.src='../assets/back2.jpeg'">
+            </div>
+            
+            <!-- Exterior Thumbnails -->
+            <div id="imageStrip" style="display: flex; gap: 16px; overflow-x: auto; padding: 20px 0; scroll-behavior: smooth;">
+                <!-- Exterior thumbnails will be populated by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Interior Gallery -->
+        <section style="max-width: 1400px; margin: 0 auto 60px auto; border: 1px solid #dee2e6; border-radius: 12px; padding: 40px;">
+            <h3 style="color: #212529; font-size: 1.8em; font-weight: 700; text-align: center; margin-bottom: 30px; position: relative;">
+                <span style="background: #fff; padding: 0 20px; position: relative; z-index: 2;">Interior</span>
+                <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ddd, transparent); z-index: 1;"></div>
+            </h3>
+            <div style="width: 100%; height: 480px; border: 1px solid #dee2e6; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px;">
+                <img id="mainImage2" src="../assets/trucks/e6sprinklertrucks/Screenshot 2025-11-05 023114.webp" alt="E6 Sprinkler Truck Interior" 
+                     style="max-width: 95%; max-height: 95%; object-fit: contain;"
+                     onerror="this.src='../assets/back2.jpeg'">
+            </div>
+            
+            <!-- Interior Thumbnails -->
+            <div id="imageStrip2" style="display: flex; gap: 16px; overflow-x: auto; padding: 20px 0; scroll-behavior: smooth;">
+                <!-- Interior thumbnails will be populated by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Hero Section -->
+        <div style="max-width: 1400px; margin: 0 auto 60px auto; text-align: center; position: relative;">
+            <div style="border: 2px solid #e0e0e0; border-radius: 16px; padding: 48px; position: relative; overflow: hidden;">
+                <div style="position: absolute; top: -1px; left: 20%; right: 20%; height: 2px; background: linear-gradient(90deg, transparent, #888, transparent);"></div>
+                <div style="position: absolute; bottom: -1px; left: 30%; right: 30%; height: 2px; background: linear-gradient(90deg, transparent, #888, transparent);"></div>
+                <h1 style="color: #212529; margin-bottom: 20px; font-size: 3.5em; line-height: 1.1; font-weight: 800; letter-spacing: -0.02em; text-shadow: 0 1px 2px rgba(0,0,0,0.1);">E6 Sprinkler Truck</h1>
+                <h2 style="margin: 0 0 8px 0; font-size: 1.25em; font-weight: 700; color: #444; position: relative;">
+                    <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2;">E6 Series - Medium Duty Trucks</span>
+                    <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ccc, transparent); z-index: 1;"></div>
+                </h2>
+                <p style="margin: 0; line-height: 1.5; color: #666; font-size: 1.1em;">E6 Sprinkler Truck - Equipped with 6,000â€“12,000L water tank and spray system for urban road cleaning. Engineered for medium-duty municipal applications with robust 4Ã—2 drive and easy maintenance.</p>
             </div>
         </div>
 
-        <!-- Description Section -->
-        <section style="margin-bottom: 40px; background: #f8f9fa; padding: 30px; border-radius: 10px;">
-            <h2 style="color: #333; margin-bottom: 20px; font-size: 1.8em; border-bottom: 3px solid #ff9800; padding-bottom: 10px;">Product Description</h2>
-            <p style="font-size: 1.1em; line-height: 1.7; color: #555; margin: 0;">
-                Municipal water spraying vehicle for street cleaning and dust suppression. Reliable spray system with efficient water distribution for urban maintenance.
-            </p>
-        </section>
+        <!-- Content Container -->
+        <div style="max-width: 1400px; margin: 0 auto;">
+            <!-- Description Section -->
+            <section style="border: 2px solid #e0e0e0; border-radius: 16px; padding: 48px; margin-bottom: 48px; position: relative; overflow: hidden;">
+                <div style="position: absolute; top: -1px; left: 10%; right: 10%; height: 2px; background: linear-gradient(90deg, transparent, #999, transparent);"></div>
+                <div style="position: absolute; left: -1px; top: 20%; bottom: 20%; width: 2px; background: linear-gradient(180deg, transparent, #999, transparent);"></div>
+                <div style="position: absolute; right: -1px; top: 30%; bottom: 30%; width: 2px; background: linear-gradient(180deg, transparent, #999, transparent);"></div>
+                <h2 style="color: #212529; margin-bottom: 24px; font-size: 2.5em; font-weight: 700; text-align: center; position: relative;">
+                    <span style="background: #fff; padding: 0 24px; position: relative; z-index: 2;">Product Description</span>
+                    <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ddd, transparent); z-index: 1;"></div>
+                </h2>
+                <p style="font-size: 1.25em; line-height: 1.7; color: #555; margin: 0; text-align: center; max-width: 800px; margin: 0 auto;">
+                    E6 Sprinkler Truck - Equipped with 6,000â€“12,000L water tank and spray system for urban road cleaning. Engineered for medium-duty municipal applications with robust 4Ã—2 drive and easy maintenance.
+                </p>
+            </section>
 
-        <!-- Specifications Section -->
-        <section style="margin-bottom: 40px;">
-            <h2 style="color: #333; margin-bottom: 25px; font-size: 1.8em; border-bottom: 3px solid #ff9800; padding-bottom: 10px;">Technical Specifications</h2>
-            <div style="background: white; border: 1px solid #ddd; border-radius: 8px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); max-width: 600px;">
-                <h3 style="color: #ff9800; margin-bottom: 15px; font-size: 1.3em;">Specifications</h3>
-                <table style="width: 100%; border-collapse: collapse;">
-                    <tr><td style='padding: 8px 0; border-bottom: 1px solid #eee; font-weight: bold;'>  e n g i n e.Value.ToUpper() e n g i n e:</td><td style='padding: 8px 0; border-bottom: 1px solid #eee;'>Municipal Diesel</td></tr>
-<tr><td style='padding: 8px 0; border-bottom: 1px solid #eee; font-weight: bold;'>  p o w e r.Value.ToUpper() p o w e r:</td><td style='padding: 8px 0; border-bottom: 1px solid #eee;'>150-190 HP</td></tr>
-<tr><td style='padding: 8px 0; border-bottom: 1px solid #eee; font-weight: bold;'>  t a n k C a p a c i t y.Value.ToUpper() t a n k C a p a c i t y:</td><td style='padding: 8px 0; border-bottom: 1px solid #eee;'>4000-8000 L</td></tr>
-<tr><td style='padding: 8px 0; border-bottom: 1px solid #eee; font-weight: bold;'>  g v w.Value.ToUpper() g v w:</td><td style='padding: 8px 0; border-bottom: 1px solid #eee;'>10-14 Tons</td></tr>
-<tr><td style='padding: 8px 0; border-bottom: 1px solid #eee; font-weight: bold;'>  w h e e l b a s e.Value.ToUpper() w h e e l b a s e:</td><td style='padding: 8px 0; border-bottom: 1px solid #eee;'>3600-4200 mm</td></tr>
-<tr><td style='padding: 8px 0; border-bottom: 1px solid #eee; font-weight: bold;'>  d r i v e.Value.ToUpper() d r i v e:</td><td style='padding: 8px 0; border-bottom: 1px solid #eee;'>4Ã—2</td></tr>
-
-                </table>
-            </div>
-        </section>
+            <!-- Specifications Section -->
+            <section style="border: 2px solid #e0e0e0; border-radius: 16px; padding: 48px; margin-bottom: 48px; position: relative; overflow: hidden;">
+                <div style="position: absolute; bottom: -1px; left: 15%; right: 15%; height: 2px; background: linear-gradient(90deg, transparent, #999, transparent);"></div>
+                <h2 style="color: #212529; margin-bottom: 40px; font-size: 2.5em; font-weight: 700; text-align: center; position: relative;">
+                    <span style="background: #fff; padding: 0 24px; position: relative; z-index: 2;">Technical Specifications</span>
+                    <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ddd, transparent); z-index: 1;"></div>
+                </h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; max-width: 1200px; margin: 0 auto;">
+                    
+                        <div style="padding: 28px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden;">
+                            <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
+                            <div style="font-size: 13px; color: #666; font-weight: 700; text-transform: uppercase; margin-bottom: 12px; letter-spacing: 1px;">Engine</div>
+                            <div style="font-size: 20px; color: #212529; font-weight: 700;">6.2L Diesel</div>
+                        </div>
+                        <div style="padding: 28px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden;">
+                            <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
+                            <div style="font-size: 13px; color: #666; font-weight: 700; text-transform: uppercase; margin-bottom: 12px; letter-spacing: 1px;">Power</div>
+                            <div style="font-size: 20px; color: #212529; font-weight: 700;">190–230 hp</div>
+                        </div>
+                        <div style="padding: 28px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden;">
+                            <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
+                            <div style="font-size: 13px; color: #666; font-weight: 700; text-transform: uppercase; margin-bottom: 12px; letter-spacing: 1px;">Tankcapacity</div>
+                            <div style="font-size: 20px; color: #212529; font-weight: 700;">6,000–12,000L</div>
+                        </div>
+                        <div style="padding: 28px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden;">
+                            <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
+                            <div style="font-size: 13px; color: #666; font-weight: 700; text-transform: uppercase; margin-bottom: 12px; letter-spacing: 1px;">Gvw</div>
+                            <div style="font-size: 20px; color: #212529; font-weight: 700;">12–16 Tons</div>
+                        </div>
+                        <div style="padding: 28px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden;">
+                            <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
+                            <div style="font-size: 13px; color: #666; font-weight: 700; text-transform: uppercase; margin-bottom: 12px; letter-spacing: 1px;">Drive</div>
+                            <div style="font-size: 20px; color: #212529; font-weight: 700;">4×2</div>
+                        </div>
+                </div>
+            </section>
+        </div>
 
         <!-- Call-to-Action Section -->
-        <section style="background: linear-gradient(135deg, #ff9800, #f57c00); color: white; padding: 40px; border-radius: 15px; text-align: center;">
-            <h2 style="margin-bottom: 20px; font-size: 2em;">Interested in the E6 Sprinkler Truck (Legacy)?</h2>
-            <p style="font-size: 1.2em; margin-bottom: 30px; opacity: 0.9;">Contact our team for detailed specifications, pricing, and availability.</p>
-            <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+        <div style="max-width: 1400px; margin: 0 auto;">
+            <section style="border: 2px solid #888; padding: 64px 48px; border-radius: 16px; text-align: center; margin-top: 48px; position: relative; overflow: hidden;">
+                <div style="position: absolute; top: -1px; left: 20%; right: 20%; height: 2px; background: linear-gradient(90deg, transparent, #666, transparent);"></div>
+                <div style="position: absolute; bottom: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #666, transparent);"></div>
+                <div style="position: absolute; left: -1px; top: 25%; bottom: 25%; width: 2px; background: linear-gradient(180deg, transparent, #666, transparent);"></div>
+                <div style="position: absolute; right: -1px; top: 30%; bottom: 30%; width: 2px; background: linear-gradient(180deg, transparent, #666, transparent);"></div>
+                <h2 style="margin-bottom: 16px; font-size: 2.5em; font-weight: 700; color: #212529; position: relative;">
+                    <span style="background: #fff; padding: 0 24px; position: relative; z-index: 2;">Interested in the E6 Sprinkler Truck?</span>
+                    <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ccc, transparent); z-index: 1;"></div>
+                </h2>
+                <p style="font-size: 1.2em; margin-bottom: 32px; color: #555; max-width: 600px; margin-left: auto; margin-right: auto; margin-bottom: 32px;">Contact our team for detailed specifications, pricing, and availability information.</p>
                 <a href="../application.html" 
-                   style="background: #28a745; color: white; padding: 15px 30px; border-radius: 25px; text-decoration: none; font-weight: bold; display: inline-block; transition: all 0.3s ease;">
-                   Request Quote
+                   style="background: #444; color: #ffffff; padding: 18px 36px; border-radius: 12px; text-decoration: none; font-weight: 700; display: inline-block; transition: all 0.3s ease; font-size: 18px; border: 2px solid #444; box-shadow: 0 2px 8px rgba(0,0,0,0.1);"
+                   onmouseover="this.style.backgroundColor='#333'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.2)'" 
+                   onmouseout="this.style.backgroundColor='#444'; this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(0,0,0,0.1)'">
+                   Get Quote Now
                 </a>
-                <a href="../about.html" 
-                   style="background: transparent; color: white; padding: 15px 30px; border: 2px solid white; border-radius: 25px; text-decoration: none; font-weight: bold; display: inline-block; transition: all 0.3s ease;">
-                   Learn More
-                </a>
-            </div>
-        </section>
+            </section>
+        </div>
     </main>
 
     <div id="footer-placeholder"></div>
 
+    <style>
+        /* AI-Enhanced Image Strip Styling */
+        #imageStrip::-webkit-scrollbar,
+        #imageStrip2::-webkit-scrollbar {
+            height: 6px;
+        }
+        
+        #imageStrip::-webkit-scrollbar-track,
+        #imageStrip2::-webkit-scrollbar-track {
+            background: #e5e5e7;
+            border-radius: 3px;
+        }
+        
+        #imageStrip::-webkit-scrollbar-thumb,
+        #imageStrip2::-webkit-scrollbar-thumb {
+            background: #1d1d1f;
+            border-radius: 3px;
+        }
+        
+        .thumbnail {
+            width: 110px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 12px;
+            cursor: pointer;
+            opacity: 0.6;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+            border: 2px solid transparent;
+            position: relative;
+        }
+        
+        .thumbnail:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .thumbnail.active {
+            opacity: 1;
+            border-color: #444;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            main {
+                padding: 80px 10px 30px !important;
+            }
+        }
+    </style>
+    
     <script>
+        // Image gallery functionality
+        const exteriorImages = [
+        "../assets/trucks/e6sprinklertrucks/main.webp",
+        "../assets/trucks/e6sprinklertrucks/main.webp",
+        "../assets/trucks/e6sprinklertrucks/Screenshot 2025-11-05 022945.webp",
+        "../assets/trucks/e6sprinklertrucks/Screenshot 2025-11-05 022945.webp",
+        "../assets/trucks/e6sprinklertrucks/Screenshot 2025-11-05 023011.webp",
+        "../assets/trucks/e6sprinklertrucks/Screenshot 2025-11-05 023011.webp",
+        "../assets/trucks/e6sprinklertrucks/Screenshot 2025-11-05 023023.webp",
+        "../assets/trucks/e6sprinklertrucks/Screenshot 2025-11-05 023023.webp",
+        "../assets/trucks/e6sprinklertrucks/Screenshot 2025-11-05 023034.webp",
+        "../assets/trucks/e6sprinklertrucks/Screenshot 2025-11-05 023034.webp",
+        "../assets/trucks/e6sprinklertrucks/Screenshot 2025-11-05 023045.webp",
+        "../assets/trucks/e6sprinklertrucks/Screenshot 2025-11-05 023045.webp",
+        "../assets/trucks/e6sprinklertrucks/Screenshot 2025-11-05 023057.webp",
+        "../assets/trucks/e6sprinklertrucks/Screenshot 2025-11-05 023057.webp",
+        "../assets/trucks/e6sprinklertrucks/Screenshot 2025-11-05 023124.webp",
+        "../assets/trucks/e6sprinklertrucks/Screenshot 2025-11-05 023124.webp",
+        "../assets/trucks/e6sprinklertrucks/Screenshot 2025-11-05 023137.webp",
+        "../assets/trucks/e6sprinklertrucks/Screenshot 2025-11-05 023137.webp"
+];
+
+        const interiorImages = [
+        "../assets/trucks/e6sprinklertrucks/Screenshot 2025-11-05 023114.webp",
+        "../assets/trucks/e6sprinklertrucks/Screenshot 2025-11-05 023114.webp",
+        "../assets/trucks/e6sprinklertrucks/Screenshot 2025-11-05 023155.webp",
+        "../assets/trucks/e6sprinklertrucks/Screenshot 2025-11-05 023155.webp"
+];
+
+        function initImageGallery() {
+            // Exterior gallery
+            const imageStrip = document.getElementById('imageStrip');
+            const mainImage = document.getElementById('mainImage');
+            
+            // Clear existing thumbnails
+            imageStrip.innerHTML = '';
+            
+            // Create thumbnails for each exterior image
+            exteriorImages.forEach((src, index) => {
+                const thumbnail = document.createElement('img');
+                thumbnail.src = src;
+                thumbnail.className = 'thumbnail' + (index === 0 ? ' active' : '');
+                thumbnail.alt = `Exterior View ${index + 1}`;
+                thumbnail.title = 'Exterior Image';
+                
+                // Hide thumbnail if image fails to load
+                thumbnail.onerror = () => {
+                    thumbnail.style.display = 'none';
+                };
+                
+                // Click handler to change main image
+                thumbnail.onclick = () => {
+                    // Update main image
+                    mainImage.src = src;
+                    
+                    // Update active thumbnail in exterior gallery only
+                    imageStrip.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
+                    thumbnail.classList.add('active');
+                };
+                
+                imageStrip.appendChild(thumbnail);
+            });
+
+            // Interior gallery
+            const imageStrip2 = document.getElementById('imageStrip2');
+            const mainImage2 = document.getElementById('mainImage2');
+            
+            // Clear existing thumbnails
+            imageStrip2.innerHTML = '';
+            
+            // Create thumbnails for each interior image
+            interiorImages.forEach((src, index) => {
+                const thumbnail = document.createElement('img');
+                thumbnail.src = src;
+                thumbnail.className = 'thumbnail' + (index === 0 ? ' active' : '');
+                thumbnail.alt = `Interior View ${index + 1}`;
+                thumbnail.title = 'Interior Image';
+                
+                // Hide thumbnail if image fails to load
+                thumbnail.onerror = () => {
+                    thumbnail.style.display = 'none';
+                };
+                
+                // Click handler to change main image
+                thumbnail.onclick = () => {
+                    // Update main image
+                    mainImage2.src = src;
+                    
+                    // Update active thumbnail in interior gallery only
+                    imageStrip2.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
+                    thumbnail.classList.add('active');
+                };
+                
+                imageStrip2.appendChild(thumbnail);
+            });
+        }
+
         // Auto-update footer year
         if(document.getElementById('year')) {
             document.getElementById('year').textContent = new Date().getFullYear();
         }
+
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            initImageGallery();
+        });
     </script>
 </body>
 </html>
