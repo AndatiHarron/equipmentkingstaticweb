@@ -520,10 +520,10 @@ function loadHeaderFooter() {
     }
     
     // Insert header HTML
-    const headerPlaceholder = document.getElementById('header-placeholder');
-    if (headerPlaceholder) {
+            const headerPlaceholder = document.getElementById('header-placeholder');
+            if (headerPlaceholder) {
         headerPlaceholder.outerHTML = header;
-    } else {
+            } else {
         document.body.insertAdjacentHTML('afterbegin', header);
     }
     
@@ -535,10 +535,10 @@ function loadHeaderFooter() {
     });
     
     // Insert footer HTML
-    const footerPlaceholder = document.getElementById('footer-placeholder');
-    if (footerPlaceholder) {
+            const footerPlaceholder = document.getElementById('footer-placeholder');
+            if (footerPlaceholder) {
         footerPlaceholder.outerHTML = footer;
-    } else {
+            } else {
         document.body.insertAdjacentHTML('beforeend', footer);
     }
     
