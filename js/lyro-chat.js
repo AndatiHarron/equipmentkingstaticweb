@@ -10,20 +10,34 @@ window.EquipmentKingChat = {
     
     // Enhanced Lyro chat integration with multiple fallback methods
     openLyroChat: function() {
-        console.log('Attempting to open Lyro chat...');
+        console.log('🤖 Equipment King Chat - Opening Lyro chat...');
+        console.log('📊 Chat system status:', {
+            initialized: this.initialized,
+            chatOpen: this.chatOpen,
+            hasLyro: !!window.Lyro,
+            hasLyroWidget: !!window.lyroWidget
+        });
         
         // Method 1: Official Lyro widget
         if (window.Lyro && typeof window.Lyro.open === 'function') {
-            console.log('Opening official Lyro widget');
-            window.Lyro.open();
-            return;
+            console.log('✅ Opening official Lyro widget');
+            try {
+                window.Lyro.open();
+                return;
+            } catch (error) {
+                console.log('❌ Lyro widget failed:', error);
+            }
         }
         
         // Method 2: Alternative Lyro widget format
         if (window.lyroWidget && typeof window.lyroWidget.open === 'function') {
-            console.log('Opening Lyro widget (alternative format)');
-            window.lyroWidget.open();
-            return;
+            console.log('✅ Opening Lyro widget (alternative format)');
+            try {
+                window.lyroWidget.open();
+                return;
+            } catch (error) {
+                console.log('❌ Alternative Lyro widget failed:', error);
+            }
         }
         
         // Method 3: Check for Lyro iframe or container
@@ -31,33 +45,48 @@ window.EquipmentKingChat = {
                             document.querySelector('.lyro-widget') || 
                             document.querySelector('#lyro-widget');
         if (lyroContainer) {
-            console.log('Found Lyro container, attempting to show');
-            lyroContainer.style.display = 'block';
-            return;
+            console.log('✅ Found Lyro container, attempting to show');
+            try {
+                lyroContainer.style.display = 'block';
+                return;
+            } catch (error) {
+                console.log('❌ Lyro container show failed:', error);
+            }
         }
         
         // Method 4: Try to trigger Lyro through events
         if (window.Lyro) {
-            console.log('Triggering Lyro through events');
+            console.log('✅ Triggering Lyro through events');
             try {
                 window.Lyro.show();
+                return;
             } catch (e) {
-                console.log('Lyro.show() failed, trying other methods');
+                console.log('❌ Lyro.show() failed:', e);
             }
-            return;
         }
         
         // Method 5: PostMessage to Lyro iframe
         const lyroIframe = document.querySelector('iframe[src*="lyro"]');
         if (lyroIframe) {
-            console.log('Sending message to Lyro iframe');
-            lyroIframe.contentWindow.postMessage({ action: 'open' }, '*');
-            return;
+            console.log('✅ Sending message to Lyro iframe');
+            try {
+                lyroIframe.contentWindow.postMessage({ action: 'open' }, '*');
+                return;
+            } catch (error) {
+                console.log('❌ Lyro iframe message failed:', error);
+            }
         }
         
-        console.log('No official Lyro found, using Equipment King AI fallback');
+        console.log('🎯 No official Lyro found, using Equipment King AI fallback chat');
         // Fallback - create our custom chat interface
-        this.createFallbackChat();
+        try {
+            this.createFallbackChat();
+            console.log('✅ Fallback chat created successfully');
+        } catch (error) {
+            console.error('❌ Fallback chat creation failed:', error);
+            // Last resort - alert user
+            alert('Chat system temporarily unavailable. Please contact us at +1 (555) 123-4567 or sales@equipmentking.com');
+        }
     },
 
     // Fallback chat interface if Lyro isn't loaded
@@ -375,15 +404,25 @@ window.EquipmentKingChat = {
 
     // Initialize Lyro integration
     init: function() {
-        if (this.initialized) return;
+        if (this.initialized) {
+            console.log('🔄 Equipment King Chat System already initialized');
+            return;
+        }
         
-        console.log('Initializing Equipment King Chat System...');
+        console.log('🚀 Initializing Equipment King Chat System...');
+        console.log('📍 Current page:', window.location.pathname);
+        
+        // Ensure Font Awesome is available for icons
+        if (!document.querySelector('link[href*="font-awesome"]')) {
+            console.log('⚠️ Font Awesome not detected, chat icons may not display properly');
+        }
         
         // Load official Lyro script
         const lyroScript = document.createElement('script');
         lyroScript.src = 'https://widget.lyro.ai/widget.js';
         lyroScript.async = true;
         lyroScript.onload = function() {
+            console.log('📦 Lyro script loaded');
             try {
                 if (window.Lyro && typeof window.Lyro.init === 'function') {
                     window.Lyro.init({
@@ -393,48 +432,98 @@ window.EquipmentKingChat = {
                         language: 'en',
                         autoOpen: false
                     });
-                    console.log('Lyro AI widget loaded successfully');
+                    console.log('✅ Lyro AI widget initialized successfully');
                 }
             } catch (error) {
-                console.log('Lyro widget initialization failed, fallback available');
+                console.log('⚠️ Lyro widget initialization failed:', error);
+                console.log('🔄 Fallback chat system available');
             }
         };
         lyroScript.onerror = function() {
-            console.log('Lyro script failed to load, using fallback chat');
+            console.log('❌ Lyro script failed to load from CDN');
+            console.log('🔄 Using fallback chat system');
         };
         document.head.appendChild(lyroScript);
         
         // Alternative widget initialization
         window.lyroAsyncInit = function() {
             if (window.Lyro) {
-                window.Lyro.init({
-                    autoOpen: false,
-                    showWhenOffline: true
-                });
+                console.log('🔄 Lyro async initialization');
+                try {
+                    window.Lyro.init({
+                        autoOpen: false,
+                        showWhenOffline: true
+                    });
+                } catch (error) {
+                    console.log('⚠️ Lyro async init failed:', error);
+                }
             }
         };
         
+        // Check system status after delay
         setTimeout(() => {
+            const status = {
+                hasLyro: !!window.Lyro,
+                hasLyroWidget: !!window.lyroWidget,
+                fallbackReady: typeof this.createFallbackChat === 'function'
+            };
+            console.log('📊 Final chat system status:', status);
+            
             if (!window.Lyro && !window.lyroWidget) {
-                console.log('Equipment King AI fallback chat system ready');
+                console.log('🎯 Equipment King AI fallback chat system ready');
             }
         }, 3000);
         
         this.initialized = true;
-        console.log('Equipment King Chat System initialized');
+        console.log('✅ Equipment King Chat System initialization complete');
+        
+        // Test fallback chat availability
+        if (typeof this.createFallbackChat === 'function') {
+            console.log('✅ Fallback chat function available');
+        } else {
+            console.error('❌ Fallback chat function missing!');
+        }
     }
 };
 
 // Global function for backward compatibility
 function openLyroChat() {
-    window.EquipmentKingChat.openLyroChat();
+    console.log('🎯 Global openLyroChat() called');
+    if (window.EquipmentKingChat && typeof window.EquipmentKingChat.openLyroChat === 'function') {
+        window.EquipmentKingChat.openLyroChat();
+    } else {
+        console.error('❌ EquipmentKingChat not available!', window.EquipmentKingChat);
+        alert('Chat system is loading... Please try again in a moment.');
+    }
 }
 
+// Global debug function
+function debugLyroChat() {
+    console.log('🔍 Equipment King Chat Debug Info:');
+    console.log('- EquipmentKingChat object:', window.EquipmentKingChat);
+    console.log('- Initialized:', window.EquipmentKingChat ? window.EquipmentKingChat.initialized : 'N/A');
+    console.log('- Chat open:', window.EquipmentKingChat ? window.EquipmentKingChat.chatOpen : 'N/A');
+    console.log('- Lyro available:', !!window.Lyro);
+    console.log('- LyroWidget available:', !!window.lyroWidget);
+    console.log('- Global openLyroChat function:', typeof openLyroChat);
+    
+    if (window.EquipmentKingChat) {
+        console.log('- Available methods:', Object.keys(window.EquipmentKingChat));
+    }
+}
+
+// Make debug function globally available
+window.debugLyroChat = debugLyroChat;
+
 // Auto-initialize when DOM is ready
+console.log('🔄 Equipment King Chat: Setting up initialization...');
 if (document.readyState === 'loading') {
+    console.log('📋 DOM still loading, waiting for DOMContentLoaded...');
     document.addEventListener('DOMContentLoaded', () => {
+        console.log('📋 DOMContentLoaded event fired');
         window.EquipmentKingChat.init();
     });
 } else {
+    console.log('📋 DOM already ready, initializing immediately');
     window.EquipmentKingChat.init();
 }
