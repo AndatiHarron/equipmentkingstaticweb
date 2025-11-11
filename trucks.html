@@ -366,6 +366,21 @@
       .ek-magnifier::after {
         width: 16px;
       }
+      
+      .ek-thumb {
+        width: 55px !important;
+        height: 55px !important;
+        min-width: 55px !important;
+        min-height: 55px !important;
+        max-width: 55px !important;
+        max-height: 55px !important;
+        flex: 0 0 55px !important;
+      }
+      
+      .ek-thumb-strip {
+        gap: 6px !important;
+        padding: 8px 2px 12px 2px !important;
+      }
     }
 
     /* Content fade-in animations */
@@ -812,8 +827,13 @@
       }
       
       .ek-thumb {
-        min-height: 60px;
-        min-width: 60px;
+        width: 60px !important;
+        height: 60px !important;
+        min-width: 60px !important;
+        min-height: 60px !important;
+        max-width: 60px !important;
+        max-height: 60px !important;
+        flex: 0 0 60px !important;
         touch-action: manipulation;
       }
       
@@ -831,6 +851,9 @@
       .ek-thumb-strip {
         -webkit-overflow-scrolling: touch;
         scroll-behavior: smooth;
+        gap: 8px !important;
+        padding: 8px 4px 12px 4px !important;
+        justify-content: flex-start !important;
       }
     }
 
@@ -893,6 +916,8 @@
       padding: 8px 0 12px 0;
       scrollbar-width: thin;
       scrollbar-color: #ccc transparent;
+      flex-wrap: nowrap;
+      justify-content: flex-start;
     }
 
     .ek-thumb-strip::-webkit-scrollbar {
@@ -917,6 +942,10 @@
       flex: 0 0 auto;
       width: var(--thumb-size);
       height: var(--thumb-size);
+      min-width: var(--thumb-size);
+      min-height: var(--thumb-size);
+      max-width: var(--thumb-size);
+      max-height: var(--thumb-size);
       border-radius: 10px;
       overflow: hidden;
       border: 3px solid transparent;
