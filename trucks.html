@@ -1180,78 +1180,37 @@
   </style>
 
     <style>
-        /* Enhanced truck tile styling with persistent hover */
+        /* Simplified truck tile styling - no hover effects */
         .truck-tile {
             transform: translateY(0);
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transition: all 0.3s ease;
             position: relative;
-            z-index: 1;
+            cursor: pointer;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            background: #fff;
         }
         
-        .truck-tile:hover {
-            transform: translateY(-4px) !important;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.15) !important;
-            z-index: 10;
+        /* Simple click feedback instead of hover */
+        .truck-tile:active {
+            transform: translateY(1px);
+            box-shadow: 0 1px 4px rgba(0,0,0,0.2);
         }
 
-        /* Add hover persistence with focus states */
-        .truck-tile:focus-within,
-        .truck-tile.hover-active {
-            transform: translateY(-4px) !important;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.15) !important;
-            z-index: 10;
+        /* Focus states for accessibility */
+        .truck-tile:focus {
+            outline: 2px solid #007bff;
+            outline-offset: 2px;
         }
         
         .truck-image img {
-            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-        
-        .truck-tile:hover .truck-image img,
-        .truck-tile:focus-within .truck-image img,
-        .truck-tile.hover-active .truck-image img {
-            transform: scale(1.05);
+            transition: none; /* Remove image scaling */
         }
 
-        /* Improve hover area by adding padding for better mouse targeting */
-        .truck-tile {
-            margin: 2px;
-            will-change: transform, box-shadow;
-        }
-
-        .truck-tile::before {
-            content: '';
-            position: absolute;
-            top: -5px;
-            left: -5px;
-            right: -5px;
-            bottom: -5px;
-            background: transparent;
-            pointer-events: all;
-            z-index: -1;
-        }
-
-        /* Enhanced hover zones for better UX */
+        /* Clean grid layout */
         .truck-grid {
-            gap: 10px; /* Increase gap for better hover targeting */
-        }
-
-        /* Prevent hover loss during fast mouse movements */
-        .truck-tile {
-            backface-visibility: hidden;
-            -webkit-backface-visibility: hidden;
-        }
-
-        /* Ensure popups and dropdowns don't interfere with hover */
-        .ek-popup-overlay,
-        .dropdown-menu {
-            pointer-events: auto;
-        }
-
-        /* Better visual feedback for active hover states */
-        .truck-tile.hover-active {
-            outline: 2px solid rgba(0, 123, 255, 0.2);
-            outline-offset: 2px;
+            gap: 8px;
         }
         
         .category-buttons button:hover:not(.active) {
@@ -1317,11 +1276,41 @@
             </h3>
             
             <div class="controls-container" style="display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap;">
-                <div class="category-buttons" style="display: flex; gap: 12px; flex-wrap: wrap;">
-                    <button data-category="all" class="active" style="background: #444; color: #ffffff; padding: 12px 24px; border-radius: 8px; border: 2px solid #444; font-weight: 600; cursor: pointer; transition: all 0.3s ease;">All</button>
-                    <button data-category="light-duty" style="background: transparent; color: #444; padding: 12px 24px; border-radius: 8px; border: 2px solid #dee2e6; font-weight: 600; cursor: pointer; transition: all 0.3s ease;">Light Duty</button>
-                    <button data-category="medium-duty" style="background: transparent; color: #444; padding: 12px 24px; border-radius: 8px; border: 2px solid #dee2e6; font-weight: 600; cursor: pointer; transition: all 0.3s ease;">Medium Duty</button>
-                    <button data-category="heavy-duty" style="background: transparent; color: #444; padding: 12px 24px; border-radius: 8px; border: 2px solid #dee2e6; font-weight: 600; cursor: pointer; transition: all 0.3s ease;">Heavy Duty</button>
+                <div style="display: flex; flex-direction: column; gap: 16px;">
+                    <!-- Main Category Filter -->
+                    <div class="category-buttons" style="display: flex; gap: 12px; flex-wrap: wrap; justify-content: center;">
+                        <button data-category="all" class="active" style="background: #444; color: #ffffff; padding: 12px 24px; border-radius: 8px; border: 2px solid #444; font-weight: 600; cursor: pointer; transition: all 0.3s ease;">All Trucks</button>
+                        <button data-category="light-duty" style="background: transparent; color: #444; padding: 12px 24px; border-radius: 8px; border: 2px solid #dee2e6; font-weight: 600; cursor: pointer; transition: all 0.3s ease;">Light Duty</button>
+                        <button data-category="medium-duty" style="background: transparent; color: #444; padding: 12px 24px; border-radius: 8px; border: 2px solid #dee2e6; font-weight: 600; cursor: pointer; transition: all 0.3s ease;">Medium Duty</button>
+                        <button data-category="heavy-duty" style="background: transparent; color: #444; padding: 12px 24px; border-radius: 8px; border: 2px solid #dee2e6; font-weight: 600; cursor: pointer; transition: all 0.3s ease;">Heavy Duty</button>
+                    </div>
+
+                    <!-- Truck Counter -->
+                    <div id="truck-counter" style="text-align: center; margin: 8px 0; color: #666; font-size: 0.9em;">
+                        <span id="visible-count">0</span> trucks shown
+                    </div>
+
+                    <!-- Series Filter (shown when category is selected) -->
+                    <div class="series-buttons" style="display: none; gap: 8px; flex-wrap: wrap; justify-content: center;">
+                        <h4 style="width: 100%; text-align: center; margin: 0 0 8px 0; color: #666; font-size: 0.9em;">Filter by Series:</h4>
+                        <!-- Light Duty Series -->
+                        <button data-series="x9" data-parent="light-duty" style="background: transparent; color: #666; padding: 8px 16px; border-radius: 6px; border: 1px solid #ddd; font-weight: 500; cursor: pointer; font-size: 0.85em;">X9 Series</button>
+                        <button data-series="e9" data-parent="light-duty" style="background: transparent; color: #666; padding: 8px 16px; border-radius: 6px; border: 1px solid #ddd; font-weight: 500; cursor: pointer; font-size: 0.85em;">E9 Series</button>
+                        <button data-series="x7" data-parent="light-duty" style="background: transparent; color: #666; padding: 8px 16px; border-radius: 6px; border: 1px solid #ddd; font-weight: 500; cursor: pointer; font-size: 0.85em;">X7 Series</button>
+                        <button data-series="i9" data-parent="light-duty" style="background: transparent; color: #666; padding: 8px 16px; border-radius: 6px; border: 1px solid #ddd; font-weight: 500; cursor: pointer; font-size: 0.85em;">i9 Series</button>
+                        
+                        <!-- Medium Duty Series -->
+                        <button data-series="e6" data-parent="medium-duty" style="background: transparent; color: #666; padding: 8px 16px; border-radius: 6px; border: 1px solid #ddd; font-weight: 500; cursor: pointer; font-size: 0.85em;">E6 Series</button>
+                        <button data-series="x6" data-parent="medium-duty" style="background: transparent; color: #666; padding: 8px 16px; border-radius: 6px; border: 1px solid #ddd; font-weight: 500; cursor: pointer; font-size: 0.85em;">X6 Series</button>
+                        
+                        <!-- Heavy Duty Series -->
+                        <button data-series="z3" data-parent="heavy-duty" style="background: transparent; color: #666; padding: 8px 16px; border-radius: 6px; border: 1px solid #ddd; font-weight: 500; cursor: pointer; font-size: 0.85em;">Z3 Series</button>
+                        <button data-series="e1st" data-parent="heavy-duty" style="background: transparent; color: #666; padding: 8px 16px; border-radius: 6px; border: 1px solid #ddd; font-weight: 500; cursor: pointer; font-size: 0.85em;">E1st Series</button>
+                        <button data-series="e3" data-parent="heavy-duty" style="background: transparent; color: #666; padding: 8px 16px; border-radius: 6px; border: 1px solid #ddd; font-weight: 500; cursor: pointer; font-size: 0.85em;">E3 Series</button>
+                        <button data-series="9" data-parent="heavy-duty" style="background: transparent; color: #666; padding: 8px 16px; border-radius: 6px; border: 1px solid #ddd; font-weight: 500; cursor: pointer; font-size: 0.85em;">9 Series</button>
+                        <button data-series="6" data-parent="heavy-duty" style="background: transparent; color: #666; padding: 8px 16px; border-radius: 6px; border: 1px solid #ddd; font-weight: 500; cursor: pointer; font-size: 0.85em;">6 Series</button>
+                        <button data-series="3" data-parent="heavy-duty" style="background: transparent; color: #666; padding: 8px 16px; border-radius: 6px; border: 1px solid #ddd; font-weight: 500; cursor: pointer; font-size: 0.85em;">3 Series</button>
+                    </div>
                 </div>
                 
                 <input type="text" id="searchInput" placeholder="Search trucks..." style="width: 300px; max-width: 300px; padding: 12px 16px; border: 2px solid #dee2e6; border-radius: 8px; font-size: 14px;" />
@@ -2763,100 +2752,210 @@ if (trucksDropdown) {
     });
 }
 
-// Enhanced hover persistence for truck tiles
-function initializeEnhancedHover() {
-    const truckTiles = document.querySelectorAll('.truck-tile');
-    let currentHoveredTile = null;
-    let hoverTimeout = null;
+// Enhanced Category and Series Filtering System
+function initializeAdvancedFiltering() {
+    const categoryButtons = document.querySelectorAll('.category-buttons button');
+    const seriesButtons = document.querySelectorAll('.series-buttons button');
+    const seriesContainer = document.querySelector('.series-buttons');
+    const categorySections = document.querySelectorAll('.category-section');
+    const seriesSections = document.querySelectorAll('.series');
 
-    truckTiles.forEach(tile => {
-        // Store original inline hover handlers
-        const originalMouseOver = tile.getAttribute('onmouseover');
-        const originalMouseOut = tile.getAttribute('onmouseout');
-        
-        // Remove original inline handlers to replace with enhanced ones
-        tile.removeAttribute('onmouseover');
-        tile.removeAttribute('onmouseout');
-        
-        // Enhanced hover management
-        tile.addEventListener('mouseenter', () => {
-            clearTimeout(hoverTimeout);
-            
-            // Remove hover class from previously hovered tile
-            if (currentHoveredTile && currentHoveredTile !== tile) {
-                currentHoveredTile.classList.remove('hover-active');
-                currentHoveredTile.style.transform = 'translateY(0)';
-                currentHoveredTile.style.boxShadow = 'none';
-            }
-            
-            // Set current tile as hovered
-            currentHoveredTile = tile;
-            tile.classList.add('hover-active');
-            tile.style.transform = 'translateY(-4px)';
-            tile.style.boxShadow = '0 8px 24px rgba(0,0,0,0.1)';
-        });
-        
-        tile.addEventListener('mouseleave', (e) => {
-            // Check if mouse is moving to a related element (popup, dropdown, etc.)
-            const relatedTarget = e.relatedTarget;
-            const isMovingToPopup = relatedTarget && (
-                relatedTarget.closest('.ek-popup-overlay') ||
-                relatedTarget.closest('.dropdown-menu') ||
-                relatedTarget.closest('.magnifier-lens')
-            );
-            
-            if (isMovingToPopup) {
-                // Keep hover active for longer if moving to interactive elements
-                hoverTimeout = setTimeout(() => {
-                    tile.classList.remove('hover-active');
-                    tile.style.transform = 'translateY(0)';
-                    tile.style.boxShadow = 'none';
-                    if (currentHoveredTile === tile) {
-                        currentHoveredTile = null;
-                    }
-                }, 800); // 800ms delay when moving to interactive elements
+    let activeCategory = 'all';
+    let activeSeries = null;
+
+    // Category filtering
+    categoryButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const category = btn.getAttribute('data-category');
+            activeCategory = category;
+            activeSeries = null; // Reset series filter
+
+            // Update category button states
+            categoryButtons.forEach(b => {
+                b.classList.remove('active');
+                b.style.background = 'transparent';
+                b.style.color = '#444';
+                b.style.borderColor = '#dee2e6';
+            });
+
+            btn.classList.add('active');
+            btn.style.background = '#444';
+            btn.style.color = '#ffffff';
+            btn.style.borderColor = '#444';
+
+            // Show/hide series filter buttons
+            if (category === 'all') {
+                seriesContainer.style.display = 'none';
+                showAllTrucks();
             } else {
-                // Normal hover exit
-                hoverTimeout = setTimeout(() => {
-                    tile.classList.remove('hover-active');
-                    tile.style.transform = 'translateY(0)';
-                    tile.style.boxShadow = 'none';
-                    if (currentHoveredTile === tile) {
-                        currentHoveredTile = null;
-                    }
-                }, 150); // 150ms delay for normal mouse exit
+                seriesContainer.style.display = 'flex';
+                showSeriesButtons(category);
+                filterByCategory(category);
             }
-        });
-        
-        // Handle focus for accessibility
-        tile.addEventListener('focus', () => {
-            tile.classList.add('hover-active');
-        });
-        
-        tile.addEventListener('blur', () => {
-            tile.classList.remove('hover-active');
         });
     });
-    
-    // Clear hover states when clicking elsewhere
-    document.addEventListener('click', (e) => {
-        if (!e.target.closest('.truck-tile')) {
-            clearTimeout(hoverTimeout);
-            if (currentHoveredTile) {
-                currentHoveredTile.classList.remove('hover-active');
-                currentHoveredTile.style.transform = 'translateY(0)';
-                currentHoveredTile.style.boxShadow = 'none';
-                currentHoveredTile = null;
+
+    // Series filtering
+    seriesButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const series = btn.getAttribute('data-series');
+            const parentCategory = btn.getAttribute('data-parent');
+
+            // Only allow series selection if it matches active category
+            if (activeCategory !== 'all' && activeCategory !== parentCategory) {
+                return;
             }
+
+            // Update series button states
+            seriesButtons.forEach(b => {
+                if (b.getAttribute('data-parent') === parentCategory) {
+                    b.classList.remove('active');
+                    b.style.background = 'transparent';
+                    b.style.color = '#666';
+                    b.style.borderColor = '#ddd';
+                }
+            });
+
+            if (activeSeries === series) {
+                // Deselect series - show all trucks in category
+                activeSeries = null;
+                filterByCategory(activeCategory);
+            } else {
+                // Select series
+                activeSeries = series;
+                btn.classList.add('active');
+                btn.style.background = '#007bff';
+                btn.style.color = '#fff';
+                btn.style.borderColor = '#007bff';
+                filterBySeries(series, activeCategory);
+            }
+        });
+    });
+
+    function showAllTrucks() {
+        categorySections.forEach(section => {
+            section.style.display = 'block';
+        });
+        seriesSections.forEach(series => {
+            series.style.display = 'block';
+        });
+        updateTruckCounter();
+    }
+
+    function filterByCategory(category) {
+        categorySections.forEach(section => {
+            const sectionCategory = section.getAttribute('data-category');
+            section.style.display = (sectionCategory === category) ? 'block' : 'none';
+        });
+        // Show all series within the selected category
+        const targetSection = document.querySelector(`.category-section[data-category="${category}"]`);
+        if (targetSection) {
+            const seriesInSection = targetSection.querySelectorAll('.series');
+            seriesInSection.forEach(seriesDiv => {
+                seriesDiv.style.display = 'block';
+            });
+        }
+        updateTruckCounter();
+    }
+
+    function filterBySeries(series, category) {
+        // Hide all sections first
+        categorySections.forEach(section => {
+            section.style.display = 'none';
+        });
+
+        // Show only the category section that contains the series
+        const targetSection = document.querySelector(`.category-section[data-category="${category}"]`);
+        if (targetSection) {
+            targetSection.style.display = 'block';
+            
+            // Within that section, show only the selected series
+            const seriesInSection = targetSection.querySelectorAll('.series');
+            seriesInSection.forEach(seriesDiv => {
+                const seriesId = seriesDiv.id;
+                const matches = seriesId.includes(series.toLowerCase());
+                seriesDiv.style.display = matches ? 'block' : 'none';
+            });
+        }
+        updateTruckCounter();
+    }
+
+    function updateTruckCounter() {
+        const visibleSections = document.querySelectorAll('.category-section[style*="block"], .category-section:not([style])');
+        let count = 0;
+        
+        visibleSections.forEach(section => {
+            if (section.style.display !== 'none') {
+                const visibleSeries = section.querySelectorAll('.series[style*="block"], .series:not([style])');
+                visibleSeries.forEach(series => {
+                    if (series.style.display !== 'none') {
+                        count += series.querySelectorAll('.truck-tile').length;
+                    }
+                });
+            }
+        });
+
+        const counter = document.getElementById('visible-count');
+        if (counter) {
+            counter.textContent = count;
+        }
+    }
+
+    function showSeriesButtons(category) {
+        // Hide all series buttons first
+        seriesButtons.forEach(btn => {
+            btn.style.display = 'none';
+            btn.classList.remove('active');
+            btn.style.background = 'transparent';
+            btn.style.color = '#666';
+            btn.style.borderColor = '#ddd';
+        });
+
+        // Show only buttons for the selected category
+        seriesButtons.forEach(btn => {
+            const parentCategory = btn.getAttribute('data-parent');
+            if (parentCategory === category) {
+                btn.style.display = 'inline-block';
+            }
+        });
+    }
+}
+
+// Remove all problematic hover effects from truck tiles
+function cleanupHoverEffects() {
+    const truckTiles = document.querySelectorAll('.truck-tile');
+    truckTiles.forEach(tile => {
+        tile.removeAttribute('onmouseover');
+        tile.removeAttribute('onmouseout');
+        // Clean up inline styles that might interfere
+        tile.style.removeProperty('transform');
+        tile.style.removeProperty('box-shadow');
+        // Ensure proper class
+        if (!tile.classList.contains('truck-tile')) {
+            tile.classList.add('truck-tile');
         }
     });
 }
 
-// Initialize enhanced hover after DOM is ready
+// Initialize both systems
+function initializeAll() {
+    cleanupHoverEffects();
+    initializeAdvancedFiltering();
+    
+    // Set initial truck count
+    setTimeout(() => {
+        const totalTrucks = document.querySelectorAll('.truck-tile').length;
+        const counter = document.getElementById('visible-count');
+        if (counter) {
+            counter.textContent = totalTrucks;
+        }
+    }, 100);
+}
+
 if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initializeEnhancedHover);
+    document.addEventListener('DOMContentLoaded', initializeAll);
 } else {
-    initializeEnhancedHover();
+    initializeAll();
 }
   </script>
     <div id="footer-placeholder"></div>
