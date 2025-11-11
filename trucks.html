@@ -1180,37 +1180,72 @@
   </style>
 
     <style>
-        /* Simplified truck tile styling - no hover effects */
+        /* Simplified truck tile styling without problematic hover effects */
         .truck-tile {
             transform: translateY(0);
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
             transition: all 0.3s ease;
             position: relative;
+            z-index: 1;
             cursor: pointer;
-            border: 2px solid #e0e0e0;
-            border-radius: 12px;
-            background: #fff;
         }
         
-        /* Simple click feedback instead of hover */
-        .truck-tile:active {
-            transform: translateY(1px);
-            box-shadow: 0 1px 4px rgba(0,0,0,0.2);
-        }
-
-        /* Focus states for accessibility */
-        .truck-tile:focus {
-            outline: 2px solid #007bff;
-            outline-offset: 2px;
+        .truck-tile:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.12);
         }
         
         .truck-image img {
-            transition: none; /* Remove image scaling */
+            transition: transform 0.3s ease;
+        }
+        
+        .truck-tile:hover .truck-image img {
+            transform: scale(1.02);
         }
 
         /* Clean grid layout */
         .truck-grid {
             gap: 8px;
+        }
+
+        /* Series navigation buttons */
+        .series-nav {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .series-btn {
+            padding: 8px 16px;
+            border: 2px solid #dee2e6;
+            background: transparent;
+            color: #444;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .series-btn:hover {
+            background: #f8f9fa;
+            border-color: #adb5bd;
+        }
+
+        .series-btn.active {
+            background: #007bff;
+            color: white;
+            border-color: #007bff;
+        }
+
+        .series {
+            display: none;
+        }
+
+        .series.active {
+            display: block;
         }
         
         .category-buttons button:hover:not(.active) {
@@ -1276,41 +1311,11 @@
             </h3>
             
             <div class="controls-container" style="display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap;">
-                <div style="display: flex; flex-direction: column; gap: 16px;">
-                    <!-- Main Category Filter -->
-                    <div class="category-buttons" style="display: flex; gap: 12px; flex-wrap: wrap; justify-content: center;">
-                        <button data-category="all" class="active" style="background: #444; color: #ffffff; padding: 12px 24px; border-radius: 8px; border: 2px solid #444; font-weight: 600; cursor: pointer; transition: all 0.3s ease;">All Trucks</button>
-                        <button data-category="light-duty" style="background: transparent; color: #444; padding: 12px 24px; border-radius: 8px; border: 2px solid #dee2e6; font-weight: 600; cursor: pointer; transition: all 0.3s ease;">Light Duty</button>
-                        <button data-category="medium-duty" style="background: transparent; color: #444; padding: 12px 24px; border-radius: 8px; border: 2px solid #dee2e6; font-weight: 600; cursor: pointer; transition: all 0.3s ease;">Medium Duty</button>
-                        <button data-category="heavy-duty" style="background: transparent; color: #444; padding: 12px 24px; border-radius: 8px; border: 2px solid #dee2e6; font-weight: 600; cursor: pointer; transition: all 0.3s ease;">Heavy Duty</button>
-                    </div>
-
-                    <!-- Truck Counter -->
-                    <div id="truck-counter" style="text-align: center; margin: 8px 0; color: #666; font-size: 0.9em;">
-                        <span id="visible-count">0</span> trucks shown
-                    </div>
-
-                    <!-- Series Filter (shown when category is selected) -->
-                    <div class="series-buttons" style="display: none; gap: 8px; flex-wrap: wrap; justify-content: center;">
-                        <h4 style="width: 100%; text-align: center; margin: 0 0 8px 0; color: #666; font-size: 0.9em;">Filter by Series:</h4>
-                        <!-- Light Duty Series -->
-                        <button data-series="x9" data-parent="light-duty" style="background: transparent; color: #666; padding: 8px 16px; border-radius: 6px; border: 1px solid #ddd; font-weight: 500; cursor: pointer; font-size: 0.85em;">X9 Series</button>
-                        <button data-series="e9" data-parent="light-duty" style="background: transparent; color: #666; padding: 8px 16px; border-radius: 6px; border: 1px solid #ddd; font-weight: 500; cursor: pointer; font-size: 0.85em;">E9 Series</button>
-                        <button data-series="x7" data-parent="light-duty" style="background: transparent; color: #666; padding: 8px 16px; border-radius: 6px; border: 1px solid #ddd; font-weight: 500; cursor: pointer; font-size: 0.85em;">X7 Series</button>
-                        <button data-series="i9" data-parent="light-duty" style="background: transparent; color: #666; padding: 8px 16px; border-radius: 6px; border: 1px solid #ddd; font-weight: 500; cursor: pointer; font-size: 0.85em;">i9 Series</button>
-                        
-                        <!-- Medium Duty Series -->
-                        <button data-series="e6" data-parent="medium-duty" style="background: transparent; color: #666; padding: 8px 16px; border-radius: 6px; border: 1px solid #ddd; font-weight: 500; cursor: pointer; font-size: 0.85em;">E6 Series</button>
-                        <button data-series="x6" data-parent="medium-duty" style="background: transparent; color: #666; padding: 8px 16px; border-radius: 6px; border: 1px solid #ddd; font-weight: 500; cursor: pointer; font-size: 0.85em;">X6 Series</button>
-                        
-                        <!-- Heavy Duty Series -->
-                        <button data-series="z3" data-parent="heavy-duty" style="background: transparent; color: #666; padding: 8px 16px; border-radius: 6px; border: 1px solid #ddd; font-weight: 500; cursor: pointer; font-size: 0.85em;">Z3 Series</button>
-                        <button data-series="e1st" data-parent="heavy-duty" style="background: transparent; color: #666; padding: 8px 16px; border-radius: 6px; border: 1px solid #ddd; font-weight: 500; cursor: pointer; font-size: 0.85em;">E1st Series</button>
-                        <button data-series="e3" data-parent="heavy-duty" style="background: transparent; color: #666; padding: 8px 16px; border-radius: 6px; border: 1px solid #ddd; font-weight: 500; cursor: pointer; font-size: 0.85em;">E3 Series</button>
-                        <button data-series="9" data-parent="heavy-duty" style="background: transparent; color: #666; padding: 8px 16px; border-radius: 6px; border: 1px solid #ddd; font-weight: 500; cursor: pointer; font-size: 0.85em;">9 Series</button>
-                        <button data-series="6" data-parent="heavy-duty" style="background: transparent; color: #666; padding: 8px 16px; border-radius: 6px; border: 1px solid #ddd; font-weight: 500; cursor: pointer; font-size: 0.85em;">6 Series</button>
-                        <button data-series="3" data-parent="heavy-duty" style="background: transparent; color: #666; padding: 8px 16px; border-radius: 6px; border: 1px solid #ddd; font-weight: 500; cursor: pointer; font-size: 0.85em;">3 Series</button>
-                    </div>
+                <div class="category-buttons" style="display: flex; gap: 12px; flex-wrap: wrap;">
+                    <button data-category="all" class="active" style="background: #444; color: #ffffff; padding: 12px 24px; border-radius: 8px; border: 2px solid #444; font-weight: 600; cursor: pointer; transition: all 0.3s ease;">All</button>
+                    <button data-category="light-duty" style="background: transparent; color: #444; padding: 12px 24px; border-radius: 8px; border: 2px solid #dee2e6; font-weight: 600; cursor: pointer; transition: all 0.3s ease;">Light Duty</button>
+                    <button data-category="medium-duty" style="background: transparent; color: #444; padding: 12px 24px; border-radius: 8px; border: 2px solid #dee2e6; font-weight: 600; cursor: pointer; transition: all 0.3s ease;">Medium Duty</button>
+                    <button data-category="heavy-duty" style="background: transparent; color: #444; padding: 12px 24px; border-radius: 8px; border: 2px solid #dee2e6; font-weight: 600; cursor: pointer; transition: all 0.3s ease;">Heavy Duty</button>
                 </div>
                 
                 <input type="text" id="searchInput" placeholder="Search trucks..." style="width: 300px; max-width: 300px; padding: 12px 16px; border: 2px solid #dee2e6; border-radius: 8px; font-size: 14px;" />
@@ -1324,15 +1329,26 @@
             <div style="position: absolute; left: -1px; top: 25%; bottom: 25%; width: 2px; background: linear-gradient(180deg, transparent, #999, transparent);"></div>
             <div style="position: absolute; right: -1px; top: 30%; bottom: 30%; width: 2px; background: linear-gradient(180deg, transparent, #999, transparent);"></div>
             
-            <h2 class="headings" id="ldt" style="color: #212529; margin-bottom: 10px; font-size: 2.5em; font-weight: 700; text-align: center; position: relative;">
+            <h2 class="headings" id="ldt" style="color: #212529; margin-bottom: 20px; font-size: 2.5em; font-weight: 700; text-align: center; position: relative;">
                 <span style="background: #fff; padding: 0 24px; position: relative; z-index: 2;">Light Duty Trucks</span>
                 <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ddd, transparent); z-index: 1;"></div>
             </h2>
+
+            <!-- Series Navigation for Light Duty -->
+            <div class="series-nav" id="light-duty-nav">
+                <button class="series-btn active" data-series="x9-series">X9 Series</button>
+                <button class="series-btn" data-series="e9-series">E9 Series</button>
+                <button class="series-btn" data-series="x7-series">X7 Series</button>
+                <button class="series-btn" data-series="i9-series">i9 Series</button>
+                <div class="truck-counter" style="margin-left: auto; padding: 8px 12px; background: #f8f9fa; border-radius: 6px; font-size: 14px; color: #666;">
+                    <span id="light-duty-count">8 trucks shown</span>
+                </div>
+            </div>
     
 
-            <div id="x9-series" class="series" style="margin-bottom: 10px;">
+            <div id="x9-series" class="series active" data-series="x9-series" style="margin-bottom: 10px;">
                 <div class="series-title" style="font-size: 1.5em; font-weight: 600; color: #444; margin-bottom: 6px; text-align: center; position: relative;">
-                    <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2;">X9 Series</span>
+                    <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2;">X9 Series (8 trucks)</span>
                     <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ccc, transparent); z-index: 1;"></div>
                 </div>
                 <div class="truck-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 6px; margin-bottom: 32px;">
@@ -1403,9 +1419,9 @@
                 </div>
             </div>
 
-                <div class="series" style="margin-bottom: 10px;">
+                <div class="series" data-series="e9-series" style="margin-bottom: 10px;">
                 <div class="series-title" style="font-size: 1.5em; font-weight: 600; color: #444; margin-bottom: 6px; text-align: center; position: relative;">
-                    <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2;">E9 Series</span>
+                    <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2;">E9 Series (4 trucks)</span>
                     <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ccc, transparent); z-index: 1;"></div>
                 </div>
                 <div class="truck-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 6px; margin-bottom: 32px;">
@@ -1444,9 +1460,9 @@
       </div>
     </div>
 
-                <div class="series" style="margin-bottom: 10px;">
+                <div class="series" data-series="x7-series" style="margin-bottom: 10px;">
                 <div class="series-title" style="font-size: 1.5em; font-weight: 600; color: #444; margin-bottom: 6px; text-align: center; position: relative;">
-                    <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2;">X7 Series</span>
+                    <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2;">X7 Series (5 trucks)</span>
                     <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ccc, transparent); z-index: 1;"></div>
                 </div>
                 <div class="truck-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 6px; margin-bottom: 32px;">
@@ -1494,9 +1510,9 @@
       </div>
     </div>
 
-                <div class="series" style="margin-bottom: 10px;">
-                <div class="series-title" id="i9">i9 (New Series)</div> style="font-size: 1.5em; font-weight: 600; color: #444; margin-bottom: 6px; text-align: center; position: relative;">
-                    <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2;">i9 (New Series)</span>
+                <div class="series" data-series="i9-series" style="margin-bottom: 10px;">
+                <div class="series-title" id="i9" style="font-size: 1.5em; font-weight: 600; color: #444; margin-bottom: 6px; text-align: center; position: relative;">
+                    <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2;">i9 Series (1 truck)</span>
                     <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ccc, transparent); z-index: 1;"></div>
                 </div>
                 <div class="truck-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 6px; margin-bottom: 32px;">
@@ -1520,11 +1536,23 @@
             <div style="position: absolute; left: -1px; top: 25%; bottom: 25%; width: 2px; background: linear-gradient(180deg, transparent, #999, transparent);"></div>
             <div style="position: absolute; right: -1px; top: 30%; bottom: 30%; width: 2px; background: linear-gradient(180deg, transparent, #999, transparent);"></div>
             
-            <h2 class="headings" id="medium-duty">Medium Duty Trucks</h2>
+            <h2 class="headings" id="medium-duty" style="color: #212529; margin-bottom: 20px; font-size: 2.5em; font-weight: 700; text-align: center; position: relative;">
+                <span style="background: #fff; padding: 0 24px; position: relative; z-index: 2;">Medium Duty Trucks</span>
+                <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ddd, transparent); z-index: 1;"></div>
+            </h2>
 
-                <div class="series" style="margin-bottom: 10px;">
+            <!-- Series Navigation for Medium Duty -->
+            <div class="series-nav" id="medium-duty-nav">
+                <button class="series-btn active" data-series="e6-series">E6 Series</button>
+                <button class="series-btn" data-series="x6-series">X6 Series</button>
+                <div class="truck-counter" style="margin-left: auto; padding: 8px 12px; background: #f8f9fa; border-radius: 6px; font-size: 14px; color: #666;">
+                    <span id="medium-duty-count">7 trucks shown</span>
+                </div>
+            </div>
+
+                <div class="series active" data-series="e6-series" style="margin-bottom: 10px;">
                 <div class="series-title" style="font-size: 1.5em; font-weight: 600; color: #444; margin-bottom: 6px; text-align: center; position: relative;">
-                    <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2;">E6</span>
+                    <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2;">E6 Series (7 trucks)</span>
                     <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ccc, transparent); z-index: 1;"></div>
                 </div>
                 <div class="truck-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 6px; margin-bottom: 32px;">
@@ -1587,9 +1615,9 @@
       </div>
     </div>
 
-                <div class="series" style="margin-bottom: 10px;">
+                <div class="series" data-series="x6-series" style="margin-bottom: 10px;">
                 <div class="series-title" style="font-size: 1.5em; font-weight: 600; color: #444; margin-bottom: 6px; text-align: center; position: relative;">
-                    <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2;">X6</span>
+                    <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2;">X6 Series (15 trucks)</span>
                     <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ccc, transparent); z-index: 1;"></div>
                 </div>
                 <div class="truck-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 6px; margin-bottom: 32px;">
@@ -1716,14 +1744,27 @@
             <div style="position: absolute; left: -1px; top: 25%; bottom: 25%; width: 2px; background: linear-gradient(180deg, transparent, #999, transparent);"></div>
             <div style="position: absolute; right: -1px; top: 30%; bottom: 30%; width: 2px; background: linear-gradient(180deg, transparent, #999, transparent);"></div>
             
-            <h2 class="headings" id="heavy-duty" style="color: #212529; margin-bottom: 10px; font-size: 2.5em; font-weight: 700; text-align: center; position: relative;">
+            <h2 class="headings" id="heavy-duty" style="color: #212529; margin-bottom: 20px; font-size: 2.5em; font-weight: 700; text-align: center; position: relative;">
                 <span style="background: #fff; padding: 0 24px; position: relative; z-index: 2;">Heavy Duty Trucks</span>
                 <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ddd, transparent); z-index: 1;"></div>
             </h2>
 
-                <div class="series" style="margin-bottom: 16px;">
+            <!-- Series Navigation for Heavy Duty -->
+            <div class="series-nav" id="heavy-duty-nav">
+                <button class="series-btn active" data-series="z3-series">Z3 Series</button>
+                <button class="series-btn" data-series="e1st-series">E1st Series</button>
+                <button class="series-btn" data-series="e3-series">E3 Series</button>
+                <button class="series-btn" data-series="9-series">9 Series</button>
+                <button class="series-btn" data-series="6-series">6 Series</button>
+                <button class="series-btn" data-series="3-series">3 Series</button>
+                <div class="truck-counter" style="margin-left: auto; padding: 8px 12px; background: #f8f9fa; border-radius: 6px; font-size: 14px; color: #666;">
+                    <span id="heavy-duty-count">1 truck shown</span>
+                </div>
+            </div>
+
+                <div class="series active" data-series="z3-series" style="margin-bottom: 16px;">
                 <div class="series-title" style="font-size: 1.5em; font-weight: 600; color: #000000; margin-bottom: 12px; text-align: center; position: relative;">
-                    <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2; border: 2px solid #000000; color: #000000;">Z3 Series</span>
+                    <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2; border: 2px solid #000000; color: #000000;">Z3 Series (1 truck)</span>
                     <div style="position: absolute; top: 50%; left: 0; right: 0; height: 2px; background: #000000; z-index: 1;"></div>
                 </div>
                 <div class="truck-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 16px; align-items: start;">
@@ -1738,9 +1779,9 @@
       </div>
     </div>
 
-                <div class="series" style="margin-bottom: 10px;">
+                <div class="series" data-series="e1st-series" style="margin-bottom: 10px;">
                 <div class="series-title" style="font-size: 1.5em; font-weight: 600; color: #444; margin-bottom: 6px; text-align: center; position: relative;">
-                    <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2;">E1st</span>
+                    <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2;">E1st Series (1 truck)</span>
                     <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ccc, transparent); z-index: 1;"></div>
                 </div>
                 <div class="truck-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 6px; margin-bottom: 32px;">
@@ -1755,9 +1796,9 @@
       </div>
     </div>
 
-                <div class="series" style="margin-bottom: 10px;">
+                <div class="series" data-series="e3-series" style="margin-bottom: 10px;">
                 <div class="series-title" style="font-size: 1.5em; font-weight: 600; color: #444; margin-bottom: 6px; text-align: center; position: relative;">
-                    <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2;">E3</span>
+                    <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2;">E3 Series (8 trucks)</span>
                     <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ccc, transparent); z-index: 1;"></div>
                 </div>
                 <div class="truck-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 6px; margin-bottom: 32px;">
@@ -1829,9 +1870,9 @@
 
     </div>
 
-                <div class="series" style="margin-bottom: 10px;">
+                <div class="series" data-series="9-series" style="margin-bottom: 10px;">
                 <div class="series-title" style="font-size: 1.5em; font-weight: 600; color: #444; margin-bottom: 6px; text-align: center; position: relative;">
-                    <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2;">9 Series</span>
+                    <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2;">9 Series (5 trucks)</span>
                     <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ccc, transparent); z-index: 1;"></div>
                 </div>
                 <div class="truck-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 6px; margin-bottom: 32px;">
@@ -1898,9 +1939,9 @@
 </div>
 
 
-                <div class="series" style="margin-bottom: 10px;">
+                <div class="series" data-series="6-series" style="margin-bottom: 10px;">
                 <div class="series-title" style="font-size: 1.5em; font-weight: 600; color: #444; margin-bottom: 6px; text-align: center; position: relative;">
-                    <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2;">6 Series</span>
+                    <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2;">6 Series (4 trucks)</span>
                     <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ccc, transparent); z-index: 1;"></div>
                 </div>
                 <div class="truck-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 6px; margin-bottom: 32px;">
@@ -1956,9 +1997,9 @@
 </div>
 
 
-                <div class="series" style="margin-bottom: 10px;">
+                <div class="series" data-series="3-series" style="margin-bottom: 10px;">
                 <div class="series-title" style="font-size: 1.5em; font-weight: 600; color: #444; margin-bottom: 6px; text-align: center; position: relative;">
-                    <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2;">3 Series</span>
+                    <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2;">3 Series (1 truck)</span>
                     <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ccc, transparent); z-index: 1;"></div>
                 </div>
                 <div class="truck-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 6px; margin-bottom: 32px;">
@@ -2752,211 +2793,124 @@ if (trucksDropdown) {
     });
 }
 
-// Enhanced Category and Series Filtering System
-function initializeAdvancedFiltering() {
-    const categoryButtons = document.querySelectorAll('.category-buttons button');
-    const seriesButtons = document.querySelectorAll('.series-buttons button');
-    const seriesContainer = document.querySelector('.series-buttons');
-    const categorySections = document.querySelectorAll('.category-section');
-    const seriesSections = document.querySelectorAll('.series');
-
-    let activeCategory = 'all';
-    let activeSeries = null;
-
-    // Category filtering
-    categoryButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const category = btn.getAttribute('data-category');
-            activeCategory = category;
-            activeSeries = null; // Reset series filter
-
-            // Update category button states
-            categoryButtons.forEach(b => {
-                b.classList.remove('active');
-                b.style.background = 'transparent';
-                b.style.color = '#444';
-                b.style.borderColor = '#dee2e6';
-            });
-
-            btn.classList.add('active');
-            btn.style.background = '#444';
-            btn.style.color = '#ffffff';
-            btn.style.borderColor = '#444';
-
-            // Show/hide series filter buttons
-            if (category === 'all') {
-                seriesContainer.style.display = 'none';
-                showAllTrucks();
-            } else {
-                seriesContainer.style.display = 'flex';
-                showSeriesButtons(category);
-                filterByCategory(category);
+// Series navigation system - allows easy access to all truck series
+function initializeSeriesNavigation() {
+    // Count trucks in each series and update counters
+    function updateTruckCounts() {
+        // Light Duty counts
+        const lightDutySeries = document.querySelectorAll('#light-duty .series');
+        lightDutySeries.forEach(series => {
+            const trucks = series.querySelectorAll('.truck-tile');
+            const seriesName = series.dataset.series;
+            const title = series.querySelector('.series-title span');
+            if (title) {
+                const baseName = title.textContent.replace(/\(\d+\s+trucks?\)/, '').trim();
+                title.textContent = `${baseName} (${trucks.length} trucks)`;
             }
         });
-    });
 
-    // Series filtering
-    seriesButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const series = btn.getAttribute('data-series');
-            const parentCategory = btn.getAttribute('data-parent');
-
-            // Only allow series selection if it matches active category
-            if (activeCategory !== 'all' && activeCategory !== parentCategory) {
-                return;
+        // Medium Duty counts
+        const mediumDutySeries = document.querySelectorAll('[data-category="medium-duty"] .series');
+        mediumDutySeries.forEach(series => {
+            const trucks = series.querySelectorAll('.truck-tile');
+            const title = series.querySelector('.series-title span');
+            if (title) {
+                const baseName = title.textContent.replace(/\(\d+\s+trucks?\)/, '').trim();
+                title.textContent = `${baseName} (${trucks.length} trucks)`;
             }
+        });
 
-            // Update series button states
-            seriesButtons.forEach(b => {
-                if (b.getAttribute('data-parent') === parentCategory) {
-                    b.classList.remove('active');
-                    b.style.background = 'transparent';
-                    b.style.color = '#666';
-                    b.style.borderColor = '#ddd';
+        // Heavy Duty counts
+        const heavyDutySeries = document.querySelectorAll('[data-category="heavy-duty"] .series');
+        heavyDutySeries.forEach(series => {
+            const trucks = series.querySelectorAll('.truck-tile');
+            const title = series.querySelector('.series-title span');
+            if (title) {
+                const baseName = title.textContent.replace(/\(\d+\s+trucks?\)/, '').trim();
+                title.textContent = `${baseName} (${trucks.length} trucks)`;
+            }
+        });
+    }
+
+    // Set up series navigation for each category
+    function setupCategoryNavigation(categoryId, navId) {
+        const nav = document.getElementById(navId);
+        const category = document.getElementById(categoryId);
+        
+        if (!nav || !category) return;
+
+        const buttons = nav.querySelectorAll('.series-btn');
+        const counter = nav.querySelector('[id$="-count"]');
+        const series = category.querySelectorAll('.series[data-series]');
+
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active from all buttons in this nav
+                buttons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                const targetSeries = button.dataset.series;
+
+                // Hide all series in this category
+                series.forEach(s => s.classList.remove('active'));
+
+                // Show target series
+                const targetElement = category.querySelector(`[data-series="${targetSeries}"]`);
+                if (targetElement) {
+                    targetElement.classList.add('active');
+                    
+                    // Update counter
+                    if (counter) {
+                        const truckCount = targetElement.querySelectorAll('.truck-tile').length;
+                        counter.textContent = `${truckCount} truck${truckCount !== 1 ? 's' : ''} shown`;
+                    }
                 }
             });
+        });
 
-            if (activeSeries === series) {
-                // Deselect series - show all trucks in category
-                activeSeries = null;
-                filterByCategory(activeCategory);
-            } else {
-                // Select series
-                activeSeries = series;
-                btn.classList.add('active');
-                btn.style.background = '#007bff';
-                btn.style.color = '#fff';
-                btn.style.borderColor = '#007bff';
-                filterBySeries(series, activeCategory);
+        // Initialize with first series active
+        if (buttons.length > 0 && counter) {
+            const firstButton = buttons[0];
+            const firstSeries = firstButton.dataset.series;
+            const firstElement = category.querySelector(`[data-series="${firstSeries}"]`);
+            if (firstElement) {
+                const truckCount = firstElement.querySelectorAll('.truck-tile').length;
+                counter.textContent = `${truckCount} truck${truckCount !== 1 ? 's' : ''} shown`;
             }
-        });
-    });
-
-    function showAllTrucks() {
-        categorySections.forEach(section => {
-            section.style.display = 'block';
-        });
-        seriesSections.forEach(series => {
-            series.style.display = 'block';
-        });
-        updateTruckCounter();
-    }
-
-    function filterByCategory(category) {
-        categorySections.forEach(section => {
-            const sectionCategory = section.getAttribute('data-category');
-            section.style.display = (sectionCategory === category) ? 'block' : 'none';
-        });
-        // Show all series within the selected category
-        const targetSection = document.querySelector(`.category-section[data-category="${category}"]`);
-        if (targetSection) {
-            const seriesInSection = targetSection.querySelectorAll('.series');
-            seriesInSection.forEach(seriesDiv => {
-                seriesDiv.style.display = 'block';
-            });
-        }
-        updateTruckCounter();
-    }
-
-    function filterBySeries(series, category) {
-        // Hide all sections first
-        categorySections.forEach(section => {
-            section.style.display = 'none';
-        });
-
-        // Show only the category section that contains the series
-        const targetSection = document.querySelector(`.category-section[data-category="${category}"]`);
-        if (targetSection) {
-            targetSection.style.display = 'block';
-            
-            // Within that section, show only the selected series
-            const seriesInSection = targetSection.querySelectorAll('.series');
-            seriesInSection.forEach(seriesDiv => {
-                const seriesId = seriesDiv.id;
-                const matches = seriesId.includes(series.toLowerCase());
-                seriesDiv.style.display = matches ? 'block' : 'none';
-            });
-        }
-        updateTruckCounter();
-    }
-
-    function updateTruckCounter() {
-        const visibleSections = document.querySelectorAll('.category-section[style*="block"], .category-section:not([style])');
-        let count = 0;
-        
-        visibleSections.forEach(section => {
-            if (section.style.display !== 'none') {
-                const visibleSeries = section.querySelectorAll('.series[style*="block"], .series:not([style])');
-                visibleSeries.forEach(series => {
-                    if (series.style.display !== 'none') {
-                        count += series.querySelectorAll('.truck-tile').length;
-                    }
-                });
-            }
-        });
-
-        const counter = document.getElementById('visible-count');
-        if (counter) {
-            counter.textContent = count;
         }
     }
 
-    function showSeriesButtons(category) {
-        // Hide all series buttons first
-        seriesButtons.forEach(btn => {
-            btn.style.display = 'none';
-            btn.classList.remove('active');
-            btn.style.background = 'transparent';
-            btn.style.color = '#666';
-            btn.style.borderColor = '#ddd';
-        });
+    // Initialize all category navigations
+    setupCategoryNavigation('light-duty', 'light-duty-nav');
+    setupCategoryNavigation('medium-duty', 'medium-duty-nav'); 
+    setupCategoryNavigation('heavy-duty', 'heavy-duty-nav');
+    
+    // Update truck counts
+    updateTruckCounts();
 
-        // Show only buttons for the selected category
-        seriesButtons.forEach(btn => {
-            const parentCategory = btn.getAttribute('data-parent');
-            if (parentCategory === category) {
-                btn.style.display = 'inline-block';
-            }
-        });
-    }
+    console.log('Series navigation initialized');
 }
 
-// Remove all problematic hover effects from truck tiles
-function cleanupHoverEffects() {
+// Initialize series navigation after DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeSeriesNavigation);
+} else {
+    initializeSeriesNavigation();
+}
+
+// Clean up inline hover handlers that interfere with navigation
+function cleanupInlineHoverHandlers() {
     const truckTiles = document.querySelectorAll('.truck-tile');
     truckTiles.forEach(tile => {
+        // Remove problematic inline hover handlers
         tile.removeAttribute('onmouseover');
         tile.removeAttribute('onmouseout');
-        // Clean up inline styles that might interfere
-        tile.style.removeProperty('transform');
-        tile.style.removeProperty('box-shadow');
-        // Ensure proper class
-        if (!tile.classList.contains('truck-tile')) {
-            tile.classList.add('truck-tile');
-        }
     });
+    console.log('Cleaned up inline hover handlers');
 }
 
-// Initialize both systems
-function initializeAll() {
-    cleanupHoverEffects();
-    initializeAdvancedFiltering();
-    
-    // Set initial truck count
-    setTimeout(() => {
-        const totalTrucks = document.querySelectorAll('.truck-tile').length;
-        const counter = document.getElementById('visible-count');
-        if (counter) {
-            counter.textContent = totalTrucks;
-        }
-    }, 100);
-}
-
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initializeAll);
-} else {
-    initializeAll();
-}
+// Initialize cleanup after everything loads
+setTimeout(cleanupInlineHoverHandlers, 100);
   </script>
     <div id="footer-placeholder"></div>
 </body>

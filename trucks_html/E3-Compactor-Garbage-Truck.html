@@ -21,39 +21,26 @@
             <span style="color: #212529; font-weight: 600;">E3 Compactor Garbage Truck</span>
         </nav>
 
-        <!-- Exterior Gallery -->
+        <!-- Unified Image Gallery Section -->
         <section style="max-width: 1400px; margin: 0 auto 60px auto; border: 1px solid #dee2e6; border-radius: 12px; padding: 40px;">
-            <h3 style="color: #212529; font-size: 1.8em; font-weight: 700; text-align: center; margin-bottom: 30px; position: relative;">
-                <span style="background: #fff; padding: 0 20px; position: relative; z-index: 2;">Exterior</span>
-                <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ddd, transparent); z-index: 1;"></div>
-            </h3>
+            <!-- Gallery Header -->
+            <div style="text-align: center; margin-bottom: 30px;">
+                <h3 style="color: #212529; font-size: 1.8em; font-weight: 700; margin-bottom: 20px; position: relative;">
+                    <span style="background: #fff; padding: 0 20px; position: relative; z-index: 2;">Vehicle Images</span>
+                    <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ddd, transparent); z-index: 1;"></div>
+                </h3>
+            </div>
+            
+            <!-- Main Image Display -->
             <div style="width: 100%; height: 480px; border: 1px solid #dee2e6; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px;">
-                <img id="mainImage" src="../assets/trucks/Additional Trucks/E6 compactor garbage trucks/Screenshot 2025-11-05 143227.webp" alt="E3 Compactor Garbage Truck" 
-                     style="max-width: 95%; max-height: 95%; object-fit: contain;"
+                <img id="mainImage" src="../assets/trucks/Additional Trucks/E6 compactor garbage trucks/Screenshot 2025-11-05 143227.webp" alt="Vehicle Image" 
+                     style="max-width: 95%; max-height: 95%; object-fit: contain; transition: opacity 0.3s ease;"
                      onerror="this.src='../assets/back2.jpeg'">
             </div>
             
-            <!-- Exterior Thumbnails -->
+            <!-- Thumbnail Strip -->
             <div id="imageStrip" style="display: flex; gap: 16px; overflow-x: auto; padding: 20px 0; scroll-behavior: smooth;">
-                <!-- Exterior thumbnails will be populated by JavaScript -->
-            </div>
-        </section>
-
-        <!-- Interior Gallery -->
-        <section style="max-width: 1400px; margin: 0 auto 60px auto; border: 1px solid #dee2e6; border-radius: 12px; padding: 40px;">
-            <h3 style="color: #212529; font-size: 1.8em; font-weight: 700; text-align: center; margin-bottom: 30px; position: relative;">
-                <span style="background: #fff; padding: 0 20px; position: relative; z-index: 2;">Interior</span>
-                <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ddd, transparent); z-index: 1;"></div>
-            </h3>
-            <div style="width: 100%; height: 480px; border: 1px solid #dee2e6; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px;">
-                <img id="mainImage2" src="../assets/trucks/Additional Trucks/E6 compactor garbage trucks/Screenshot 2025-11-05 143312.webp" alt="E3 Compactor Garbage Truck Interior" 
-                     style="max-width: 95%; max-height: 95%; object-fit: contain;"
-                     onerror="this.src='../assets/back2.jpeg'">
-            </div>
-            
-            <!-- Interior Thumbnails -->
-            <div id="imageStrip2" style="display: flex; gap: 16px; overflow-x: auto; padding: 20px 0; scroll-behavior: smooth;">
-                <!-- Interior thumbnails will be populated by JavaScript -->
+                <!-- Thumbnails will be populated by JavaScript -->
             </div>
         </section>
 
@@ -94,33 +81,41 @@
                     <span style="background: #fff; padding: 0 24px; position: relative; z-index: 2;">Technical Specifications</span>
                     <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ddd, transparent); z-index: 1;"></div>
                 </h2>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; max-width: 1200px; margin: 0 auto;">
-                    
-                        <div style="padding: 28px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden;">
-                            <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
-                            <div style="font-size: 13px; color: #666; font-weight: 700; text-transform: uppercase; margin-bottom: 12px; letter-spacing: 1px;">Engine</div>
-                            <div style="font-size: 20px; color: #212529; font-weight: 700;">8.0L Diesel</div>
-                        </div>
-                        <div style="padding: 28px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden;">
-                            <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
-                            <div style="font-size: 13px; color: #666; font-weight: 700; text-transform: uppercase; margin-bottom: 12px; letter-spacing: 1px;">Power</div>
-                            <div style="font-size: 20px; color: #212529; font-weight: 700;">320–360 hp</div>
-                        </div>
-                        <div style="padding: 28px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden;">
-                            <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
-                            <div style="font-size: 13px; color: #666; font-weight: 700; text-transform: uppercase; margin-bottom: 12px; letter-spacing: 1px;">Binvolume</div>
-                            <div style="font-size: 20px; color: #212529; font-weight: 700;">12–20 m³</div>
-                        </div>
-                        <div style="padding: 28px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden;">
-                            <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
-                            <div style="font-size: 13px; color: #666; font-weight: 700; text-transform: uppercase; margin-bottom: 12px; letter-spacing: 1px;">Gvw</div>
-                            <div style="font-size: 20px; color: #212529; font-weight: 700;">22–28 Tons</div>
-                        </div>
-                        <div style="padding: 28px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden;">
-                            <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
-                            <div style="font-size: 13px; color: #666; font-weight: 700; text-transform: uppercase; margin-bottom: 12px; letter-spacing: 1px;">Drive</div>
-                            <div style="font-size: 20px; color: #212529; font-weight: 700;">6×4</div>
-                        </div>
+                                <!-- Responsive Table -->
+                <div style="max-width: 900px; margin: 0 auto; overflow-x: auto;">
+                    <table style="width: 100%; border-collapse: collapse; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);">
+                        <!-- Table Header -->
+                        <thead>
+                            <tr style="background: linear-gradient(135deg, #444, #666); color: white;">
+                                <th style="padding: 18px 24px; text-align: left; font-size: 1.1em; font-weight: 700;">Specification</th>
+                                <th style="padding: 18px 24px; text-align: left; font-size: 1.1em; font-weight: 700;">Value</th>
+                            </tr>
+                        </thead>
+                        
+                        <!-- Table Body -->
+                        <tbody>
+                            <tr style="background: #f8f9fa; border-bottom: 1px solid #dee2e6;">
+                                <td style="padding: 16px 24px; font-weight: 600; color: #495057;">Engine Type</td>
+                                <td style="padding: 16px 24px; color: #212529;">8.0L Diesel</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #dee2e6;">
+                                <td style="padding: 16px 24px; font-weight: 600; color: #495057;">Power Output</td>
+                                <td style="padding: 16px 24px; color: #212529;">320–360 hp</td>
+                            </tr>
+                            <tr style="background: #f8f9fa; border-bottom: 1px solid #dee2e6;">
+                                <td style="padding: 16px 24px; font-weight: 600; color: #495057;">Binvolume</td>
+                                <td style="padding: 16px 24px; color: #212529;">12–20 m³</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #dee2e6;">
+                                <td style="padding: 16px 24px; font-weight: 600; color: #495057;">Gross Vehicle Weight (GVW)</td>
+                                <td style="padding: 16px 24px; color: #212529;">22–28 Tons</td>
+                            </tr>
+                            <tr style="background: #f8f9fa">
+                                <td style="padding: 16px 24px; font-weight: 600; color: #495057;">Drive Configuration</td>
+                                <td style="padding: 16px 24px; color: #212529;">6×4</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </section>
         </div>
@@ -150,20 +145,17 @@
     <div id="footer-placeholder"></div>
 
     <style>
-        /* AI-Enhanced Image Strip Styling */
-        #imageStrip::-webkit-scrollbar,
-        #imageStrip2::-webkit-scrollbar {
+        /* Image Strip Styling */
+        #imageStrip::-webkit-scrollbar {
             height: 6px;
         }
         
-        #imageStrip::-webkit-scrollbar-track,
-        #imageStrip2::-webkit-scrollbar-track {
+        #imageStrip::-webkit-scrollbar-track {
             background: #e5e5e7;
             border-radius: 3px;
         }
         
-        #imageStrip::-webkit-scrollbar-thumb,
-        #imageStrip2::-webkit-scrollbar-thumb {
+        #imageStrip::-webkit-scrollbar-thumb {
             background: #1d1d1f;
             border-radius: 3px;
         }
@@ -175,23 +167,25 @@
             border-radius: 12px;
             cursor: pointer;
             opacity: 0.6;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
             flex-shrink: 0;
             border: 2px solid transparent;
-            position: relative;
         }
         
         .thumbnail:hover {
             opacity: 0.9;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transform: scale(1.05);
         }
         
         .thumbnail.active {
             opacity: 1;
             border-color: #444;
-            transform: translateY(-1px);
-            box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+            transform: scale(1.02);
+        }
+        
+        /* Main Image Transition */
+        #mainImage {
+            transition: opacity 0.3s ease;
         }
         
         /* Responsive */
@@ -199,45 +193,43 @@
             main {
                 padding: 80px 10px 30px !important;
             }
+            
+            .thumbnail {
+                width: 90px;
+                height: 65px;
+            }
         }
     </style>
     
     <script>
-        // Image gallery functionality
-        const exteriorImages = [
-        "../assets/trucks/Additional Trucks/E6 compactor garbage trucks/Screenshot 2025-11-05 143227.webp",
-        "../assets/trucks/Additional Trucks/E6 compactor garbage trucks/Screenshot 2025-11-05 143227.webp",
-        "../assets/trucks/Additional Trucks/E6 compactor garbage trucks/Screenshot 2025-11-05 143235.webp",
-        "../assets/trucks/Additional Trucks/E6 compactor garbage trucks/Screenshot 2025-11-05 143235.webp",
-        "../assets/trucks/Additional Trucks/E6 compactor garbage trucks/Screenshot 2025-11-05 143243.webp",
-        "../assets/trucks/Additional Trucks/E6 compactor garbage trucks/Screenshot 2025-11-05 143243.webp",
-        "../assets/trucks/Additional Trucks/E6 compactor garbage trucks/Screenshot 2025-11-05 143251.webp",
-        "../assets/trucks/Additional Trucks/E6 compactor garbage trucks/Screenshot 2025-11-05 143251.webp",
-        "../assets/trucks/Additional Trucks/E6 compactor garbage trucks/Screenshot 2025-11-05 143301.webp",
-        "../assets/trucks/Additional Trucks/E6 compactor garbage trucks/Screenshot 2025-11-05 143301.webp",
-        "../assets/trucks/Additional Trucks/E6 compactor garbage trucks/Screenshot 2025-11-05 143312.webp",
-        "../assets/trucks/Additional Trucks/E6 compactor garbage trucks/Screenshot 2025-11-05 143312.webp"
-];
+        // Unified single collection image gallery functionality
+        const allImages = [
+            "../assets/trucks/Additional Trucks/E6 compactor garbage trucks/Screenshot 2025-11-05 143227.webp",
+                "../assets/trucks/Additional Trucks/E6 compactor garbage trucks/Screenshot 2025-11-05 143235.webp",
+                "../assets/trucks/Additional Trucks/E6 compactor garbage trucks/Screenshot 2025-11-05 143243.webp",
+                "../assets/trucks/Additional Trucks/E6 compactor garbage trucks/Screenshot 2025-11-05 143251.webp",
+                "../assets/trucks/Additional Trucks/E6 compactor garbage trucks/Screenshot 2025-11-05 143301.webp",
+                "../assets/trucks/Additional Trucks/E6 compactor garbage trucks/Screenshot 2025-11-05 143312.webp"
+        ];
 
-        const interiorImages = [
-        "../assets/trucks/Additional Trucks/E6 compactor garbage trucks/Screenshot 2025-11-05 143312.webp"
-];
-
-        function initImageGallery() {
-            // Exterior gallery
+        function loadImageGallery() {
             const imageStrip = document.getElementById('imageStrip');
             const mainImage = document.getElementById('mainImage');
             
             // Clear existing thumbnails
             imageStrip.innerHTML = '';
             
-            // Create thumbnails for each exterior image
-            exteriorImages.forEach((src, index) => {
+            // Set first image as main image
+            if (allImages.length > 0) {
+                mainImage.src = allImages[0];
+            }
+            
+            // Create thumbnails for each image
+            allImages.forEach((src, index) => {
                 const thumbnail = document.createElement('img');
                 thumbnail.src = src;
                 thumbnail.className = 'thumbnail' + (index === 0 ? ' active' : '');
-                thumbnail.alt = `Exterior View ${index + 1}`;
-                thumbnail.title = 'Exterior Image';
+                thumbnail.alt = `Vehicle Image ${index + 1}`;
                 
                 // Hide thumbnail if image fails to load
                 thumbnail.onerror = () => {
@@ -246,49 +238,25 @@
                 
                 // Click handler to change main image
                 thumbnail.onclick = () => {
-                    // Update main image
-                    mainImage.src = src;
+                    // Update main image with fade effect
+                    mainImage.style.opacity = '0';
+                    setTimeout(() => {
+                        mainImage.src = src;
+                        mainImage.style.opacity = '1';
+                    }, 150);
                     
-                    // Update active thumbnail in exterior gallery only
+                    // Update active thumbnail
                     imageStrip.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
                     thumbnail.classList.add('active');
                 };
                 
                 imageStrip.appendChild(thumbnail);
             });
+        }
 
-            // Interior gallery
-            const imageStrip2 = document.getElementById('imageStrip2');
-            const mainImage2 = document.getElementById('mainImage2');
-            
-            // Clear existing thumbnails
-            imageStrip2.innerHTML = '';
-            
-            // Create thumbnails for each interior image
-            interiorImages.forEach((src, index) => {
-                const thumbnail = document.createElement('img');
-                thumbnail.src = src;
-                thumbnail.className = 'thumbnail' + (index === 0 ? ' active' : '');
-                thumbnail.alt = `Interior View ${index + 1}`;
-                thumbnail.title = 'Interior Image';
-                
-                // Hide thumbnail if image fails to load
-                thumbnail.onerror = () => {
-                    thumbnail.style.display = 'none';
-                };
-                
-                // Click handler to change main image
-                thumbnail.onclick = () => {
-                    // Update main image
-                    mainImage2.src = src;
-                    
-                    // Update active thumbnail in interior gallery only
-                    imageStrip2.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
-                    thumbnail.classList.add('active');
-                };
-                
-                imageStrip2.appendChild(thumbnail);
-            });
+        function initImageGallery() {
+            // Initialize gallery
+            loadImageGallery();
         }
 
         // Auto-update footer year
