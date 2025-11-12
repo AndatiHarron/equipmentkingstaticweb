@@ -302,9 +302,8 @@ class LyroChat {
      * Replace 'YOUR_OPENAI_API_KEY' with your actual key for testing only.
      */
     async getResponse(message) {
-        // --- OpenAI GPT Integration ---
-        const OPENAI_API_KEY = 'YOUR_OPENAI_API_KEY'; // <-- Replace for testing only!
-        const endpoint = 'https://api.openai.com/v1/chat/completions';
+        // --- OpenAI GPT Integration via Backend Proxy ---
+        const endpoint = '/api/openai'; // Proxy endpoint (relative path)
         const systemPrompt = `You are Lyro, an expert assistant for Equipment King. You have access to the full truck, category, and company data. Answer user questions conversationally, but use the following JSON data for truck specs and categories when relevant.\n\nTRUCK DATA:\n${window._lyroTruckData ? JSON.stringify(window._lyroTruckData) : 'Not loaded yet.'}`;
         try {
             // Try to load truck data if needed
@@ -316,21 +315,17 @@ class LyroChat {
                     }
                 } catch (e) { /* ignore */ }
             }
-            // Compose OpenAI request
+            // Compose proxy request
             const payload = {
-                model: 'gpt-3.5-turbo',
                 messages: [
-                    { role: 'system', content: systemPrompt },
                     { role: 'user', content: message }
                 ],
-                max_tokens: 400,
-                temperature: 0.6
+                systemPrompt
             };
             const response = await fetch(endpoint, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${OPENAI_API_KEY}`
+                    'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(payload)
             });
@@ -340,8 +335,8 @@ class LyroChat {
                 if (aiMsg) return aiMsg.replace(/\n/g, '<br>');
             }
         } catch (err) {
-            // If OpenAI fails, fallback to rule-based
-            console.warn('OpenAI API failed, falling back to rule-based:', err);
+            // If OpenAI/proxy fails, fallback to rule-based
+            console.warn('OpenAI proxy failed, falling back to rule-based:', err);
         }
 
         // --- Rule-based fallback (original logic) ---
