@@ -969,7 +969,7 @@
               "id": "3-series-cement-mixer",
               "name": "3 Series Cement Mixer Truck",
               "fileName": "3-Series-Cement-Mixer-Truck.html",
-              "mainImage": "../assets/trucks/3-series-mixer-1.jpg",
+              "mainImage": "assets/3 series cement.webp",
               "description": "Compact cement mixer for small to medium construction projects. Efficient mixing system with reliable hydraulic operation for consistent concrete quality in urban construction environments.",
               "specifications": {
                 "engine": "Compact Diesel",
