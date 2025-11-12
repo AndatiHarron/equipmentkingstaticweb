@@ -181,6 +181,7 @@ const headerTemplate = `<!-- Universal Header Component -->
     <a href="{{BASE_PATH}}about.html">About</a>
 
     <button class="contact-btn" onclick="location.href='{{BASE_PATH}}contact.html'">Contact Us</button>
+  <button class="contact-btn" id="lang-toggle-btn" onclick="toggleLanguage()">Français</button>
   </nav>
 </header>
 
@@ -477,6 +478,133 @@ function setupMobileDropdowns() {
 
 // setupMobileDropdowns will be called by loadHeaderFooter() after header insertion
 </script>`;
+
+// --- Language Toggle and Translation System ---
+const translations = {
+  en: {
+    home: 'Home',
+    trucks: 'Trucks',
+    about: 'About',
+    contact: 'Contact Us',
+    language: 'Français',
+    products: 'PRODUCTS',
+    light: 'Light Duty Truck (4.5T≤GCW≤25T)',
+    medium: 'Medium Duty Truck (12T≤GCW≤60T)',
+    heavy: 'Heavy Duty Truck (18T≤GCW≤100T)',
+    navigation: 'NAVIGATION',
+    follow: 'FOLLOW US',
+    privacy: 'Privacy Policy',
+    terms: 'Terms of Use',
+    sitemap: 'Site Map',
+    allRights: 'All rights reserved.',
+    explore: 'Explore Our Vehicle Categories',
+    exploreFleet: 'Explore Our Latest Fleet',
+    exploreAll: 'Explore All Trucks',
+    heroTitle: 'Power Meets Precision',
+    heroDesc: 'Experience cutting-edge engineering with Equipment King Incorporated in partnership with SAGMOTO.'
+  },
+  fr: {
+    home: 'Accueil',
+    trucks: 'Camions',
+    about: 'À propos',
+    contact: 'Contactez-nous',
+    language: 'English',
+    products: 'PRODUITS',
+    light: 'Camion Léger (4,5T≤PTAC≤25T)',
+    medium: 'Camion Moyen (12T≤PTAC≤60T)',
+    heavy: 'Camion Lourd (18T≤PTAC≤100T)',
+    navigation: 'NAVIGATION',
+    follow: 'SUIVEZ-NOUS',
+    privacy: 'Politique de confidentialité',
+    terms: "Conditions d'utilisation", 
+    sitemap: 'Plan du site',
+    allRights: 'Tous droits réservés.',
+    explore: 'Découvrez nos catégories de véhicules',
+    exploreFleet: 'Découvrez notre dernière flotte',
+    exploreAll: 'Voir tous les camions',
+    heroTitle: 'La puissance rencontre la précision',
+    heroDesc: "Découvrez l'ingénierie de pointe avec Equipment King Incorporated en partenariat avec SAGMOTO."
+  }
+};
+
+let currentLang = 'en';
+
+function toggleLanguage() {
+  currentLang = (currentLang === 'en') ? 'fr' : 'en';
+  applyTranslations();
+}
+
+function applyTranslations() {
+  const t = translations[currentLang];
+  // Header
+  const nav = document.getElementById('main-nav');
+  if (nav) {
+    const navLinks = nav.querySelectorAll('a');
+    navLinks.forEach(link => {
+      if (link.href.includes('index.html')) link.textContent = t.home;
+      if (link.href.includes('trucks.html')) link.textContent = t.trucks;
+      if (link.href.includes('about.html')) link.textContent = t.about;
+      if (link.href.includes('contact.html')) link.textContent = t.contact;
+    });
+    const contactBtn = nav.querySelector('.contact-btn[onclick*="contact.html"]');
+    if (contactBtn) contactBtn.textContent = t.contact;
+    const langBtn = document.getElementById('lang-toggle-btn');
+    if (langBtn) langBtn.textContent = t.language;
+  }
+  // Footer
+  const footer = document.querySelector('footer');
+  if (footer) {
+    const h4s = footer.querySelectorAll('h4');
+    h4s.forEach(h4 => {
+      if (h4.textContent.trim().toUpperCase() === 'PRODUCTS') h4.textContent = t.products;
+      if (h4.textContent.trim().toUpperCase() === 'NAVIGATION') h4.textContent = t.navigation;
+      if (h4.textContent.trim().toUpperCase() === 'FOLLOW US') h4.textContent = t.follow;
+    });
+    const navLinks = footer.querySelectorAll('ul:nth-child(2) a');
+    navLinks.forEach(link => {
+      if (link.href.includes('index.html')) link.textContent = t.home;
+      if (link.href.includes('trucks.html')) link.textContent = t.trucks;
+      if (link.href.includes('about.html')) link.textContent = t.about;
+      if (link.href.includes('contact.html')) link.textContent = t.contact;
+    });
+    // Product links
+    const prodLinks = footer.querySelectorAll('ul:nth-child(1) li');
+    if (prodLinks.length === 3) {
+      prodLinks[0].textContent = t.light;
+      prodLinks[1].textContent = t.medium;
+      prodLinks[2].textContent = t.heavy;
+    }
+    // Footer bottom
+    const bottomDivs = footer.querySelectorAll('.footer-bottom > div');
+    if (bottomDivs.length > 0) {
+      bottomDivs[0].innerHTML = `© <span id="year">${new Date().getFullYear()}</span> Equipment King. ${t.allRights}`;
+    }
+    if (bottomDivs.length > 1) {
+      const links = bottomDivs[1].querySelectorAll('a');
+      if (links.length === 3) {
+        links[0].textContent = t.privacy;
+        links[1].textContent = t.terms;
+        links[2].textContent = t.sitemap;
+      }
+    }
+  }
+  // Main page (index.html) - hero and tabs
+  const heroH1 = document.querySelector('section.hero h1');
+  if (heroH1) heroH1.textContent = t.heroTitle;
+  const heroP = document.querySelector('section.hero p');
+  if (heroP) heroP.textContent = t.heroDesc;
+  const exploreH1 = document.querySelector('section.tabs h1');
+  if (exploreH1) exploreH1.textContent = t.explore;
+  const galleryH2 = document.querySelector('.gallery-content h2');
+  if (galleryH2) galleryH2.textContent = t.exploreFleet;
+  const exploreBtn = document.querySelector('.gallery-content .primary');
+  if (exploreBtn) exploreBtn.textContent = t.exploreAll;
+}
+
+// Apply language on load
+document.addEventListener('DOMContentLoaded', () => {
+  applyTranslations();
+});
 
 // Footer template with {{BASE_PATH}} placeholder
 const footerTemplate = `<!-- Universal Footer Component -->

@@ -164,11 +164,25 @@
     <a href="{{BASE_PATH}}about.html">About</a>
 
     <button class="contact-btn" onclick="location.href='{{BASE_PATH}}contact.html'">Contact Us</button>
+    <button class="contact-btn" id="lang-toggle-btn" onclick="toggleLanguage()">Français</button>
   </nav>
 </header>
 
 <!-- Header JavaScript -->
 <script>
+// Language toggle logic
+function toggleLanguage() {
+  // Placeholder: Implement language switching logic here
+  // For now, just toggle button text
+  const btn = document.getElementById('lang-toggle-btn');
+  if (btn.innerText === 'Français') {
+    btn.innerText = 'English';
+    // TODO: Switch site to French
+  } else {
+    btn.innerText = 'Français';
+    // TODO: Switch site to English
+  }
+}
 // DROPDOWN SYSTEM NOW HANDLED BY PURE CSS - NO JAVASCRIPT NEEDED
 // CSS handles: :hover states for .trucks-dropdown, .sub-dropdown, .truck-links
 /* JavaScript removed - using CSS-only approach for better performance */
