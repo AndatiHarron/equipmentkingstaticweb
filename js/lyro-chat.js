@@ -40,40 +40,42 @@ class LyroChat {
             right: 20px;
             width: 350px;
             height: 500px;
-            background: white;
+            background: #fff;
             border-radius: 16px;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
             z-index: 10001;
             overflow: hidden;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            border: 2px solid #000;
         `;
 
         // Create chat header
         const header = document.createElement('div');
         header.style.cssText = `
-            background: linear-gradient(135deg, #444, #666);
-            color: white;
+            background: #000;
+            color: #fff;
             padding: 16px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             border-radius: 16px 16px 0 0;
+            border-bottom: 2px solid #222;
         `;
         header.innerHTML = `
             <div>
-                <h4 style="margin: 0; font-size: 16px; font-weight: 600;">Equipment King Assistant</h4>
-                <p style="margin: 4px 0 0 0; font-size: 12px; opacity: 0.8;">How can we help you today?</p>
+                <h4 style="margin: 0; font-size: 16px; font-weight: 600; color: #fff;">Equipment King Assistant</h4>
+                <p style="margin: 4px 0 0 0; font-size: 12px; opacity: 0.8; color: #fff;">How can we help you today?</p>
             </div>
             <button onclick="closeLyroChat()" style="
                 background: none;
                 border: none;
-                color: white;
+                color: #fff;
                 font-size: 18px;
                 cursor: pointer;
                 padding: 4px;
                 border-radius: 4px;
                 transition: background 0.2s;
-            " onmouseover="this.style.background='rgba(255,255,255,0.2)'" onmouseout="this.style.background='none'">×</button>
+            " onmouseover="this.style.background='#222'" onmouseout="this.style.background='none'">×</button>
         `;
 
         // Create chat content area
