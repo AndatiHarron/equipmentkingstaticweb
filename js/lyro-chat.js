@@ -296,23 +296,59 @@ class LyroChat {
         content.scrollTop = content.scrollHeight;
     }
 
+    /**
+     * Uses OpenAI GPT for conversational AI. Fallbacks to rule-based answers if API fails.
+     * IMPORTANT: For production, never expose your OpenAI API key in frontend code. Use a backend proxy.
+     * Replace 'YOUR_OPENAI_API_KEY' with your actual key for testing only.
+     */
     async getResponse(message) {
-        const msg = message.toLowerCase();
-        // Try to load truck data if needed
-        if (!window._lyroTruckData) {
-            try {
-                const resp = await fetch('truck-data-lyro.json');
-                if (resp.ok) {
-                    window._lyroTruckData = await resp.json();
-                }
-            } catch (e) { /* ignore */ }
+        // --- OpenAI GPT Integration ---
+        const OPENAI_API_KEY = 'YOUR_OPENAI_API_KEY'; // <-- Replace for testing only!
+        const endpoint = 'https://api.openai.com/v1/chat/completions';
+        const systemPrompt = `You are Lyro, an expert assistant for Equipment King. You have access to the full truck, category, and company data. Answer user questions conversationally, but use the following JSON data for truck specs and categories when relevant.\n\nTRUCK DATA:\n${window._lyroTruckData ? JSON.stringify(window._lyroTruckData) : 'Not loaded yet.'}`;
+        try {
+            // Try to load truck data if needed
+            if (!window._lyroTruckData) {
+                try {
+                    const resp = await fetch('truck-data-lyro.json');
+                    if (resp.ok) {
+                        window._lyroTruckData = await resp.json();
+                    }
+                } catch (e) { /* ignore */ }
+            }
+            // Compose OpenAI request
+            const payload = {
+                model: 'gpt-3.5-turbo',
+                messages: [
+                    { role: 'system', content: systemPrompt },
+                    { role: 'user', content: message }
+                ],
+                max_tokens: 400,
+                temperature: 0.6
+            };
+            const response = await fetch(endpoint, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${OPENAI_API_KEY}`
+                },
+                body: JSON.stringify(payload)
+            });
+            if (response.ok) {
+                const data = await response.json();
+                const aiMsg = data.choices?.[0]?.message?.content;
+                if (aiMsg) return aiMsg.replace(/\n/g, '<br>');
+            }
+        } catch (err) {
+            // If OpenAI fails, fallback to rule-based
+            console.warn('OpenAI API failed, falling back to rule-based:', err);
         }
-        const truckData = window._lyroTruckData || [];
 
-        // Truck/category details
+        // --- Rule-based fallback (original logic) ---
+        const msg = message.toLowerCase();
+        const truckData = window._lyroTruckData || [];
         if (msg.includes('specification') || msg.includes('truck') || msg.includes('details') || msg.includes('category')) {
             let found = [];
-            // Search for truck name or category
             for (const cat of truckData) {
                 if (msg.includes(cat.category.toLowerCase())) {
                     found.push(`<b>${cat.category}</b>:<ul>` + cat.trucks.map(t => `<li><b>${t.name}</b>: ${t.features.join(', ')} (<a href='${t.detailsPage}' target='_blank'>Details</a>)</li>`).join('') + '</ul>');
@@ -327,28 +363,23 @@ class LyroChat {
             if (found.length > 0) {
                 return found.join('<br>');
             }
-            // If no match, show all categories
             return `🚛 Here are our main truck categories:<ul>${truckData.map(cat => `<li><b>${cat.category}</b> (${cat.trucks.length} models)</li>`).join('')}</ul>Ask about any category or model for more details!`;
         }
-
         if (msg.includes('quote') || msg.includes('price') || msg.includes('cost')) {
             return `💰 For pricing and quotes, please <a href="/contact.html" style="color: #444; text-decoration: underline;">contact our sales team</a> or WhatsApp us at <a href="https://wa.me/254710337605" style="color: #444; text-decoration: underline;">+254 710 337 605</a>. We'll provide you with competitive pricing tailored to your needs!`;
         }
-
         if (msg.includes('support') || msg.includes('technical') || msg.includes('help')) {
             return `🔧 Our technical support team is ready to help! You can reach us through:<br>
             • WhatsApp: <a href="https://wa.me/254710337605" style="color: #444; text-decoration: underline;">+254 710 337 605</a><br>
             • Contact form: <a href="/contact.html" style="color: #444; text-decoration: underline;">Contact page</a><br>
             What specific technical issue can we assist you with?`;
         }
-
         if (msg.includes('contact') || msg.includes('phone') || msg.includes('email')) {
             return `📞 Here's how to reach Equipment King:<br>
             • WhatsApp: <a href="https://wa.me/254710337605" style="color: #444; text-decoration: underline;">+254 710 337 605</a><br>
             • Visit our <a href="/contact.html" style="color: #444; text-decoration: underline;">Contact page</a> for more options<br>
             • Check our <a href="/about.html" style="color: #444; text-decoration: underline;">About page</a> for company information`;
         }
-
         return `Thank you for your message! I'm here to help with truck specifications, pricing, technical support, and contact information. You can also reach us directly via WhatsApp at <a href="https://wa.me/254710337605" style="color: #444; text-decoration: underline;">+254 710 337 605</a> for immediate assistance.`;
     }
 }
