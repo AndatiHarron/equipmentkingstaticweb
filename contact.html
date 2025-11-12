@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/styles.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <script src="js/header-footer-loader.js"></script>
+    <script src="js/lyro-chat.js"></script>
     <style>
         .contact-hero {
             margin-top: 80px;
@@ -459,18 +460,7 @@
 
     <!-- Lyro AI Chat Integration -->
     <script>
-        // Lyro chat integration
-        function openLyroChat() {
-            // Try to open Lyro if it's loaded
-            if (window.Lyro && typeof window.Lyro.open === 'function') {
-                window.Lyro.open();
-            } else if (window.lyroWidget && typeof window.lyroWidget.open === 'function') {
-                window.lyroWidget.open();
-            } else {
-                // Fallback - create a simple chat interface
-                createFallbackChat();
-            }
-        }
+        // Lyro chat integration - function is now loaded from lyro-chat.js
 
         // Fallback chat interface if Lyro isn't loaded
         function createFallbackChat() {

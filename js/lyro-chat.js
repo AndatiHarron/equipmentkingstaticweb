@@ -294,31 +294,59 @@ class LyroChat {
         content.scrollTop = content.scrollHeight;
     }
 
-    getResponse(message) {
+    async getResponse(message) {
         const msg = message.toLowerCase();
-        
-        if (msg.includes('specification') || msg.includes('truck') || msg.includes('details')) {
-            return `🚛 Great! You can find detailed truck specifications on our <a href="/trucks.html" style="color: #444; text-decoration: underline;">Trucks page</a>. We have Light, Medium, and Heavy-duty trucks available. Would you like me to help you with a specific model?`;
+        // Try to load truck data if needed
+        if (!window._lyroTruckData) {
+            try {
+                const resp = await fetch('truck-data-lyro.json');
+                if (resp.ok) {
+                    window._lyroTruckData = await resp.json();
+                }
+            } catch (e) { /* ignore */ }
         }
-        
+        const truckData = window._lyroTruckData || [];
+
+        // Truck/category details
+        if (msg.includes('specification') || msg.includes('truck') || msg.includes('details') || msg.includes('category')) {
+            let found = [];
+            // Search for truck name or category
+            for (const cat of truckData) {
+                if (msg.includes(cat.category.toLowerCase())) {
+                    found.push(`<b>${cat.category}</b>:<ul>` + cat.trucks.map(t => `<li><b>${t.name}</b>: ${t.features.join(', ')} (<a href='${t.detailsPage}' target='_blank'>Details</a>)</li>`).join('') + '</ul>');
+                } else {
+                    for (const t of cat.trucks) {
+                        if (msg.includes(t.name.toLowerCase())) {
+                            found.push(`<b>${t.name}</b>: ${t.features.join(', ')} (<a href='${t.detailsPage}' target='_blank'>Details</a>)`);
+                        }
+                    }
+                }
+            }
+            if (found.length > 0) {
+                return found.join('<br>');
+            }
+            // If no match, show all categories
+            return `🚛 Here are our main truck categories:<ul>${truckData.map(cat => `<li><b>${cat.category}</b> (${cat.trucks.length} models)</li>`).join('')}</ul>Ask about any category or model for more details!`;
+        }
+
         if (msg.includes('quote') || msg.includes('price') || msg.includes('cost')) {
             return `💰 For pricing and quotes, please <a href="/contact.html" style="color: #444; text-decoration: underline;">contact our sales team</a> or WhatsApp us at <a href="https://wa.me/254710337605" style="color: #444; text-decoration: underline;">+254 710 337 605</a>. We'll provide you with competitive pricing tailored to your needs!`;
         }
-        
+
         if (msg.includes('support') || msg.includes('technical') || msg.includes('help')) {
             return `🔧 Our technical support team is ready to help! You can reach us through:<br>
             • WhatsApp: <a href="https://wa.me/254710337605" style="color: #444; text-decoration: underline;">+254 710 337 605</a><br>
             • Contact form: <a href="/contact.html" style="color: #444; text-decoration: underline;">Contact page</a><br>
             What specific technical issue can we assist you with?`;
         }
-        
+
         if (msg.includes('contact') || msg.includes('phone') || msg.includes('email')) {
             return `📞 Here's how to reach Equipment King:<br>
             • WhatsApp: <a href="https://wa.me/254710337605" style="color: #444; text-decoration: underline;">+254 710 337 605</a><br>
             • Visit our <a href="/contact.html" style="color: #444; text-decoration: underline;">Contact page</a> for more options<br>
             • Check our <a href="/about.html" style="color: #444; text-decoration: underline;">About page</a> for company information`;
         }
-        
+
         return `Thank you for your message! I'm here to help with truck specifications, pricing, technical support, and contact information. You can also reach us directly via WhatsApp at <a href="https://wa.me/254710337605" style="color: #444; text-decoration: underline;">+254 710 337 605</a> for immediate assistance.`;
     }
 }

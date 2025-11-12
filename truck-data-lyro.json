@@ -1,0 +1,152 @@
+[
+  {
+    "category": "Light Duty Truck",
+    "trucks": [
+      {
+        "name": "E9 Van Truck",
+        "features": ["Car-like display & modern cabin","Hydraulic power braking system","Tight turning diameter for city use"],
+        "image": "assets/E( Van truck.webp",
+        "detailsPage": "trucks_html/E9-Van-Truck.html"
+      },
+      {
+        "name": "E9 Dump Truck",
+        "features": ["High-strength H-type steel frame","Reinforced tyres for heavy duty","Comfortable wrap-around seat"],
+        "image": "assets/E9 Dump Truck.webp",
+        "detailsPage": "trucks_html/E9-Dump-Truck.html"
+      },
+      {
+        "name": "X9 Tow Truck",
+        "features": ["Gradient >30% capability","Strong chassis for tough work","Ideal for rescue and towing"],
+        "image": "assets/X9 tow.webp",
+        "detailsPage": "trucks_html/X9-Tow-Truck.html"
+      },
+      {
+        "name": "X9 4X4",
+        "features": ["Gradient >30% capability","Strong chassis for tough work","Ideal for rescue and towing"],
+        "image": "assets/X9 4x4.webp",
+        "detailsPage": "trucks_html/X9-4X4-Dump-Truck.html"
+      }
+    ]
+  },
+  {
+    "category": "Medium Duty Truck",
+    "trucks": [
+      {
+        "name": "E6 Dump Truck",
+        "features": ["Large torque engine","High water tank clearance","Wheel-side reduction rear axle"],
+        "image": "assets/dump.webp",
+        "detailsPage": "trucks_html/E6-Dump-Truck.html"
+      },
+      {
+        "name": "E6 Van Truck",
+        "features": ["Oil-water separator system","Air processing APU module","Light steering system"],
+        "image": "assets/van.webp",
+        "detailsPage": "trucks_html/E6-Van-Truck.html"
+      },
+      {
+        "name": "X6 Dropside Truck",
+        "features": ["Oil-water separator system","Air processing APU module","Light steering system"],
+        "image": "assets/drop.webp",
+        "detailsPage": "trucks_html/X6-Dropside-Truck.html"
+      },
+      {
+        "name": "X6 AWD Cargo Truck",
+        "features": ["Oil-water separator system","Air processing APU module","Light steering system"],
+        "image": "assets/awd.webp",
+        "detailsPage": "trucks_html/X6-AWD-Cargo-Truck.html"
+      }
+    ]
+  },
+  {
+    "category": "Heavy Duty Truck",
+    "trucks": [
+      {
+        "name": "E1st Tractor",
+        "features": ["Cummins engine + Eaton gearbox","Intelligent comfort cab design","Premium driving experience"],
+        "image": "assets/e1st.webp",
+        "detailsPage": "trucks_html/E1st-Tractor.html"
+      },
+      {
+        "name": "Z3 Tractor Truck",
+        "features": ["Dual warning system","Efficient power chain","Comfortable berth width 850mm"],
+        "image": "assets/z3t.webp",
+        "detailsPage": "trucks_html/Z3-Dump-Truck.html"
+      },
+      {
+        "name": "E3 Van Truck",
+        "features": ["Dual warning system","Efficient power chain","Comfortable berth width 850mm"],
+        "image": "assets/e3t.webp",
+        "detailsPage": "trucks_html/E3-Van-Truck.html"
+      },
+      {
+        "name": "E3 Tractor Truck",
+        "features": ["Dual warning system","Efficient power chain","Comfortable berth width 850mm"],
+        "image": "assets/e3.webp",
+        "detailsPage": "trucks_html/E3-Tractor-Truck.html"
+      }
+    ]
+  },
+  {
+    "category": "Special Vehicle",
+    "trucks": [
+      {
+        "name": "X9 Tow Truck",
+        "features": ["Emergency-ready interior","Advanced life support system","Reliable mobility performance"],
+        "image": "assets/x9t.webp",
+        "detailsPage": "trucks_html/X9-Tow-Truck.html"
+      },
+      {
+        "name": "X7 Concrete mixer Truck",
+        "features": ["Oil-water separator system","Air processing APU module","Light steering system"],
+        "image": "assets/x7c.webp",
+        "detailsPage": "trucks_html/X7-Concrete-Mixer-Truck.html"
+      },
+      {
+        "name": "E6 Truck-mounted Crane",
+        "features": ["Oil-water separator system","Air processing APU module","Light steering system"],
+        "image": "assets/e6t.webp",
+        "detailsPage": "trucks_html/E6-Truck-Mounted-Crane.html"
+      }
+    ]
+  },
+  {
+    "category": "Off-road Truck",
+    "trucks": [
+      {
+        "name": "9 Series",
+        "features": ["Durability, high performance, and load-bearing","Multiple cabs available","Adaptable for all tankers"],
+        "image": "assets/9.webp",
+        "detailsPage": "trucks.html#9-series"
+      },
+      {
+        "name": "7 Series",
+        "features": ["Powerful engine & excellent maneuverability","Reinforced oil pan protection","Double-layer frame design"],
+        "image": "assets/7.webp",
+        "detailsPage": "trucks.html#x7-series"
+      },
+      {
+        "name": "6 Series",
+        "features": ["Strong power & efficient transport","Reinforced design with iron bumper","Customized upper-body"],
+        "image": "assets/6.webp",
+        "detailsPage": "trucks.html#6-series"
+      },
+      {
+        "name": "Off-road Dump Truck",
+        "features": ["850mm wide chassis for stability","Specialized mining suspension","Directional exhaust design"],
+        "image": "assets/off.webp",
+        "detailsPage": "trucks_html/X9-4X4-Dump-Truck.html"
+      }
+    ]
+  },
+  {
+    "category": "New Energy",
+    "trucks": [
+      {
+        "name": "i9 New Energy Truck",
+        "features": ["Integrated electric drive axle for higher efficiency","430km working range with 120kW fast charging","Brake energy recovery reduces consumption by 15%"],
+        "image": "assets/i9.webp",
+        "detailsPage": "trucks_html/i9-New-Energy-Truck.html"
+      }
+    ]
+  }
+]
