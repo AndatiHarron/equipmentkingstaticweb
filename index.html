@@ -222,17 +222,19 @@
   }
 
   section.gallery h2 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: #212529;
-    text-transform: uppercase;
-    margin-bottom: 50px;
-    border: 2px solid #e0e0e0;
-    display: inline-block;
-    padding: 15px 30px;
-    background: #ffffff;
-    position: relative;
-    border-radius: 12px;
+  font-size: 2.7rem;
+  font-weight: 800;
+  color: #1a1a1a;
+  text-transform: uppercase;
+  margin-bottom: 50px;
+  display: inline-block;
+  padding: 18px 38px 12px 38px;
+  background: linear-gradient(90deg, #f8f9fa 60%, #e9ecef 100%);
+  letter-spacing: 2px;
+  box-shadow: 0 4px 24px rgba(33,37,41,0.07);
+  border: none;
+  border-radius: 18px 18px 0 0;
+  position: relative;
   }
 
   section.gallery h2::before {
@@ -340,12 +342,12 @@
 <section class="tabs" style="max-width: 100%;">
   <h1 style="padding-bottom: 30px;">Explore Our Vehicle Categories</h1>
   <div id="vehicleTabs">
-    <button class="tab-btn" data-type="light">Light Duty Truck</button>
-    <button class="tab-btn active" data-type="medium">Medium Duty Truck</button>
-    <button class="tab-btn" data-type="heavy">Heavy Duty Truck</button>
-    <button class="tab-btn" data-type="special">Special Vehicle</button>
-    <button class="tab-btn" data-type="offroad">Off-road Truck</button>
-    <button class="tab-btn" data-type="newenergy">New Energy</button>
+  <button class="tab-btn" data-type="light">Light Duty Truck</button>
+  <button class="tab-btn active" data-type="medium">Medium Duty Truck</button>
+  <button class="tab-btn" data-type="heavy">Heavy Duty Truck</button>
+  <button class="tab-btn" data-type="special">Special Vehicle</button>
+  <button class="tab-btn" data-type="offroad">Off-road Truck</button>
+  <button class="tab-btn" data-type="newenergy">New Energy</button>
   </div>
   <div id="tabContent">
     <p style="grid-column:1/-1;text-align:center;font-size:18px;color:#666;">Hover over a category to explore vehicle details.</p>
@@ -436,38 +438,74 @@ startAutoSlide();
 
 /* ================= TAB CONTENT ================= */
 const tabData = {
-  light:[
-    {img:'assets/E( Van truck.webp',name:'E9 Van Truck',features:['Car-like display & modern cabin','Hydraulic power braking system','Tight turning diameter for city use'],link:'trucks_html/E9-Van-Truck.html'},
-    {img:'assets/E9 Dump Truck.webp',name:'E9 Dump Truck',features:['High-strength H-type steel frame','Reinforced tyres for heavy duty','Comfortable wrap-around seat'],link:'trucks_html/E9-Dump-Truck.html'},
-    {img:'assets/X9 tow.webp',name:'X9 Tow Truck',features:['Gradient >30% capability','Strong chassis for tough work','Ideal for rescue and towing'],link:'trucks_html/X9-Tow-Truck.html'},
-    {img:'assets/X9 4x4.webp',name:'X9 4X4',features:['Gradient >30% capability','Strong chassis for tough work','Ideal for rescue and towing'],link:'trucks_html/X9-4X4-Dump-Truck.html'}
-  ],
-  medium:[
-    {img:'assets/dump.webp',name:'E6 Dump Truck',features:['Large torque engine','High water tank clearance','Wheel-side reduction rear axle'],link:'trucks_html/E6-Dump-Truck.html'},
-    {img:'assets/van.webp',name:'E6 Van Truck',features:['Oil-water separator system','Air processing APU module','Light steering system'],link:'trucks_html/E6-Van-Truck.html'},
-    {img:'assets/drop.webp',name:'X6 Dropside Truck',features:['Oil-water separator system','Air processing APU module','Light steering system'],link:'trucks_html/X6-Dropside-Truck.html'},
-    {img:'assets/awd.webp',name:'X6 AWD Cargo Truck',features:['Oil-water separator system','Air processing APU module','Light steering system'],link:'trucks_html/X6-AWD-Cargo-Truck.html'}
-  ],
-  heavy:[
-    {img:'assets/e1st.webp',name:'E1st Tractor',features:['Cummins engine + Eaton gearbox','Intelligent comfort cab design','Premium driving experience'],link:'trucks_html/E1st-Tractor.html'},
-    {img:'assets/z3t.webp',name:'Z3 Tractor Truck',features:['Dual warning system','Efficient power chain','Comfortable berth width 850mm'],link:'trucks_html/Z3-Dump-Truck.html'},
-    {img:'assets/e3t.webp',name:'E3 Van Truck',features:['Dual warning system','Efficient power chain','Comfortable berth width 850mm'],link:'trucks_html/E3-Van-Truck.html'},
-    {img:'assets/e3.webp',name:'E3 Tractor Truck',features:['Dual warning system','Efficient power chain','Comfortable berth width 850mm'],link:'trucks_html/E3-Tractor-Truck.html'}
-  ],
-  special:[
-    {img:'assets/x9t.webp',name:'X9 Tow Truck',features:['Emergency-ready interior','Advanced life support system','Reliable mobility performance'],link:'trucks_html/X9-Tow-Truck.html'},
-    {img:'assets/x7c.webp',name:'X7 Concrete mixer Truck',features:['Oil-water separator system','Air processing APU module','Light steering system'],link:'trucks_html/X7-Concrete-Mixer-Truck.html'},
-    {img:'assets/e6t.webp',name:'E6 Truck-mounted Crane',features:['Oil-water separator system','Air processing APU module','Light steering system'],link:'trucks_html/E6-Truck-Mounted-Crane.html'}
-  ],
-  offroad:[
-    {img:'assets/9.webp',name:'9 Series',features:['Durability, high performance, and load-bearing','Multiple cabs available','Adaptable for all tankers'],link:'trucks.html#9-series'},
-    {img:'assets/7.webp',name:'7 Series',features:['Powerful engine & excellent maneuverability','Reinforced oil pan protection','Double-layer frame design'],link:'trucks.html#x7-series'},
-    {img:'assets/6.webp',name:'6 Series',features:['Strong power & efficient transport','Reinforced design with iron bumper','Customized upper-body'],link:'trucks.html#6-series'},
-    {img:'assets/off.webp',name:'Off-road Dump Truck',features:['850mm wide chassis for stability','Specialized mining suspension','Directional exhaust design'],link:'trucks_html/X9-4X4-Dump-Truck.html'}
-  ],
-  newenergy:[
-    {img:'assets/i9.webp',name:'i9 New Energy Truck',features:['Integrated electric drive axle for higher efficiency','430km working range with 120kW fast charging','Brake energy recovery reduces consumption by 15%'],link:'trucks_html/i9-New-Energy-Truck.html'}
-  ]
+  en: {
+    light:[
+      {img:'assets/E( Van truck.webp',name:'E9 Van Truck',features:['Modern van truck with car-like display and advanced cabin comfort. Features a hydraulic power braking system and tight turning diameter for efficient city deliveries.'],link:'trucks_html/E9-Van-Truck.html'},
+      {img:'assets/E9 Dump Truck.webp',name:'E9 Dump Truck',features:['Heavy-duty dump truck with high-strength H-type steel frame and reinforced tyres. Designed for demanding construction tasks with a comfortable wrap-around seat for operator comfort.'],link:'trucks_html/E9-Dump-Truck.html'},
+      {img:'assets/X9 tow.webp',name:'X9 Tow Truck',features:['Professional heavy-duty towing solution with advanced recovery capabilities. Features a powerful winch system, stabilizing outriggers, and robust chassis design for safe vehicle recovery operations.'],link:'trucks_html/X9-Tow-Truck.html'},
+      {img:'assets/X9 4x4.webp',name:'X9 4X4',features:['Rugged 4x4 dump truck engineered for off-road and tough job sites. Delivers superior traction, reinforced suspension, and a durable steel dump body for reliable material transport.'],link:'trucks_html/X9-4X4-Dump-Truck.html'}
+    ],
+    medium:[
+      {img:'assets/dump.webp',name:'E6 Dump Truck',features:['Medium-duty dump truck with large torque engine and high water tank clearance. Features a wheel-side reduction rear axle for enhanced load capacity and stability.'],link:'trucks_html/E6-Dump-Truck.html'},
+      {img:'assets/van.webp',name:'E6 Van Truck',features:['Efficient van truck equipped with oil-water separator system, advanced air processing APU module, and a light steering system for smooth handling.'],link:'trucks_html/E6-Van-Truck.html'},
+      {img:'assets/drop.webp',name:'X6 Dropside Truck',features:['Versatile dropside truck with oil-water separator system, air processing APU module, and light steering system for easy maneuverability and reliable performance.'],link:'trucks_html/X6-Dropside-Truck.html'},
+      {img:'assets/awd.webp',name:'X6 AWD Cargo Truck',features:['All-wheel drive cargo truck designed for challenging terrains. Features oil-water separator system, air processing APU module, and a light steering system for optimal control.'],link:'trucks_html/X6-AWD-Cargo-Truck.html'}
+    ],
+    heavy:[
+      {img:'assets/e1st.webp',name:'E1st Tractor',features:['Premium tractor truck powered by Cummins engine and Eaton gearbox. Features an intelligent comfort cab design for a superior driving experience.'],link:'trucks_html/E1st-Tractor.html'},
+      {img:'assets/z3t.webp',name:'Z3 Tractor Truck',features:['Heavy-duty tractor truck with dual warning system, efficient power chain, and a comfortable berth width of 850mm for long-haul operations.'],link:'trucks_html/Z3-Dump-Truck.html'},
+      {img:'assets/e3t.webp',name:'E3 Van Truck',features:['Commercial van truck with dual warning system, efficient power chain, and spacious berth for driver comfort and safety.'],link:'trucks_html/E3-Van-Truck.html'},
+      {img:'assets/e3.webp',name:'E3 Tractor Truck',features:['Reliable tractor truck featuring dual warning system, efficient power chain, and a comfortable berth width of 850mm for extended journeys.'],link:'trucks_html/E3-Tractor-Truck.html'}
+    ],
+    special:[
+      {img:'assets/x9t.webp',name:'X9 Tow Truck',features:['Professional heavy-duty towing solution with advanced recovery capabilities. Features a powerful winch system, stabilizing outriggers, and robust chassis design for safe vehicle recovery operations.'],link:'trucks_html/X9-Tow-Truck.html'},
+      {img:'assets/x7c.webp',name:'X7 Concrete mixer Truck',features:['High-capacity concrete mixer truck with oil-water separator system, advanced air processing APU module, and light steering system for precise operation.'],link:'trucks_html/X7-Concrete-Mixer-Truck.html'},
+      {img:'assets/e6t.webp',name:'E6 Truck-mounted Crane',features:['Truck-mounted crane equipped with oil-water separator system, air processing APU module, and light steering system for safe and efficient lifting operations.'],link:'trucks_html/E6-Truck-Mounted-Crane.html'}
+    ],
+    offroad:[
+      {img:'assets/9.webp',name:'9 Series',features:['Heavy-duty truck series built for durability, high performance, and exceptional load-bearing capacity. Offers multiple cab options and is adaptable for all tanker applications.'],link:'trucks.html#9-series'},
+      {img:'assets/7.webp',name:'7 Series',features:['Versatile truck series with a powerful engine, excellent maneuverability, reinforced oil pan protection, and double-layer frame design for enhanced safety.'],link:'trucks.html#x7-series'},
+      {img:'assets/6.webp',name:'6 Series',features:['Efficient transport truck series with strong power, reinforced design featuring an iron bumper, and a customized upper-body for various commercial needs.'],link:'trucks.html#6-series'},
+      {img:'assets/off.webp',name:'Off-road Dump Truck',features:['Specialized off-road dump truck with an 850mm wide chassis for stability, mining suspension, and directional exhaust design for demanding environments.'],link:'trucks_html/X9-4X4-Dump-Truck.html'}
+    ],
+    newenergy:[
+      {img:'assets/i9.webp',name:'i9 New Energy Truck',features:['Innovative new energy truck with integrated electric drive axle for maximum efficiency. Delivers a 430km working range, 120kW fast charging, and brake energy recovery to reduce consumption by 15%.'],link:'trucks_html/i9-New-Energy-Truck.html'}
+    ]
+  },
+  fr: {
+    light:[
+      {img:'assets/E( Van truck.webp',name:'E9 Van Truck',features:["Fourgon moderne avec affichage type automobile et confort de cabine avancé. Système de freinage hydraulique et rayon de braquage serré pour des livraisons urbaines efficaces."],link:'trucks_html/E9-Van-Truck.html'},
+      {img:'assets/E9 Dump Truck.webp',name:'E9 Dump Truck',features:["Benne robuste avec châssis en acier H haute résistance et pneus renforcés. Conçue pour les chantiers exigeants avec un siège enveloppant confortable pour l'opérateur."],link:'trucks_html/E9-Dump-Truck.html'},
+      {img:'assets/X9 tow.webp',name:'X9 Tow Truck',features:["Solution professionnelle de remorquage lourd avec capacités avancées de récupération. Treuil puissant, stabilisateurs et châssis robuste pour des opérations de dépannage en toute sécurité."],link:'trucks_html/X9-Tow-Truck.html'},
+      {img:'assets/X9 4x4.webp',name:'X9 4X4',features:["Benne 4x4 robuste conçue pour les chantiers difficiles et hors route. Traction supérieure, suspension renforcée et caisse en acier durable pour un transport fiable des matériaux."],link:'trucks_html/X9-4X4-Dump-Truck.html'}
+    ],
+    medium:[
+      {img:'assets/dump.webp',name:'E6 Dump Truck',features:["Benne de capacité moyenne avec moteur à fort couple et grande garde au sol. Essieu à réduction latérale pour une capacité de charge et une stabilité accrues."],link:'trucks_html/E6-Dump-Truck.html'},
+      {img:'assets/van.webp',name:'E6 Van Truck',features:["Fourgon efficace équipé d'un séparateur huile-eau, module APU de traitement d'air avancé et direction assistée pour une conduite souple."],link:'trucks_html/E6-Van-Truck.html'},
+      {img:'assets/drop.webp',name:'X6 Dropside Truck',features:["Camion plateau polyvalent avec séparateur huile-eau, module APU et direction assistée pour une maniabilité et une fiabilité optimales."],link:'trucks_html/X6-Dropside-Truck.html'},
+      {img:'assets/awd.webp',name:'X6 AWD Cargo Truck',features:["Camion cargo à transmission intégrale conçu pour les terrains difficiles. Système huile-eau, module APU et direction assistée pour un contrôle optimal."],link:'trucks_html/X6-AWD-Cargo-Truck.html'}
+    ],
+    heavy:[
+      {img:'assets/e1st.webp',name:'E1st Tractor',features:["Tracteur haut de gamme avec moteur Cummins et boîte Eaton. Cabine intelligente et confortable pour une expérience de conduite supérieure."],link:'trucks_html/E1st-Tractor.html'},
+      {img:'assets/z3t.webp',name:'Z3 Tractor Truck',features:["Tracteur robuste avec double système d'alerte, chaîne cinématique efficace et couchette confortable de 850mm pour les longs trajets."],link:'trucks_html/Z3-Dump-Truck.html'},
+      {img:'assets/e3t.webp',name:'E3 Van Truck',features:["Fourgon commercial avec double système d'alerte, chaîne cinématique efficace et couchette spacieuse pour le confort et la sécurité du conducteur."],link:'trucks_html/E3-Van-Truck.html'},
+      {img:'assets/e3.webp',name:'E3 Tractor Truck',features:["Tracteur fiable avec double système d'alerte, chaîne cinématique efficace et couchette confortable de 850mm pour les longs trajets."],link:'trucks_html/E3-Tractor-Truck.html'}
+    ],
+    special:[
+      {img:'assets/x9t.webp',name:'X9 Tow Truck',features:["Solution professionnelle de remorquage lourd avec capacités avancées de récupération. Treuil puissant, stabilisateurs et châssis robuste pour des opérations de dépannage en toute sécurité."],link:'trucks_html/X9-Tow-Truck.html'},
+      {img:'assets/x7c.webp',name:'X7 Concrete mixer Truck',features:["Malaxeur à béton grande capacité avec séparateur huile-eau, module APU avancé et direction assistée pour un dosage précis."],link:'trucks_html/X7-Concrete-Mixer-Truck.html'},
+      {img:'assets/e6t.webp',name:'E6 Truck-mounted Crane',features:["Grue sur camion équipée d'un séparateur huile-eau, module APU et direction assistée pour des opérations de levage sûres et efficaces."],link:'trucks_html/E6-Truck-Mounted-Crane.html'}
+    ],
+    offroad:[
+      {img:'assets/9.webp',name:'9 Series',features:["Série poids lourd conçue pour la durabilité, la performance et une capacité de charge exceptionnelle. Plusieurs cabines disponibles, adaptable à tous les usages de citerne."],link:'trucks.html#9-series'},
+      {img:'assets/7.webp',name:'7 Series',features:["Série polyvalente avec moteur puissant, excellente maniabilité, protection renforcée du carter et châssis double couche pour plus de sécurité."],link:'trucks.html#x7-series'},
+      {img:'assets/6.webp',name:'6 Series',features:["Série de transport efficace avec puissance élevée, design renforcé avec pare-chocs en fer et carrosserie personnalisée pour divers besoins commerciaux."],link:'trucks.html#6-series'},
+      {img:'assets/off.webp',name:'Off-road Dump Truck',features:["Benne tout-terrain spécialisée avec châssis large de 850mm pour la stabilité, suspension minière et échappement directionnel pour les environnements exigeants."],link:'trucks_html/X9-4X4-Dump-Truck.html'}
+    ],
+    newenergy:[
+      {img:'assets/i9.webp',name:'i9 New Energy Truck',features:["Camion nouvelle énergie innovant avec essieu moteur électrique intégré pour une efficacité maximale. Autonomie de 430km, charge rapide 120kW et récupération d'énergie au freinage réduisant la consommation de 15%."],link:'trucks_html/i9-New-Energy-Truck.html'}
+    ]
+  }
 };
 
 const tabButtons = document.querySelectorAll('.tab-btn');
@@ -478,7 +516,8 @@ function showTab(type, btn){
   if(btn) btn.classList.add('active'); 
   tabContent.style.opacity = 0;
   setTimeout(() => {
-    tabContent.innerHTML = tabData[type].map((item, index)=>`
+    const lang = window.currentLang || 'en';
+    tabContent.innerHTML = tabData[lang][type].map((item, index)=>`
       <a href='${item.link}' class='vehicle-card' style='cursor:pointer; text-decoration: none; color: inherit; display: block; position: relative; z-index: 1;'>
         <img src='${item.img}' alt='${item.name}'>
         <div style='padding:22px 24px;text-align:left;'>
@@ -487,7 +526,6 @@ function showTab(type, btn){
         </div>
       </a>
     `).join('');
-    
     // Add explicit click handlers to ensure navigation works
     const cards = tabContent.querySelectorAll('.vehicle-card');
     cards.forEach(card => {
@@ -500,14 +538,12 @@ function showTab(type, btn){
         });
       }
     });
-    
     // Add class if there's only one card
     if (cards.length === 1) {
       tabContent.classList.add('single-card');
     } else {
       tabContent.classList.remove('single-card');
     }
-    
     tabContent.style.opacity = 1;
   }, 200);
 }
@@ -516,6 +552,13 @@ function showTab(type, btn){
 window.addEventListener('DOMContentLoaded', ()=>{
   const defaultTab = document.querySelector('.tab-btn.active');
   showTab(defaultTab.dataset.type, defaultTab);
+  // Listen for language toggle and update tab content
+  document.getElementById('lang-toggle-btn')?.addEventListener('click', () => {
+    setTimeout(() => {
+      const activeTab = document.querySelector('.tab-btn.active');
+      showTab(activeTab.dataset.type, activeTab);
+    }, 100);
+  });
 });
 
 // Enhanced hover tabs with extended area
