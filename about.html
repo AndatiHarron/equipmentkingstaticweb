@@ -50,6 +50,11 @@
     border-radius: 16px;
   }
 
+  /* Stats section styling */
+  #stats {
+    position: relative;
+  }
+
   .about-hero:hover {
     background: #f8f9fa;
     border-color: #dee2e6;
@@ -241,6 +246,23 @@
     filter: brightness(1.1) saturate(1.2);
   }
 
+  /* Future section image improvements */
+  #future > div > div:first-of-type > div {
+    position: relative;
+  }
+
+  #future > div > div:first-of-type > div img {
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    display: block;
+    image-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
   .partnership-logos {
     display: flex;
     justify-content: center;
@@ -277,6 +299,335 @@
     .company-stats {
       grid-template-columns: 1fr;
     }
+
+    /* Hero Section Mobile */
+    .hero {
+      margin-top: 60px !important;
+      min-height: 50vh !important;
+      padding: 60px 15px !important;
+    }
+
+    .hero h1 {
+      font-size: 2rem !important;
+      margin-bottom: 15px !important;
+      padding: 0 10px !important;
+    }
+
+    .hero p {
+      font-size: 1rem !important;
+      margin-bottom: 30px !important;
+      padding: 0 10px !important;
+    }
+
+    /* Stats Section Mobile */
+    #stats {
+      padding: 40px 15px !important;
+    }
+
+    #stats > div > div {
+      grid-template-columns: 1fr !important;
+      gap: 20px !important;
+    }
+
+    .stat-counter {
+      padding: 20px 15px !important;
+    }
+
+    .circular-progress {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      margin: 0 auto 20px !important;
+    }
+
+    .circular-progress svg {
+      aspect-ratio: 1 / 1 !important;
+      flex-shrink: 0 !important;
+      display: block !important;
+    }
+
+    #counter-1, #counter-2, #counter-3 {
+      font-size: 1.4rem !important;
+    }
+
+    /* Partnership Section Mobile */
+    #partnership {
+      padding: 40px 15px !important;
+    }
+
+    #partnership h2 {
+      font-size: 1.8rem !important;
+      padding: 10px 20px !important;
+      margin-bottom: 20px !important;
+    }
+
+    #partnership > div > p {
+      font-size: 1rem !important;
+      margin-bottom: 30px !important;
+      padding: 0 10px !important;
+    }
+
+    #partnership > div > div:first-of-type {
+      grid-template-columns: 1fr !important;
+      gap: 20px !important;
+      margin-bottom: 30px !important;
+    }
+
+    #partnership > div > div:last-of-type {
+      padding: 30px 20px !important;
+    }
+
+    #partnership h3 {
+      font-size: 1.8rem !important;
+      margin-bottom: 20px !important;
+    }
+
+    #partnership > div > div:last-of-type p {
+      font-size: 1rem !important;
+      margin-bottom: 15px !important;
+    }
+
+    /* Engineering Section Mobile */
+    #engineering {
+      padding: 40px 15px !important;
+    }
+
+    #engineering h2 {
+      font-size: 2rem !important;
+      margin-bottom: 20px !important;
+    }
+
+    #engineering > div > p {
+      font-size: 1rem !important;
+      margin-bottom: 30px !important;
+      padding: 0 10px !important;
+    }
+
+    #engineering > div > div {
+      grid-template-columns: 1fr !important;
+      gap: 15px !important;
+      margin-bottom: 30px !important;
+    }
+
+    #engineering > div > div > div {
+      padding: 15px !important;
+    }
+
+    #engineering img {
+      height: 120px !important;
+    }
+
+    #engineering h3 {
+      font-size: 1.1rem !important;
+      margin-bottom: 8px !important;
+    }
+
+    #engineering p {
+      font-size: 0.85rem !important;
+    }
+
+    /* Vision Section Mobile */
+    #vision {
+      padding: 50px 15px !important;
+    }
+
+    #vision h2 {
+      font-size: 2rem !important;
+      margin-bottom: 20px !important;
+    }
+
+    #vision > div > p {
+      font-size: 1.1rem !important;
+      margin-bottom: 40px !important;
+      padding: 0 10px !important;
+    }
+
+    #vision > div > div:first-of-type {
+      grid-template-columns: 1fr !important;
+      gap: 25px !important;
+      margin-bottom: 40px !important;
+    }
+
+    #vision > div > div:first-of-type > div {
+      padding: 25px 20px !important;
+    }
+
+    #vision h3 {
+      font-size: 1.5rem !important;
+      margin-bottom: 15px !important;
+    }
+
+    #vision > div > div:first-of-type p {
+      font-size: 0.95rem !important;
+    }
+
+    #vision > div > div:last-of-type {
+      flex-direction: column !important;
+      gap: 30px !important;
+    }
+
+    #vision > div > div:last-of-type > div:first-child {
+      font-size: 2rem !important;
+    }
+
+    #vision img {
+      height: 60px !important;
+    }
+
+    /* Future Section Mobile */
+    #future {
+      padding: 40px 15px !important;
+    }
+
+    #future h2 {
+      font-size: 2rem !important;
+      margin-bottom: 20px !important;
+    }
+
+    #future > div > p {
+      font-size: 1rem !important;
+      margin-bottom: 30px !important;
+      padding: 0 10px !important;
+    }
+
+    #future > div > div:first-of-type {
+      grid-template-columns: 1fr !important;
+      gap: 20px !important;
+      margin-bottom: 30px !important;
+    }
+
+    #future > div > div:first-of-type > div {
+      height: 250px !important;
+    }
+
+    #future > div > div:first-of-type h3 {
+      font-size: 1.3rem !important;
+    }
+
+    #future > div > div:first-of-type p {
+      font-size: 0.9rem !important;
+    }
+
+    #future > div > div:last-of-type {
+      padding: 30px 20px !important;
+    }
+
+    #future h3 {
+      font-size: 1.6rem !important;
+      margin-bottom: 25px !important;
+    }
+
+    #future > div > div:last-of-type > div {
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 20px !important;
+    }
+
+    #future > div > div:last-of-type > div > div {
+      padding: 15px !important;
+    }
+
+    #future > div > div:last-of-type > div > div > div {
+      width: 60px !important;
+      height: 60px !important;
+      font-size: 1.2rem !important;
+      margin-bottom: 10px !important;
+    }
+
+    #future h4 {
+      font-size: 0.95rem !important;
+      margin-bottom: 8px !important;
+    }
+
+    #future > div > div:last-of-type p {
+      font-size: 0.8rem !important;
+    }
+
+    /* Vehicle Portfolio Section Mobile */
+    section:last-of-type {
+      padding: 40px 15px !important;
+    }
+
+    section:last-of-type h2 {
+      font-size: 2rem !important;
+      margin-bottom: 30px !important;
+    }
+
+    section:last-of-type > div > div {
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 15px !important;
+    }
+
+    section:last-of-type > div > div > div {
+      height: 150px !important;
+    }
+
+    section:last-of-type p {
+      font-size: 0.85rem !important;
+      padding: 10px !important;
+    }
+
+    /* General Mobile Fixes */
+    .section-card h2 {
+      font-size: 2rem !important;
+    }
+
+    .section-card p {
+      font-size: 1.1rem !important;
+    }
+
+    .highlight-section {
+      padding: 30px 20px !important;
+      margin: 30px 0 !important;
+    }
+
+    .highlight-section h3 {
+      font-size: 2rem !important;
+    }
+
+    .highlight-section p {
+      font-size: 1.1rem !important;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero {
+      min-height: 40vh !important;
+      padding: 40px 15px !important;
+    }
+
+    .hero h1 {
+      font-size: 1.6rem !important;
+    }
+
+    .hero p {
+      font-size: 0.9rem !important;
+    }
+
+    #stats {
+      padding: 30px 15px !important;
+    }
+
+    /* Circular progress sizes handled by JavaScript */
+
+    #counter-1, #counter-2, #counter-3 {
+      font-size: 1.2rem !important;
+    }
+
+    #partnership h2,
+    #engineering h2,
+    #vision h2,
+    #future h2,
+    section:last-of-type h2 {
+      font-size: 1.5rem !important;
+    }
+
+    #future > div > div:last-of-type > div {
+      grid-template-columns: 1fr !important;
+    }
+
+    section:last-of-type > div > div {
+      grid-template-columns: 1fr !important;
+    }
   }
 </style>
 </head>
@@ -285,20 +636,23 @@
     <div id="header-placeholder"></div>
 
 
-<section class="hero" style="margin-top: 60px; position: relative; overflow: hidden;">
-  <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)); z-index: 1;"></div>
-  <img src="assets/trucks/Additional Trucks/E3 Dump Truck/main.webp" alt="Hero Truck" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;">
-  <div style="position: relative; z-index: 2; padding: 100px 20px; text-align: center; color: white;">
+<section class="hero" style="margin-top: 60px; position: relative; min-height: 60vh; background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('assets/trucks/Additional Trucks/E3 Dump Truck/main.webp') center/cover no-repeat; display: flex; align-items: center; justify-content: center; padding: 100px 20px; text-align: center; color: white;">
+  <div style="position: relative; z-index: 2; max-width: 1200px; width: 100%;">
     <h1 style="font-size: 3.5rem; font-weight: 700; margin-bottom: 20px; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">Equipment King Incorporated</h1>
     <p style="font-size: 1.4rem; margin-bottom: 40px; text-shadow: 1px 1px 2px rgba(0,0,0,0.8);">Redefining the future of commercial mobility through innovation, sustainability, and global collaboration.</p>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 60px;">
+  </div>
+</section>
+
+<!-- Stats Section -->
+<section id="stats" style="padding: 60px 20px; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('assets/trucks/Additional Trucks/E3 Dump Truck/main.webp') center/cover no-repeat fixed; position: relative;">
+  <div style="max-width: 1200px; margin: 0 auto;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
       <!-- Vehicle Models Counter -->
-      <div class="stat-counter" style="background: rgba(255,255,255,0.9); border: 2px solid #dee2e6; backdrop-filter: blur(10px); padding: 30px 20px; border-radius: 10px; text-align: center;">
+      <div class="stat-counter" style="background: rgba(255,255,255,0.95); border: 2px solid #dee2e6; backdrop-filter: blur(10px); padding: 30px 20px; border-radius: 10px; text-align: center;">
         <div class="circular-progress" style="position: relative; width: 120px; height: 120px; margin: 0 auto 20px;">
           <svg style="width: 120px; height: 120px; transform: rotate(-90deg);">
             <circle cx="60" cy="60" r="54" fill="none" stroke="#f0f0f0" stroke-width="8"/>
             <circle id="progress-1" cx="60" cy="60" r="54" fill="none" stroke="#007bff" stroke-width="8" 
-                    stroke-dasharray="339.29" stroke-dashoffset="339.29" 
                     style="transition: stroke-dashoffset 2s ease-in-out;"/>
           </svg>
           <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
@@ -310,12 +664,11 @@
       </div>
 
       <!-- Countries Served Counter -->
-      <div class="stat-counter" style="background: rgba(255,255,255,0.9); border: 2px solid #dee2e6; backdrop-filter: blur(10px); padding: 30px 20px; border-radius: 10px; text-align: center;">
+      <div class="stat-counter" style="background: rgba(255,255,255,0.95); border: 2px solid #dee2e6; backdrop-filter: blur(10px); padding: 30px 20px; border-radius: 10px; text-align: center;">
         <div class="circular-progress" style="position: relative; width: 120px; height: 120px; margin: 0 auto 20px;">
           <svg style="width: 120px; height: 120px; transform: rotate(-90deg);">
             <circle cx="60" cy="60" r="54" fill="none" stroke="#f0f0f0" stroke-width="8"/>
             <circle id="progress-2" cx="60" cy="60" r="54" fill="none" stroke="#28a745" stroke-width="8" 
-                    stroke-dasharray="339.29" stroke-dashoffset="339.29" 
                     style="transition: stroke-dashoffset 2s ease-in-out;"/>
           </svg>
           <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
@@ -327,12 +680,11 @@
       </div>
 
       <!-- Vehicles Delivered Counter -->
-      <div class="stat-counter" style="background: rgba(255,255,255,0.9); border: 2px solid #dee2e6; backdrop-filter: blur(10px); padding: 30px 20px; border-radius: 10px; text-align: center;">
+      <div class="stat-counter" style="background: rgba(255,255,255,0.95); border: 2px solid #dee2e6; backdrop-filter: blur(10px); padding: 30px 20px; border-radius: 10px; text-align: center;">
         <div class="circular-progress" style="position: relative; width: 120px; height: 120px; margin: 0 auto 20px;">
           <svg style="width: 120px; height: 120px; transform: rotate(-90deg);">
             <circle cx="60" cy="60" r="54" fill="none" stroke="#f0f0f0" stroke-width="8"/>
             <circle id="progress-3" cx="60" cy="60" r="54" fill="none" stroke="#ffc107" stroke-width="8" 
-                    stroke-dasharray="339.29" stroke-dashoffset="339.29" 
                     style="transition: stroke-dashoffset 2s ease-in-out;"/>
           </svg>
           <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
@@ -346,7 +698,7 @@
   </div>
 </section>
 
-<section id="partnership" style="padding: 60px 20px; background: #ffffff; border-top: 2px solid #e0e0e0; border-bottom: 2px solid #e0e0e0;">
+<section id="partnership" style="padding: 60px 20px; background: #ffffff; border-top: 2px solid #e0e0e0; border-bottom: 2px solid #e0e0e0; margin-top: 0; position: relative; z-index: 1;">
   <div style="max-width: 1200px; margin: 0 auto;">
     <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 30px; color: #212529; font-weight: 700; text-transform: uppercase; border: 2px solid #e0e0e0; display: inline-block; padding: 15px 30px; background: #ffffff; border-radius: 12px;">Our Global Partnership</h2>
     <p style="text-align: center; font-size: 1.2rem; color: #555; margin-bottom: 50px; max-width: 800px; margin-left: auto; margin-right: auto; font-weight: 600;">In 2025, Equipment King Incorporated proudly entered a strategic partnership with SAG International, combining advanced engineering expertise with local market presence.</p>
@@ -402,7 +754,7 @@
         <p style="font-size: 0.9rem; opacity: 0.8;">40°C extreme conditions</p>
       </div>
       <div style="background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 20px; border-radius: 10px; text-align: center; border: 1px solid rgba(255,255,255,0.2);">
-        <img src="assets/trucks/Additional Trucks/E3 Dump Truck/Screenshot 2025-11-05 134423.webp" alt="Cold Testing" style="width: 100%; height: 150px; object-fit: cover; border-radius: 8px; margin-bottom: 15px;">
+        <img src="assets/trucks/Additional Trucks/E3 Dump Truck/main.webp" alt="Cold Testing" style="width: 100%; height: 150px; object-fit: cover; border-radius: 8px; margin-bottom: 15px;">
         <h3 style="margin-bottom: 10px;">Cold Endurance</h3>
         <p style="font-size: 0.9rem; opacity: 0.8;">-30°C performance validation</p>
       </div>
@@ -495,9 +847,6 @@
   <div style="max-width: 1200px; margin: 0 auto;">
     <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 30px; color: #1d1d1f;">Looking Ahead</h2>
     <p style="text-align: center; font-size: 1.2rem; color: #666; margin-bottom: 50px; max-width: 800px; margin-left: auto; margin-right: auto;">With continuous advancements in electric mobility and smart vehicle systems, our partnership is setting new industry benchmarks.</p>
-
-
-
     <div style="background: white; padding: 50px; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); text-align: center;">
       <h3 style="font-size: 2rem; margin-bottom: 30px; color: #1d1d1f;">Innovation Timeline</h3>
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px;">
@@ -543,7 +892,7 @@
           <p style="margin: 0; font-size: 0.9rem;">Commercial Series</p>
         </div>
       </div>
-      <div style="position: relative; overflow: hidden; border-radius: 10px; height: 200px; cursor: pointer;" onclick="window.location.href='trucks_html/X9-Aerial-Work-Platform-Truck.html'">
+      <div style="position: relative; overflow: hidden; border-radius: 10px; height: 200px; cursor: pointer;" onclick="window.location.href='trucks_html/X9-Aerial-Platform-Truck.html'">
         <img src="assets/trucks/Additional Trucks/E3 Dump Truck/Screenshot 2025-11-05 134804.webp" alt="Vehicle 3" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
         <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.8)); padding: 15px; text-align: center;">
           <p style="margin: 0; font-size: 0.9rem;">Specialized Series</p>
@@ -605,12 +954,57 @@
   }
 
   function animateProgress(circleElement, percentage, duration = 2000) {
-    const circumference = 2 * Math.PI * 54; // radius = 54
-    const offset = circumference - (percentage / 100) * circumference;
+    // Get the radius from the circle element's r attribute
+    const radius = parseFloat(circleElement.getAttribute('r')) || 54;
+    const circumference = 2 * Math.PI * radius;
     
+    // Initialize: set stroke-dasharray and start with circle fully hidden (offset = circumference)
+    circleElement.style.strokeDasharray = circumference;
+    circleElement.style.strokeDashoffset = circumference;
+    
+    // Calculate the final offset based on percentage
+    const finalOffset = circumference - (percentage / 100) * circumference;
+    
+    // Animate to the target offset
     setTimeout(() => {
-      circleElement.style.strokeDashoffset = offset;
+      circleElement.style.strokeDashoffset = finalOffset;
     }, 500); // Start after a small delay
+  }
+
+  // Function to update SVG circles for responsive sizing
+  function updateSVGCircles() {
+    const isMobile = window.innerWidth <= 768;
+    const isSmallMobile = window.innerWidth <= 480;
+    
+    const progressContainers = document.querySelectorAll('.circular-progress');
+    progressContainers.forEach(container => {
+      const containerSize = isSmallMobile ? 80 : (isMobile ? 100 : 120);
+      const center = containerSize / 2;
+      const radius = center - (isSmallMobile ? 4 : (isMobile ? 5 : 6)); // Proportional margin
+      const strokeWidth = isSmallMobile ? 6 : (isMobile ? 7 : 8);
+      
+      // Update container size
+      container.style.width = containerSize + 'px';
+      container.style.height = containerSize + 'px';
+      
+      const svg = container.querySelector('svg');
+      if (!svg) return;
+      
+      // Set viewBox for proper scaling - this ensures circles stay circular
+      svg.setAttribute('viewBox', `0 0 ${containerSize} ${containerSize}`);
+      svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+      svg.style.width = containerSize + 'px';
+      svg.style.height = containerSize + 'px';
+      
+      // Update all circles in this SVG
+      const circles = svg.querySelectorAll('circle');
+      circles.forEach(circle => {
+        circle.setAttribute('cx', center);
+        circle.setAttribute('cy', center);
+        circle.setAttribute('r', radius);
+        circle.setAttribute('stroke-width', strokeWidth);
+      });
+    });
   }
 
   // Intersection observer for stat counters
@@ -618,6 +1012,9 @@
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         const statCounter = entry.target;
+        
+        // Update SVG circles before animating
+        updateSVGCircles();
         
         // Animate specific counters
         if (statCounter.querySelector('#counter-1')) {
@@ -648,6 +1045,12 @@
       section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
       observer.observe(section);
     });
+
+    // Update SVG circles for responsive sizing
+    updateSVGCircles();
+    
+    // Update on resize
+    window.addEventListener('resize', updateSVGCircles);
 
     // Observe stat counters
     const statCounters = document.querySelectorAll('.stat-counter');
