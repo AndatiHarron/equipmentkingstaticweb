@@ -25,20 +25,18 @@
 
         <!-- Unified Image Gallery Section -->
         <section style="max-width: 1400px; margin: 0 auto 60px auto; border: 1px solid #dee2e6; border-radius: 12px; padding: 40px;">
-            <h3 style="color: #212529; font-size: 1.8em; font-weight: 700; text-align: center; margin-bottom: 30px; position: relative;">
-                <span style="background: #fff; padding: 0 20px; position: relative; z-index: 2;">Exterior</span>
-                <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ddd, transparent); z-index: 1;"></div>
-            </h3>
-            <div style="width: 100%; height: 480px; border: 1px solid #dee2e6; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px;">
-                <img id="mainImage" src="../assets/e1st.webp" alt="E1st Tractor" 
-                     style="max-width: 95%; max-height: 95%; object-fit: contain;"
-                     onerror="this.src='../assets/back2.jpeg'">
+            <!-- Gallery Header -->
+            <div style="text-align: center; margin-bottom: 30px;">
+                <h3 style="color: #212529; font-size: 1.8em; font-weight: 700; margin-bottom: 20px; position: relative;">
+                    <span style="background: #fff; padding: 0 20px; position: relative; z-index: 2;">Vehicle Images</span>
+                    <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ddd, transparent); z-index: 1;"></div>
+                </h3>
             </div>
             
             <!-- Main Image Display -->
             <div style="width: 100%; height: 480px; border: 1px solid #dee2e6; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px;">
-                <img id="mainImage2" src="../assets/e1st.webp" alt="E1st Tractor Interior" 
-                     style="max-width: 95%; max-height: 95%; object-fit: contain;"
+                <img id="mainImage" src="../assets/e1st.webp" alt="Vehicle Image" 
+                     style="max-width: 95%; max-height: 95%; object-fit: contain; transition: opacity 0.3s ease;"
                      onerror="this.src='../assets/back2.jpeg'">
             </div>
             
@@ -126,7 +124,7 @@
                                 <td style="padding: 16px 24px; font-weight: 600; color: #495057;">Towing Capacity</td>
                                 <td style="padding: 16px 24px; color: #212529;">Up to 40 tons</td>
                             </tr>
-                            <tr style="">
+                            <tr style="border-bottom: 1px solid #dee2e6;">
                                 <td style="padding: 16px 24px; font-weight: 600; color: #495057;">Wheelbase</td>
                                 <td style="padding: 16px 24px; color: #212529;">3800mm</td>
                             </tr>
@@ -218,12 +216,8 @@
     </style>
     
     <script>
-        // Image gallery functionality
-        const exteriorImages = [
-            "../assets/e1st.webp"
-        ];
-
-        const interiorImages = [
+        // Unified single collection image gallery functionality
+        const allImages = [
             "../assets/e1st.webp"
         ];
 
