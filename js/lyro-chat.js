@@ -242,7 +242,7 @@ class LyroChat {
         }
     }
 
-    sendMessage(message) {
+    async sendMessage(message) {
         const content = document.getElementById('lyro-chat-content');
         if (!content) return;
 
@@ -255,36 +255,36 @@ class LyroChat {
         userMsg.innerHTML = `
             <div style="
                 display: inline-block;
-                background: #444;
-                color: white;
+                background: #000;
+                color: #fff;
                 padding: 12px 16px;
                 border-radius: 12px 12px 4px 12px;
                 max-width: 80%;
                 font-size: 14px;
+                border: 1px solid #222;
             ">${message}</div>
         `;
         content.appendChild(userMsg);
 
         // Auto response based on message
-        setTimeout(() => {
+        setTimeout(async () => {
             const botMsg = document.createElement('div');
             botMsg.style.cssText = `
                 margin: 16px 0;
                 text-align: left;
             `;
-            
-            let response = this.getResponse(message);
-            
+            let response = await this.getResponse(message);
             botMsg.innerHTML = `
                 <div style="
                     display: inline-block;
-                    background: white;
-                    color: #333;
+                    background: #fff;
+                    color: #000;
                     padding: 12px 16px;
                     border-radius: 12px 12px 12px 4px;
                     max-width: 80%;
                     font-size: 14px;
-                    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+                    border: 1px solid #222;
+                    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
                 ">${response}</div>
             `;
             content.appendChild(botMsg);
