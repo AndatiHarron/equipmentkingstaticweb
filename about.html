@@ -7,6 +7,219 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 <script src="js/header-footer-loader.js"></script>
 <script src="js/lyro-chat.js"></script>
+<script>
+// --- About Page Translation System ---
+const aboutTranslations = {
+  en: {
+    heroTitle: 'Equipment King Incorporated',
+    heroDesc: 'Redefining the future of commercial mobility through innovation, sustainability, and global collaboration.',
+    stats: ['Vehicle Models', 'Countries Served', 'Vehicles Delivered'],
+    partnership: {
+      h2: 'Our Global Partnership',
+      desc: 'In 2025, Equipment King Incorporated proudly entered a strategic partnership with SAG International, combining advanced engineering expertise with local market presence.',
+      cards: [
+        ['Advanced Engineering', 'Cutting-edge vehicle technology'],
+        ['Specialized Equipment', 'Aerial work platforms & more'],
+        ['Environmental Solutions', 'Waste management vehicles']
+      ],
+      vision: 'Strategic Vision',
+      visionDesc: [
+        'Together, we are shaping the future of transport with smarter, cleaner, and more efficient vehicle technologies.',
+        "Equipment King Inc serves as a global distributor and technology integrator, bringing SAG's cutting-edge engineering to markets across Africa, Asia, and beyond."
+      ]
+    },
+    engineering: {
+      h2: 'Engineering Excellence',
+      desc: "SAG International vehicles undergo extensive environmental validation from Turpan's 40°C heat to Hailar's -30°C cold endurance testing.",
+      cards: [
+        ['Heat Testing', '40°C extreme conditions'],
+        ['Cold Endurance', '-30°C performance validation'],
+        ['Load Testing', 'Maximum capacity validation'],
+        ['Durability Testing', 'Long-term reliability']
+      ]
+    },
+    countries: {
+      h2: 'Global Operations',
+      desc: 'We proudly serve customers across West Africa with our comprehensive commercial vehicle solutions and expert support services.',
+      cards: [
+        ['Liberia', 'Comprehensive commercial vehicle solutions and support services'],
+        ['Mali', 'Reliable truck solutions for mining and construction industries'],
+        ['Guinea', 'Advanced heavy-duty vehicles for infrastructure development'],
+        ['Sierra Leone', 'Professional commercial vehicles for diverse business needs']
+      ]
+    },
+    vision: {
+      h2: 'Our Mission & Vision',
+      desc: 'To drive sustainable mobility through innovation, performance, and strategic global partnerships.',
+      cards: [
+        ['Mission Statement', 'Equipment King is committed to providing world-class commercial vehicles that meet the evolving needs of businesses across diverse industries. We strive to deliver innovative, reliable, and efficient transportation solutions.'],
+        ['Vision for the Future', 'To be the leading global distributor of commercial vehicles, recognized for our commitment to innovation, quality, and customer satisfaction. We envision sustainable transportation solutions that enable businesses to thrive.']
+      ],
+      logos: ['Equipment King', 'SAG International']
+    },
+    future: {
+      h2: 'Looking Ahead',
+      desc: 'With continuous advancements in electric mobility and smart vehicle systems, our partnership is setting new industry benchmarks.',
+      timeline: [
+        ['2025', 'Partnership Launch', 'Strategic alliance with SAG International'],
+        ['2026', 'Electric Fleet', 'Launch of electric commercial vehicles'],
+        ['2027', 'Smart Integration', 'AI and IoT fleet management systems'],
+        ['2028', 'Autonomous Future', 'Self-driving commercial vehicles']
+      ]
+    },
+    portfolio: {
+      h2: 'Our Vehicle Portfolio',
+      series: ['Heavy Duty Series', 'Commercial Series', 'Specialized Series', 'Industrial Series', 'Premium Series', 'Elite Series']
+    }
+  },
+  fr: {
+    heroTitle: 'Equipment King Incorporated',
+    heroDesc: 'Redéfinir l’avenir de la mobilité commerciale par l’innovation, la durabilité et la collaboration mondiale.',
+    stats: ['Modèles de véhicules', 'Pays desservis', 'Véhicules livrés'],
+    partnership: {
+      h2: 'Notre partenariat mondial',
+      desc: "En 2025, Equipment King Incorporated a conclu un partenariat stratégique avec SAG International, combinant expertise en ingénierie avancée et présence locale sur le marché.",
+      cards: [
+        ["Ingénierie avancée", "Technologie de véhicule de pointe"],
+        ["Équipement spécialisé", "Plates-formes élévatrices et plus"],
+        ["Solutions environnementales", "Véhicules de gestion des déchets"]
+      ],
+      vision: 'Vision stratégique',
+      visionDesc: [
+        "Ensemble, nous façonnons l’avenir du transport avec des technologies de véhicules plus intelligentes, plus propres et plus efficaces.",
+        "Equipment King Inc agit comme distributeur mondial et intégrateur technologique, apportant l’ingénierie de pointe de SAG sur les marchés d’Afrique, d’Asie et au-delà."
+      ]
+    },
+    engineering: {
+      h2: 'Excellence en ingénierie',
+      desc: "Les véhicules SAG International subissent des validations environnementales extrêmes, de la chaleur de 40°C de Turpan au froid de -30°C de Hailar.",
+      cards: [
+        ["Test de chaleur", "Conditions extrêmes à 40°C"],
+        ["Endurance au froid", "Validation à -30°C"],
+        ["Test de charge", "Validation de la capacité maximale"],
+        ["Test de durabilité", "Fiabilité à long terme"]
+      ]
+    },
+    countries: {
+      h2: 'Opérations mondiales',
+      desc: 'Nous servons fièrement des clients à travers l’Afrique de l’Ouest avec des solutions complètes de véhicules commerciaux et des services d’assistance experts.',
+      cards: [
+        ['Libéria', 'Solutions complètes de véhicules commerciaux et services de support'],
+        ['Mali', 'Solutions fiables pour les secteurs minier et construction'],
+        ['Guinée', 'Véhicules lourds avancés pour le développement des infrastructures'],
+        ['Sierra Leone', 'Véhicules professionnels pour divers besoins commerciaux']
+      ]
+    },
+    vision: {
+      h2: 'Notre mission et vision',
+      desc: 'Promouvoir la mobilité durable par l’innovation, la performance et des partenariats mondiaux stratégiques.',
+      cards: [
+        ["Déclaration de mission", "Equipment King s’engage à fournir des véhicules commerciaux de classe mondiale répondant aux besoins évolutifs des entreprises de divers secteurs. Nous nous efforçons d’offrir des solutions de transport innovantes, fiables et efficaces."],
+        ["Vision pour l’avenir", "Être le principal distributeur mondial de véhicules commerciaux, reconnu pour notre engagement envers l’innovation, la qualité et la satisfaction client. Nous envisageons des solutions de transport durables permettant aux entreprises de prospérer."]
+      ],
+      logos: ['Equipment King', 'SAG International']
+    },
+    future: {
+      h2: 'Regard vers l’avenir',
+      desc: 'Grâce aux progrès continus de la mobilité électrique et des systèmes de véhicules intelligents, notre partenariat établit de nouvelles références industrielles.',
+      timeline: [
+        ['2025', 'Lancement du partenariat', 'Alliance stratégique avec SAG International'],
+        ['2026', 'Flotte électrique', 'Lancement de véhicules commerciaux électriques'],
+        ['2027', 'Intégration intelligente', 'Systèmes de gestion de flotte IA et IoT'],
+        ['2028', 'Avenir autonome', 'Véhicules commerciaux autonomes']
+      ]
+    },
+    portfolio: {
+      h2: 'Notre portefeuille de véhicules',
+      series: [
+        'Série Poids Lourds',
+        'Série Commerciale',
+        'Série Spécialisée',
+        'Série Industrielle',
+        'Série Premium',
+        'Série Élite'
+      ]
+    }
+  }
+};
+
+function applyAboutTranslations(lang) {
+  const t = aboutTranslations[lang];
+  // Hero
+  document.querySelector('.about-hero h1')?.textContent = t.heroTitle;
+  document.querySelector('.about-hero p')?.textContent = t.heroDesc;
+  // Stats
+  const statPs = document.querySelectorAll('.stat-counter p');
+  statPs.forEach((p, i) => { if (t.stats[i]) p.textContent = t.stats[i]; });
+  // Partnership
+  document.querySelector('#partnership h2')?.textContent = t.partnership.h2;
+  document.querySelector('#partnership > div > p')?.textContent = t.partnership.desc;
+  const partCards = document.querySelectorAll('#partnership .grid > div, #partnership > div > div[style*="grid-template-columns"] > div');
+  partCards.forEach((card, i) => {
+    const h3 = card.querySelector('h3');
+    const p = card.querySelector('p');
+    if (h3 && t.partnership.cards[i]) h3.textContent = t.partnership.cards[i][0];
+    if (p && t.partnership.cards[i]) p.textContent = t.partnership.cards[i][1];
+  });
+  document.querySelector('#partnership h3 span')?.textContent = t.partnership.vision;
+  const visionPs = document.querySelectorAll('#partnership h3 + p, #partnership h3 + p + p');
+  visionPs.forEach((p, i) => { if (t.partnership.visionDesc[i]) p.textContent = t.partnership.visionDesc[i]; });
+  // Engineering
+  document.querySelector('#engineering h2')?.textContent = t.engineering.h2;
+  document.querySelector('#engineering > div > p')?.textContent = t.engineering.desc;
+  const engCards = document.querySelectorAll('#engineering .grid > div, #engineering > div > div[style*="grid-template-columns"] > div');
+  engCards.forEach((card, i) => {
+    const h3 = card.querySelector('h3');
+    const p = card.querySelector('p');
+    if (h3 && t.engineering.cards[i]) h3.textContent = t.engineering.cards[i][0];
+    if (p && t.engineering.cards[i]) p.textContent = t.engineering.cards[i][1];
+  });
+  // Countries
+  document.querySelector('#countries h2')?.textContent = t.countries.h2;
+  document.querySelector('#countries > div > p')?.textContent = t.countries.desc;
+  const countryCards = document.querySelectorAll('#countries .grid > div, #countries > div > div[style*="grid-template-columns"] > div');
+  countryCards.forEach((card, i) => {
+    const h4 = card.querySelector('h4');
+    const p = card.querySelector('p');
+    if (h4 && t.countries.cards[i]) h4.textContent = t.countries.cards[i][0];
+    if (p && t.countries.cards[i]) p.textContent = t.countries.cards[i][1];
+  });
+  // Vision
+  document.querySelector('#vision h2')?.textContent = t.vision.h2;
+  document.querySelector('#vision > div > p')?.textContent = t.vision.desc;
+  const visionCards = document.querySelectorAll('#vision .grid > div, #vision > div > div[style*="grid-template-columns"] > div');
+  visionCards.forEach((card, i) => {
+    const h3 = card.querySelector('h3');
+    const p = card.querySelector('p');
+    if (h3 && t.vision.cards[i]) h3.textContent = t.vision.cards[i][0];
+    if (p && t.vision.cards[i]) p.textContent = t.vision.cards[i][1];
+  });
+  // Future
+  document.querySelector('#future h2')?.textContent = t.future.h2;
+  document.querySelector('#future > div > p')?.textContent = t.future.desc;
+  const timelineCards = document.querySelectorAll('#future .grid > div, #future > div > div[style*="grid-template-columns"] > div');
+  timelineCards.forEach((card, i) => {
+    const h4 = card.querySelector('h4');
+    const p = card.querySelector('p');
+    if (h4 && t.future.timeline[i]) h4.textContent = t.future.timeline[i][1];
+    if (p && t.future.timeline[i]) p.textContent = t.future.timeline[i][2];
+  });
+  // Portfolio
+  document.querySelector('section:last-of-type h2')?.textContent = t.portfolio.h2;
+  const seriesPs = document.querySelectorAll('section:last-of-type .grid > div p, section:last-of-type > div > div[style*="grid-template-columns"] > div p');
+  seriesPs.forEach((p, i) => { if (t.portfolio.series[i]) p.textContent = t.portfolio.series[i]; });
+}
+
+// Listen for global language changes
+document.addEventListener('DOMContentLoaded', () => {
+  if (window.currentLang) {
+    applyAboutTranslations(window.currentLang);
+  }
+  document.getElementById('lang-toggle-btn')?.addEventListener('click', () => {
+    setTimeout(() => applyAboutTranslations(window.currentLang), 100);
+  });
+});
+</script>
 <title>About | Equipment King Incorporated</title>
 
 <style>
@@ -636,7 +849,7 @@
     <div id="header-placeholder"></div>
 
 
-<section class="hero" style="margin-top: 60px; position: relative; min-height: 60vh; background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('assets/trucks/Additional Trucks/E3 Dump Truck/main.webp') center/cover no-repeat; display: flex; align-items: center; justify-content: center; padding: 100px 20px; text-align: center; color: white;">
+<section class="hero" style="margin-top: 60px; position: relative; min-height: 60vh; background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('assets/back2.webp') center/cover no-repeat; display: flex; align-items: center; justify-content: center; padding: 100px 20px; text-align: center; color: white;">
   <div style="position: relative; z-index: 2; max-width: 1200px; width: 100%;">
     <h1 style="font-size: 3.5rem; font-weight: 700; margin-bottom: 20px; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">Equipment King Incorporated</h1>
     <p style="font-size: 1.4rem; margin-bottom: 40px; text-shadow: 1px 1px 2px rgba(0,0,0,0.8);">Redefining the future of commercial mobility through innovation, sustainability, and global collaboration.</p>
@@ -644,7 +857,7 @@
 </section>
 
 <!-- Stats Section -->
-<section id="stats" style="padding: 60px 20px; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('assets/trucks/Additional Trucks/E3 Dump Truck/main.webp') center/cover no-repeat fixed; position: relative;">
+<section id="stats" style="padding: 60px 20px; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('assets/back2.webp') center/cover no-repeat fixed; position: relative;">
   <div style="max-width: 1200px; margin: 0 auto;">
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
       <!-- Vehicle Models Counter -->
@@ -701,7 +914,7 @@
 <section id="partnership" style="padding: 60px 20px; background: #ffffff; border-top: 2px solid #e0e0e0; border-bottom: 2px solid #e0e0e0; margin-top: 0; position: relative; z-index: 1;">
   <div style="max-width: 1200px; margin: 0 auto;">
     <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 30px; color: #212529; font-weight: 700; text-transform: uppercase; border: 2px solid #e0e0e0; display: inline-block; padding: 15px 30px; background: #ffffff; border-radius: 12px;">Our Global Partnership</h2>
-    <p style="text-align: center; font-size: 1.2rem; color: #555; margin-bottom: 50px; max-width: 800px; margin-left: auto; margin-right: auto; font-weight: 600;">In 2025, Equipment King Incorporated proudly entered a strategic partnership with SAG International, combining advanced engineering expertise with local market presence.</p>
+  <p style="text-align: center; font-size: 1.2rem; color: #111; margin-bottom: 50px; max-width: 800px; margin-left: auto; margin-right: auto; font-weight: 600;">In 2025, Equipment King Incorporated proudly entered a strategic partnership with SAG International, combining advanced engineering expertise with local market presence.</p>
 
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 50px;">
       <div style="position: relative; overflow: hidden; border-radius: 15px; height: 250px;">
@@ -733,8 +946,8 @@
         <span style="background: #fff; padding: 0 24px; position: relative; z-index: 2;">Strategic Vision</span>
         <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ddd, transparent); z-index: 1;"></div>
       </h3>
-      <p style="font-size: 1.25rem; color: #555; line-height: 1.7; margin-bottom: 20px; max-width: 800px; margin-left: auto; margin-right: auto;">Together, we are shaping the future of transport with smarter, cleaner, and more efficient vehicle technologies.</p>
-      <p style="font-size: 1.25rem; color: #555; line-height: 1.7; max-width: 800px; margin-left: auto; margin-right: auto;">Equipment King Inc serves as a global distributor and technology integrator, bringing SAG's cutting-edge engineering to markets across Africa, Asia, and beyond.</p>
+  <p style="font-size: 1.25rem; color: #111; line-height: 1.7; margin-bottom: 20px; max-width: 800px; margin-left: auto; margin-right: auto;">Together, we are shaping the future of transport with smarter, cleaner, and more efficient vehicle technologies.</p>
+  <p style="font-size: 1.25rem; color: #111; line-height: 1.7; max-width: 800px; margin-left: auto; margin-right: auto;">Equipment King Inc serves as a global distributor and technology integrator, bringing SAG's cutting-edge engineering to markets across Africa, Asia, and beyond.</p>
     </div>
   </div>
 </section>
@@ -772,42 +985,6 @@
   </div>
 </section>
 
-<section id="countries" style="padding: 60px 20px; background: #ffffff; border-top: 2px solid #e0e0e0; border-bottom: 2px solid #e0e0e0;">
-  <div style="max-width: 1200px; margin: 0 auto;">
-    <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 30px; color: #212529; font-weight: 700; text-transform: uppercase; border: 2px solid #e0e0e0; display: inline-block; padding: 15px 30px; background: #ffffff; border-radius: 12px;">Global Operations</h2>
-    <p style="text-align: center; font-size: 1.2rem; color: #555; margin-bottom: 50px; max-width: 800px; margin-left: auto; margin-right: auto; font-weight: 600;">We proudly serve customers across West Africa with our comprehensive commercial vehicle solutions and expert support services.</p>
-
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 40px;">
-      <div style="background: white; padding: 40px 28px; border: 2px solid #e0e0e0; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.1); text-align: center; position: relative; overflow: hidden; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 12px 35px rgba(0,0,0,0.15)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 25px rgba(0,0,0,0.1)'">
-        <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
-        <img src="https://flagcdn.com/w80/lr.png" alt="Liberia Flag" style="width: 64px; height: 48px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-        <h4 style="font-size: 24px; margin-bottom: 15px; color: #212529; font-weight: 700;">Liberia</h4>
-        <p style="font-size: 14px; color: #666; font-weight: 600;">Comprehensive commercial vehicle solutions and support services</p>
-      </div>
-      
-      <div style="background: white; padding: 40px 28px; border: 2px solid #e0e0e0; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.1); text-align: center; position: relative; overflow: hidden; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 12px 35px rgba(0,0,0,0.15)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 25px rgba(0,0,0,0.1)'">
-        <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
-        <img src="https://flagcdn.com/w80/ml.png" alt="Mali Flag" style="width: 64px; height: 48px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-        <h4 style="font-size: 24px; margin-bottom: 15px; color: #212529; font-weight: 700;">Mali</h4>
-        <p style="font-size: 14px; color: #666; font-weight: 600;">Reliable truck solutions for mining and construction industries</p>
-      </div>
-      
-      <div style="background: white; padding: 40px 28px; border: 2px solid #e0e0e0; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.1); text-align: center; position: relative; overflow: hidden; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 12px 35px rgba(0,0,0,0.15)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 25px rgba(0,0,0,0.1)'">
-        <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
-        <img src="https://flagcdn.com/w80/gn.png" alt="Guinea Flag" style="width: 64px; height: 48px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-        <h4 style="font-size: 24px; margin-bottom: 15px; color: #212529; font-weight: 700;">Guinea</h4>
-        <p style="font-size: 14px; color: #666; font-weight: 600;">Advanced heavy-duty vehicles for infrastructure development</p>
-      </div>
-      
-      <div style="background: white; padding: 40px 28px; border: 2px solid #e0e0e0; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.1); text-align: center; position: relative; overflow: hidden; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 12px 35px rgba(0,0,0,0.15)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 25px rgba(0,0,0,0.1)'">
-        <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
-        <img src="https://flagcdn.com/w80/sl.png" alt="Sierra Leone Flag" style="width: 64px; height: 48px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-        <h4 style="font-size: 24px; margin-bottom: 15px; color: #212529; font-weight: 700;">Sierra Leone</h4>
-        <p style="font-size: 14px; color: #666; font-weight: 600;">Professional commercial vehicles for diverse business needs</p>
-      </div>
-    </div>
-  </div>
-</section>
 
 <section id="vision" style="padding: 80px 20px; background: linear-gradient(135deg, #1d1d1f, #333); color: white; position: relative;">
   <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0.1;">
@@ -815,7 +992,7 @@
   </div>
   <div style="position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; text-align: center;">
     <h2 style="font-size: 3rem; margin-bottom: 30px;">Our Mission & Vision</h2>
-    <p style="font-size: 1.4rem; margin-bottom: 60px; max-width: 800px; margin-left: auto; margin-right: auto; opacity: 0.9;">To drive sustainable mobility through innovation, performance, and strategic global partnerships.</p>
+  <p style="font-size: 1.4rem; margin-bottom: 60px; max-width: 800px; margin-left: auto; margin-right: auto; opacity: 0.9;">To drive sustainable mobility through innovation, performance, and strategic global partnerships.</p>
 
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; margin-bottom: 60px;">
       <div style="background: rgba(255,255,255,0.1); backdrop-filter: blur(15px); padding: 30px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.2);">
@@ -875,50 +1052,6 @@
   </div>
 </section>
 
-<!-- Additional Vehicle Showcase -->
-<section style="padding: 60px 20px; background: #000; color: white;">
-  <div style="max-width: 1200px; margin: 0 auto;">
-    <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 50px;">Our Vehicle Portfolio</h2>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
-      <div style="position: relative; overflow: hidden; border-radius: 10px; height: 200px; cursor: pointer;" onclick="window.location.href='trucks.html#heavy-duty'">
-        <img src="assets/trucks/Additional Trucks/E3 Dump Truck/Screenshot 2025-11-05 134731.webp" alt="Vehicle 1" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
-        <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.8)); padding: 15px; text-align: center;">
-          <p style="margin: 0; font-size: 0.9rem;">Heavy Duty Series</p>
-        </div>
-      </div>
-      <div style="position: relative; overflow: hidden; border-radius: 10px; height: 200px; cursor: pointer;" onclick="window.location.href='trucks.html#medium-duty'">
-        <img src="assets/trucks/Additional Trucks/E3 Dump Truck/Screenshot 2025-11-05 134739.webp" alt="Vehicle 2" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
-        <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.8)); padding: 15px; text-align: center;">
-          <p style="margin: 0; font-size: 0.9rem;">Commercial Series</p>
-        </div>
-      </div>
-      <div style="position: relative; overflow: hidden; border-radius: 10px; height: 200px; cursor: pointer;" onclick="window.location.href='trucks_html/X9-Aerial-Platform-Truck.html'">
-        <img src="assets/trucks/Additional Trucks/E3 Dump Truck/Screenshot 2025-11-05 134804.webp" alt="Vehicle 3" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
-        <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.8)); padding: 15px; text-align: center;">
-          <p style="margin: 0; font-size: 0.9rem;">Specialized Series</p>
-        </div>
-      </div>
-      <div style="position: relative; overflow: hidden; border-radius: 10px; height: 200px; cursor: pointer;" onclick="window.location.href='trucks_html/E3-Dump-Truck.html'">
-        <img src="assets/trucks/Additional Trucks/E3 Dump Truck/Screenshot 2025-11-05 134812.webp" alt="Vehicle 4" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
-        <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.8)); padding: 15px; text-align: center;">
-          <p style="margin: 0; font-size: 0.9rem;">Industrial Series</p>
-        </div>
-      </div>
-      <div style="position: relative; overflow: hidden; border-radius: 10px; height: 200px; cursor: pointer;" onclick="window.location.href='trucks_html/E1st-Tractor.html'">
-        <img src="assets/trucks/Additional Trucks/E3 Dump Truck/Screenshot 2025-11-05 135257.webp" alt="Vehicle 5" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
-        <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.8)); padding: 15px; text-align: center;">
-          <p style="margin: 0; font-size: 0.9rem;">Premium Series</p>
-        </div>
-      </div>
-      <div style="position: relative; overflow: hidden; border-radius: 10px; height: 200px; cursor: pointer;" onclick="window.location.href='trucks_html/i9-New-Energy-Truck.html'">
-        <img src="assets/trucks/Additional Trucks/E3 Dump Truck/Screenshot 2025-11-05 135318.webp" alt="Vehicle 6" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
-        <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.8)); padding: 15px; text-align: center;">
-          <p style="margin: 0; font-size: 0.9rem;">Elite Series</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <script>
   // Smooth scroll reveal animation
