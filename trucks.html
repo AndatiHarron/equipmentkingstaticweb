@@ -1083,32 +1083,75 @@
             transform: scale(1.05);
         }
         
+        /* Apple-like segmented control styling */
         .category-buttons button:hover:not(.active) {
-            background-color: #f8f9fa !important;
-            border-color: #adb5bd !important;
+            background-color: rgba(0, 0, 0, 0.05) !important;
+            transform: translateY(-0.5px);
         }
         
         .category-buttons button.active {
-            background: #444 !important;
+            background: #000000 !important;
             color: #ffffff !important;
-            border-color: #444 !important;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2) !important;
+            transform: translateY(0);
+        }
+        
+        .category-buttons button:active {
+            transform: translateY(0.5px);
+        }
+        
+        /* Search input enhancements */
+        #searchInput:focus {
+            outline: none !important;
+            border-color: #000000 !important;
+            box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1) !important;
+        }
+        
+        #searchInput::placeholder {
+            color: #86868b;
         }
         
         /* Responsive improvements */
         @media (max-width: 768px) {
             .controls-container {
                 flex-direction: column;
-                align-items: stretch;
+                align-items: center;
+                gap: 16px;
             }
             
             .category-buttons {
+                width: 100%;
+                max-width: 400px;
                 justify-content: center;
-                margin-bottom: 16px;
+            }
+            
+            .category-buttons button {
+                flex: 1;
+                min-width: 0;
+                padding: 12px 8px !important;
+                font-size: 13px !important;
             }
             
             #searchInput {
                 width: 100% !important;
-                max-width: 100% !important;
+                max-width: 400px !important;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .category-buttons {
+                padding: 1px;
+                gap: 1px;
+            }
+            
+            .category-buttons button {
+                padding: 10px 6px !important;
+                font-size: 12px !important;
+            }
+            
+            #searchInput {
+                padding: 10px 14px 10px 36px !important;
+                font-size: 16px !important; /* Prevents zoom on iOS */
             }
         }
     </style>
@@ -1123,40 +1166,33 @@
     <div id="6-series" style="position: absolute; visibility: hidden;"></div>
     <div id="9-series" style="position: absolute; visibility: hidden;"></div>
 
-    <main style="padding: 25px 5px 15px; width: 100%; margin: 0; background: #ffffff;">
-        <!-- Hero Section -->
-        <div style="max-width: 95%; margin: 0 auto 15px auto; text-align: center; position: relative;">
-            <div style="border: 2px solid #e0e0e0; border-radius: 16px; padding: 12px; position: relative; overflow: hidden;">
-                <div style="position: absolute; top: -1px; left: 20%; right: 20%; height: 2px; background: linear-gradient(90deg, transparent, #888, transparent);"></div>
-                <div style="position: absolute; bottom: -1px; left: 30%; right: 30%; height: 2px; background: linear-gradient(90deg, transparent, #888, transparent);"></div>
-                <h1 style="color: #212529; margin-bottom: 20px; font-size: 3.5em; line-height: 1.1; font-weight: 800; letter-spacing: -0.02em; text-shadow: 0 1px 2px rgba(0,0,0,0.1);">Truck Categories and Models</h1>
-                <h2 style="margin: 0 0 8px 0; font-size: 1.25em; font-weight: 700; color: #444; position: relative;">
-                    <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2;">Professional Commercial Vehicle Solutions</span>
-                    <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ccc, transparent); z-index: 1;"></div>
-                </h2>
-                <p style="margin: 0; line-height: 1.5; color: #666; font-size: 1.1em;">Explore our comprehensive range of light, medium, and heavy-duty trucks designed for professional operations across all industries.</p>
-            </div>
+    <main style="padding: 15px 5px 10px; width: 100%; margin: 0; background: #ffffff;">
+        <!-- Compact Header -->
+        <div style="max-width: 95%; margin: 0 auto 10px auto; text-align: center;">
+            <h1 style="color: #212529; margin-bottom: 10px; padding-top: 20px; font-size: 2.5em; font-weight: 700; text-align: center; position: relative;">
+                <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2; top: -5px;">Truck Categories</span>
+                <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ddd, transparent); z-index: 1;"></div>
+            </h1>
+            <p style="margin: 0 0 12px 0; color: #666; font-size: 1em;">Professional Commercial Vehicle Solutions</p>
         </div>
 
-        <!-- Controls Section -->
-        <section style="max-width: 95%; margin: 0 auto 15px auto; border: 1px solid #dee2e6; border-radius: 12px; padding: 10px;">
-            <h3 style="color: #212529; font-size: 1.8em; font-weight: 700; text-align: center; margin-bottom: 30px; position: relative;">
-                <span style="background: #fff; padding: 0 20px; position: relative; z-index: 2;">Filter & Search</span>
-                <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ddd, transparent); z-index: 1;"></div>
-            </h3>
-            
+        <!-- Compact Controls -->
+        <section style="max-width: 95%; margin: 0 auto 12px auto; padding: 8px;">
             <div class="controls-container" style="display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap;">
-                <div class="category-buttons" style="display: flex; gap: 12px; flex-wrap: wrap;">
-                    <button data-category="all" class="active" style="background: #444; color: #ffffff; padding: 12px 24px; border-radius: 8px; border: 2px solid #444; font-weight: 600; cursor: pointer; transition: all 0.3s ease;">All</button>
-                    <button data-category="light-duty" style="background: transparent; color: #444; padding: 12px 24px; border-radius: 8px; border: 2px solid #dee2e6; font-weight: 600; cursor: pointer; transition: all 0.3s ease;">Light Duty</button>
-                    <button data-category="medium-duty" style="background: transparent; color: #444; padding: 12px 24px; border-radius: 8px; border: 2px solid #dee2e6; font-weight: 600; cursor: pointer; transition: all 0.3s ease;">Medium Duty</button>
-                    <button data-category="heavy-duty" style="background: transparent; color: #444; padding: 12px 24px; border-radius: 8px; border: 2px solid #dee2e6; font-weight: 600; cursor: pointer; transition: all 0.3s ease;">Heavy Duty</button>
+                <div class="category-buttons" style="display: flex; gap: 2px; background: #f5f5f7; padding: 2px; border-radius: 12px; box-shadow: inset 0 1px 3px rgba(0,0,0,0.12);">
+                    <button data-category="all" class="active" style="background: #000000; color: #ffffff; padding: 10px 20px; border-radius: 10px; border: none; font-weight: 500; cursor: pointer; transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94); font-size: 14px; letter-spacing: -0.01em; box-shadow: 0 1px 3px rgba(0,0,0,0.2);">All</button>
+                    <button data-category="light-duty" style="background: transparent; color: #1d1d1f; padding: 10px 20px; border-radius: 10px; border: none; font-weight: 500; cursor: pointer; transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94); font-size: 14px; letter-spacing: -0.01em;">Light</button>
+                    <button data-category="medium-duty" style="background: transparent; color: #1d1d1f; padding: 10px 20px; border-radius: 10px; border: none; font-weight: 500; cursor: pointer; transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94); font-size: 14px; letter-spacing: -0.01em;">Medium</button>
+                    <button data-category="heavy-duty" style="background: transparent; color: #1d1d1f; padding: 10px 20px; border-radius: 10px; border: none; font-weight: 500; cursor: pointer; transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94); font-size: 14px; letter-spacing: -0.01em;">Heavy</button>
                 </div>
                 
-                <input type="text" id="searchInput" placeholder="Search trucks..." style="width: 300px; max-width: 300px; padding: 12px 16px; border: 2px solid #dee2e6; border-radius: 8px; font-size: 14px;" />
+                <div style="position: relative;">
+                    <input type="text" id="searchInput" placeholder="Search trucks..." style="width: 300px; max-width: 300px; padding: 12px 16px 12px 40px; border: 1px solid #d2d2d7; border-radius: 12px; font-size: 14px; background: #ffffff; color: #1d1d1f; transition: all 0.25s ease; box-shadow: 0 1px 3px rgba(0,0,0,0.1);" />
+                    <svg style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); width: 16px; height: 16px; color: #86868b; pointer-events: none;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                    </svg>
+                </div>
             </div>
-                        </div>
-          </div>
     </section>
         <!-- Light Duty Trucks -->
         <section id="light-duty" class="category-section" data-category="light-duty" style="max-width: 95%; margin: 0 auto 15px auto; border: 2px solid #e0e0e0; border-radius: 16px; padding: 12px; position: relative; overflow: hidden;">
@@ -1165,7 +1201,7 @@
             <div style="position: absolute; right: -1px; top: 30%; bottom: 30%; width: 2px; background: linear-gradient(180deg, transparent, #999, transparent);"></div>
             
             <h2 class="headings" id="ldt" style="color: #212529; margin-bottom: 10px; font-size: 2.5em; font-weight: 700; text-align: center; position: relative;">
-                <span style="background: #fff; padding: 0 24px; position: relative; z-index: 2;">Light Duty Trucks</span>
+                <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2; top: -5px;">Light Duty Trucks</span>
                 <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ddd, transparent); z-index: 1;"></div>
             </h2>
     
@@ -1188,7 +1224,7 @@
                     <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
                         <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
                         <div class="truck-image" style="margin-bottom: 8px; border-radius: 8px; overflow: hidden;">
-                            <img src="assets/trucks/x9aerialplatformtrucks/Screenshot 2025-11-04 230412.webp" style="width: 100%; height: 240px; object-fit: cover;">
+                            <img src="assets/trucks/x9towtrucks/x9towtruck.webp" style="width: 100%; height: 240px; object-fit: cover;">
                             <div class="magnifier-lens"></div>
                         </div>
                         <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0 0 8px 0;">X9 Aerial Work Platform Truck</div>
@@ -1246,7 +1282,7 @@
                             <div class="magnifier-lens"></div>
                         </div>
                         <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0 0 8px 0;">X9 Refrigerated Truck</div>
-                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;">Professional commercial vehicle designed for reliability and efficiency.</div>
+                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;">Engineered for transporting perishable goods safely, with -5°C to -18°C temperature control and insulated 10-18 m³ box. Powered by 4.2L diesel engine (150-170 hp) with reliable 4×2 drive, ensuring timely delivery with low energy consumption.</div>
                     </div>
                 </div>
             </div>
@@ -1371,14 +1407,18 @@
           </div>
           </div>
     </section>
-  <!-- Medium Duty Trucks -->
-  <section class="category-section" data-category="medium-duty">
+  <!-- 
+    
+  -->
+  <section class="category-section" data-category="medium-duty" style="border-top: none; margin-top: 0;">
         <div style="max-width: 95%; margin: 0 auto 15px auto; border: 2px solid #e0e0e0; border-radius: 16px; padding: 12px; position: relative; overflow: hidden;">
-            <div style="position: absolute; top: -1px; left: 15%; right: 15%; height: 2px; background: linear-gradient(90deg, transparent, #999, transparent);"></div>
             <div style="position: absolute; left: -1px; top: 25%; bottom: 25%; width: 2px; background: linear-gradient(180deg, transparent, #999, transparent);"></div>
             <div style="position: absolute; right: -1px; top: 30%; bottom: 30%; width: 2px; background: linear-gradient(180deg, transparent, #999, transparent);"></div>
             
-            <h2 class="headings" id="medium-duty">Medium Duty Trucks</h2>
+            <h2 class="headings" id="medium-duty" style="color: #212529; margin-bottom: 10px; font-size: 2.5em; font-weight: 700; text-align: center; position: relative;">
+                <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2; top: -5px;">Medium Duty Trucks</span>
+                <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ddd, transparent); z-index: 1;"></div>
+            </h2>
 
                 <div class="series" style="margin-bottom: 10px;">
                 <div class="series-title" style="font-size: 1.5em; font-weight: 600; color: #444; margin-bottom: 6px; text-align: center; position: relative;">
@@ -1465,7 +1505,7 @@
                             <div class="magnifier-lens"></div>
                         </div>
                         <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0 0 8px 0;">X6 Dump Truck</div>
-                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;">Professional commercial vehicle designed for reliability and efficiency.</div>
+                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;">Heavy-duty medium truck for construction, capable of transporting 8-12 tons of material. Equipped with 6.5L diesel engine (260 hp), robust 6×4 chassis, hydraulic tipper, and durable steel box.</div>
                     </div>
         <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
                         <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
@@ -1474,7 +1514,7 @@
                             <div class="magnifier-lens"></div>
                         </div>
                         <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0 0 8px 0;">X6 Flatbed Truck</div>
-                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;">Professional commercial vehicle designed for reliability and efficiency.</div>
+                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;">Medium-duty cargo transport truck, carrying 4-7 tons. 6.2L diesel engine (220-260 hp), 6×4 drive, flatbed allows flexible loading/unloading.</div>
                     </div>
         <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
                         <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
@@ -1483,7 +1523,7 @@
                             <div class="magnifier-lens"></div>
                         </div>
                         <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0 0 8px 0;">X6 Van Truck</div>
-                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;">Professional commercial vehicle designed for reliability and efficiency.</div>
+                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;">18-28 m³ cargo body, medium-duty logistics transport. Engineered with 6.2L diesel engine (230 hp) for reliability and fuel efficiency.</div>
                     </div>
         <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
                         <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
@@ -1492,7 +1532,7 @@
                             <div class="magnifier-lens"></div>
                         </div>
                         <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0 0 8px 0;">X6 Truck Mounted Crane</div>
-                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;">Professional commercial vehicle designed for reliability and efficiency.</div>
+                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;">Lifting capacity 4-8 Tons for construction and loading tasks. 6.5L diesel engine (260 hp), 6×4 drive, precise crane operation, and heavy-duty chassis.</div>
                     </div>
         <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
                         <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
@@ -1501,7 +1541,7 @@
                             <div class="magnifier-lens"></div>
                         </div>
                         <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0 0 8px 0;">X6 Cargo Truck</div>
-                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;">Professional commercial vehicle designed for reliability and efficiency.</div>
+                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;">General transport truck with side drop gates for logistics and medium freight. 6.2L diesel engine (230 hp), 6×4 drive, robust and versatile.</div>
                     </div>
         <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
                         <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
@@ -1510,7 +1550,7 @@
                             <div class="magnifier-lens"></div>
                         </div>
                         <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0 0 8px 0;">X6 AWD Cargo Truck</div>
-                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;">Professional commercial vehicle designed for reliability and efficiency.</div>
+                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;"></div>
                     </div>
         <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
                         <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
@@ -1519,7 +1559,7 @@
                             <div class="magnifier-lens"></div>
                         </div>
                         <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0 0 8px 0;">X6 Dropside Truck</div>
-                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;">Professional commercial vehicle designed for reliability and efficiency.</div>
+                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;"></div>
                     </div>
         <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
                         <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
@@ -1528,7 +1568,7 @@
                             <div class="magnifier-lens"></div>
                         </div>
                         <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0 0 8px 0;">X6 Cement Mixer Truck</div>
-                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;">Professional commercial vehicle designed for reliability and efficiency.</div>
+                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;">4-6 m³ mixer capacity for medium construction applications. 6.5L diesel engine (260 hp), 6×4 drive, high-efficiency rotating drum.</div>
                     </div>
         <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
                         <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
@@ -1537,7 +1577,7 @@
                             <div class="magnifier-lens"></div>
                         </div>
                         <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0 0 8px 0;">X6 Concrete Mixer Truck</div>
-                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;">Professional commercial vehicle designed for reliability and efficiency.</div>
+                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;"></div>
                     </div>
         <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
                         <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
@@ -1546,7 +1586,7 @@
                             <div class="magnifier-lens"></div>
                         </div>
                         <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0 0 8px 0;">X6 Loading Crane Recovery Truck</div>
-                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;">Professional commercial vehicle designed for reliability and efficiency.</div>
+                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;">Multi-purpose recovery vehicle with integrated loading crane. Combines towing capability with lifting function for versatile recovery and transport operations.</div>
                     </div>
         <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
                         <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
@@ -1555,7 +1595,7 @@
                             <div class="magnifier-lens"></div>
                         </div>
                         <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0 0 8px 0;">X6 Sprinkler Truck</div>
-                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;">Professional commercial vehicle designed for reliability and efficiency.</div>
+                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;">6,000-12,000L water tank for street cleaning, 6×4 drive, 6.5L diesel engine (260 hp), reliable municipal service.</div>
                     </div>
         <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
                         <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
@@ -1564,7 +1604,7 @@
                             <div class="magnifier-lens"></div>
                         </div>
                         <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0 0 8px 0;">X6 Dust Suppression Truck</div>
-                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;">Professional commercial vehicle designed for reliability and efficiency.</div>
+                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;">Equipped with water cannon and fog system reaching 30-60 m. 6.5L diesel engine (260 hp), 6×4 drive, designed for urban and highway dust control.</div>
                     </div>
         <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
                         <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
@@ -1573,7 +1613,7 @@
                             <div class="magnifier-lens"></div>
                         </div>
                         <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0 0 8px 0;">X6 Garbage Truck</div>
-                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;">Professional commercial vehicle designed for reliability and efficiency.</div>
+                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;">8-12 m³ compression bin for municipal waste. 6.5L diesel engine (260 hp), 6×4 drive, efficient compaction system.</div>
                     </div>
         <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
                         <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
@@ -1582,7 +1622,7 @@
                             <div class="magnifier-lens"></div>
                         </div>
                         <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0 0 8px 0;">X6 Fuel Tanker Truck</div>
-                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;">Professional commercial vehicle designed for reliability and efficiency.</div>
+                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;">8,000-14,000L fuel transport capacity for medium routes. Equipped with 6.5L diesel engine (260 hp), reinforced tank, and 6×4 drive.</div>
                     </div>
       </div>
     </div>
@@ -1596,14 +1636,14 @@
             <div style="position: absolute; right: -1px; top: 30%; bottom: 30%; width: 2px; background: linear-gradient(180deg, transparent, #999, transparent);"></div>
             
             <h2 class="headings" id="heavy-duty" style="color: #212529; margin-bottom: 10px; font-size: 2.5em; font-weight: 700; text-align: center; position: relative;">
-                <span style="background: #fff; padding: 0 24px; position: relative; z-index: 2;">Heavy Duty Trucks</span>
+                <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2; top: -5px;">Heavy Duty Trucks</span>
                 <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ddd, transparent); z-index: 1;"></div>
             </h2>
 
-                <div class="series" style="margin-bottom: 16px;">
-                <div class="series-title" style="font-size: 1.5em; font-weight: 600; color: #000000; margin-bottom: 12px; text-align: center; position: relative;">
-                    <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2; border: 2px solid #000000; color: #000000;">Z3 Series</span>
-                    <div style="position: absolute; top: 50%; left: 0; right: 0; height: 2px; background: #000000; z-index: 1;"></div>
+                <div class="series" style="margin-bottom: 10px;">
+                <div class="series-title" style="font-size: 1.5em; font-weight: 600; color: #444; margin-bottom: 6px; text-align: center; position: relative;">
+                    <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2;">Z3 Series</span>
+                    <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ccc, transparent); z-index: 1;"></div>
                 </div>
                 <div class="truck-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 16px; align-items: start;">
         <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
@@ -1613,7 +1653,7 @@
                             <div class="magnifier-lens"></div>
                         </div>
                         <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0 0 8px 0;">Z3 Dump Truck</div>
-                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;">Professional commercial vehicle designed for reliability and efficiency.</div>
+                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;">Heavy-duty dump truck with reinforced chassis and high-capacity hydraulic system. Built for demanding construction and mining operations with superior durability and performance.</div>
                     </div>
       </div>
     </div>
@@ -1631,7 +1671,7 @@
                             <div class="magnifier-lens"></div>
                         </div>
                         <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0 0 8px 0;">E1st Tractor</div>
-                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;">Professional commercial vehicle designed for reliability and efficiency.</div>
+                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;"></div>
                     </div>
       </div>
     </div>
@@ -1649,7 +1689,7 @@
                             <div class="magnifier-lens"></div>
                         </div>
                         <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0 0 8px 0;">E3 muck truck</div>
-                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;">Professional commercial vehicle designed for reliability and efficiency.</div>
+                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;">Designed for large-scale mining, construction, and earthmoving operations. Carries 12-30 m³ of muck with reinforced steel body. 8.0L diesel engine (320-360 hp) provides high torque for off-road and heavy-load performance.</div>
                     </div>
                     <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
                         <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
@@ -1658,7 +1698,7 @@
                             <div class="magnifier-lens"></div>
                         </div>
                         <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0 0 8px 0;">E3 Tractor truck</div>
-                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;">Professional commercial vehicle designed for reliability and efficiency.</div>
+                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;">Ensures driving safety with dual warning system. Features efficient power chain and excellent chassis configuration. Comfortable berth design with 850mm width and 800mm spacing between berths.</div>
                     </div>
                     <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
                         <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
@@ -1667,7 +1707,7 @@
                             <div class="magnifier-lens"></div>
                         </div>
                         <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0 0 8px 0;">E3 vantruck.</div>
-                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;">Professional commercial vehicle designed for reliability and efficiency.</div>
+                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;">Features maintenance-free high-efficiency drive axle and low rolling resistance tires for reduced fuel consumption. High-strength lightweight suspension and cab width of 2240mm provide spacious comfort.</div>
                     </div>
                     <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
                         <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
@@ -1676,7 +1716,7 @@
                             <div class="magnifier-lens"></div>
                         </div>
                         <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0 0 8px 0;">E3 Dumptruck.</div>
-                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;">Professional commercial vehicle designed for reliability and efficiency.</div>
+                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;">Heavy-duty dump truck for large construction projects, carrying 10-20 tons of aggregates. Equipped with 8.0L diesel engine (320-360 hp) and hydraulic tipping system. Robust 6×4 chassis ensures stability and reliability under heavy loads.</div>
                     </div>
                     <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
                         <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
@@ -1685,7 +1725,7 @@
                             <div class="magnifier-lens"></div>
                         </div>
                         <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0 0 8px 0;">E3 Cement mixertruck.</div>
-                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;">Professional commercial vehicle designed for reliability and efficiency.</div>
+                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;">Heavy-duty mixer carrying 6-10 m³ concrete for large construction sites. 8.0L diesel engine (330 hp), durable 6×4 chassis, high-efficiency drum rotation ensures smooth and consistent mixing.</div>
                     </div>
                     <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
                         <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
@@ -1694,7 +1734,7 @@
                             <div class="magnifier-lens"></div>
                         </div>
                         <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0 0 8px 0;">E3 compactor Garbage Track.</div>
-                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;">Professional commercial vehicle designed for reliability and efficiency.</div>
+                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;">Designed for large municipal waste collection. 12-20 m³ compression body efficiently compacts waste, 8.0L diesel engine (320-360 hp), 6×4 drive ensures reliable operation in urban and industrial environments.</div>
                     </div>
                     <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
                         <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
@@ -1703,7 +1743,7 @@
                             <div class="magnifier-lens"></div>
                         </div>
                         <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0 0 8px 0;">E3 Stake truck.</div>
-                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;">Professional commercial vehicle designed for reliability and efficiency.</div>
+                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;">Heavy-duty cargo transport truck with 12-18 ton payload. 8.0L diesel engine (330 hp), durable 6×4 chassis, ideal for construction materials, agricultural products, and industrial freight.</div>
                     </div>
                     <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
                         <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
@@ -1712,7 +1752,7 @@
                             <div class="magnifier-lens"></div>
                         </div>
                         <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0 0 8px 0;">E3 sewage suction truck.</div>
-                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;">Professional commercial vehicle designed for reliability and efficiency.</div>
+                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;">Municipal sewage and waste water management vehicle. Powerful vacuum system with sealed tank for hygienic waste water collection and transport.</div>
                     </div>
                 </div>
 
@@ -1731,7 +1771,7 @@
                             <div class="magnifier-lens"></div>
                         </div>
                         <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0 0 8px 0;">9 series sweeper</div>
-                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;">Professional commercial vehicle designed for reliability and efficiency.</div>
+                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;">Heavy-duty street sweeper for highway and industrial cleaning. Advanced sweeping technology with large capacity bins for extensive cleaning operations.</div>
                     </div>
                     <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
                         <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
@@ -1740,7 +1780,7 @@
                             <div class="magnifier-lens"></div>
                         </div>
                         <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0 0 8px 0;">9 series Garbage Truck</div>
-                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;">Professional commercial vehicle designed for reliability and efficiency.</div>
+                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;">Heavy-duty waste collection vehicle with large compaction capacity. Designed for industrial and large municipal waste management with robust construction.</div>
                     </div>
                     <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
                         <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
@@ -1749,7 +1789,7 @@
                             <div class="magnifier-lens"></div>
                         </div>
                         <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0 0 8px 0;">9 series Tow Truck</div>
-                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;">Professional commercial vehicle designed for reliability and efficiency.</div>
+                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;">Heavy-duty recovery vehicle for commercial and industrial towing. High-capacity winch system with advanced recovery equipment for heavy vehicle recovery operations.</div>
                     </div>
                     <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
                         <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
@@ -1758,7 +1798,7 @@
                             <div class="magnifier-lens"></div>
                         </div>
                         <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0 0 8px 0;">9 series Truckmounted crane</div>
-                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;">Professional commercial vehicle designed for reliability and efficiency.</div>
+                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;">Heavy-duty mobile crane for major lifting operations. High-capacity crane with extended reach and precise control for construction and industrial applications.</div>
                     </div>
                     <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
                         <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
@@ -1767,7 +1807,7 @@
                             <div class="magnifier-lens"></div>
                         </div>
                         <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0 0 8px 0;">9series cement mixer truck</div>
-                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;">Professional commercial vehicle designed for reliability and efficiency.</div>
+                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;">Heavy-duty cement mixer for large construction projects. High-capacity mixing drum with robust chassis for continuous concrete delivery and construction applications.</div>
                     </div>
                 </div></div>
 
@@ -1785,7 +1825,7 @@
                             <div class="magnifier-lens"></div>
                         </div>
                         <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0 0 8px 0;">6 series sweeper</div>
-                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;">Professional commercial vehicle designed for reliability and efficiency.</div>
+                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;">Street cleaning vehicle with advanced sweeping system and dust suppression. Efficient for municipal road maintenance with environmental-friendly operation.</div>
                     </div>
                     <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
                         <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
@@ -1794,7 +1834,7 @@
                             <div class="magnifier-lens"></div>
                         </div>
                         <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0 0 8px 0;">6 Series Garbage Truck</div>
-                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;">Professional commercial vehicle designed for reliability and efficiency.</div>
+                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;">Municipal waste collection vehicle with efficient compaction system. Designed for urban waste management with reliable hydraulic operation and easy maintenance.</div>
                     </div>
                     <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
                         <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
@@ -1803,7 +1843,7 @@
                             <div class="magnifier-lens"></div>
                         </div>
                         <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0 0 8px 0;">6 Series truckmounted Crane</div>
-                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;">Professional commercial vehicle designed for reliability and efficiency.</div>
+                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;">Mobile crane solution for medium lifting operations. Combines transportation and lifting capabilities with precise hydraulic control and stable operation.</div>
                     </div>
                     <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
                         <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
@@ -1812,7 +1852,7 @@
                             <div class="magnifier-lens"></div>
                         </div>
                         <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0 0 8px 0;">6 series cement mixer truck</div>
-                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;">Professional commercial vehicle designed for reliability and efficiency.</div>
+                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;">Medium-capacity cement mixer with robust chassis and efficient mixing drum. Designed for consistent concrete delivery in medium-scale construction projects.</div>
                     </div>
                 </div></div>
 
@@ -1826,11 +1866,11 @@
         <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
                         <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
                         <div class="truck-image" style="margin-bottom: 8px; border-radius: 8px; overflow: hidden;">
-                            <img src="assets/trucks/Additional Trucks/3 series truck mounted crane/Screenshot 2025-11-05 133743.webp" style="width: 100%; height: 240px; object-fit: cover;">
+                            <img src="trucks_html/3-Series-Cement-Mixer-Truck.html" style="width: 100%; height: 240px; object-fit: cover;">
                             <div class="magnifier-lens"></div>
                         </div>
                         <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0 0 8px 0;">3 Series Cement Mixer Truck</div>
-                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;">Professional commercial vehicle designed for reliability and efficiency.</div>
+                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;">Compact cement mixer for small to medium construction projects. Efficient mixing system with reliable hydraulic operation for consistent concrete quality in urban construction environments.</div>
                     </div>
       </div>
     </div>
