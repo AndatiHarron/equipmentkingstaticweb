@@ -497,9 +497,16 @@ const translations = {
     terms: 'Terms of Use',
     sitemap: 'Site Map',
     allRights: 'All rights reserved.',
-    explore: 'Explore Our Vehicle Categories',
-    exploreFleet: 'Explore Our Latest Fleet',
-    exploreAll: 'Explore All Trucks',
+  explore: 'Explore Our Vehicle Categories',
+  exploreFleet: 'Explore Our Latest Fleet',
+  exploreAll: 'Explore All Trucks',
+  exploreHero: 'Explore Trucks',
+  tabLight: 'Light Duty Truck',
+  tabMedium: 'Medium Duty Truck',
+  tabHeavy: 'Heavy Duty Truck',
+  tabSpecial: 'Special Vehicle',
+  tabOffroad: 'Off-road Truck',
+  tabNewenergy: 'New Energy',
     heroTitle: 'Power Meets Precision',
     heroDesc: 'Experience cutting-edge engineering with Equipment King Incorporated in partnership with SAGMOTO.'
   },
@@ -519,11 +526,18 @@ const translations = {
     terms: "Conditions d'utilisation", 
     sitemap: 'Plan du site',
     allRights: 'Tous droits réservés.',
-    explore: 'Découvrez nos catégories de véhicules',
-    exploreFleet: 'Découvrez notre dernière flotte',
-    exploreAll: 'Voir tous les camions',
-    heroTitle: 'La puissance rencontre la précision',
-    heroDesc: "Découvrez l'ingénierie de pointe avec Equipment King Incorporated en partenariat avec SAGMOTO."
+  explore: 'Découvrez nos catégories de véhicules',
+  exploreFleet: 'Découvrez notre dernière flotte',
+  exploreAll: 'Voir tous les camions',
+  exploreHero: 'Découvrir les camions',
+  tabLight: 'Camion Léger',
+  tabMedium: 'Camion Moyen',
+  tabHeavy: 'Camion Lourd',
+  tabSpecial: 'Véhicule Spécial',
+  tabOffroad: 'Tout-terrain',
+  tabNewenergy: 'Nouvelles Énergies',
+  heroTitle: 'La puissance rencontre la précision',
+  heroDesc: "Découvrez l'ingénierie de pointe avec Equipment King Incorporated en partenariat avec SAGMOTO."
   }
 };
 
@@ -597,8 +611,27 @@ function applyTranslations() {
   if (exploreH1) exploreH1.textContent = t.explore;
   const galleryH2 = document.querySelector('.gallery-content h2');
   if (galleryH2) galleryH2.textContent = t.exploreFleet;
+  // Gallery section main button
   const exploreBtn = document.querySelector('.gallery-content .primary');
   if (exploreBtn) exploreBtn.textContent = t.exploreAll;
+
+  // Hero section 'Explore Trucks' button
+  const heroExploreBtn = document.querySelector('section.hero button[onclick*="trucks.html"]');
+  if (heroExploreBtn) heroExploreBtn.textContent = t.exploreHero;
+
+  // Tabs section category buttons
+  const tabBtnMap = [
+    { selector: '.tab-btn[data-type="light"]', text: t.tabLight },
+    { selector: '.tab-btn[data-type="medium"]', text: t.tabMedium },
+    { selector: '.tab-btn[data-type="heavy"]', text: t.tabHeavy },
+    { selector: '.tab-btn[data-type="special"]', text: t.tabSpecial },
+    { selector: '.tab-btn[data-type="offroad"]', text: t.tabOffroad },
+    { selector: '.tab-btn[data-type="newenergy"]', text: t.tabNewenergy }
+  ];
+  tabBtnMap.forEach(({ selector, text }) => {
+    const btn = document.querySelector(selector);
+    if (btn) btn.textContent = text;
+  });
 }
 
 // Apply language on load
