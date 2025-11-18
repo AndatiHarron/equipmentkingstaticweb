@@ -1,3 +1,52 @@
+@media (max-width: 768px) {
+  #vehicleTabs {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 10px 10px !important;
+    justify-items: stretch;
+    align-items: stretch;
+    margin: 0 auto 20px auto !important;
+    max-width: 420px;
+  }
+  .tab-btn {
+    width: 100%;
+    min-width: 0;
+    margin: 0 !important;
+    font-size: 15px !important;
+    padding: 12px 0 !important;
+    border-radius: 18px !important;
+  }
+  section.hero {
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    text-align: center !important;
+    padding: 0 5vw 7vw 5vw !important;
+    height: auto !important;
+    min-height: 60vh !important;
+  }
+  .hero-content {
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 18px !important;
+  }
+  .hero-glass {
+    align-items: center !important;
+    text-align: center !important;
+    margin: 0 auto !important;
+    min-width: 0 !important;
+    max-width: 100vw !important;
+  }
+  .hero-main-btn-desktop {
+    display: none !important;
+  }
+  .hero-main-btn-mobile {
+    display: block !important;
+    width: 100% !important;
+    margin-top: 18px !important;
+  }
+}
 /* Dark overlay for about page background */
 .page-wrapper {
   position: relative;
