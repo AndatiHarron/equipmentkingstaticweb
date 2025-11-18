@@ -66,11 +66,7 @@
             </div>
             
             <!-- Main Image Display -->
-            <div style="width: 100%; height: 480px; border: 1px solid #dee2e6; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px;">
-                <img id="mainImage" src="../assets/trucks/Additional Trucks/E3 Tractor Truck/Screenshot 2025-11-05 135935.webp" alt="Vehicle Image" 
-                     style="max-width: 95%; max-height: 95%; object-fit: contain; transition: opacity 0.3s ease;"
-                     onerror="this.src='../assets/back2.jpeg'">
-            </div>
+            <!-- Main image intentionally removed as per request -->
             
             <!-- Thumbnail Strip -->
             <div id="imageStrip" style="display: flex; gap: 16px; overflow-x: auto; padding: 20px 0; scroll-behavior: smooth;">
@@ -84,10 +80,11 @@
                 <div style="position: absolute; bottom: -1px; left: 30%; right: 30%; height: 2px; background: linear-gradient(90deg, transparent, #888, transparent);"></div>
                 <h1 style="color: #212529; margin-bottom: 20px; font-size: 3.5em; line-height: 1.1; font-weight: 800; letter-spacing: -0.02em; text-shadow: 0 1px 2px rgba(0,0,0,0.1);">E3 Tractor Truck</h1>
                 <h2 style="margin: 0 0 8px 0; font-size: 1.25em; font-weight: 700; color: #444; position: relative;">
-                    <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2;">E3 Series - Heavy Duty Trucks</span>
+                    <span style="background: none; padding: 0 16px; position: relative; z-index: 2;">E3 Series - Heavy Duty Trucks</span>
                     <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ccc, transparent); z-index: 1;"></div>
                 </h2>
                 <p style="margin: 0; line-height: 1.5; color: #666; font-size: 1.1em;">E3 Tractor Truck - Ensures driving safety with dual warning system. Features efficient power chain and excellent chassis configuration. Comfortable berth design with 850mm width and 800mm spacing between berths.</p>
+                <p style="margin: 0; line-height: 1.5; color: #666; font-size: 1.1em;">Ensures driving safety with dual warning system. Features efficient power chain and excellent chassis configuration. Comfortable berth design with 850mm width and 800mm spacing between berths.</p>
             </div>
         </div>
 
@@ -106,7 +103,7 @@
                     </div>
                 </h2>
                 <p style="font-size: 1.25em; line-height: 1.7; color: #555; margin: 0; text-align: center; max-width: 800px; margin: 0 auto;">
-                    E3 Tractor Truck - Ensures driving safety with dual warning system. Features efficient power chain and excellent chassis configuration. Comfortable berth design with 850mm width and 800mm spacing between berths.
+                    Ensures driving safety with dual warning system. Features efficient power chain and excellent chassis configuration. Comfortable berth design with 850mm width and 800mm spacing between berths.
                 </p>
             </section>
 
@@ -248,16 +245,9 @@
     </style>
     
     <script>
-        // Unified single collection image gallery functionality
+        // Only use the 2nd image for popup as per request
         const allImages = [
-            "../assets/trucks/Additional Trucks/E3 Tractor Truck/Screenshot 2025-11-05 135935.webp",
-                "../assets/trucks/Additional Trucks/E3 Tractor Truck/Screenshot 2025-11-05 135943.webp",
-                "../assets/trucks/Additional Trucks/E3 Tractor Truck/Screenshot 2025-11-05 135951.webp",
-                "../assets/trucks/Additional Trucks/E3 Tractor Truck/Screenshot 2025-11-05 135959.webp",
-                "../assets/trucks/Additional Trucks/E3 Tractor Truck/Screenshot 2025-11-05 140007.webp",
-                "../assets/trucks/Additional Trucks/E3 Tractor Truck/Screenshot 2025-11-05 140016.webp",
-                "../assets/trucks/Additional Trucks/E3 Tractor Truck/Screenshot 2025-11-05 140024.webp",
-                "../assets/trucks/Additional Trucks/E3 Tractor Truck/Screenshot 2025-11-05 140032.webp"
+            "../assets/trucks/Additional Trucks/E3 Tractor Truck/Screenshot 2025-11-05 135943.webp"
         ];
 
         function loadImageGallery() {
