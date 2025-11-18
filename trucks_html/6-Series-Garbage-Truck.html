@@ -1,24 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <style>
-                    .glassmorph {
-                        background: rgba(34, 34, 34, 0.60);
-                        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
-                        backdrop-filter: blur(24px) saturate(140%);
-                        -webkit-backdrop-filter: blur(24px) saturate(140%);
-                        border-radius: 18px;
-                        border: 1.5px solid rgba(255,255,255,0.18);
-                        color: #fff !important;
-                    }
-            .glassmorph h1, .glassmorph h2, .glassmorph h3, .glassmorph p, .glassmorph td, .glassmorph th, .glassmorph span {
-                color: #fff !important;
-                text-shadow: 0 1px 4px rgba(0,0,0,0.18);
-            }
-            .glassmorph a { color: #fff !important; text-decoration: underline; }
-            .glassmorph table { background: transparent !important; }
-            .glassmorph tr, .glassmorph td, .glassmorph th { background: transparent !important; }
-        </style>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/truck-compact.css">
+    <script src="../js/header-footer-loader.js"></script>
+    <script src="../js/lyro-chat.js"></script>
+    <style>
+        body {
+            background: #111 url('../backgrounds/1 (11).jpg') center center/cover no-repeat fixed !important;
+            color: #fff;
+        }
+        main, section, .main-content, .truck-details, .truck-info, .truck-specs, .truck-gallery {
+            background: none !important;
+            box-shadow: none !important;
+            border: none !important;
+        }
+        .glassmorph {
+            background: rgba(34, 34, 40, 0.45);
+            border-radius: 18px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+            backdrop-filter: blur(16px) saturate(120%);
+            -webkit-backdrop-filter: blur(16px) saturate(120%);
+            border: 1.5px solid rgba(255, 255, 255, 0.18);
+        }
+        .glassmorph h1, .glassmorph h2, .glassmorph h3 {
+            color: #fff !important;
+            text-shadow: 0 1px 8px rgba(0,0,0,0.18);
+        }
+        .glassmorph th {
+            color: #fff !important;
+            text-shadow: 0 1px 8px rgba(0,0,0,0.18);
+        }
+        .glassmorph table.specs-table {
+            background: #fff !important;
+            color: #111 !important;
+            border-radius: 12px;
+        }
+        .glassmorph table.specs-table th {
+            background: #fff !important;
+            color: #111 !important;
+        }
+        .glassmorph table.specs-table td {
+            background: #fff !important;
+            color: #111 !important;
+        }
+        .glassmorph a {
+            color: #e0e0ff !important;
+        }
+    </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/styles.css">
@@ -57,7 +86,7 @@
             <!-- Gallery Header -->
             <div style="text-align: center; margin-bottom: 30px;">
                 <h3 style="color: #212529; font-size: 1.8em; font-weight: 700; margin-bottom: 20px; position: relative;">
-                    <span style="background: #fff; padding: 0 20px; position: relative; z-index: 2;">Vehicle Images</span>
+                    <span style="padding: 0 20px; position: relative; z-index: 2;">Vehicle Images</span>
                     <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ddd, transparent); z-index: 1;"></div>
                 </h3>
             </div>
@@ -81,7 +110,7 @@
                 <div style="position: absolute; bottom: -1px; left: 30%; right: 30%; height: 2px; background: linear-gradient(90deg, transparent, #888, transparent);"></div>
                 <h1 style="color: #212529; margin-bottom: 20px; font-size: 3.5em; line-height: 1.1; font-weight: 800; letter-spacing: -0.02em; text-shadow: 0 1px 2px rgba(0,0,0,0.1);">6 Series Garbage Truck</h1>
                 <h2 style="margin: 0 0 8px 0; font-size: 1.25em; font-weight: 700; color: #444; position: relative;">
-                    <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2;">6 Series - Heavy Duty Trucks</span>
+                    <span style="padding: 0 16px; position: relative; z-index: 2;">6 Series - Heavy Duty Trucks</span>
                     <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ccc, transparent); z-index: 1;"></div>
                 </h2>
                 <p style="margin: 0; line-height: 1.5; color: #666; font-size: 1.1em;">6 Series Garbage Truck - Municipal waste collection vehicle with efficient compaction system. Designed for urban waste management with reliable hydraulic operation and easy maintenance.</p>
