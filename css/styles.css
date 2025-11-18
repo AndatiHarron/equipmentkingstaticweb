@@ -1,3 +1,8 @@
+/* Show hero-main-btn below text in mobile view */
+@media (max-width: 767px) {
+  .hero-main-btn-desktop { display: none !important; }
+  .hero-main-btn-mobile { display: block !important; }
+}
 /* Glassmorphism effect for hero section */
 .hero-glass {
   background: rgba(255,255,255,0.13);
