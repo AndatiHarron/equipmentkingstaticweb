@@ -20,8 +20,10 @@
 /* About page background: always cover, mobile-friendly */
 .page-wrapper {
   background: url('../assets/back2.webp') center center/cover no-repeat fixed;
-  min-height: 100vh;
   background-color: #181c1f;
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
 }
 
 @media (max-width: 900px) {
@@ -990,7 +992,6 @@ footer {
   color: #fff;
   padding: 50px 0 25px !important;
   margin: 0 !important;
-  margin-top: auto !important;
   border-top: 1px solid rgba(255,255,255,0.1);
   width: 100vw !important;
   position: relative !important;
@@ -999,6 +1000,7 @@ footer {
   margin-left: -50vw !important;
   margin-right: -50vw !important;
   box-sizing: border-box !important;
+  flex-shrink: 0;
 }
 
 .footer-container {
