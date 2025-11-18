@@ -2197,7 +2197,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // Function to get truck page URL based on truck name
     function getTruckPageUrl(truckName) {
       // Create a mapping from truck names to their individual HTML file names
+      // ...existing code...
       const truckPageMapping = {
+  'E6 Van Truck': 'trucks_html/E6-Van-Truck.html',
+  'E6 van truck': 'trucks_html/E6-Van-Truck.html',
+        // E6 Stake Truck mapping
+        'E6 Stake Truck': 'trucks_html/E6-Stake-Truck.html',
+        'E6 Stake truck': 'trucks_html/E6-Stake-Truck.html',
+        'E6 stake truck': 'trucks_html/E6-Stake-Truck.html',
         // E3 Series (8 trucks) - include variations
         'E3 Cement Mixer Truck': 'trucks_html/E3-Cement-Mixer-Truck.html',
         'E3 cement mixertruck': 'trucks_html/E3-Cement-Mixer-Truck.html',
@@ -2267,7 +2274,8 @@ document.addEventListener('DOMContentLoaded', () => {
         'X6 Loading Crane Recovery Truck': 'trucks_html/X6-Loading-Crane-Recovery-Truck.html',
         'X6 Sprinkler Truck': 'trucks_html/X6-Sprinkler-Truck.html',
         'X6 Truck Mounted Crane': 'trucks_html/X6-Truck-Mounted-Crane.html',
-        'X6 Van Truck': 'trucks_html/X6-Van-Truck.html',
+  'X6 Van Truck': 'trucks_html/X6-Van-Truck.html',
+  'X6 van truck': 'trucks_html/X6-Van-Truck.html',
 
         // 3 Series (1 truck) - fix wrong mapping
         '3 Series Cement Mixer Truck': 'trucks_html/3-Series-Cement-Mixer-Truck.html',
