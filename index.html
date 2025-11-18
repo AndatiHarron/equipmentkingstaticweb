@@ -13,24 +13,47 @@
     margin:0;
     padding:0;
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    background:#fff;
-    color:#000;
+    background: #111 url('backgrounds/1 (19).jpg') center center/cover no-repeat fixed;
+    color:#fff;
     scroll-behavior:smooth;
-  }  
+    min-height: 100vh;
+    position: relative;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.65);
+    z-index: 0;
+    pointer-events: none;
+  }
 
   section.hero {
-   
     height: 100vh;
-    background: url('assets/hero_section/front1.webp') center/cover no-repeat;
+    background: url('assets/hero_section/front2.webp') center/cover no-repeat;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: flex-start;
+    text-align: left;
     color: #fff;
     position: relative;
     overflow: hidden;
-    transition: background-image 1s ease-in-out;
+    padding: 0 7vw 7vw 7vw;
+  }
+
+  /* Fade transition at the bottom of hero */
+  section.hero::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 120px;
+  background: linear-gradient(to bottom, rgba(17,17,17,0) 0%, rgba(17,17,17,0.85) 100%);
+  pointer-events: none;
+  z-index: 2;
   }
 
   .hero-btn {
@@ -101,11 +124,19 @@
 
   h1, h2 { font-weight: 600; margin: 2rem 0 1rem; }
 
-  section.tabs { 
-    padding: 120px 40px; 
-    text-align: center; 
-    position: relative;
-  }
+  section.tabs {
+      padding: 120px 40px;
+      text-align: center;
+      position: relative;
+      background: rgba(255, 255, 255, 0.18);
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+      backdrop-filter: blur(16px) saturate(180%);
+      -webkit-backdrop-filter: blur(16px) saturate(180%);
+      border-radius: 18px;
+      border: 1.5px solid rgba(255, 255, 255, 0.28);
+      margin: 0 auto 40px auto;
+      max-width: 1300px;
+    }
 
   /* Extended hover area with 40px invisible padding */
   section.tabs::before {
@@ -123,9 +154,13 @@
     cursor: pointer;
     font-size: 17px;
     padding: 12px 26px;
-    border: 1px solid #ddd;
     border-radius: 30px;
-    background: #f8f8f8;
+    background: rgba(255,255,255,0.18);
+    box-shadow: 0 4px 16px 0 rgba(31,38,135,0.10);
+    backdrop-filter: blur(8px) saturate(180%);
+    -webkit-backdrop-filter: blur(8px) saturate(180%);
+    border: 1.5px solid rgba(255,255,255,0.28);
+    color: #fff;
     transition: all .3s;
     margin: 5px;
     position: relative;
@@ -158,9 +193,12 @@
   }
 
   .vehicle-card {
-    background: #fff;
-    border-radius: 5px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    background: rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    border-radius: 18px;
+    border: 1.5px solid rgba(255, 255, 255, 0.28);
     overflow: hidden;
     transform: scale(1);
     transition: all .3s ease;
@@ -168,6 +206,7 @@
     position: relative;
     z-index: 10;
     pointer-events: auto;
+    color: #fff;
   }
 
   .vehicle-card:hover {
@@ -185,14 +224,14 @@
     font-size: 22px;
     font-weight: 600;
     margin: 15px 0 10px;
-    color: #1d1d1f;
+    color: #fff;
   }
 
   .vehicle-card ul {
     list-style: none;
     padding: 0;
     margin: 0;
-    color: #555;
+    color: #fff;
     font-size: 15.5px;
     line-height: 1.7;
   }
@@ -206,32 +245,41 @@
 
   /* Gallery Section - Professional Gray Theme */
   section.gallery {
-    padding: 80px 20px;
-    background: #ffffff;
-    border-top: 2px solid #e0e0e0;
-    border-bottom: 2px solid #e0e0e0;
-    text-align: center;
-    position: relative;
-  }
+      padding: 80px 20px;
+      background: none;
+      border-top: 2px solid #e0e0e0;
+      border-bottom: 2px solid #e0e0e0;
+      text-align: center;
+      position: relative;
+    }
 
   /* Gallery content initial state */
   .gallery-content {
-    opacity: 1;
-    position: relative;
-    z-index: 1;
-  }
+      opacity: 1;
+      position: relative;
+      z-index: 1;
+      background: rgba(255, 255, 255, 0.18);
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+      backdrop-filter: blur(16px) saturate(180%);
+      -webkit-backdrop-filter: blur(16px) saturate(180%);
+      border-radius: 18px;
+      border: 1.5px solid rgba(255, 255, 255, 0.28);
+      padding: 32px 0 32px 0;
+      margin: 0 auto 40px auto;
+      max-width: 1300px;
+    }
 
   section.gallery h2 {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #212529;
+  color: #fff;
   text-transform: uppercase;
   margin-bottom: 50px;
   display: inline-block;
   padding: 15px 30px;
-  background: #ffffff;
+  background: none;
   position: relative;
-  border-radius: 12px;
+  border-radius: 0;
   }
 
   section.gallery h2::before {
@@ -320,20 +368,16 @@
 <div id="header-placeholder"></div>
 
 <section class="hero">
-  <button class="hero-btn left">&#10094;</button>
-  <button class="hero-btn right">&#10095;</button>
-  <div class="hero-progress" id="heroProgress">
-    <div class="progress-dash active" data-index="0"></div>
-    <div class="progress-dash" data-index="1"></div>
-    <div class="progress-dash" data-index="2"></div>
-    <div class="progress-dash" data-index="3"></div>
-    <div class="progress-dash" data-index="4"></div>
-    <div class="progress-dash" data-index="5"></div>
-  </div>
 
-  <h1>Power Meets Precision</h1>
-  <p>Experience cutting-edge engineering with Equipment King Incorporated in partnership with SAGMOTO.</p>
-  <button onclick="window.location.href='trucks.html'">Explore Trucks</button>
+  <div class="hero-content" style="display: flex; align-items: flex-end; justify-content: space-between; gap: 32px; width: 100%;">
+    <div class="hero-glass" style="background: rgba(255,255,255,0.13); border: 1.5px solid rgba(255,255,255,0.22); backdrop-filter: blur(18px) saturate(180%); -webkit-backdrop-filter: blur(18px) saturate(180%); box-shadow: 0 8px 32px 0 rgba(31,38,135,0.13); border-radius: 18px; padding: 32px 36px 28px 36px; display: flex; flex-direction: column; align-items: flex-start; min-width: 320px; max-width: 480px;">
+      <h1 style="margin-bottom: 18px; color: #fff; text-shadow: 0 2px 8px rgba(0,0,0,0.18);">Equipment King Incorporated</h1>
+      <p style="margin-bottom: 0; color: #fff; text-shadow: 0 2px 8px rgba(0,0,0,0.18); font-size: 1.15rem;">Experience cutting-edge engineering with Equipment King Incorporated in partnership with SAGMOTO.</p>
+    </div>
+    <div style="flex:1; display: flex; justify-content: flex-end; align-items: flex-end;">
+      <button class="primary hero-main-btn" onclick="window.location.href='trucks.html'" style="margin-bottom: 8px; margin-left: 12px; white-space: nowrap;">Explore Trucks</button>
+    </div>
+  </div>
 </section>
 
 <section class="tabs" style="max-width: 100%;">
@@ -365,73 +409,12 @@
     </div>
     <div style="text-align:center;margin-top:70px;">
       <button class="primary" onclick="window.location.href='trucks.html'">Explore All Trucks</button>
-    </div>
+
+</div>
   </div>
 </section>
 
 <script>
-/* ================= HERO SLIDER WITH DASH PROGRESS ================= */
-const hero = document.querySelector('.hero');
-const progressContainer = document.getElementById('heroProgress');
-const progressDashes = document.querySelectorAll('.progress-dash');
-const leftBtn = document.querySelector('.hero-btn.left');
-const rightBtn = document.querySelector('.hero-btn.right');
-
-const heroImages = [
-  'assets/hero_section/front1.webp',
-  'assets/hero_section/front2.webp',
-  'assets/hero_section/front3.webp',
-  'assets/hero_section/front4.webp',
-  'assets/hero_section/front5.webp',
-  'assets/hero_section/front6.webp'
-];
-
-let currentIndex = 0;
-let autoSlideInterval;
-
-function showHeroImage(index){
-  hero.style.backgroundImage = `url('${heroImages[index]}')`;
-  currentIndex = index;
-  
-  // Update progress dashes
-  progressDashes.forEach((dash, i) => {
-    dash.classList.toggle('active', i === index);
-  });
-}
-
-function startAutoSlide(){
-  clearInterval(autoSlideInterval);
-  autoSlideInterval = setInterval(()=>{
-    nextHeroImage();
-  }, 5000); // 5 second intervals
-}
-
-function nextHeroImage(){
-  let nextIndex = (currentIndex + 1) % heroImages.length;
-  showHeroImage(nextIndex);
-}
-
-function prevHeroImage(){
-  let prevIndex = currentIndex - 1;
-  if(prevIndex < 0) prevIndex = heroImages.length - 1;
-  showHeroImage(prevIndex);
-}
-
-// Button event listeners
-leftBtn.addEventListener('click', ()=>{ prevHeroImage(); startAutoSlide(); });
-rightBtn.addEventListener('click', ()=>{ nextHeroImage(); startAutoSlide(); });
-
-// Dash click listeners for direct navigation
-progressDashes.forEach((dash, index) => {
-  dash.addEventListener('click', () => {
-    showHeroImage(index);
-    startAutoSlide();
-  });
-});
-
-// Start automatic sliding
-showHeroImage(currentIndex);
-startAutoSlide();
 
 /* ================= TAB CONTENT ================= */
 const tabData = {
@@ -612,19 +595,202 @@ tabContent.addEventListener('mouseleave', () => {
 /* ================= GALLERY SECTION ================= */
 // Gallery is now using simple static display without animations
 </script>
+</section>
 
-<!-- Floating Contact Buttons -->
-<div class="floating-buttons">
-    <a href="https://wa.me/254710337605" class="floating-btn whatsapp-btn" target="_blank" title="Chat on WhatsApp">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-    <button class="floating-btn lyro-btn" onclick="openLyroChat()" title="Chat with Lyro AI">
-        <i class="fas fa-robot"></i>
-    </button>
+<!-- Begin: Scrolling Image Strip with Modal Gallery -->
+<div class="scrolling-image-strip-wrapper">
+  <div class="scrolling-image-strip" id="scrollingImageStrip"></div>
+  <div class="strip-progress-container">
+    <div class="strip-progress-bar" id="stripProgress"></div>
+  </div>
 </div>
+<div class="image-modal" id="imageModal">
+  <span class="close-modal" id="closeModal">&times;</span>
+  <button id="prevImg" class="modal-nav-btn">&#8592;</button>
+  <img id="modalImg" src="" alt="Gallery Image" />
+  <button id="nextImg" class="modal-nav-btn">&#8594;</button>
+</div>
+<!-- End: Scrolling Image Strip with Modal Gallery -->
 
-<div id="footer-placeholder"></div>
+<script>
+// --- Scrolling Image Strip and Modal Gallery ---
+const imageList = [
+  'assets/z3t.webp', 'assets/x9a.webp', 'assets/X9 4x4.webp',
+  'assets/x7flatbed.webp', 'assets/x7c.webp', 'assets/van.webp', 'assets/tractor.webp', 'assets/special.webp', 'assets/offroad.webp',
+  'assets/off.webp', 'assets/i9.webp', 'assets/e9staketruck.webp', 'assets/E9 Dump Truck.webp', 'assets/e6t.webp', 'assets/e3t.webp',
+  'assets/e3.webp', 'assets/E3 Tractor Truck.webp', 'assets/e1st.webp', 'assets/E( Van truck.webp', 'assets/dumpTruck.webp',
+  'assets/dump.webp', 'assets/drop.webp', 'assets/cargo.webp', 'assets/back2.webp', 'assets/back.webp',
+  'assets/awd.webp', 'assets/9.webp', 'assets/7.webp', 'assets/6.webp', 'assets/3 series cement.webp'
+];
+const strip = document.getElementById('scrollingImageStrip');
+const progress = document.getElementById('stripProgress');
+const modal = document.getElementById('imageModal');
+const modalImg = document.getElementById('modalImg');
+const closeModal = document.getElementById('closeModal');
+const prevImg = document.getElementById('prevImg');
+const nextImg = document.getElementById('nextImg');
+let currentImgIdx = 0;
 
-<script src="js/lyro-chat.js"></script>
-</body>
-</html>
+// Populate strip
+imageList.forEach((src, idx) => {
+  const img = document.createElement('img');
+  img.src = src;
+  img.alt = `Gallery Image ${idx+1}`;
+  img.className = 'strip-img';
+  img.addEventListener('click', () => openModal(idx));
+  strip.appendChild(img);
+});
+
+// Scroll event for progress bar
+strip.addEventListener('scroll', () => {
+  const maxScroll = strip.scrollWidth - strip.clientWidth;
+  const percent = maxScroll ? (strip.scrollLeft / maxScroll) : 0;
+  progress.style.width = `${percent * 100}%`;
+});
+
+// Modal logic
+function openModal(idx) {
+  currentImgIdx = idx;
+  modalImg.src = imageList[idx];
+  modal.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+function closeModalFn() {
+  modal.style.display = 'none';
+  document.body.style.overflow = '';
+}
+function showImg(idx) {
+  if (idx < 0) idx = imageList.length - 1;
+  if (idx >= imageList.length) idx = 0;
+  currentImgIdx = idx;
+  modalImg.src = imageList[idx];
+}
+closeModal.onclick = closeModalFn;
+modal.onclick = (e) => { if (e.target === modal) closeModalFn(); };
+prevImg.onclick = () => showImg(currentImgIdx - 1);
+nextImg.onclick = () => showImg(currentImgIdx + 1);
+document.addEventListener('keydown', (e) => {
+  if (modal.style.display === 'flex') {
+    if (e.key === 'ArrowLeft') showImg(currentImgIdx - 1);
+    if (e.key === 'ArrowRight') showImg(currentImgIdx + 1);
+    if (e.key === 'Escape') closeModalFn();
+  }
+});
+</script>
+
+<style>
+/* Scrolling Image Strip Styles */
+.scrolling-image-strip-wrapper {
+  margin: 60px 0 0 0;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  padding: 0 0 32px 0;
+}
+.scrolling-image-strip {
+  display: flex;
+  overflow-x: auto;
+  gap: 18px;
+  padding: 18px 0 12px 0;
+  background: rgba(255,255,255,0.13);
+  border-radius: 0;
+  border: 1.5px solid rgba(255,255,255,0.22);
+  box-shadow: 0 8px 32px 0 rgba(31,38,135,0.13);
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  scrollbar-width: thin;
+  scrollbar-color: #fff rgba(255,255,255,0.13);
+  transition: box-shadow 0.3s;
+  width: 100vw;
+}
+.scrolling-image-strip:hover {
+  box-shadow: 0 12px 40px 0 rgba(31,38,135,0.18);
+}
+.strip-img {
+  height: 110px;
+  min-width: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.25s, box-shadow 0.25s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  border: 1.5px solid rgba(255,255,255,0.18);
+}
+.strip-img:hover {
+  transform: scale(1.08) translateY(-6px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+  border-color: #fff;
+}
+.strip-progress-container {
+  width: 100vw;
+  height: 5px;
+  background: rgba(255,255,255,0.10);
+  border-radius: 3px;
+  margin: 0 auto;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  overflow: hidden;
+}
+.strip-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #fff 0%, #b3c6ff 100%);
+  width: 0%;
+  border-radius: 3px;
+  transition: width 0.3s;
+}
+.image-modal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.88);
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  transition: opacity 0.3s;
+}
+.image-modal img {
+  max-width: 90vw;
+  max-height: 80vh;
+  border-radius: 18px;
+  box-shadow: 0 8px 32px 0 rgba(31,38,135,0.18);
+  background: #fff;
+}
+.close-modal {
+  position: absolute;
+  top: 32px;
+  right: 48px;
+  font-size: 2.5rem;
+  color: #fff;
+  cursor: pointer;
+  z-index: 10001;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.18);
+  transition: color 0.2s;
+}
+.close-modal:hover {
+  color: #b3c6ff;
+}
+.modal-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  color: #fff;
+  border: none;
+  font-size: 2.2rem;
+  cursor: pointer;
+  padding: 10px 18px;
+  border-radius: 50%;
+  z-index: 10001;
+  transition: background 0.3s;
+}
+#prevImg { left: 32px; }
+#nextImg { right: 32px; }
+.modal-nav-btn:hover { background: rgba(0,0,0,0.8); }
+</style>

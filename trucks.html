@@ -1,6 +1,20 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
+  <style>
+    html, body {
+      min-height: 100vh;
+      background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.75)), url('backgrounds/1 (2).png') center center/cover no-repeat fixed !important;
+      color: #fff;
+    }
+  </style>
+  <style>
+    html, body {
+      min-height: 100vh;
+      background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.75)), url('backgrounds/1 (2).png') center center/cover no-repeat fixed !important;
+      color: #fff;
+    }
+  </style>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Trucks - Equipment King</title>
@@ -10,6 +24,7 @@
   <script src="js/lyro-chat.js"></script>
 <script>
 </script>
+  <script src="js/scroll-animations.js"></script>
 <script>
 // --- Unified Truck Descriptions Translation System (Tiles + Popup) ---
 const truckDescriptions = {
@@ -167,7 +182,7 @@ document.addEventListener('DOMContentLoaded', () => {
     .ek-popup {
       width: 100%;
       max-width: 1200px;
-      background: #fff;
+  background: transparent;
       border-radius: var(--popup-radius);
   box-shadow: none;
       overflow: hidden;
@@ -201,7 +216,7 @@ document.addEventListener('DOMContentLoaded', () => {
       justify-content: space-between;
       padding: 20px 30px;
       border-bottom: 1px solid #e9ecef;
-      background: #ffffff;
+  background: transparent;
   box-shadow: none;
     }
 
@@ -270,7 +285,7 @@ document.addEventListener('DOMContentLoaded', () => {
       height: 50px;
       border-radius: 50%;
       border: 2px solid rgba(255,255,255,0.9);
-      background: rgba(255,255,255,0.85);
+  background: transparent;
       backdrop-filter: blur(8px);
       cursor: pointer;
       display: flex;
@@ -284,7 +299,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     .ek-popup-nav:hover { 
-      background: rgba(255,255,255,0.95);
+  background: transparent;
       border-color: #000000;
       color: #000000;
       transform: translateY(-50%) scale(1.1);
@@ -312,7 +327,7 @@ document.addEventListener('DOMContentLoaded', () => {
       gap: 30px;
       box-sizing: border-box;
       max-height: 80vh;
-      background: #ffffff;
+  background: transparent;
     }
 
     /* Mobile and tablet responsive design */
@@ -428,7 +443,7 @@ document.addEventListener('DOMContentLoaded', () => {
       
       .ek-magnifier::before,
       .ek-magnifier::after {
-        background: rgba(73, 80, 87, 0.85);
+  background: rgba(30,30,30,0.13);
       }
       
       .ek-magnifier::before {
@@ -466,7 +481,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /* Enhanced info section styling */
     .ek-info {
-      background: #ffffff;
+  background: transparent;
       border-radius: 12px;
       padding: 30px;
       border: 1px solid #e9ecef;
@@ -1237,15 +1252,14 @@ document.addEventListener('DOMContentLoaded', () => {
     <div id="6-series" style="position: absolute; visibility: hidden;"></div>
     <div id="9-series" style="position: absolute; visibility: hidden;"></div>
 
-    <main style="padding: 15px 5px 10px; width: 100%; margin: 0; background: #ffffff;">
+    <main style="padding: 15px 5px 10px; width: 100%; margin: 0; background: rgba(255,255,255,0.13); backdrop-filter: blur(16px) saturate(180%); -webkit-backdrop-filter: blur(16px) saturate(180%); box-shadow: 0 8px 32px 0 rgba(31,38,135,0.18); border-radius: 24px;">
         <!-- Compact Header -->
         <div style="max-width: 95%; margin: 0 auto 10px auto; text-align: center;">
-            <h1 style="color: #212529; margin-bottom: 10px; padding-top: 20px; font-size: 2.5em; font-weight: 700; text-align: center; position: relative;">
-                <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2; top: -5px;">Truck Categories</span>
-                <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ddd, transparent); z-index: 1;"></div>
-            </h1>
-            <p style="margin: 0 0 12px 0; color: #666; font-size: 1em;">Professional Commercial Vehicle Solutions</p>
-        </div>
+      <h1 style="color: #fff; margin-bottom: 10px; padding-top: 20px; font-size: 2.5em; font-weight: 700; text-align: center;">
+        <span style="background: transparent; padding: 0 16px; position: relative; z-index: 2; top: -5px;">Truck Categories</span>
+      </h1>
+      <p style="margin: 0 0 12px 0; color: #fff; font-size: 1em; background: transparent;">Professional Commercial Vehicle Solutions</p>
+    </div>
 
         <!-- Compact Controls -->
         <section style="max-width: 95%; margin: 0 auto 12px auto; padding: 8px;">
@@ -1267,30 +1281,27 @@ document.addEventListener('DOMContentLoaded', () => {
     </section>
         <!-- Light Duty Trucks -->
         <section id="light-duty" class="category-section" data-category="light-duty" style="max-width: 95%; margin: 0 auto 15px auto; border: 2px solid #e0e0e0; border-radius: 16px; padding: 12px; position: relative; overflow: hidden;">
-            <div style="position: absolute; top: -1px; left: 15%; right: 15%; height: 2px; background: linear-gradient(90deg, transparent, #999, transparent);"></div>
-            <div style="position: absolute; left: -1px; top: 25%; bottom: 25%; width: 2px; background: linear-gradient(180deg, transparent, #999, transparent);"></div>
-            <div style="position: absolute; right: -1px; top: 30%; bottom: 30%; width: 2px; background: linear-gradient(180deg, transparent, #999, transparent);"></div>
+            <!-- Removed crossing lines for cleaner look -->
             
-            <h2 class="headings" id="ldt" style="color: #212529; margin-bottom: 10px; font-size: 2.5em; font-weight: 700; text-align: center; position: relative;">
-                <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2; top: -5px;">Light Duty Trucks</span>
-                <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ddd, transparent); z-index: 1;"></div>
-            </h2>
+      <h2 class="headings" id="ldt" style="color: #fff; margin-bottom: 10px; font-size: 2.5em; font-weight: 700; text-align: center; position: relative;">
+        <span style="background: transparent; color: #fff; padding: 0 16px; position: relative; z-index: 2; top: -5px;">Light Duty Trucks</span>
+      </h2>
     
 
             <div id="x9-series" class="series" style="margin-bottom: 10px;">
-                <div class="series-title" style="font-size: 1.5em; font-weight: 600; color: #444; margin-bottom: 6px; text-align: center; position: relative;">
-                    <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2;">X9 Series</span>
-                    <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ccc, transparent); z-index: 1;"></div>
-                </div>
+  <div class="series-title">
+          <span style="background: transparent; padding: 0 16px; position: relative; z-index: 2;">X9 Series</span>
+          <!-- Removed crossing line under series title -->
+        </div>
                 <div class="truck-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 6px; margin-bottom: 32px;">
-                    <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
-                        <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
+          <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+            <!-- Removed crossing line from truck tile -->
                         <div class="truck-image" style="margin-bottom: 8px; border-radius: 8px; overflow: hidden;">
                             <img src="assets/x9towtruck.webp" style="width: 100%; height: 240px; object-fit: cover;"> <!-- IMPORTANT: X9 Tow Truck image -->
                             <div class="magnifier-lens"></div>
                         </div>
                         <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0 0 8px 0;">X9 Tow Truck</div>
-                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;"><b>|</b> Professional heavy-duty towing solution with advanced recovery capabilities. Features powerful winch system, stabilizing outriggers, and robust chassis design for safe vehicle recovery operations.</div>
+                        <div class="truck-description"><b>|</b> Professional heavy-duty towing solution with advanced recovery capabilities. Features powerful winch system, stabilizing outriggers, and robust chassis design for safe vehicle recovery operations.</div>
                     </div>
                     <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
                         <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
@@ -1299,7 +1310,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <div class="magnifier-lens"></div>
                         </div>
                         <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0 0 8px 0;">X9 Aerial Work Platform Truck</div>
-                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;"><b>|</b> Versatile aerial work platform for construction and maintenance tasks. Provides safe access to elevated work areas with stable platform and advanced safety features.</div>
+                        <div class="truck-description"><b>|</b> Versatile aerial work platform for construction and maintenance tasks. Provides safe access to elevated work areas with stable platform and advanced safety features.</div>
                     </div>
                     <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
                         <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
@@ -1308,7 +1319,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <div class="magnifier-lens"></div>
                         </div>
                         <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0 0 8px 0;">X9 4X4 Dump Truck</div>
-                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;"><b>|</b> Professional 4x4 dump truck from the X9 series. Designed for reliability, efficiency, and superior performance in demanding commercial applications.</div>
+                        <div class="truck-description"><b>|</b> Professional 4x4 dump truck from the X9 series. Designed for reliability, efficiency, and superior performance in demanding commercial applications.</div>
                     </div>
                     <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
                         <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
@@ -1317,7 +1328,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <div class="magnifier-lens"></div>
                         </div>
                         <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0 0 8px 0;">X9 Dump Truck</div>
-                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;"><b>|</b> Designed for construction material transport with 3-4.5 tons payload. Features 4.1L diesel engine (156 hp), hydraulic tipping system, and durable steel box.</div>
+                        <div class="truck-description"><b>|</b> Designed for construction material transport with 3-4.5 tons payload. Features 4.1L diesel engine (156 hp), hydraulic tipping system, and durable steel box.</div>
                     </div>
                     <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
                         <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
@@ -1326,7 +1337,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <div class="magnifier-lens"></div>
                         </div>
                         <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0 0 8px 0;">X9 Van Truck</div>
-                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;"><b>|</b> Ideal for transporting goods and packages with cargo volume 12-20 m³. 3.8L diesel engine ensures efficient performance and low operating costs.</div>
+                        <div class="truck-description"><b>|</b> Ideal for transporting goods and packages with cargo volume 12-20 m³. 3.8L diesel engine ensures efficient performance and low operating costs.</div>
                     </div>
                     <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
                         <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
@@ -1335,7 +1346,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <div class="magnifier-lens"></div>
                         </div>
                         <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0 0 8px 0;">X9 Fuel Tanker Truck</div>
-                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;"><b>|</b> Designed for safe and efficient fuel transport in urban and regional routes. Features a 3,000-6,000L durable fuel tank, 4.1L turbo diesel engine for reliable performance.</div>
+                        <div class="truck-description"><b>|</b> Designed for safe and efficient fuel transport in urban and regional routes. Features a 3,000-6,000L durable fuel tank, 4.1L turbo diesel engine for reliable performance.</div>
                     </div>
                     <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
                         <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
@@ -1344,7 +1355,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <div class="magnifier-lens"></div>
                         </div>
                         <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0 0 8px 0;">X9 Garbage Truck</div>
-                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;"><b>|</b> Ideal for municipal solid waste collection, featuring a 6-8 m³ compaction body, reliable 4×2 drive, and 4.0L diesel engine. Efficient and maneuverable for city streets.</div>
+                        <div class="truck-description"><b>|</b> Ideal for municipal solid waste collection, featuring a 6-8 m³ compaction body, reliable 4×2 drive, and 4.0L diesel engine. Efficient and maneuverable for city streets.</div>
                     </div>
                     <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
                         <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
@@ -1353,15 +1364,15 @@ document.addEventListener('DOMContentLoaded', () => {
                             <div class="magnifier-lens"></div>
                         </div>
                         <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0 0 8px 0;">X9 Refrigerated Truck</div>
-                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;"><b>|</b> Engineered for transporting perishable goods safely, with -5°C to -18°C temperature control and insulated 10-18 m³ box. Powered by 4.2L diesel engine (150-170 hp) with reliable 4×2 drive, ensuring timely delivery with low energy consumption.</div>
+                        <div class="truck-description"><b>|</b> Engineered for transporting perishable goods safely, with -5°C to -18°C temperature control and insulated 10-18 m³ box. Powered by 4.2L diesel engine (150-170 hp) with reliable 4×2 drive, ensuring timely delivery with low energy consumption.</div>
                     </div>
                 </div>
             </div>
 
                 <div class="series" style="margin-bottom: 10px;">
-                <div class="series-title" style="font-size: 1.5em; font-weight: 600; color: #444; margin-bottom: 6px; text-align: center; position: relative;">
-                    <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2;">E9 Series</span>
-                    <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ccc, transparent); z-index: 1;"></div>
+                <div class="series-title">
+                    <span style="background: transparent; color: #fff; padding: 0 16px; position: relative; z-index: 2;">E9 Series</span>
+                    <!-- Removed crossing line for unified look -->
                 </div>
                 <div class="truck-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 6px; margin-bottom: 32px;">
         <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
@@ -1371,7 +1382,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <div class="magnifier-lens"></div>
                         </div>
                         <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0 0 8px 0;">E9 Refrigerated Truck</div>
-                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;"><b>|</b> Maintains perishable goods at -5°C to -20°C with insulated 10-18 m³ box. Powered by 4.0-4.5L diesel engine for reliability. Ideal for food and pharmaceutical distribution.</div>
+                        <div class="truck-description"><b>|</b> Maintains perishable goods at -5°C to -20°C with insulated 10-18 m³ box. Powered by 4.0-4.5L diesel engine for reliability. Ideal for food and pharmaceutical distribution.</div>
                     </div>
         <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
                         <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
@@ -1380,7 +1391,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <div class="magnifier-lens"></div>
                         </div>
                         <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0 0 8px 0;">E9 Dump Truck</div>
-                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;"><b>|</b> Reliable dump truck for urban construction and material transport. Features efficient hydraulic system and durable construction for everyday commercial use.</div>
+                        <div class="truck-description"><b>|</b> Reliable dump truck for urban construction and material transport. Features efficient hydraulic system and durable construction for everyday commercial use.</div>
                     </div>
         <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
                         <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
@@ -1389,7 +1400,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <div class="magnifier-lens"></div>
                         </div>
                         <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0 0 8px 0;">E9 Van Truck</div>
-                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;"><b>|</b> Spacious cargo van for commercial delivery and logistics operations. Features large cargo area with weather protection and fuel-efficient engine.</div>
+                        <div class="truck-description"><b>|</b> Spacious cargo van for commercial delivery and logistics operations. Features large cargo area with weather protection and fuel-efficient engine.</div>
                     </div>
         <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
                         <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
@@ -1398,15 +1409,15 @@ document.addEventListener('DOMContentLoaded', () => {
                             <div class="magnifier-lens"></div>
                         </div>
                         <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0 0 8px 0;">E9 Kitchen Waste Garbage Truck</div>
-                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;"><b>|</b> Specialized for kitchen and wet waste collection. Features 5-8 m³ sealed tank, 4.2L diesel engine (140-165 hp), 4×2 drive for urban routes. Provides hygienic, efficient, and reliable waste transport for municipal services.</div>
+                        <div class="truck-description"><b>|</b> Specialized for kitchen and wet waste collection. Features 5-8 m³ sealed tank, 4.2L diesel engine (140-165 hp), 4×2 drive for urban routes. Provides hygienic, efficient, and reliable waste transport for municipal services.</div>
                     </div>
       </div>
     </div>
 
                 <div class="series" style="margin-bottom: 10px;">
                 <div class="series-title" style="font-size: 1.5em; font-weight: 600; color: #444; margin-bottom: 6px; text-align: center; position: relative;">
-                    <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2;">X7 Series</span>
-                    <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ccc, transparent); z-index: 1;"></div>
+                    <span style="background: transparent; color: #fff; padding: 0 16px; position: relative; z-index: 2;">X7 Series</span>
+                    <!-- Removed crossing line for unified look -->
                 </div>
                 <div class="truck-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 6px; margin-bottom: 32px;">
         <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
@@ -1416,7 +1427,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <div class="magnifier-lens"></div>
                         </div>
                         <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0 0 8px 0;">X7 Concrete Mixer Truck</div>
-                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;"><b>|</b> Efficient concrete mixing and delivery truck for construction projects. Features reliable mixing drum and hydraulic system for consistent concrete quality.</div>
+                        <div class="truck-description"><b>|</b> Efficient concrete mixing and delivery truck for construction projects. Features reliable mixing drum and hydraulic system for consistent concrete quality.</div>
                     </div>
         <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
                         <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
@@ -1425,7 +1436,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <div class="magnifier-lens"></div>
                         </div>
                         <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0 0 8px 0;">X7 Flatbed Truck</div>
-                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;"><b>|</b> Flexible cargo transport solution for urban deliveries, offering 3-5 ton payload on a compact flatbed. Powered by 3.8L diesel engine (120-140 hp), it provides excellent maneuverability, low maintenance, and versatile applications in logistics and delivery services.</div>
+                        <div class="truck-description"><b>|</b> Flexible cargo transport solution for urban deliveries, offering 3-5 ton payload on a compact flatbed. Powered by 3.8L diesel engine (120-140 hp), it provides excellent maneuverability, low maintenance, and versatile applications in logistics and delivery services.</div>
                     </div>
         <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
                         <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
@@ -1434,7 +1445,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <div class="magnifier-lens"></div>
                         </div>
                         <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0 0 8px 0;">X7 Sprinkler Truck</div>
-                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;"><b>|</b> Used for street cleaning and dust suppression, fitted with 3,000-6,000L water tank and spray system. Equipped with 4.0L diesel engine (140 hp), the truck ensures effective municipal water spraying with easy operation and maintenance.</div>
+                        <div class="truck-description"><b>|</b> Used for street cleaning and dust suppression, fitted with 3,000-6,000L water tank and spray system. Equipped with 4.0L diesel engine (140 hp), the truck ensures effective municipal water spraying with easy operation and maintenance.</div>
                     </div>
         <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
                         <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
@@ -1443,7 +1454,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <div class="magnifier-lens"></div>
                         </div>
                         <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0 0 8px 0;">X7 Truck Mounted Crane</div>
-                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;"><b>|</b> Light-duty lifting solution with 2-4 ton crane capacity, ideal for small construction or loading tasks. Powered by 4.2L diesel engine (150 hp) with 4×2 drive, offering precise, safe, and efficient lifting.</div>
+                        <div class="truck-description"><b>|</b> Light-duty lifting solution with 2-4 ton crane capacity, ideal for small construction or loading tasks. Powered by 4.2L diesel engine (150 hp) with 4×2 drive, offering precise, safe, and efficient lifting.</div>
                     </div>
         <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
                         <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
@@ -1452,16 +1463,16 @@ document.addEventListener('DOMContentLoaded', () => {
                             <div class="magnifier-lens"></div>
                         </div>
                         <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0 0 8px 0;">X7 Dump Truck</div>
-                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;"><b>|</b> Efficient for construction material transport, carrying 3-5 tons of sand, gravel, or aggregates. Equipped with 4.1L diesel engine (156 hp), hydraulic tipping system, and durable steel body. Suitable for urban and semi-urban construction projects with excellent maneuverability and durability.</div>
+                        <div class="truck-description"><b>|</b> Efficient for construction material transport, carrying 3-5 tons of sand, gravel, or aggregates. Equipped with 4.1L diesel engine (156 hp), hydraulic tipping system, and durable steel body. Suitable for urban and semi-urban construction projects with excellent maneuverability and durability.</div>
                     </div>
         
       </div>
     </div>
 
                 <div class="series" style="margin-bottom: 10px;">
-                <div class="series-title" id="i9" style="font-size: 1.5em; font-weight: 600; color: #444; margin-bottom: 6px; text-align: center; position: relative;">
-                    <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2;">i9 (New Series)</span>
-                    <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ccc, transparent); z-index: 1;"></div>
+                <div class="series-title" id="i9">
+                    <span style="background: transparent; color: #fff; padding: 0 16px; position: relative; z-index: 2;">i9 (New Series)</span>
+                    <!-- Removed crossing line for unified look -->
                 </div>
                 <div class="truck-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 6px; margin-bottom: 32px;">
         <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
@@ -1471,7 +1482,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <div class="magnifier-lens"></div>
                         </div>
                         <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0 0 8px 0;">i9 (New Series)</div>
-                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;"><b>|</b> Features integrated electric drive axle with highly integrated structure for higher efficiency and extended range. Offers 430 km working range with 120 kW fast charging technology, achieving full charge in 65 minutes. Brake energy recovery reduces consumption by 15%.</div>
+                        <div class="truck-description"><b>|</b> Features integrated electric drive axle with highly integrated structure for higher efficiency and extended range. Offers 430 km working range with 120 kW fast charging technology, achieving full charge in 65 minutes. Brake energy recovery reduces consumption by 15%.</div>
                     </div>
       </div>
     </div>
@@ -1482,19 +1493,18 @@ document.addEventListener('DOMContentLoaded', () => {
     
   -->
   <section class="category-section" data-category="medium-duty" style="border-top: none; margin-top: 0;">
-        <div style="max-width: 95%; margin: 0 auto 15px auto; border: 2px solid #e0e0e0; border-radius: 16px; padding: 12px; position: relative; overflow: hidden;">
+  <div style="max-width: 95%; margin: 0 auto 15px auto; border: 2px solid #e0e0e0; border-radius: 24px; padding: 12px; position: relative; overflow: hidden; background: transparent;">
             <div style="position: absolute; left: -1px; top: 25%; bottom: 25%; width: 2px; background: linear-gradient(180deg, transparent, #999, transparent);"></div>
             <div style="position: absolute; right: -1px; top: 30%; bottom: 30%; width: 2px; background: linear-gradient(180deg, transparent, #999, transparent);"></div>
             
-            <h2 class="headings" id="medium-duty" style="color: #212529; margin-bottom: 10px; font-size: 2.5em; font-weight: 700; text-align: center; position: relative;">
-                <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2; top: -5px;">Medium Duty Trucks</span>
-                <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ddd, transparent); z-index: 1;"></div>
-            </h2>
+      <h2 class="headings" id="medium-duty" style="color: #fff; margin-bottom: 10px; font-size: 2.5em; font-weight: 700; text-align: center; position: relative;">
+        <span style="background: transparent; color: #fff; padding: 0 16px; position: relative; z-index: 2; top: -5px;">Medium Duty Trucks</span>
+      </h2>
 
                 <div class="series" style="margin-bottom: 10px;">
                 <div class="series-title" style="font-size: 1.5em; font-weight: 600; color: #444; margin-bottom: 6px; text-align: center; position: relative;">
-                    <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2;">E6</span>
-                    <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ccc, transparent); z-index: 1;"></div>
+                    <span style="background: transparent; color: #fff; padding: 0 16px; position: relative; z-index: 2;">E6</span>
+                    <!-- Removed crossing line for unified look -->
                 </div>
                 <div class="truck-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 6px; margin-bottom: 32px;">
         <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
@@ -1504,7 +1514,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <div class="magnifier-lens"></div>
                         </div>
                         <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0 0 8px 0;">E6 Dump Truck</div>
-                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;"><b>|</b> Professional dump truck from the E6 series. Designed for reliability, efficiency, and superior performance in demanding commercial applications. Features advanced engineering and robust construction for long-lasting service.</div>
+                        <div class="truck-description"><b>|</b> Professional dump truck from the E6 series. Designed for reliability, efficiency, and superior performance in demanding commercial applications. Features advanced engineering and robust construction for long-lasting service.</div>
                     </div>
         <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
                         <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
@@ -1513,7 +1523,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <div class="magnifier-lens"></div>
                         </div>
                         <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0 0 8px 0;">E6 Stake Truck</div>
-                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;"><b>|</b> Designed for agricultural and logistics applications, providing 6-10 ton payload with flexible stake body. Powered by 6.0L diesel engine (180-220 hp), with 4×2/6×2 drive options, offering durability, versatility, and ease of loading/unloading.</div>
+                        <div class="truck-description"><b>|</b> Designed for agricultural and logistics applications, providing 6-10 ton payload with flexible stake body. Powered by 6.0L diesel engine (180-220 hp), with 4×2/6×2 drive options, offering durability, versatility, and ease of loading/unloading.</div>
                     </div>
         <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
                         <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
@@ -1522,7 +1532,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <div class="magnifier-lens"></div>
                         </div>
                         <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0 0 8px 0;">E6 Van Truck</div>
-                        <div class="truck-description" style="font-size: 13px; color: #666; line-height: 1.4; padding: 0 8px;"><b>|</b> Professional van truck from the E6 series. Designed for reliability, efficiency, and superior performance in demanding commercial applications. Features advanced engineering and robust construction for long-lasting service.</div>
+                        <div class="truck-description"><b>|</b> Professional van truck from the E6 series. Designed for reliability, efficiency, and superior performance in demanding commercial applications. Features advanced engineering and robust construction for long-lasting service.</div>
                     </div>
         <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
                         <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
@@ -1565,8 +1575,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 <div class="series" style="margin-bottom: 10px;">
                 <div class="series-title" style="font-size: 1.5em; font-weight: 600; color: #444; margin-bottom: 6px; text-align: center; position: relative;">
-                    <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2;">X6</span>
-                    <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ccc, transparent); z-index: 1;"></div>
+                    <span style="background: transparent; color: #fff; padding: 0 16px; position: relative; z-index: 2;">X6</span>
+                    <!-- Removed crossing line for unified look -->
                 </div>
                 <div class="truck-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 6px; margin-bottom: 32px;">
         <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
@@ -1706,15 +1716,14 @@ document.addEventListener('DOMContentLoaded', () => {
             <div style="position: absolute; left: -1px; top: 25%; bottom: 25%; width: 2px; background: linear-gradient(180deg, transparent, #999, transparent);"></div>
             <div style="position: absolute; right: -1px; top: 30%; bottom: 30%; width: 2px; background: linear-gradient(180deg, transparent, #999, transparent);"></div>
             
-            <h2 class="headings" id="heavy-duty" style="color: #212529; margin-bottom: 10px; font-size: 2.5em; font-weight: 700; text-align: center; position: relative;">
-                <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2; top: -5px;">Heavy Duty Trucks</span>
-                <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ddd, transparent); z-index: 1;"></div>
-            </h2>
+      <h2 class="headings" id="heavy-duty" style="color: #fff; margin-bottom: 10px; font-size: 2.5em; font-weight: 700; text-align: center; position: relative;">
+        <span style="background: transparent; color: #fff; padding: 0 16px; position: relative; z-index: 2; top: -5px;">Heavy Duty Trucks</span>
+      </h2>
 
                 <div class="series" style="margin-bottom: 10px;">
                 <div class="series-title" style="font-size: 1.5em; font-weight: 600; color: #444; margin-bottom: 6px; text-align: center; position: relative;">
-                    <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2;">Z3 Series</span>
-                    <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ccc, transparent); z-index: 1;"></div>
+                    <span style="background: transparent; color: #fff; padding: 0 16px; position: relative; z-index: 2;">Z3 Series</span>
+                    <!-- Removed crossing line for unified look -->
                 </div>
                 <div class="truck-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 16px; align-items: start;">
         <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
@@ -1731,8 +1740,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 <div class="series" style="margin-bottom: 10px;">
                 <div class="series-title" style="font-size: 1.5em; font-weight: 600; color: #444; margin-bottom: 6px; text-align: center; position: relative;">
-                    <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2;">E1st</span>
-                    <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ccc, transparent); z-index: 1;"></div>
+                    <span style="background: transparent; color: #fff; padding: 0 16px; position: relative; z-index: 2;">E1st</span>
+                    <!-- Removed crossing line for unified look -->
                 </div>
                 <div class="truck-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 6px; margin-bottom: 32px;">
         <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
@@ -1748,10 +1757,9 @@ document.addEventListener('DOMContentLoaded', () => {
     </div>
 
                 <div class="series" style="margin-bottom: 10px;">
-                <div class="series-title" style="font-size: 1.5em; font-weight: 600; color: #444; margin-bottom: 6px; text-align: center; position: relative;">
-                    <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2;">E3</span>
-                    <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ccc, transparent); z-index: 1;"></div>
-                </div>
+        <div class="series-title">
+          <span style="background: transparent; color: #fff; padding: 0 16px; position: relative; z-index: 2;">E3</span>
+        </div>
                 <div class="truck-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 6px; margin-bottom: 32px;">
                     <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
                         <div style="position: absolute; top: -1px; left: 25%; right: 25%; height: 2px; background: linear-gradient(90deg, transparent, #aaa, transparent);"></div>
@@ -1831,8 +1839,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 <div class="series" style="margin-bottom: 10px;">
                 <div class="series-title" style="font-size: 1.5em; font-weight: 600; color: #444; margin-bottom: 6px; text-align: center; position: relative;">
-                    <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2;">9 Series</span>
-                    <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ccc, transparent); z-index: 1;"></div>
+                    <span style="background: transparent; color: #fff; padding: 0 16px; position: relative; z-index: 2;">9 Series</span>
+                    <!-- Removed crossing line for unified look -->
                 </div>
                 <div class="truck-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 6px; margin-bottom: 32px;">
                     <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
@@ -1885,8 +1893,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 <div class="series" style="margin-bottom: 10px;">
                 <div class="series-title" style="font-size: 1.5em; font-weight: 600; color: #444; margin-bottom: 6px; text-align: center; position: relative;">
-                    <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2;">6 Series</span>
-                    <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ccc, transparent); z-index: 1;"></div>
+                    <span style="background: transparent; color: #fff; padding: 0 16px; position: relative; z-index: 2;">6 Series</span>
+                    <!-- Removed crossing line for unified look -->
                 </div>
                 <div class="truck-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 6px; margin-bottom: 32px;">
                     <div class="truck-tile" onclick="" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
@@ -1930,8 +1938,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 <div class="series" style="margin-bottom: 10px;">
                 <div class="series-title" style="font-size: 1.5em; font-weight: 600; color: #444; margin-bottom: 6px; text-align: center; position: relative;">
-                    <span style="background: #fff; padding: 0 16px; position: relative; z-index: 2;">3 Series</span>
-                    <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #ccc, transparent); z-index: 1;"></div>
+                    <span style="background: transparent; color: #fff; padding: 0 16px; position: relative; z-index: 2;">3 Series</span>
+                    <!-- Removed crossing line for unified look -->
                 </div>
                 <div class="truck-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 6px; margin-bottom: 32px;">
         <div class="truck-tile" onclick="window.location.href='trucks_html/3-Series-Cement-Mixer-Truck.html'" style="padding: 5px; border: 2px solid #e0e0e0; border-radius: 12px; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">

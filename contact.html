@@ -255,14 +255,11 @@
             }
         }
         
-        /* Body background with light gradient */
+
+        /* Body background with custom image */
         body {
-            background: linear-gradient(135deg, 
-                #f8f9ff 0%, 
-                #e8f4f8 25%, 
-                #f0f8ff 50%, 
-                #f5f7fa 75%, 
-                #ffffff 100%) !important;
+            background: url('backgrounds/1 (5).jpg') no-repeat center center fixed !important;
+            background-size: cover !important;
             min-height: 100vh;
             position: relative;
         }
@@ -274,10 +271,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: 
-                radial-gradient(circle at 25% 25%, rgba(52, 152, 219, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 75% 75%, rgba(155, 89, 182, 0.03) 0%, transparent 50%),
-                radial-gradient(circle at 50% 50%, rgba(46, 204, 113, 0.02) 0%, transparent 50%);
+            background: rgba(0,0,0,0.18); /* subtle overlay for readability */
             z-index: -1;
         }
 
@@ -330,21 +324,27 @@
         <div class="contact-container">
             <!-- Contact Information -->
             <div class="contact-info">
+
                 <h2>Get in Touch</h2>
                 
                 <div class="contact-item">
                     <i class="fas fa-map-marker-alt"></i>
                     <div>
-                        <h4>Our Location</h4>
-                        <p>123 Industrial Drive<br>Commercial District<br>Business City, BC 12345</p>
+                        <h4>Our Locations</h4>
+                        <p>
+                          <strong>Sierra Leone:</strong> Freetown, Sierra Leone<br>
+                          <strong>Liberia:</strong> Monrovia, Liberia<br>
+                          <strong>Mali:</strong> Bamako, Mali<br>
+                          <strong>Guinea:</strong> Conakry, Guinea
+                        </p>
                     </div>
                 </div>
 
                 <div class="contact-item">
                     <i class="fas fa-phone"></i>
                     <div>
-                        <h4>Phone</h4>
-                        <p>+1 (555) 123-4567<br>+1 (555) 987-6543</p>
+                        <h4>Phone / WhatsApp</h4>
+                        <p><a href="https://wa.me/231777935464" target="_blank" style="color: #3498db; text-decoration: none;">+231 777 935 464</a></p>
                     </div>
                 </div>
 
@@ -418,7 +418,12 @@
             <div class="map-container">
                 <h2>Visit Our Showroom</h2>
                 <div class="map-placeholder">
-                    <p><i class="fas fa-map"></i> Interactive Map Coming Soon<br>123 Industrial Drive, Business City, BC 12345</p>
+                                        <p><i class="fas fa-map"></i> Interactive Map Coming Soon<br>
+                                            <strong>Sierra Leone:</strong> Freetown<br>
+                                            <strong>Liberia:</strong> Monrovia<br>
+                                            <strong>Mali:</strong> Bamako<br>
+                                            <strong>Guinea:</strong> Conakry
+                                        </p>
                 </div>
             </div>
         </section>
@@ -481,10 +486,10 @@
                     right: 20px;
                     width: 350px;
                     height: 500px;
-                    background: rgba(255,255,255,0.95);
-                    backdrop-filter: blur(20px);
-                    -webkit-backdrop-filter: blur(20px);
-                    border: 1px solid rgba(255,255,255,0.3);
+                    background: rgba(255,255,255,0.35);
+                    backdrop-filter: blur(16px);
+                    -webkit-backdrop-filter: blur(16px);
+                    border: 1.5px solid rgba(255,255,255,0.25);
                     border-radius: 16px;
                     box-shadow: 0 12px 40px rgba(0,0,0,0.15);
                     z-index: 10000;

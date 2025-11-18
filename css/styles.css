@@ -1,3 +1,63 @@
+/* Glassmorphism effect for hero section */
+.hero-glass {
+  background: rgba(255,255,255,0.13);
+  border: 1.5px solid rgba(255,255,255,0.22);
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+  box-shadow: 0 8px 32px 0 rgba(31,38,135,0.13);
+  border-radius: 18px;
+  padding: 32px 36px 28px 36px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 320px;
+  max-width: 480px;
+}
+
+.hero-glass h1,
+.hero-glass p {
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.18);
+}
+/* Force all popup descriptions and underlined headers to be black */
+.ek-popup .truck-description,
+.ek-popup .ek-popup-title,
+.ek-popup .specs-title,
+.ek-popup h2,
+.ek-popup h3,
+.ek-popup h4,
+.ek-details h3 {
+  color: #111 !important;
+}
+/* Popup heading and description color adjustments */
+.ek-popup .specs-title,
+.ek-popup .description,
+.ek-popup h2,
+.ek-popup h3,
+.ek-details h3 {
+  color: #111 !important;
+}
+/* Fading crossing lines for headings */
+.heading-line {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #ddd 20%, #ddd 80%, transparent);
+  z-index: 1;
+}
+.category-section .headings span, .series-title span, h1 span {
+  position: relative;
+  z-index: 2;
+  display: inline-block;
+  padding: 0 16px;
+  background: transparent !important;
+}
+/* Remove all white backgrounds from headings */
+h1, h2, h3, h4, h5, h6, .category-section .headings span, .series-title span {
+  background: transparent !important;
+}
 /* ——— GLOBAL RESET & BASE ——— */
 * {
   box-sizing: border-box;
@@ -9,8 +69,7 @@
 html, body {
   width: 100%;
   height: 100%;
-  background: #fff;
-  color: #000;
+  
   scroll-behavior: smooth;
   text-align: center;
 }
@@ -26,9 +85,20 @@ header {
   align-items: center;
   justify-content: space-between;
   padding: 0 100px;
-  color: #fff;
+  color: #fff !important;
   z-index: 1000;
   box-shadow: 0 1px 2px rgba(255,255,255,0.05);
+}
+
+/* Truck tile scroll-in animation */
+.truck-tile {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1);
+}
+.truck-tile.scrolled-into-view {
+  opacity: 1;
+  transform: translateY(0);
 }
 /* Apple.com Style — Title + Search Bar */
 .page-title {
@@ -464,9 +534,6 @@ header nav a:hover::after { width: 100%; }
   transition: transform 0.1s;
 }
 
-
-
-
 /* ——— CATEGORY FILTER ——— */
 input[type="text"] {
   width: 60%;
@@ -536,29 +603,30 @@ input[type="text"]:focus {
 }
 
 /* ——— CLEAN CATEGORY SECTIONS ——— */
-.category-section { 
-  margin: 4rem 0; 
-  padding: 2rem;
+
+.category-section {
+  margin: 0;
+  padding: 0;
   position: relative;
 }
 
 /* Light Duty - Light Gray */
 .category-section[data-category="light-duty"] {
-  background: #f8f9fa;
+  
   border-top: 3px solid #6c757d;
   border-bottom: 1px solid #e9ecef;
 }
 
 /* Medium Duty - White */
 .category-section[data-category="medium-duty"] {
-  background: #ffffff;
+  
   border-top: 3px solid #495057;
   border-bottom: 1px solid #dee2e6;
 }
 
 /* Heavy Duty - Off White */
 .category-section[data-category="heavy-duty"] {
-  background: #f5f5f5;
+
   border-top: 3px solid #343a40;
   border-bottom: 1px solid #e0e0e0;
 }
@@ -570,56 +638,67 @@ input[type="text"]:focus {
   font-size: 2.2rem;
   font-weight: 600;
   padding: 0 2rem;
-  color: #212529;
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.18);
+}
+
+/* Make all h1, h2, h3, h4, h5, h6 white by default for headings */
+h1, h2, h3, h4, h5, h6 {
+  color: #fff !important;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.18);
+}
+
+/* SCROLL ANIMATION FOR TRUCK TILES */
+.truck-tile {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1);
+}
+.truck-tile.scrolled-into-view {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* Series Sections */
+
 .series {
   background: transparent;
-  padding: 1rem 2rem;
-  margin: 2rem 0;
+  padding: 0;
+  margin: 0;
 }
 
 .series-title {
   font-size: 1.4rem;
   font-weight: 500;
   margin-bottom: 1.5rem;
-  color: #374151;
+  color: #fff;
   text-align: center;
   padding: 0.5rem 0;
-  border-bottom: 1px solid rgba(0,0,0,0.1);
+  border-radius: 16px;
+  background: rgba(30,30,30,0.13);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 4px 24px 0 rgba(0,0,0,0.10);
+  border: 1px solid rgba(255,255,255,0.13);
+  border-bottom: none;
 }
 
-.truck-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
-  justify-items: center;
-  width: 100%;
-  margin: 0 auto;
-  padding: 1rem 0;
-}
 
-.truck-tile {
-  position: relative;
-  width: 100%;
-  max-width: 450px;
-  background: #fff;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-  overflow: hidden;
-  cursor: pointer;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity .6s ease-out, transform .6s ease-out;
+.truck-name {
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+  background: transparent !important;
+  color: #fff !important;
+  border-top: 1px solid rgba(255,255,255,0.13);
+  text-shadow: 0 2px 8px rgba(0,0,0,0.18);
 }
-.truck-tile.visible {
-  opacity: 1;
-  transform: none;
-}
-.truck-tile:hover {
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+.truck-description {
+  font-size: 0.95rem;
+  color: #fff !important;
+  line-height: 1.5;
+  padding: 0 8px 12px 8px;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.18);
 }
 
 .truck-image {
@@ -638,8 +717,15 @@ input[type="text"]:focus {
   padding: 1rem;
   font-size: 1rem;
   font-weight: 500;
-  background: #fff;
-  border-top: 1px solid #eee;
+  background: transparent;
+  color: #fff;
+  border-top: 1px solid rgba(255,255,255,0.13);
+}
+.truck-description {
+  font-size: 0.95rem;
+  color: #fff;
+  line-height: 1.5;
+  padding: 0 8px 12px 8px;
 }
 
 .magnifier-lens {
@@ -783,7 +869,7 @@ input[type="text"]:focus {
       width: 100%;
       max-width: 450px;
       height: auto;
-      background: #f9f9f9;
+      
       border: 1px solid #ddd;
       border-radius: 2px;
       box-shadow: 0 3px 10px rgba(0,0,0,0.05);
@@ -801,6 +887,7 @@ input[type="text"]:focus {
       width: 100%;
       height: 300px;
       overflow: hidden;
+      background: transparent;
     }
 
     .truck-image img {
@@ -814,8 +901,8 @@ input[type="text"]:focus {
       padding: 1rem;
       font-size: 1rem;
       font-weight: 500;
-      background: #fff;
-      border-top: 1px solid #eee;
+  background: transparent !important;
+  border-top: 1px solid rgba(255,255,255,0.13);
     }
 
     .magnifier-lens {
@@ -1029,11 +1116,11 @@ footer a:hover {
     border-radius:5px;
     box-shadow:0 10px 25px rgba(0,0,0,0.08);
     overflow:hidden;
-    transform:scale(1);
+  transform:none;
     transition:all .3s ease;
   }
   .vehicle-card:hover {
-    transform:translateY(-6px) scale(1.03);
+  transform:translateY(-6px);
     box-shadow:0 15px 35px rgba(0,0,0,0.12);
   }
   .vehicle-card img {
@@ -1084,7 +1171,7 @@ footer a:hover {
     border-radius:14px;
   }
   .gallery-card:hover {
-    transform:scale(1.1);
+  transform:none;
     box-shadow:0 20px 50px rgba(0,0,0,0.12);
   }
   .gallery-card img {
@@ -1228,16 +1315,18 @@ footer a:hover {
 
     .ek-popup {
       width: 100%;
-      max-width: var(--popup-max-width);
-      background: #fff;
+  max-width: 98vw;
+      background: rgba(255,255,255,0.85) !important;
       border-radius: var(--popup-radius);
-      box-shadow: 0 18px 40px rgba(0,0,0,0.35);
+      border: 2px solid #e0e0e0;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.15);
       overflow: hidden;
       transform: translateY(6px);
       transition: transform .18s ease;
       max-height: calc(100vh - 80px);
       display: flex;
       flex-direction: column;
+      color: #222 !important;
     }
 
     .ek-popup.open { transform: translateY(0); }
@@ -1247,14 +1336,15 @@ footer a:hover {
       align-items: center;
       justify-content: space-between;
       padding: 12px 16px;
-      border-bottom: 1px solid #eee;
-      background: linear-gradient(180deg,#fff,#fafafa);
+      border-bottom: 1px solid #e0e0e0;
+      background: transparent !important;
+      color: #111 !important;
     }
 
     .ek-popup-title {
       font-size: 18px;
       font-weight: 700;
-      color: #111;
+      color: #111 !important;
     }
 
     .ek-popup-close {
@@ -1272,12 +1362,16 @@ footer a:hover {
     .ek-popup-close:hover { background: rgba(0,0,0,0.06); }
 
     .ek-popup-body {
-      overflow: auto;
+      overflow-y: auto;
+      overflow-x: hidden;
       padding: 16px;
       display: grid;
-      grid-template-columns: 1fr 360px;
+  grid-template-columns: 1fr 500px;
       gap: 18px;
       box-sizing: border-box;
+      background: transparent !important;
+      color: #222 !important;
+      max-width: 100%;
     }
 
     /* left column: main image + thumbs */
@@ -1336,15 +1430,17 @@ footer a:hover {
     }
 
     .ek-details .specs {
-      background: #fafafa;
+      background: rgba(240,240,240,0.85);
       padding: 12px;
       border-radius: 8px;
-      border: 1px solid #f0f0f0;
+      border: 1px solid #e0e0e0;
       font-size: 14px;
+      color: #222 !important;
     }
 
     .ek-details h3 { margin: 0 0 6px 0; font-size: 16px; }
-    .ek-details p { margin: 0; font-size: 14px; color: #333; line-height: 1.35; }
+  .ek-details h3 { margin: 0 0 6px 0; font-size: 16px; color: #111 !important; }
+  .ek-details p { margin: 0; font-size: 14px; color: #222 !important; line-height: 1.35; }
 
     .ek-details .desc {
       max-height: 54vh;
@@ -1367,7 +1463,7 @@ footer a:hover {
 
     /* blur body when active */
     body.ek-blur > *:not(.ek-popup-overlay) {
-      filter: blur(6px) saturate(.96);
+  filter: blur(1.5px) saturate(.96);
       pointer-events: none;
       user-select: none;
     }
@@ -1381,7 +1477,20 @@ footer a:hover {
     .ek-spec-key { font-weight:700; color:#222; min-width:98px; }
     .ek-popup-footer { padding: 12px 16px; border-top: 1px solid #eee; display:flex; justify-content:flex-end; gap:8px; }
     .ek-btn { padding:8px 12px; border-radius:8px; border:1px solid #ddd; background:#fff; cursor:pointer; font-size:13px; }
-    .ek-btn.primary { background:#2b6cb0; color:#fff; border-color:#2b6cb0; }
+    .ek-btn.primary {
+      background: #222;
+      color: #fff;
+      border-color: #222;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+      transition: background 0.2s, color 0.2s;
+    }
+    .ek-btn.primary:hover {
+      background: #444;
+      color: #fff;
+      border-color: #444;
+    }
 
     /* scrollbar cleanup for thumbs */
     .ek-thumb-strip::-webkit-scrollbar { height:8px; }
@@ -2307,8 +2416,8 @@ footer a:hover {
 /* ——— FLOATING CONTACT BUTTONS ——— */
 .floating-buttons {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
+  bottom: 32px;
+  right: 32px;
   z-index: 1000;
   display: flex;
   flex-direction: column;
@@ -2358,8 +2467,8 @@ footer a:hover {
 /* Mobile responsiveness */
 @media (max-width: 768px) {
   .floating-buttons {
-    bottom: 15px;
-    right: 15px;
+    bottom: 24px;
+    right: 24px;
   }
   
   .floating-btn {
@@ -2367,4 +2476,26 @@ footer a:hover {
     height: 50px;
     font-size: 20px;
   }
+}
+
+/* Global Partnership Section with Glassmorphism BG */
+.global-partnership-bg {
+  background: url('assets/hero_section/front4.webp') center center/cover no-repeat, rgba(255,255,255,0.35);
+  background-blend-mode: lighten;
+  min-height: 380px;
+  width: 100%;
+   border-radius: 24px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 40px 0;
+  padding: 60px 0;
+}
+
+.global-partnership-bg h2, .global-partnership-bg h1, .global-partnership-bg p {
+  color: #fff;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.18);
 }

@@ -507,7 +507,7 @@ const translations = {
   tabSpecial: 'Special Vehicle',
   tabOffroad: 'Off-road Truck',
   tabNewenergy: 'New Energy',
-    heroTitle: 'Power Meets Precision',
+    heroTitle: 'Equipment King Incorporated',
     heroDesc: 'Experience cutting-edge engineering with Equipment King Incorporated in partnership with SAGMOTO.'
   },
   fr: {
