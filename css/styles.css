@@ -733,17 +733,6 @@ h1, h2, h3, h4, h5, h6 {
   padding: 0 8px 12px 8px;
 }
 
-.magnifier-lens {
-  position: absolute;
-  border: 1px solid #000;
-  width: 190px;
-  height: 190px;
-  overflow: hidden;
-  display: none;
-  pointer-events: none;
-  background-repeat: no-repeat;
-  background-size: 200%;
-}
 
 /* ——— HEADING STYLE (Apple-like) ——— */
 .headings {
@@ -910,17 +899,6 @@ h1, h2, h3, h4, h5, h6 {
   border-top: 1px solid rgba(255,255,255,0.13);
     }
 
-    .magnifier-lens {
-      position: absolute;
-      border: 1px solid #000;
-      width: 190px;
-      height: 190px;
-      overflow: hidden;
-      display: none;
-      pointer-events: none;
-      background-repeat: no-repeat;
-      background-size: 200%;
-    }
 
     @media (max-width: 900px) {
       .truck-grid {
