@@ -166,7 +166,10 @@ document.addEventListener('DOMContentLoaded', () => {
     .ek-popup {
       width: 100%;
       max-width: 1200px;
-  background: transparent;
+  background: rgba(255,255,255,0.18);
+  backdrop-filter: blur(18px) saturate(1.5);
+  -webkit-backdrop-filter: blur(18px) saturate(1.5);
+  box-shadow: 0 8px 32px 0 rgba(31,38,135,0.18);
       border-radius: var(--popup-radius);
   box-shadow: none;
       overflow: hidden;
@@ -200,14 +203,15 @@ document.addEventListener('DOMContentLoaded', () => {
       justify-content: space-between;
       padding: 20px 30px;
       border-bottom: 1px solid #e9ecef;
-  background: transparent;
+  background: rgba(255,255,255,0.22);
+  color: #222;
   box-shadow: none;
     }
 
     .ek-popup-title {
       font-size: 24px;
       font-weight: 700;
-      color: #333333;
+      color: #222;
   display: block;
     }
 
@@ -311,7 +315,8 @@ document.addEventListener('DOMContentLoaded', () => {
       gap: 30px;
       box-sizing: border-box;
       max-height: 80vh;
-  background: transparent;
+  background: rgba(255,255,255,0.13);
+  color: #222;
     }
 
     /* Mobile and tablet responsive design */
@@ -465,7 +470,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /* Enhanced info section styling */
     .ek-info {
-  background: transparent;
+  background: rgba(255,255,255,0.22);
+  color: #222;
       border-radius: 12px;
       padding: 30px;
       border: 1px solid #e9ecef;
@@ -496,15 +502,15 @@ document.addEventListener('DOMContentLoaded', () => {
     .ek-info-section {
       margin-bottom: 24px;
       padding: 20px;
-  background: none;
-  border-radius: 0;
+  background: rgba(255,255,255,0.22);
+  border-radius: 12px;
   border-left: none;
   transition: none;
     }
 
     .ek-info-section:hover {
-  background: none;
-  box-shadow: none;
+  background: rgba(255,255,255,0.28);
+  box-shadow: 0 2px 8px 0 rgba(31,38,135,0.08);
   border-left-color: none;
     }
 
@@ -523,7 +529,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     .ek-info-section p {
-      color: #6c757d;
+      color: #222;
       line-height: 1.6;
       margin: 0;
       font-size: 14px;
@@ -586,13 +592,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     .ek-btn.secondary {
-      background: linear-gradient(135deg, #ffffff, #f8f9fa);
+      background: linear-gradient(135deg, #fff, #f8f9fa);
       color: #000000;
       border: 2px solid #000000;
     }
 
     .ek-btn.secondary:hover {
-      background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+      background: linear-gradient(135deg, #fff, #e9ecef);
       transform: translateY(-3px);
       box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
     }
@@ -2323,31 +2329,30 @@ document.addEventListener('DOMContentLoaded', () => {
     popupOverlay.setAttribute('aria-hidden','true');
     popupOverlay.innerHTML = `
       <div class="ek-popup" aria-modal="true">
-        <div class="ek-popup-header">
+        <div class="ek-popup-header glassmorph">
           <div class="ek-popup-title">Truck Details</div>
           <button class="ek-popup-close" aria-label="Close popup">&times;</button>
         </div>
-        <div class="ek-popup-body">
+        <div class="ek-popup-body glassmorph">
           <div class="ek-gallery">
             <div class="ek-main-image">
               <img src="" alt="Truck image">
-
             </div>
             <div class="ek-thumb-strip"></div>
           </div>
-          <div class="ek-info">
+          <div class="ek-info glassmorph">
             <h3 class="role"></h3>
-            <div class="ek-info-section">
+            <div class="ek-info-section glassmorph">
               <h4>Description</h4>
-              <p class="desc" style="margin:0; color:#333; font-size:15px;"></p>
+              <p class="desc" style="margin:0; color:#222; font-size:15px;"></p>
             </div>
-            <div class="ek-info-section">
+            <div class="ek-info-section glassmorph">
               <h4>Technical Specifications</h4>
               <div class="specs">
                 <div style="overflow-x: auto;">
                   <table class="ek-spec-table" style="width: 100%; border-collapse: collapse; background: none; border-radius: 0; overflow: visible; box-shadow: none;">
                     <thead>
-                      <tr style="background: #f5f5f5; color: #222;">
+                      <tr style="background: rgba(255,255,255,0.22); color: #222;">
                         <th style="padding: 10px 12px; text-align: left; font-size: 0.95em; font-weight: 700; border-bottom: 1px solid #eee;">Specification</th>
                         <th style="padding: 10px 12px; text-align: left; font-size: 0.95em; font-weight: 700; border-bottom: 1px solid #eee;">Value</th>
                       </tr>
