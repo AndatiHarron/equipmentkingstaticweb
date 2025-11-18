@@ -855,17 +855,21 @@ document.addEventListener('DOMContentLoaded', () => {
     <div id="header-placeholder"></div>
 
 
-<section class="hero" style="margin-top: 60px; position: relative; min-height: 60vh; background: url('assets/hero_section/front3.webp') center center/cover no-repeat; display: flex; align-items: center; justify-content: center; padding: 100px 20px; text-align: center; color: white;">
-  <div style="position: relative; z-index: 2; max-width: 1200px; width: 100%;">
-    <h1 style="font-size: 3.5rem; font-weight: 700; margin-bottom: 20px; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">Equipment King Incorporated</h1>
-    <p style="font-size: 1.4rem; margin-bottom: 40px; text-shadow: 1px 1px 2px rgba(0,0,0,0.8);">Redefining the future of commercial mobility through innovation, sustainability, and global collaboration.</p>
+<section class="hero-bg-group" style="position: relative;">
+  <div style="position: absolute; inset: 0; z-index: 0;">
+    <img src="assets/hero_section/front3.webp" alt="Hero BG" style="width: 100%; height: 100%; object-fit: cover; filter: brightness(0.45);">
   </div>
-</section>
-
-<!-- Stats Section -->
-<section id="stats" style="padding: 60px 20px; background: none; position: relative;">
-  <div style="max-width: 1200px; margin: 0 auto;">
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+  <div style="position: relative; z-index: 1;">
+    <section class="hero" style="margin-top: 60px; min-height: 60vh; background: none; display: flex; align-items: center; justify-content: center; padding: 100px 20px 0 20px; text-align: center; color: white;">
+      <div style="max-width: 1200px; width: 100%;">
+        <h1 style="font-size: 3.5rem; font-weight: 700; margin-bottom: 20px; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">Equipment King Incorporated</h1>
+        <p style="font-size: 1.4rem; margin-bottom: 40px; text-shadow: 1px 1px 2px rgba(0,0,0,0.8);">Redefining the future of commercial mobility through innovation, sustainability, and global collaboration.</p>
+      </div>
+    </section>
+    <!-- Stats Section -->
+    <section id="stats" style="padding: 60px 20px 50px 20px; background: none; position: relative;">
+      <div style="max-width: 1200px; margin: 0 auto;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
       <!-- Vehicle Models Counter -->
   <div class="stat-counter" style="background: rgba(255,255,255,0.13); border: 1.5px solid rgba(255,255,255,0.22); backdrop-filter: blur(18px) saturate(180%); -webkit-backdrop-filter: blur(18px) saturate(180%); box-shadow: 0 8px 32px 0 rgba(31,38,135,0.13); padding: 30px 20px; border-radius: 18px; text-align: center;">
   <div class="circular-progress" style="position: relative; width: 120px; height: 120px; margin: 0 auto 20px;">
