@@ -2425,21 +2425,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // create thumbnails from mapping
         thumbStrip.innerHTML = '';
-        const dirKey = getDirectoryKeyFromSrc(src);
+        let dirKey = getDirectoryKeyFromSrc(src);
         const clickedFilename = src.substring(src.lastIndexOf('/') + 1);
         let images = [];
-        
+
+        // Normalize for E3 Tractor Truck (and similar cases)
+        if (dirKey && dirKey.toLowerCase().includes('e3') && dirKey.toLowerCase().includes('tractor')) {
+          // Find the correct key in truckImagesMap for E3 Tractor Truck
+          const e3TractorKey = Object.keys(truckImagesMap).find(k => k.toLowerCase().includes('e3') && k.toLowerCase().includes('tractor'));
+          if (e3TractorKey) dirKey = e3TractorKey;
+        }
+
         if (dirKey && truckImagesMap[dirKey]) {
           const imageFilenames = truckImagesMap[dirKey];
           // Build full paths for all images
           images = imageFilenames.map(filename => folder + filename);
-          
+
           // Ensure clicked image is first (if it exists in the array)
           const clickedIndex = images.findIndex(img => {
             const imgFilename = img.substring(img.lastIndexOf('/') + 1);
             return imgFilename === clickedFilename;
           });
-          
+
           if (clickedIndex > 0) {
             // Move clicked image to front
             const clickedImg = images[clickedIndex];
