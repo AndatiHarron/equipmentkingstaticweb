@@ -105,22 +105,6 @@ document.addEventListener('DOMContentLoaded', () => {
       --thumb-size: 72px;
       --thumb-gap: 8px;
     }
-    /* === MAGNIFYING LENS SHARED STYLE === */
-.magnifier-lens {
-  position: absolute;
-  border: 2px solid #888;
-  border-radius: 0 !important;
-  cursor: none;
-  width: 180px;
-  height: 180px;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 200%;
-  pointer-events: none;
-  display: none;
-  z-index: 20;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.18);
-}
 
 
     /* Enhanced popup system with advanced animations */
@@ -1298,7 +1282,6 @@ document.addEventListener('DOMContentLoaded', () => {
             <!-- Removed crossing line from truck tile -->
                         <div class="truck-image" style="margin-bottom: 8px; border-radius: 8px; overflow: hidden;">
                             <img src="assets/x9towtruck.webp" style="width: 100%; height: 240px; object-fit: cover;"> <!-- IMPORTANT: X9 Tow Truck image -->
-                            <div class="magnifier-lens"></div>
                         </div>
                         <div class="truck-name" style="font-size: 16px; font-weight: 600; color: #212529; margin: 0 0 8px 0;">X9 Tow Truck</div>
                         <div class="truck-description"><b>|</b> Professional heavy-duty towing solution with advanced recovery capabilities. Features powerful winch system, stabilizing outriggers, and robust chassis design for safe vehicle recovery operations.</div>
