@@ -917,8 +917,11 @@ document.addEventListener('DOMContentLoaded', () => {
   </div>
 </section>
 
-<section id="partnership" style="padding: 60px 20px; background: none; position: relative; z-index: 1;">
-  <div style="max-width: 1200px; margin: 0 auto; position: relative; z-index: 2;">
+<section id="partnership" style="padding: 0; background: none; position: relative; z-index: 1; min-height: 420px;">
+  <div style="position: absolute; inset: 0; z-index: 0; pointer-events: none;">
+    <img src="assets/hero_section/front4.webp" alt="Partnership BG" style="width: 100%; height: 100%; object-fit: cover; object-position: center; display: block;">
+  </div>
+  <div style="max-width: 1200px; margin: 0 auto; position: relative; z-index: 2; padding: 60px 20px;">
     <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 30px; color: #474747; font-weight: 700; text-transform: uppercase; border: 2px solid #e0e0e0; display: inline-block; padding: 15px 30px; background: rgba(0, 0, 0, 0.78); border-radius: 12px;">Where are we?</h2>
     <p style="text-align: center; font-size: 1.2rem; color: #fff; margin-bottom: 50px; max-width: 800px; margin-left: auto; margin-right: auto; font-weight: 600; background: rgba(0,0,0,0.25); border-radius: 8px; padding: 12px 0;">We operate in 4 countries across West Africa, delivering advanced vehicle solutions and support.</p>
     <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin-bottom: 50px; background: rgba(0,0,0,0.65); border-radius: 18px; padding: 40px 0; box-shadow: 0 8px 32px 0 rgba(31,38,135,0.18);">
@@ -940,9 +943,7 @@ document.addEventListener('DOMContentLoaded', () => {
       </div>
     </div>
   </div>
-  <div style="position: absolute; inset: 0; z-index: 0; pointer-events: none;">
-    <img src="assets/hero_section/front4.webp" alt="Partnership BG" style="width: 100%; height: 100%; object-fit: cover;">
-  </div>
+</section>
 </section>
 
 <div id="footer-placeholder"></div>
