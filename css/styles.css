@@ -1,3 +1,22 @@
+/* Dark overlay for about page background */
+.page-wrapper {
+  position: relative;
+  /* ...existing code... */
+}
+.background-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(10, 10, 20, 0.68);
+  z-index: 0;
+  pointer-events: none;
+}
+.page-wrapper > *:not(.background-overlay) {
+  position: relative;
+  z-index: 1;
+}
 /* About page background: always cover, mobile-friendly */
 .page-wrapper {
   background: url('../assets/back2.webp') center center/cover no-repeat fixed;
