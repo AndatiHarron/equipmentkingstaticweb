@@ -648,18 +648,32 @@ function showTab(type, btn){
   }, 200);
 }
 
-// Medium Duty default
-window.addEventListener('DOMContentLoaded', ()=>{
+
+function ekInitTabs() {
   const defaultTab = document.querySelector('.tab-btn.active');
-  showTab(defaultTab.dataset.type, defaultTab);
+  if (defaultTab) showTab(defaultTab.dataset.type, defaultTab);
   // Listen for language toggle and update tab content
   document.getElementById('lang-toggle-btn')?.addEventListener('click', () => {
     setTimeout(() => {
       const activeTab = document.querySelector('.tab-btn.active');
-      showTab(activeTab.dataset.type, activeTab);
+      if (activeTab) showTab(activeTab.dataset.type, activeTab);
     }, 100);
   });
-});
+}
+
+if (document.readyState === 'loading') {
+  window.addEventListener('DOMContentLoaded', ekInitTabs);
+} else {
+  ekInitTabs();
+}
+
+// Fallback: re-initialize after 1s in case of async load issues
+setTimeout(() => {
+  const tabContent = document.getElementById('tabContent');
+  if (tabContent && !tabContent.querySelector('.vehicle-card')) {
+    ekInitTabs();
+  }
+}, 1000);
 
 // Enhanced hover tabs with extended area
 const tabsSection = document.querySelector('section.tabs');
