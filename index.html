@@ -374,14 +374,8 @@
   }
 
   section.gallery h2::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: -100px;
-    right: -100px;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, #ddd, transparent);
-    z-index: -1;
+    /* Removed decorative line crossing through heading */
+    content: none;
   }
 
   .gallery-grid {
@@ -412,7 +406,7 @@
     width: 100%;
     height: 280px;
     object-fit: cover;
-    border-bottom: 1px solid #dee2e6;
+    /* border-bottom removed to eliminate crossing line */
     transition: all 0.3s ease;
   }
 
