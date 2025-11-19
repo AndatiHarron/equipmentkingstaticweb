@@ -219,7 +219,7 @@ class LyroChat {
 
     loadChatbot() {
         // Chat is ready
-
+        console.log('Lyro Chat initialized successfully');
     }
 
     open() {
@@ -421,5 +421,5 @@ document.addEventListener('click', function(e) {
 
 // Initialize when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
-
+    console.log('Lyro Chat system ready');
 });
