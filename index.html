@@ -1,4 +1,32 @@
-﻿<!DOCTYPE html>
+﻿<!-- WhatsApp Floating Button -->
+<a href="https://wa.me/231777935464" target="_blank" id="whatsapp-float" title="Chat with us on WhatsApp">
+  <i class="fa fa-whatsapp"></i>
+</a>
+<style>
+#whatsapp-float {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  z-index: 9999;
+  background: #25d366;
+  color: #fff;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.3rem;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+  transition: background 0.2s, box-shadow 0.2s;
+  text-decoration: none;
+}
+#whatsapp-float:hover {
+  background: #128c7e;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.22);
+}
+</style>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -398,7 +426,7 @@
   <!-- Gallery Content -->
   <div class="gallery-content" id="galleryContent">
     <div style="position:relative;display:inline-block;width:100%;margin-bottom:18px;">
-      <h2 style="position:relative;z-index:2;"><span>Explore Our Latest Fleet</span></h2>
+      <h2 style="position:relative;z-index:2;background:none;"><span style="background:none;text-decoration:none;">Explore Our Latest Fleet</span></h2>
     </div>
     <div class="gallery-grid">
       <div class="gallery-card" onclick="window.location.href='trucks_html/E1st-Tractor.html'"><img src="assets/tractor.webp"><span>Tractor</span></div>

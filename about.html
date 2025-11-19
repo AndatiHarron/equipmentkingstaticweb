@@ -261,7 +261,7 @@ document.addEventListener('DOMContentLoaded', () => {
   .about-hero {
     margin-top: 0px;
     padding: 80px 20px;
-    background: #ffffff;
+    
     border: 2px solid #e0e0e0;
     text-align: center;
     transition: all 0.3s ease;
@@ -850,105 +850,140 @@ document.addEventListener('DOMContentLoaded', () => {
 </style>
 </head>
 
-<body style="background: url('assets/hero_section/front3.webp') center center/cover no-repeat fixed; background-color: #181c1f;">
+<body class="about-glass-bg" style="background: url('assets/hero_section/front4.webp') center center/cover no-repeat fixed !important; font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
 <div class="page-wrapper" style="background: none !important;">
-    <div id="header-placeholder"></div>
 
-
-<section class="hero-bg-group" style="position: relative;">
-  <div style="position: absolute; inset: 0; z-index: 0;">
-    <img src="assets/hero_section/front3.webp" alt="Hero BG" style="width: 100%; height: 100%; object-fit: cover; object-position: center center; filter: brightness(0.45);">
-  </div>
-  <div style="position: relative; z-index: 1;">
-    <section class="hero" style="margin-top: 60px; min-height: 60vh; background: none; display: flex; align-items: center; justify-content: center; padding: 100px 20px 0 20px; text-align: center; color: white;">
-      <div style="max-width: 1200px; width: 100%;">
-        <h1 style="font-size: 3.5rem; font-weight: 700; margin-bottom: 20px; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">Equipment King Incorporated</h1>
-        <p style="font-size: 1.4rem; margin-bottom: 40px; text-shadow: 1px 1px 2px rgba(0,0,0,0.8);">Redefining the future of commercial mobility through innovation, sustainability, and global collaboration.</p>
-      </div>
-    </section>
-    <!-- Stats Section -->
-    <section id="stats" style="padding: 60px 20px 50px 20px; background: none; position: relative;">
-      <div style="max-width: 1200px; margin: 0 auto;">
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
-      <!-- Vehicle Models Counter -->
-  <div class="stat-counter" style="background: rgba(255,255,255,0.13); border: 1.5px solid rgba(255,255,255,0.22); backdrop-filter: blur(18px) saturate(180%); -webkit-backdrop-filter: blur(18px) saturate(180%); box-shadow: 0 8px 32px 0 rgba(31,38,135,0.13); padding: 30px 20px; border-radius: 18px; text-align: center;">
-  <div class="circular-progress" style="position: relative; width: 120px; height: 120px; margin: 0 auto 20px;">
-          <svg style="width: 120px; height: 120px; transform: rotate(-90deg);">
-            <circle cx="60" cy="60" r="54" fill="none" stroke="#f0f0f0" stroke-width="8"/>
-            <circle id="progress-1" cx="60" cy="60" r="54" fill="none" stroke="#007bff" stroke-width="8" 
-                    style="transition: stroke-dashoffset 2s ease-in-out;"/>
-          </svg>
-          <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
-            <span id="counter-1" style="font-size: 1.8rem; font-weight: 700; color: #007bff; display: block;">0</span>
-            <span style="font-size: 0.9rem; color: #007bff;">+</span>
+    
+    <main>
+      <!-- COUNTRY FLAGS SECTION -->
+      <section class="glass-container" style="margin-top:180px; text-align:center; display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:220px;">
+        <h2 style="font-size:2rem; font-weight:700; margin-bottom:32px;">Our operations span the following regions</h2>
+        <div style="display: flex; justify-content: center; gap: 48px; flex-wrap: wrap; margin-bottom: 20px;">
+          <div style="display: flex; flex-direction: column; align-items: center;">
+            <img src='https://flagcdn.com/w80/sl.png' alt='Sierra Leone' style='width: 64px; height: 48px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.12);'>
+            <span style='margin-top: 12px; color: #fff; font-size: 1.1rem; font-weight: 600;'>Sierra Leone</span>
+          </div>
+          <div style="display: flex; flex-direction: column; align-items: center;">
+            <img src='https://flagcdn.com/w80/lr.png' alt='Liberia' style='width: 64px; height: 48px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.12);'>
+            <span style='margin-top: 12px; color: #fff; font-size: 1.1rem; font-weight: 600;'>Liberia <span style="color:#00b7ff;font-size:0.95em;">(HQ)</span></span>
+          </div>
+          <div style="display: flex; flex-direction: column; align-items: center;">
+            <img src='https://flagcdn.com/w80/ml.png' alt='Mali' style='width: 64px; height: 48px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.12);'>
+            <span style='margin-top: 12px; color: #fff; font-size: 1.1rem; font-weight: 600;'>Mali</span>
+          </div>
+          <div style="display: flex; flex-direction: column; align-items: center;">
+            <img src='https://flagcdn.com/w80/gn.png' alt='Guinea' style='width: 64px; height: 48px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.12);'>
+            <span style='margin-top: 12px; color: #fff; font-size: 1.1rem; font-weight: 600;'>Guinea</span>
           </div>
         </div>
-        <p style="font-size: 1rem; color: #666; font-weight: 600; text-transform: uppercase; margin: 0;">Vehicle Models</p>
-      </div>
+      </section>
 
-      <!-- Countries Served Counter -->
-      <div class="stat-counter" style="background: rgba(255,255,255,0.13); border: 1.5px solid rgba(255,255,255,0.22); backdrop-filter: blur(18px) saturate(180%); -webkit-backdrop-filter: blur(18px) saturate(180%); box-shadow: 0 8px 32px 0 rgba(31,38,135,0.13); padding: 30px 20px; border-radius: 18px; text-align: center;">
-        <div class="circular-progress" style="position: relative; width: 120px; height: 120px; margin: 0 auto 20px;">
-          <svg style="width: 120px; height: 120px; transform: rotate(-90deg);">
-            <circle cx="60" cy="60" r="54" fill="none" stroke="#f0f0f0" stroke-width="8"/>
-            <circle id="progress-2" cx="60" cy="60" r="54" fill="none" stroke="#28a745" stroke-width="8" 
-                    style="transition: stroke-dashoffset 2s ease-in-out;"/>
-          </svg>
-          <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
-            <span id="counter-2" style="font-size: 1.8rem; font-weight: 700; color: #28a745; display: block;">0</span>
-            <span style="font-size: 0.9rem; color: #28a745;">+</span>
+      <!-- STORY/VALUES SECTION -->
+      <section class="glass-container" style="display:flex; flex-wrap:wrap; align-items:center; gap:40px; justify-content:center;">
+        <div style="flex:1 1 320px; min-width:260px; max-width:420px;">
+          <img src="assets/otherPics/pics with dwscriptions/engines.webp" alt="Our Story & Values" style="width:100%; border-radius:24px; box-shadow:0 4px 32px rgba(0,183,255,0.10);">
+        </div>
+        <div style="flex:2 1 340px; min-width:260px; max-width:600px;">
+          <h2 style="font-size:2rem; font-weight:700; margin-bottom:12px;">Our Story & Values</h2>
+          <p style="font-size:1.1rem; margin-bottom:18px;">In 2025, Equipment King Incorporated entered a strategic partnership with SAG International, combining advanced engineering expertise with local market presence. We are committed to delivering world-class commercial vehicles and solutions that empower businesses across Africa and beyond.</p>
+          <div style="font-size:1.05rem; line-height:1.7; color:#111; text-align:left; margin-left:0;">
+            <div>| Innovation in vehicle technology</div>
+            <div>| Environmental responsibility</div>
+            <div>| Global collaboration</div>
+            <div>| Customer-centric solutions</div>
           </div>
         </div>
-        <p style="font-size: 1rem; color: #666; font-weight: 600; text-transform: uppercase; margin: 0;">Countries Served</p>
-      </div>
+      </section>
 
-      <!-- Vehicles Delivered Counter -->
-      <div class="stat-counter" style="background: rgba(255,255,255,0.13); border: 1.5px solid rgba(255,255,255,0.22); backdrop-filter: blur(18px) saturate(180%); -webkit-backdrop-filter: blur(18px) saturate(180%); box-shadow: 0 8px 32px 0 rgba(31,38,135,0.13); padding: 30px 20px; border-radius: 18px; text-align: center;">
-        <div class="circular-progress" style="position: relative; width: 120px; height: 120px; margin: 0 auto 20px;">
-          <svg style="width: 120px; height: 120px; transform: rotate(-90deg);">
-            <circle cx="60" cy="60" r="54" fill="none" stroke="#f0f0f0" stroke-width="8"/>
-            <circle id="progress-3" cx="60" cy="60" r="54" fill="none" stroke="#ffc107" stroke-width="8" 
-                    style="transition: stroke-dashoffset 2s ease-in-out;"/>
-          </svg>
-          <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
-            <span id="counter-3" style="font-size: 1.6rem; font-weight: 700; color: #ffc107; display: block;">0</span>
-            <span style="font-size: 0.9rem; color: #ffc107;">+</span>
+      <!-- STATS SECTION -->
+      <section class="glass-container" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:32px; text-align:center;">
+        <div>
+          <div class="stat-counter hero-glass" style="margin-bottom:12px; background: rgba(255,255,255,0.13); border: 1.5px solid rgba(255,255,255,0.22); backdrop-filter: blur(18px) saturate(180%); -webkit-backdrop-filter: blur(18px) saturate(180%); box-shadow: 0 8px 32px 0 rgba(31,38,135,0.13); border-radius: 18px; text-align: center;">
+            <div class="circular-progress" style="position: relative; width: 120px; height: 120px; margin: 0 auto 20px;">
+              <svg style="width: 120px; height: 120px; transform: rotate(-90deg);">
+                <circle cx="60" cy="60" r="54" fill="none" stroke="#f0f0f0" stroke-width="8"/>
+                <circle id="progress-1" cx="60" cy="60" r="54" fill="none" stroke="#00b7ff" stroke-width="8" style="transition: stroke-dashoffset 2s ease-in-out;"/>
+              </svg>
+              <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
+                <span id="counter-1" style="font-size: 1.8rem; font-weight: 700; color: #00b7ff; display: block;">0</span>
+                <span style="font-size: 0.9rem; color: #00b7ff;">+</span>
+              </div>
+            </div>
+            <p style="font-size: 1rem; color: #f8fafd; font-weight: 600; text-transform: uppercase; margin: 0;">Vehicle Models</p>
           </div>
         </div>
-        <p style="font-size: 1rem; color: #666; font-weight: 600; text-transform: uppercase; margin: 0;">Vehicles Delivered</p>
-      </div>
+        <div>
+          <div class="stat-counter hero-glass" style="margin-bottom:12px; background: rgba(255,255,255,0.13); border: 1.5px solid rgba(255,255,255,0.22); backdrop-filter: blur(18px) saturate(180%); -webkit-backdrop-filter: blur(18px) saturate(180%); box-shadow: 0 8px 32px 0 rgba(31,38,135,0.13); border-radius: 18px; text-align: center;">
+            <div class="circular-progress" style="position: relative; width: 120px; height: 120px; margin: 0 auto 20px;">
+              <svg style="width: 120px; height: 120px; transform: rotate(-90deg);">
+                <circle cx="60" cy="60" r="54" fill="none" stroke="#f0f0f0" stroke-width="8"/>
+                <circle id="progress-2" cx="60" cy="60" r="54" fill="none" stroke="#28a745" stroke-width="8" style="transition: stroke-dashoffset 2s ease-in-out;"/>
+              </svg>
+              <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
+                <span id="counter-2" style="font-size: 1.8rem; font-weight: 700; color: #28a745; display: block;">0</span>
+                <span style="font-size: 0.9rem; color: #28a745;">+</span>
+              </div>
+            </div>
+            <p style="font-size: 1rem; color: #f8fafd; font-weight: 600; text-transform: uppercase; margin: 0;">Countries Served</p>
+          </div>
+        </div>
+        <div>
+          <div class="stat-counter hero-glass" style="margin-bottom:12px; background: rgba(255,255,255,0.13); border: 1.5px solid rgba(255,255,255,0.22); backdrop-filter: blur(18px) saturate(180%); -webkit-backdrop-filter: blur(18px) saturate(180%); box-shadow: 0 8px 32px 0 rgba(31,38,135,0.13); border-radius: 18px; text-align: center;">
+            <div class="circular-progress" style="position: relative; width: 120px; height: 120px; margin: 0 auto 20px;">
+              <svg style="width: 120px; height: 120px; transform: rotate(-90deg);">
+                <circle cx="60" cy="60" r="54" fill="none" stroke="#f0f0f0" stroke-width="8"/>
+                <circle id="progress-3" cx="60" cy="60" r="54" fill="none" stroke="#ffc107" stroke-width="8" style="transition: stroke-dashoffset 2s ease-in-out;"/>
+              </svg>
+              <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
+                <span id="counter-3" style="font-size: 1.6rem; font-weight: 700; color: #ffc107; display: block;">0</span>
+                <span style="font-size: 0.9rem; color: #ffc107;">+</span>
+              </div>
+            </div>
+            <p style="font-size: 1rem; color: #f8fafd; font-weight: 600; text-transform: uppercase; margin: 0;">Vehicles Delivered</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- PARTNERSHIP/VISION SECTION -->
+      <section class="glass-container" style="text-align:center;">
+        <h2 style="font-size:2rem; font-weight:700; margin-bottom:18px;">Our Global Partnership</h2>
+        <p style="font-size:1.1rem; max-width:700px; margin:0 auto 24px;">Equipment King Incorporated proudly partners with SAG International, bringing advanced engineering and specialized equipment to markets across Africa, Asia, and beyond. Together, we are shaping the future of transport with smarter, cleaner, and more efficient vehicle technologies.</p>
+        <div style="display:flex; flex-wrap:wrap; gap:32px; justify-content:center; margin-top:32px;">
+          <div style="flex:1 1 320px; min-width:260px; max-width:400px; display:flex; flex-direction:column; align-items:center;">
+            <img src="assets/about/innovation.jpg" alt="Advanced Engineering" style="width:100%; max-width:360px; height:200px; object-fit:cover; border-radius:18px; box-shadow:0 4px 24px rgba(0,0,0,0.13); margin-bottom:18px;">
+            <div style="font-size:1.15rem; font-weight:600; margin-bottom:6px; color:#111;">Advanced Engineering</div>
+            <div style="font-size:1rem; color:#333; text-align:center;">Cutting-edge vehicle technology</div>
+          </div>
+          <div style="flex:1 1 320px; min-width:260px; max-width:400px; display:flex; flex-direction:column; align-items:center;">
+            <img src="assets/otherPics/designs/designs (2).webp" alt="Specialized Equipment" style="width:100%; max-width:360px; height:200px; object-fit:cover; border-radius:18px; box-shadow:0 4px 24px rgba(0,0,0,0.13); margin-bottom:18px;">
+            <div style="font-size:1.15rem; font-weight:600; margin-bottom:6px; color:#111;">Specialized Equipment</div>
+            <div style="font-size:1rem; color:#333; text-align:center;">Aerial work platforms & more</div>
+          </div>
+          <div style="flex:1 1 320px; min-width:260px; max-width:400px; display:flex; flex-direction:column; align-items:center;">
+            <img src="assets/trucks/Additional Trucks/E6 compactor garbage trucks/Screenshot 2025-11-05 143301.webp" alt="Waste Management Truck" style="width:100%; max-width:360px; height:200px; object-fit:cover; border-radius:18px; box-shadow:0 4px 24px rgba(0,0,0,0.13); margin-bottom:18px;">
+            <div style="font-size:1.15rem; font-weight:600; margin-bottom:6px; color:#111;">Environmental Solutions</div>
+            <div style="font-size:1rem; color:#333; text-align:center;">Waste management vehicles</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- MISSION & VISION SECTION -->
+      <section class="glass-container" style="text-align:center;">
+        <h2 style="font-size:2rem; font-weight:700; margin-bottom:18px;">Our Mission & Vision</h2>
+        <div style="display:flex; flex-wrap:wrap; gap:32px; justify-content:center;">
+          <div class="hero-glass" style="flex:1 1 320px; min-width:220px; max-width:420px; padding:28px 18px;">
+            <h3 style="font-size:1.2rem; font-weight:700; margin-bottom:10px;">Mission Statement</h3>
+            <p style="font-size:1rem;">Equipment King is committed to providing world-class commercial vehicles that meet the evolving needs of businesses across diverse industries. We strive to deliver innovative, reliable, and efficient transportation solutions.</p>
+          </div>
+          <div class="hero-glass" style="flex:1 1 320px; min-width:220px; max-width:420px; padding:28px 18px;">
+            <h3 style="font-size:1.2rem; font-weight:700; margin-bottom:10px;">Vision for the Future</h3>
+            <p style="font-size:1rem;">To be the leading global distributor of commercial vehicles, recognized for our commitment to innovation, quality, and customer satisfaction. We envision sustainable transportation solutions that enable businesses to thrive.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+    <div id="footer-placeholder"></div>
     </div>
-  </div>
-</section>
-
-<section id="partnership" style="padding: 0; background: none; position: relative; z-index: 1; min-height: 420px;">
-  <div style="position: absolute; inset: 0; z-index: 0; pointer-events: none;">
-    <img src="assets/hero_section/front4.webp" alt="Partnership BG" style="width: 100%; height: 100%; object-fit: cover; object-position: center; display: block;">
-  </div>
-  <div style="max-width: 1200px; margin: 0 auto; position: relative; z-index: 2; padding: 60px 20px;">
-    <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 30px; color: #474747; font-weight: 700; text-transform: uppercase; border: 2px solid #e0e0e0; display: inline-block; padding: 15px 30px; background: rgba(0, 0, 0, 0.78); border-radius: 12px;">Where are we?</h2>
-    <p style="text-align: center; font-size: 1.2rem; color: #fff; margin-bottom: 50px; max-width: 800px; margin-left: auto; margin-right: auto; font-weight: 600; background: rgba(0,0,0,0.25); border-radius: 8px; padding: 12px 0;">We operate in 4 countries across West Africa, delivering advanced vehicle solutions and support.</p>
-    <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin-bottom: 50px; background: rgba(0,0,0,0.65); border-radius: 18px; padding: 40px 0; box-shadow: 0 8px 32px 0 rgba(31,38,135,0.18);">
-      <div style="display: flex; flex-direction: column; align-items: center;">
-        <img src='https://flagcdn.com/w80/sl.png' alt='Sierra Leone' style='width: 64px; height: 48px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.12);'>
-        <span style='margin-top: 12px; color: #fff; font-size: 1.1rem; font-weight: 600;'>Sierra Leone</span>
-      </div>
-      <div style="display: flex; flex-direction: column; align-items: center;">
-        <img src='https://flagcdn.com/w80/lr.png' alt='Liberia' style='width: 64px; height: 48px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.12);'>
-        <span style='margin-top: 12px; color: #fff; font-size: 1.1rem; font-weight: 600;'>Liberia(HQ)</span>
-      </div>
-      <div style="display: flex; flex-direction: column; align-items: center;">
-        <img src='https://flagcdn.com/w80/ml.png' alt='Mali' style='width: 64px; height: 48px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.12);'>
-        <span style='margin-top: 12px; color: #fff; font-size: 1.1rem; font-weight: 600;'>Mali</span>
-      </div>
-      <div style="display: flex; flex-direction: column; align-items: center;">
-        <img src='https://flagcdn.com/w80/gn.png' alt='Guinea' style='width: 64px; height: 48px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.12);'>
-        <span style='margin-top: 12px; color: #fff; font-size: 1.1rem; font-weight: 600;'>Guinea</span>
-      </div>
-    </div>
-  </div>
-</section>
-</section>
 
 <div id="footer-placeholder"></div>
 
