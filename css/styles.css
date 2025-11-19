@@ -209,6 +209,12 @@ header {
   opacity: 1;
   transform: translateY(0);
 }
+@media (max-width: 900px) {
+  .truck-tile {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
 /* Apple.com Style — Title + Search Bar */
 .page-title {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
